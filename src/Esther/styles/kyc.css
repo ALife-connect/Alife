@@ -1,0 +1,219 @@
+.kycwrapper{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 34px;
+}
+.kycmobilewrap{
+  display: none;
+}
+.kycinfowrap{
+    width: 50%;
+    height: 690px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.kyclogohold{
+    width: 90%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.kyclogo{
+    width: 120px;
+}
+.kycinfo1{
+    width: 380px;
+    height: 540px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.kycinfo1 h1{
+    font-family: Poppins;
+    font-size: 27px;
+    font-weight: 700;
+}
+.upload-section {
+    width: 360px;
+    height: 100px;
+    margin-bottom: 25px;
+  }
+  
+  .upload-label {
+    display: block;
+    font-weight: bold;
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 600;
+    color: #21212180;
+  }
+  
+  .upload-box {
+    width: 360px;
+    height: 94px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    background-color: #ededed;
+  }
+  
+  .upload-box:hover {
+    border-color: #c0392b;
+  }
+  
+  .upload-content{
+    width: 200px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .upload-content p {
+    font-family: Poppins;
+    font-size: 12px;
+    /* font-weight: 275; */
+    margin: 0;
+    color: #444;
+  }
+  .upload-content span {
+    font-family: Poppins;
+    font-size: 12px;
+    color: #999;
+  }
+  
+  .hidden-input {
+    display: none;
+  }
+.kycinputwrapper{
+    width: 360px;
+    height: 74px;
+}
+.kycinputwrapper p{
+    color: #21212180;
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 600;
+}
+.kycinput{
+    width: 360px;
+    height: 40px;
+    background-color: #E6E6E6;
+    border-radius: 11px;
+    font-size: 10px;
+    padding: 4px;
+    border: 2px solid #F9F9F9;
+}
+.kycbtn{
+  width: 200px;
+  height: 36px;
+  background-color: #c0392b;
+  border-radius: 6px;
+  color: white;
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 13px;
+  color: white;
+  margin-top: 8px;
+}
+
+.kycsignimage{
+    width: 35%;
+    filter: drop-shadow(rgba(0, 0, 0, 0.418)0px 8px 10px);
+}
+
+
+
+@media only screen and (max-width: 1440px){
+   
+}
+@media only screen and (max-width: 1200px){
+  .kycwrapper{
+    height: max-content;
+    padding: 20px;
+  }
+  .kycsignimage{
+    width: 38%;
+  }
+}
+
+@media only screen and (max-width: 900px){  
+  .kycwrapper{
+    height: max-content;
+    padding: 30px;
+  }
+  .kycsignimage{
+    width: 38%;
+  }
+}
+
+
+@media only screen and (max-width: 760px){
+  .kycwrapper{
+    height: max-content;
+    padding: 20px;
+  }
+  .kycsignimage{
+    width: 38%;
+  }
+}
+
+
+
+@media only screen and (max-width: 480px) {
+  .kycmobilewrap{
+       width: 480px;
+        height: 200px;
+        background-color: #2C3E50;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 0px 0px 80px 10px;
+  }
+  .kyclogo{
+    display: none;
+  }
+  .kyclogohold{
+    display: none;
+  }
+  .kycinfo1 h1{
+    display: none;
+  }
+  .kycwrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .kycsignimage{
+  display: none;
+  }
+  .kycbtn{
+    background-color: #2C3E50;
+    color: white;
+  }
+  .kycmobilewrap h1{
+    color: white;
+    font-size: 40px;
+    font-weight: 700;
+  }
+  
+}
+
+
+@media only screen and (max-width: 379px) {
+  .kycmobilewrap{
+        width: 380px;
+  }
+}

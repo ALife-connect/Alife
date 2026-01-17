@@ -1,0 +1,263 @@
+.footerwrapper{
+    width: 100%;
+    height: 460px;
+    background-color: #2C3E50;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+    margin-top: 3%;
+}
+.footerwrapper h1{
+    font-family: Poppins;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.footerlogo h3{
+  font-family: poppins;
+  font-size: 40px;
+  font-weight:700 ;
+}
+.footerlogo{
+  margin-top: 30px;
+    width: 15%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+
+}
+.footerlogo img{
+    width: 90px;
+   
+}
+.logo-breath img{
+   animation: breating 3s ease-in-out infinite;
+    transform-origin: center;
+}
+
+.footernewsletter{
+  margin-top: 50px;
+    width: 70%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* gap: 10px; */
+}
+.footernewsletter h1{
+    color: white;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+}
+.footerinput{
+    width: 45%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.footerfeatures{
+    width: 70%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.featureslist{
+    width: 100%;
+    height: 60%;
+    gap: 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: Poppins;
+    font-size: 15px;
+    font-weight: 200;
+}
+
+.footer-col ul {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 8px;
+}
+
+.footer-col ul li a {
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+  color: #D32F2F;
+}
+
+
+.social-icons {
+  margin-top: 15px;
+  display: flex;
+  gap: 12px;
+}
+
+.social-icons a {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  background: #D32F2F;
+  color: white;
+}
+
+.footer-bottom {
+  margin-top: 10px;
+  width: 80%;
+  text-align: center;
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+  padding-top: 15px;
+  font-size: 13px;
+}
+
+
+
+
+
+@media only screen and (max-width: 480px) {
+    .footerwrapper {
+      height: auto;
+      padding-bottom: 20px;
+      gap: 1.5rem;
+    }
+  
+    .footerwrapper h1 {
+      font-size: 18px;
+      font-weight: 600;
+      text-align: center;
+    }
+  
+    .footerlogo {
+      width: 100%;
+      justify-content: center;
+      gap: 8px;
+    }
+  
+    .footerlogo img {
+      width: 20px;
+    }
+  
+    .footernewsletter {
+      width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+      gap: 10px;
+    }
+  
+    .footernewsletter h1 {
+      font-size: 16px;
+      padding: 0 10px;
+    }
+  
+    .footerinput {
+      flex-direction: column;
+      width: 90%;
+      gap: 10px;
+    }
+  
+    .footeremail {
+      width: 100%;
+    }
+  
+    .footerinput button {
+      width: 100%;
+    }
+  
+    .footerfeatures {
+      width: 100%;
+      height: auto;
+    }
+  
+    .featureslist {
+      width: 100%;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      font-size: 14px;
+      text-align: center;
+    }
+  }
+  
+  @media only screen and (max-width: 760px) {
+    .footerinput {
+      flex-direction: column;
+      width: 100%;
+      gap: 10px;
+    }
+  
+    .footeremail {
+      width: 90%;
+    }
+  
+    .footerinput button {
+      width: 90%;
+    }
+  
+    .featureslist {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+  }
+  
+  @media only screen and (max-width: 900px) {
+    .footernewsletter {
+      width: 100%;
+    }
+  
+    .footerfeatures {
+      width: 100%;
+    }
+  
+    .featureslist {
+      width: 100%;
+    }
+  }
+  
+  @media only screen and (max-width: 1200px) {
+    .footernewsletter {
+      width: 80%;
+    }
+  
+    .footerfeatures {
+      width: 90%;
+    }
+  
+    .featureslist {
+      width: 90%;
+    }
+  }
+  

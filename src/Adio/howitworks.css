@@ -1,0 +1,367 @@
+.lifelink-Howitworks-first-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 2rem;
+  border-bottom: 1px solid black;
+}
+
+.lifelink-text {
+  flex: 1;
+  max-width: 600px;
+  text-align: left;
+}
+
+.lifelink-text h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  font-family: Poppins;
+  text-align: center;
+  color: #212121;
+}
+
+.lifelink-text p {
+  font-size: 18.22px;
+  line-height: 1.8;
+  font-weight: 500;
+  color: #212121;
+  font-family: Poppins;
+  text-align: center;
+  font-weight: 600;
+}
+
+.lifelink-images {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lifelink-images img {
+  border-radius: 1rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  object-fit: cover;
+}
+
+.img-back {
+  width: 300px;
+  height: auto;
+  z-index: 1;
+  margin-bottom: 50px;
+  margin-right: 160px;
+}
+
+.img-front {
+  width: 280px;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(10%, -25%);
+  z-index: 2;
+}
+
+
+
+.hospital-steps {
+  height: 615.11px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-bottom: 1px solid black;
+}
+
+.section-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 3.5rem;
+  text-align: center;
+}
+
+.steps-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 3.5rem;
+}
+
+.step-boxes {
+  background: #fff;
+  border: 1.5px solid grey;
+  border-radius: 10px;
+  padding: 2rem 1.5rem;
+  width: 280px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.step-boxes:hover {
+  transform: translateY(-10px);
+}
+
+.step-1 {
+  transform: translateY(-40px);
+}
+
+.step-2 {
+  transform: translateY(30px);
+}
+
+.step-3 {
+  transform: translateY(-40px);
+}
+
+.step-4 {
+  transform: translateY(30px);
+}
+
+.icon {
+  font-size: 1.6rem;
+  color: #f4a300;
+  margin-bottom: 1rem;
+}
+
+.step-boxes h3 {
+  font-size: 17.07px;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #222;
+  line-height: 1.4;
+}
+
+.step-boxes p {
+  font-size: 13.38px;
+  color: #444;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.cta-btn {
+  background-color: #d73333;
+  color: white;
+  padding: 0.9rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  width: max-content;
+  transition: background-color 0.3s ease;
+}
+
+.cta-btn:hover {
+  background-color: #b92b2b;
+}
+
+.hospital-steps .cta-btn {
+  display: inline-block;
+}
+
+
+.why-it-matters {
+  padding: 100px 20px;
+  background: #fff;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 60px;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  width: 374px;
+  height: 491px;
+  border-radius: 0px 100px 5px 5px;
+  overflow: hidden;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  background: white;
+}
+
+.card-content {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 24px;
+  width: 100%;
+}
+
+.card-content h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.card-content p {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.card-1 {
+  background-image: url("../../public/images/image(7).png");
+  background-repeat: no-repeat;
+}
+
+.card-2 {
+  background-image: url("../../public/images/image (8).png");
+  background-repeat: no-repeat;
+}
+
+.card-3 {
+  background-image: url("../../public/images/image(6).png");
+  background-repeat: no-repeat;
+}
+
+
+
+
+
+
+@media (max-width: 900px) {
+  .hospital-steps {
+    height: auto;
+  }
+
+  .steps-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .step-boxes {
+    width: 100%;
+    max-width: 100%;
+    transform: none !important;
+  }
+
+  .cta-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 1024px) {
+  .lifelink-Howitworks-first-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .lifelink-text {
+    text-align: center;
+  }
+
+  .lifelink-text p {
+    margin: 0 auto;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 20px;
+  }
+
+  .lifelink-Howitworks-first-section {
+    height: auto;
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .lifelink-text h2 {
+    font-size: 17px;
+  }
+
+  .lifelink-text p {
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .lifelink-images img {
+    width: 180px;
+  }
+
+  .img-front {
+    width: 180px;
+    transform: translate(0%, -25%);
+  }
+
+  .steps-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .hospital-steps {
+    width: 100%;
+    height: auto;
+  }
+
+  .step-boxes {
+    transform: none !important;
+  }
+
+  .cards {
+    gap: 20px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .card {
+    width: 90%;
+    height: 250px;
+    background-size: contain;
+    background-position: center;
+  }
+}
+
+
+
+@media (max-width: 379px) {
+  .lifelink-text p {
+    font-size: 10px;
+    text-align: center;
+  }
+
+  .img-front {
+    width: 60px;
+    transform: translate(-10%, -20%);
+  }
+
+  .img-back{
+    width: 60px;
+    transform: translate(10%, -10%);
+  }
+
+  .lifelink-images img {
+    width: 130px;
+  }
+}

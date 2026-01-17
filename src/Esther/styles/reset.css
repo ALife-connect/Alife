@@ -1,0 +1,164 @@
+.resetwrapper{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 34px;
+}
+.resetmobilewrap{
+    display: none;
+}
+.resetinfowrap{
+    width: 50%;
+    height: 660px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+.resetlogohold{
+    width: 90%;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.resetlogo{
+    width: 79.65px;
+}
+.resetinfo1{
+    width: 65%;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.resetinfo1 h2{
+    font-size: 20px;
+    font-weight: 700;
+    font-family: Poppins;
+}
+.resetinputwrapper{
+    width: 360px;
+    height: 75px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.resetinputwrapper p{
+    font-family: Poppins;
+    font-weight: 600;
+    font-size: 13px;
+    width: 93%;
+    color: #21212180;
+}
+.resetinput{
+    width: 340px;
+    height: 40px;
+    background-color: #ededed;
+    border-radius: 5px;
+    font-size: 11px;
+    padding: 0px 10px;
+}
+.resetbtn{
+    width: 330px;
+    height: 36px;
+    background-color: #c0392b;
+    border-radius: 6px;
+    color: white;
+    font-family: Poppins;
+    font-weight: 400;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.resetimage{
+    width: 35%;
+    filter: drop-shadow(rgba(0, 0, 0, 0.418)0px 8px 10px);
+}
+
+
+@media only screen and (max-width: 1440px){
+   
+}
+@media only screen and (max-width: 1200px){
+   .resetwrapper{
+        height: max-content;
+        padding: 30px;
+    }
+    .resetimage{
+        width: 38%;
+    }
+}
+
+
+@media only screen and (max-width: 900px){  
+    .resetwrapper{
+        height: max-content;
+        padding: 30px;
+    }
+    .resetimage{
+        width: 38%;
+    }
+    
+}
+
+@media only screen and (max-width: 760px){
+    .resetwrapper{
+        height: max-content;
+        padding: 20px;
+    }
+    .resetimage{
+        width: 38%;
+    }
+}
+
+
+@media only screen and (max-width: 480px) {
+    .resetwrapper{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .resetmobilewrap{
+        width: 480px;
+        height: 200px;
+        background-color: #2C3E50;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: white;
+        border-radius: 0px 0px 80px 10px;
+    }
+    .resetmobilewrap h2{
+        font-family: Poppins;
+        font-weight: 700;
+        font-size: 26px;
+        text-align: center;
+    }
+    .resetimage{
+        display: none;
+    }
+    .resetinfo1 h2{
+        display: none;
+    }
+    .resetlogohold{
+        display: none;
+    }
+    .resetbtn{
+        background-color: #2C3E50;
+    }
+}
+
+
+@media only screen and (max-width: 379px) {
+    .resetmobilewrap{
+        width: 380px;
+  }
+}

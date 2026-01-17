@@ -1,0 +1,566 @@
+.record-page-cover {
+  width: 100%;
+  display: flex;
+  padding: 20px;
+  gap: 10px;
+  box-sizing: border-box;
+}
+
+.record-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-bottom: 5px;
+  flex-wrap: nowrap;
+}
+
+.first-card-green {
+  width: 349px;
+  height: 217px;
+  padding: 0px 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: #198629;
+}
+.first-card-yellow {
+  width: 349px;
+  height: 217px;
+  padding: 0px 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+
+  background-color: #d8a200;
+}
+.first-card-red {
+  width: 349px;
+  height: 217px;
+  padding: 0px 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: #c0392b;
+}
+
+.test-div {
+  width: 390px;
+}
+
+.verify-cnt {
+  color: white;
+  margin-top: 30px;
+  padding: 10px;
+}
+
+.verify-cnt h1 {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.verify-cnt p {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.button-sec {
+  height: 20%;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding-left: 0;
+  margin-top: 0;
+}
+
+.submit-btn {
+  display: inline-block;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 30px;
+  font-size: 16px;
+  width: 19%;
+  justify-content: flex-start;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+  align-items: flex-start;
+  margin-left: 20px;
+  padding-left: 20px;
+}
+
+.submit-btn:hover {
+  background-color: #c0392b;
+}
+
+.RecordPagePageWrapper {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+
+.RecordPagePageWrapper h1 {
+  width: 100%;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: Poppins;
+}
+
+.RecordPageCardsHeading {
+  width: 100%;
+  height: 69px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  background: #d6eaf8;
+  margin-bottom: 10px;
+}
+.RecordPageCardsHeading2 {
+  width: 100%;
+  height: 69px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  background: #d6eaf8;
+  margin-bottom: 10px;
+}
+
+.RecordPageCardsInnerWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.RecordPageInnerDivtextBox1 {
+  width: 40%;
+}
+.RecordPageInnerDivtextBox12 {
+  width: 15%;
+}
+.RecordPageInnerDivtextBox3 {
+  width: 15%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.RecordPageInnerDivtextBox4 {
+  width: 15%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.RecordPageInnerDivtextBox5 {
+  width: 15%;
+  background: #000;
+}
+
+.RecordPageInnerDiv {
+  width: 100%;
+  padding: 0px 30px;
+  display: flex;
+  align-items: center;
+}
+.RecordPageInnerDiv2 {
+  width: 100%;
+  padding: 0px 30px;
+  display: flex;
+  align-items: center;
+}
+
+.RecordPageCardsInnerWrapper > * {
+  flex: 1;
+  text-align: center;
+  padding: 0 5px;
+  color: black;
+}
+
+.RecordPageCardsHeading .RecordPageCardsInnerWrapper h1 {
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin: 0;
+}
+
+.RecordPageInnerDivtextBox1 span {
+  font-size: 20px;
+  font-weight: 600;
+}
+.RecordPageInnerDivtextBox6 span {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.RecordPageCardsInnerWrapper h3 {
+  font-size: 16px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin: 0;
+}
+
+.RecordPageCardsWrapper {
+  width: 100%;
+  overflow-y: auto;
+  background: transparent;
+}
+
+.RecordPageCards {
+  width: 100%;
+  height: 69px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  background: white;
+}
+
+.RecordPageCards2 {
+  width: 100%;
+  height: 69px;
+  border-radius: 6px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 0px 30px;
+}
+
+.RecordPageInnerDivtext1 {
+  width: 40%;
+}
+.RecordPageInnerDivtext2 {
+  width: 15%;
+}
+.RecordPageInnerDivtext3 {
+  width: 15%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.RecordPageInnerDivtext4 {
+  width: 15%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.RecordPageInnerDivtext5 {
+  width: 15%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.RecordPageInnerDivtextBox6 {
+  width: 20%;
+}
+.RecordPageInnerDivtextBox7 {
+  width: 20%;
+}
+.RecordPageInnerDivtextBox8 {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.RecordPageInnerDivtextBox9 {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.RecordPageInnerDivtextBox10 {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.RecordPageInnerDivtext10 {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #1c9800;
+}
+
+@media only screen and (max-width: 1440px) {
+  .record-page-cover {
+    padding: 20px;
+  }
+
+  .record-cards {
+    gap: 15px;
+    flex-direction: column;
+  }
+
+  .verify-cnt h1 {
+    font-size: 20px;
+  }
+
+  .verify-cnt p {
+    font-size: 25px;
+  }
+
+  .submit-btn {
+    width: 25%;
+  }
+
+  .RecordPagePageWrapper {
+    padding: 10px;
+  }
+
+  .RecordPageCardsHeading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .record-page-cover {
+    padding: 15px;
+  }
+
+  .record-cards {
+    flex-direction: column;
+  }
+
+  .first-card-green,
+  .first-card-yellow,
+  .first-card-red {
+    width: 100%;
+    height: 160px;
+  }
+
+  .verify-cnt h1 {
+    font-size: 18px;
+  }
+
+  .verify-cnt p {
+    font-size: 22px;
+  }
+
+  .submit-btn {
+    width: 30%;
+  }
+
+  .RecordPagePageWrapper {
+    padding: 10px;
+  }
+
+  .RecordPageCardsHeading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .record-page-cover {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .record-cards {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .first-card-green,
+  .first-card-yellow,
+  .first-card-red {
+    width: 100%;
+    height: 140px;
+  }
+
+  .verify-cnt h1 {
+    font-size: 16px;
+  }
+
+  .verify-cnt p {
+    font-size: 20px;
+  }
+
+  .submit-btn {
+    width: 35%;
+  }
+
+  .RecordPagePageWrapper {
+    padding: 5px;
+  }
+
+  .RecordPageCardsHeading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .RecordPageInnerDivtext1,
+  .RecordPageInnerDivtext2,
+  .RecordPageInnerDivtext3,
+  .RecordPageInnerDivtext4,
+  .RecordPageInnerDivtext5 {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  .record-page-cover {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .record-cards {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .first-card-green,
+  .first-card-yellow,
+  .first-card-red {
+    width: 100%;
+    height: 130px;
+  }
+
+  .verify-cnt h1 {
+    font-size: 14px;
+  }
+
+  .verify-cnt p {
+    font-size: 18px;
+  }
+
+  .submit-btn {
+    width: 40%;
+  }
+
+  .RecordPagePageWrapper {
+    padding: 5px;
+  }
+
+  .RecordPageCardsHeading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .RecordPageInnerDivtext1,
+  .RecordPageInnerDivtext2,
+  .RecordPageInnerDivtext3,
+  .RecordPageInnerDivtext4,
+  .RecordPageInnerDivtext5 {
+    font-size: 10px;
+  }
+
+  .RecordPageInnerDivtextBox6,
+  .RecordPageInnerDivtextBox7,
+  .RecordPageInnerDivtextBox8,
+  .RecordPageInnerDivtextBox9 {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .record-page-cover {
+    padding: 5px;
+  }
+
+  .record-cards {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .first-card-green,
+  .first-card-yellow,
+  .first-card-red {
+    width: 100%;
+    height: 120px;
+  }
+
+  .verify-cnt h1 {
+    font-size: 12px;
+  }
+
+  .verify-cnt p {
+    font-size: 16px;
+  }
+
+  .submit-btn {
+    width: 50%;
+  }
+
+  .RecordPagePageWrapper {
+    padding: 5px;
+  }
+
+  .RecordPageCardsWrapper {
+    padding: 0;
+  }
+
+  .RecordPageInnerDivtext1,
+  .RecordPageInnerDivtext2,
+  .RecordPageInnerDivtext3,
+  .RecordPageInnerDivtext4,
+  .RecordPageInnerDivtext5 {
+    font-size: 9px;
+  }
+
+  .RecordPageInnerDivtextBox6,
+  .RecordPageInnerDivtextBox7,
+  .RecordPageInnerDivtextBox8,
+  .RecordPageInnerDivtextBox9 {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 379px) {
+  .record-page-cover {
+    padding: 5px;
+  }
+
+  .record-cards {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .first-card-green,
+  .first-card-yellow,
+  .first-card-red {
+    width: 100%;
+    height: 100px;
+  }
+
+  .verify-cnt h1 {
+    font-size: 10px;
+  }
+
+  .verify-cnt p {
+    font-size: 14px;
+  }
+
+  .submit-btn {
+    width: 60%;
+  }
+
+  .RecordPagePageWrapper {
+    padding: 0px;
+  }
+
+  .RecordPageCardsWrapper {
+    padding: 0;
+  }
+
+  .RecordPageInnerDivtext1,
+  .RecordPageInnerDivtext2,
+  .RecordPageInnerDivtext3,
+  .RecordPageInnerDivtext4,
+  .RecordPageInnerDivtext5 {
+    font-size: 8px;
+  }
+
+  .RecordPageInnerDivtextBox6,
+  .RecordPageInnerDivtextBox7,
+  .RecordPageInnerDivtextBox8,
+  .RecordPageInnerDivtextBox9 {
+    font-size: 9px;
+  }
+}

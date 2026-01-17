@@ -1,0 +1,34 @@
+.adminblacklistwrap{
+    width: 100%;
+    height: 100%;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+.blacklistwrapinner{
+    width: 90%;
+    height: 80px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: Poppins;
+}
+.blacklistviewbtn{
+    width: 142px;
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.blacklistotherbtn{
+    width: 230px;
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+}

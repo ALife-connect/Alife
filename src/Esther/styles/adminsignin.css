@@ -1,0 +1,231 @@
+.adminsignwrapper{
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 34px;
+}
+.adminmobilewrap{
+    display: none;
+}
+.adminsigninfowrap{
+    width: 50%;
+    height: 690px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.adminsignlogohold{
+    width: 90%;
+    height: 60px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.adminsignlogo{
+    width: 65px;
+}
+.adminsigninfo1{
+    width: 380px;
+    height: 620px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.adminsigninfo1 h1 {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: Poppins;
+    text-align: center;
+}
+.adminsigninfo1 a{
+    color: red;
+}
+.adminsigninputwrapper{
+    width: 360px;
+    height: 70px;
+    
+}
+.adminsigninputwrapper p{
+    font-size: 12px;
+    font-weight: 600;
+    color: #21212180;
+}
+.adminsigninput{
+    width: 340px;
+    height: 40px;
+    background-color: #ededed;
+    border-radius: 6px;
+    font-size: 10px;
+    padding: 4px 10px;
+    border: 2px solid #F9F9F9;
+}
+.checkboxwrapper{
+    width: 360px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: Poppins;
+}
+.adminbtn{
+    width: 200px;
+    height: 36px;
+    background-color: #c0392b;
+    border-radius: 6px;
+    font-family: Poppins;
+    font-weight: 400;
+    font-size: 13px;
+    color: white;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tandc{
+    color: green;
+}
+.adminsignimg{
+    width: 35%;
+    filter: drop-shadow(rgba(0, 0, 0, 0.418)0px 8px 10px);
+}
+.adminbtn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+
+@media only screen and (max-width: 1440px){
+    
+}
+@media only screen and (max-width: 1200px){
+    .adminsignwrapper{
+        height: 100vh;
+        padding: 20px;
+    }
+    
+    .adminsignimg{
+        width: 38%;
+    }
+}
+
+
+@media only screen and (max-width: 900px){  
+    .adminsignwrapper{
+        height: max-content;
+        padding: 30px;
+    }
+    
+    .adminsignimg{
+        width: 38%;
+    }
+}
+
+
+@media only screen and (max-width: 760px){
+    .adminsignwrapper{
+        height: max-content;
+        padding: 20px;
+    }
+    
+    .adminsignimg{
+        width: 38%;
+    }
+}
+
+
+
+@media only screen and (max-width: 480px) {
+    .adminsignwrapper{
+        height: max-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .adminmobilewrap{
+        width: 480px;
+        height: 200px;
+        background-color: #2C3E50;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 15px;
+        color: white;
+        border-radius: 0px 0px 80px 10px;
+    }
+    .adminmobilewrap h1{
+        font-family: Poppins;
+        font-weight: 700;
+        font-size: 26px;
+        text-align: center;
+    }
+    .adminmobilewrap p{
+        font-family: Poppins;
+        font-weight: 700;
+        font-size: 18px;
+        text-align: center;
+    }
+    .adminsignimg{
+        display: none;
+    }
+    .adminsignlogohold{
+        display: none;
+    }
+    
+    .adminsigninfo1 h1{
+        display: none;
+    }
+}
+
+
+
+@media only screen and (max-width: 379px) {
+    .adminsignwrapper{
+        height: max-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .adminmobilewrap{
+        width: 380px;
+        height: 200px;
+        background-color: #2C3E50;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 15px;
+        color: white;
+        border-radius: 0px 0px 80px 10px;
+    }
+    .adminmobilewrap h1{
+        font-family: Poppins;
+        font-weight: 700;
+        font-size: 26px;
+        text-align: center;
+    }
+    .adminmobilewrap p{
+        font-family: Poppins;
+        font-weight: 700;
+        font-size: 18px;
+        text-align: center;
+    }
+    .adminsignimg{
+        display: none;
+    }
+    .adminsignlogohold{
+        display: none;
+    }
+    .adminsigninfo1{
+        width: 380px;
+    }
+    .adminsigninfo1 h1{
+        display: none;
+    }
+}

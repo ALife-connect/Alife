@@ -1,0 +1,218 @@
+.checkmail-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 20px;
+    color: #fff;
+  }
+  
+  .checkmail-card {
+    background-color: #fff;
+    padding: 50px 30px;
+    border-radius: 18px;
+    max-width: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.526) 0px 5px 14px;
+    animation: fadeIn 0.6s ease-in-out;
+  }
+  
+  .mail-img {
+    width: 220px;
+    margin-bottom: 25px;
+  }
+  
+  .checkmail-wrapper h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #c0392b;
+  }
+  
+  .checkmail-wrapper p {
+    font-size: 16px;
+    color: grey;
+    margin-bottom: 25px;
+    line-height: 1.6;
+  }
+  
+  .checkmail-wrapper button {
+    background-color: #c0392b;
+    color: #fff;
+    padding: 12px 26px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  
+  .checkmail-wrapper button:hover {
+    background-color: #b32515b4;
+  }
+  
+  .resend-text {
+    font-size: 14px;
+    margin-top: 20px;
+    color: #aaa;
+  }
+  
+  .resend-link {
+    color: #ff4081;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .resend-link:hover {
+    color: #ff70a6;
+  }
+
+
+  .resendLinkWrapper{
+    width: max-content;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .resendLinkWrapper input{
+    width: 350px;
+    height: 40px;
+    outline: none;
+    border: 1px solid grey;
+    border-radius: 5px;
+  }
+  .otp-inputs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 20px 0;
+  }
+  
+  .otp-inputs input {
+    width: 45px;
+    height: 55px;
+    font-size: 22px;
+    text-align: center;
+    border: 2px solid grey;
+    border-radius: 8px;
+    outline: none;
+    color: black;
+    font-weight: bold;
+    transition: border-color 0.2s ease;
+  }
+  
+  .otp-inputs input:focus {
+    border-color: #c0392b;
+  }
+  .resend-disabled {
+    color: #bbb;
+    font-weight: 500;
+    cursor: not-allowed;
+  }
+  
+  .resend-wrapper {
+    background-color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #fff;
+    font-family: "Segoe UI", sans-serif;
+  }
+  
+  .resend-card {
+    background-color: #fff;
+    border-radius: 18px;
+    padding: 40px 30px;
+    max-width: 460px;
+    width: 100%;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.526) 0px 5px 14px;
+    animation: fadeIn 0.6s ease-in-out;
+  }
+  
+  .resend-card .resend-img {
+    width: 100px;
+    margin-bottom: 20px;
+  }
+  
+  .resend-card h1 {
+    font-size: 26px;
+    color: #c0392b;
+    margin-bottom: 10px;
+  }
+  
+  .resend-card p {
+    color: grey;
+    font-size: 15px;
+    margin-bottom: 25px;
+  }
+  
+  .resend-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .resend-card input {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    font-size: 15px;
+    outline: none;
+    color: black;
+  }
+
+  .resend-card input::placeholder{
+    color: grey;
+  }
+  
+  .resend-card button {
+    background-color: #c0392b;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+  }
+  
+  .resend-card button:hover {
+    background-color: #b32515b4;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(25px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(25px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

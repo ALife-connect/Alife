@@ -1,0 +1,555 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.main-cnt {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.aboutus-cnt-body {
+  max-width: 100%;
+  min-height: 100vh;
+  text-align: center;
+  background-color: #fff;
+  padding-top: 70px;
+}
+
+.highlight {
+  font-weight: 700;
+  font-family: Poppins;
+  font-size: 36px;
+}
+
+.text-div {
+  margin-top: 70px;
+  height: max-content;
+}
+
+.text-div h3 {
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 100%;
+}
+
+.image-div {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 11px;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+.img1,
+.img4 {
+  width: 320px;
+  height: 361px;
+  border-radius: 15px;
+}
+
+.img2,
+.img3 {
+  width: 302px;
+  height: 234px;
+  border-radius: 15px;
+}
+
+.image-div img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  display: block;
+}
+
+.text-div2-cnt {
+  margin-top: 120px;
+  gap: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  text-align: center;
+}
+
+.text-div2-cnt h3 {
+  font-family: poppins;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+}
+
+.bridging p {
+  margin-bottom: 180px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.mission-div {
+  margin-top: 30px;
+  text-align: center;
+  padding: 40px 20px;
+  margin-left: calc(-1 * ((100vw - 100%) / 2));
+  width: 100vw;
+  height: 493px;
+  background-color: #d6eaf8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mission-div h3 {
+  font-weight: 600;
+  font-size: 20px;
+  font-family: Poppins;
+}
+
+.text-div3-cnt {
+  margin-top: 100px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 100px;
+  text-align: center;
+}
+
+.text-div3,
+.text-div4 {
+  flex: 1;
+  min-width: 300px;
+}
+
+.text-div3 h3 {
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.text-div4 h3 {
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.achivement-container {
+  width: 100%;
+  background-color: #ffffff;
+  margin-top: 70px;
+}
+
+.ach-img-cnt {
+  padding: 70px 20px;
+  display: flex;
+  justify-content: center;
+  gap: 70px;
+  flex-wrap: wrap;
+}
+
+.ach-img1 {
+  width: 360px;
+  height: 372px;
+  background-color: #ffffff;
+  border: 1px solid #2c3e50;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.ach-img1 img {
+  width: 100%;
+  height: auto;
+}
+
+.sec-img-con {
+  width: 100%;
+  height: 239px;
+  border-radius: 15px;
+  background-color: gold;
+  position: relative;
+  z-index: 1;
+}
+
+.sec-img-con img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+  display: block;
+}
+
+.third-cnt {
+  width: 303px;
+  height: 199px;
+  background-color: #d6eaf8;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.third-cnt h2 {
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 100%;
+  padding: 10px 20px;
+  margin-top: 15px;
+}
+
+.third-cnt p {
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 100%;
+  color: #212121;
+}
+
+.what-makes-us-cnt {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 40px 20px;
+  gap: 20px;
+}
+
+.step-box {
+  width: 280px;
+  padding: 2rem 1.5rem;
+  background: #fff;
+  border: 1.5px solid grey;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 288px;
+  transition: all 0.3s ease;
+}
+
+.step-box-cnt {
+  padding: 20px 6px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 70px;
+}
+
+.step-box-cnt h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #222;
+  padding: 10px;
+}
+
+.step-box-cnt p {
+  font-size: 16px;
+  font-weight: 500;
+  color: #444;
+  padding: 10px;
+}
+
+.icon {
+  font-size: 1.6rem;
+  color: #f4a300;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  width: max-content;
+  height: 50px;
+}
+
+.the-team-cnt {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.the-team-cnt p {
+  margin-top: 40px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.team-card-one {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 40px;
+  gap: 40px;
+}
+
+.first-team-card {
+  width: 300px;
+  height: 494px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 1000px;
+  border: 2px solid #2c3e50;
+  margin: 10px;
+}
+
+.team-card-img {
+  width: 252px;
+  height: 252px;
+  border-radius: 1000px;
+  margin-top: 10px;
+}
+
+.team-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1000px;
+}
+
+.team-card-title {
+  width: 90%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.team-card-title h2 {
+  font-family: poppins;
+  font-size: 25px;
+  font-weight: 700;
+  text-align: center;
+  word-wrap: break-word;
+  line-height: 1.2;
+  margin-top: 25px;
+}
+
+.team-card-title p {
+  font-family: Poppins;
+  font-size: 21.5px;
+  font-weight: 500;
+  margin: 0;
+}
+
+  .team-card-title a{
+    font-size: 25px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: black;
+  }
+
+.profile-link {
+  text-decoration: none;
+  font-weight: bold;
+  color: #c0392b;
+}
+
+@media only screen and (max-width: 1440px) {
+  .mission-div {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .text-div3-cnt {
+    gap: 50px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .team-card-title h2 {
+    font-size: 22px;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .first-team-card {
+    width: 90%;
+  }
+
+  .team-card-title h2 {
+    font-size: 20px;
+  }
+
+  .team-card-title p {
+    font-size: 16px;
+  }
+
+  .mission-div h3 {
+    font-size: 22px;
+  }
+
+  .mission-div p {
+    font-size: 16px;
+    padding: 0 10px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .hilight-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+  .text-div {
+    width: 90%;
+    text-align: center;
+  }
+
+  .text-div h3 {
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 100%;
+  }
+
+  .image-div{
+    height: max-content;
+  }
+
+  .img1,
+  .img4 {
+    width: 150px;
+    height: 180px;
+    border-radius: 15px;
+  }
+
+  .img2,
+  .img3 {
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+  }
+
+.text-div2-cnt {
+  height: max-content;
+  margin: 0;
+}
+
+.bridging p {
+  margin-bottom: 180px;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+  .mission-div {
+    height: max-content;
+    margin: 0;
+  }
+
+  .text-div3 h3, .text-div4 h3{
+    font-size: 17px;
+  }
+
+  .step-box-cnt{
+    width: 100%;
+    padding: 0;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .step-box{
+    width: 48%;
+    height: 250px;
+    justify-content: center;
+  }
+
+  .step-box h3{
+    font-size: 15px;
+  }
+
+  .step-box p{
+    font-size: 14px;
+  }
+
+  .the-team-cnt p {
+    margin-top: 40px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .team-card-one {
+    margin-top: 20px;
+    gap: 0px;
+  }
+
+  .first-team-card {
+    width: 40%;
+    height: max-content;
+    padding: 10px;
+    gap: 5px;
+  }
+
+  .team-card-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 1000px;
+    margin-top: 0px;
+  }
+
+  .team-card-title{
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .team-card-title h2 {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .team-card-title p{
+    font-size: 15px;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  .team-card-title a{
+    font-size: 16px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+  }
+}
+
+@media only screen and (max-width: 379px) {
+  .team-card-title h2 {
+    font-size: 16px;
+  }
+}

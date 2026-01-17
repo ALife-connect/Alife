@@ -1,0 +1,175 @@
+.HospitalDetailsPageWrapper{
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.HospitalDetailsPageWrapper h1{
+    font-size: 25px;
+    font-weight: 500;
+    font-family: Poppins;
+}
+
+.HospitalDetailsPageWrapper span{
+    font-size: 15px;
+    text-align: center;
+}
+
+.detailsTextAndImageWrapper{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.detailsTextAndImageWrapper .detailsImageWrapper{
+    width: 40%;
+    height: 90%;
+    border-radius: 10px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+
+    img{
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+    }
+}
+
+.detailsTextAndImageWrapper .detailsTextWrapper{
+    width: 40%;
+    height: 90%;
+    border-radius: 10px;
+}
+
+.innerTextWRapper{
+    width: 90%;
+    height: max-content;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-radius: 10px;
+    background: #ffffff;
+
+    p{
+        font-size: 18px;
+
+        b{
+            font-weight: 500;
+        }
+    }
+}
+
+.scheduleDatePicker{
+    width: 80%;
+    height: max-content;
+    padding: 5px 10px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.detailsTextWrapper button{
+    width: max-content;
+    height: max-content;
+    padding: 8px 10px;
+    color: white;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #C0392B;
+}
+
+.volunteerDateWrapper{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1{
+        margin: 0;
+        font-weight: 500;
+        font-size: 25px;
+    }
+
+    .datePickerWrapper{
+        width: 40%;
+        height: max-content;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    p{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    input[type="radio"]{
+        border: 1.5px solid #C0392B;
+    }
+
+    button{
+        width: max-content;
+        height: max-content;
+        padding: 10px 30px;
+        color: white;
+        background: #C0392B;
+        margin-top: 20px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+}
+
+
+
+
+
+
+
+@media only screen and (max-width: 1440px) {}
+
+@media only screen and (max-width: 1200px) {}
+
+@media only screen and (max-width: 900px) {}
+
+@media only screen and (max-width: 760px) {}
+
+@media only screen and (max-width: 480px) {
+    .detailsTextAndImageWrapper{
+        height: max-content;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+.detailsTextAndImageWrapper .detailsImageWrapper{
+    width: 100%;
+}
+
+.HospitalDetailsPageWrapper{
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.detailsTextAndImageWrapper .detailsTextWrapper{
+    width: 100%;
+}
+
+.innerTextWRapper{
+    width: 100%;
+}
+}
+
+@media only screen and (max-width: 379px) {}

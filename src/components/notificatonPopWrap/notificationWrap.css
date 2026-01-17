@@ -1,0 +1,35 @@
+.NotificationWrapWrapper {
+    width: max-content;         
+    height: max-content;         
+    display: flex;
+    align-items: center;         
+    justify-content: center;   
+    gap: 15px;
+    padding: 10px 20px;
+    font-size: 18px;      
+    font-family: sans-serif;  
+    color: white;
+    background: rgba(0, 128, 0, 0.8); 
+    border-radius: 5px;         
+
+    position: fixed;            
+    top: 10px; 
+    left: 40%;              
+    z-index: 20000;   
+}
+
+@media only screen and (max-width: 1440px) {}
+
+@media only screen and (max-width: 1200px) {}
+
+@media only screen and (max-width: 900px) {}
+
+@media only screen and (max-width: 760px) {}
+
+@media only screen and (max-width: 480px) {
+    .NotificationWrapWrapper{
+        left: 15%;
+    }
+}
+
+@media only screen and (max-width: 379px) {}

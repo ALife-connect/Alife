@@ -1,0 +1,260 @@
+.HistoryPageWrapper {
+  width: 100%;
+  height: 50%;
+  padding: 10px;
+}
+
+.HistoryPageWrapper h1 {
+  width: 100%;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: Poppins;
+}
+
+.DonationsHistoryCardsHeading {
+  width: 100%;
+  height: 69px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #d6eaf8;
+}
+
+.DonationsHistoryCardsInnerWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.DonationsHistoryCardsInnerWrapper > * {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: black;
+  padding: 0 5px;
+}
+
+/* ✅ Flex alignment for headings */
+.DonationsHistoryCardsHeading .DonationsHistoryCardsInnerWrapper h1 {
+  font-size: 17px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin: 0;
+}
+
+/* ✅ Flex alignment for text rows */
+.DonationsHistoryCardsInnerWrapper h3 {
+  font-size: 17px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+  width: 20%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Skeleton Loading Styles */
+.skeleton-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 10px;
+  background: #f4f4f4;
+  border-radius: 8px;
+  animation: pulse 1.5s infinite;
+}
+
+.skeleton {
+  height: 14px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 400% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton.short {
+  width: 10%;
+}
+.skeleton.medium {
+  width: 20%;
+}
+.skeleton.long {
+  width: 30%;
+}
+
+.view-btn-dtl {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.view-btn-dtl:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+.status-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: capitalize;
+  text-align: center;
+  border: none;
+  cursor: default;
+}
+
+.status-pending {
+  background-color: #ffa500;
+  color: white;
+}
+
+.status-completed,
+.status-approved {
+  background-color: #28a745;
+  color: white;
+}
+
+.status-cancelled,
+.status-rejected {
+  background-color: #dc3545;
+  color: white;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.DonationsHistoryCardsWrapper {
+  width: 100%;
+  height: 77%;
+  overflow-y: auto;
+  background: transparent;
+  padding-top: 10px;
+}
+
+.DonationsHistoryCards {
+  width: 100%;
+  height: 69px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 760px) {
+  .DonationsHistoryCardsWrapper h3 {
+    font-size: 14px;
+  }
+
+  .DonationsHistoryCardsHeading .DonationsHistoryCardsInnerWrapper h1 {
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .DonationsHistoryCardsHeading {
+    display: none;
+  }
+
+  .DonationsHistoryCardsWrapper {
+    height: 100%;
+  }
+
+  .DonationsHistoryCards {
+    padding: 12px;
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .DonationsHistoryCardsInnerWrapper {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .DonationsHistoryCardsInnerWrapper h3 {
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    justify-content: flex-start;
+  }
+
+  .DonationsHistoryCardsInnerWrapper h3:nth-child(1) {
+    font-weight: 600;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .DonationsHistoryCardsInnerWrapper h3:nth-child(1)::after {
+    content: attr(data-status);
+    font-weight: 500;
+    color: #f39c12;
+  }
+
+  .DonationsHistoryCardsInnerWrapper h3:nth-child(2) {
+    font-weight: 500;
+    color: #007bff;
+  }
+
+  .DonationsHistoryCardsInnerWrapper h3:nth-child(3),
+  .DonationsHistoryCardsInnerWrapper h3:nth-child(4) {
+    font-size: 14px;
+    color: #555;
+  }
+
+  .DonationsHistoryCardsInnerWrapper h3:nth-child(5) {
+    display: none;
+  }
+}

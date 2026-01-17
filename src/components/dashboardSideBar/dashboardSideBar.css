@@ -1,0 +1,191 @@
+.SideBArWrapper{
+    width: 130px;
+    height: 95vh;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    position: fixed;
+    left: 10px;
+}
+
+.SideBArWrapperPusher{
+    width: 120px;
+    height: 95vh;
+    background: whitesmoke;
+}
+
+.innerSideBArWrapper{
+    width: 100%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.sideBarLogo{
+    width: 90px;
+    cursor: pointer;
+}
+
+.innerSideBArWrapper ul{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.sideBarIocns{
+    width: max-content;
+    height: max-content;
+    padding: 5px;
+    border-radius: 50%;
+    background: whitesmoke;
+    font-size: 16px;
+}
+
+.innerSideBArWrapper ul li{
+    width: 100%;
+    height: max-content;
+    padding: 6px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Poppins;
+    font-size:  13px;
+    font-weight: 400;
+    gap: 5px;
+    transition: all 280ms ease-in-out;
+    cursor: pointer
+}
+
+.innerSideBArWrapper ul li:hover{
+    background: #00274D;
+    color: white;
+    transition: all 280ms ease-in-out;
+}
+
+.activeBar{
+    background: #00274D;
+    color: white;
+    transition: all 280ms ease-in-out;
+}
+
+.logoutBtn .sideBarIocns{
+    background: red;
+    color: white;
+}
+
+ul .logoutBtn{
+    color: red;
+}
+
+.innerSideBArWrapper ul .logoutBtn:hover{
+    background: red;
+}
+
+
+.popUpWrapper{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    backdrop-filter: blur(2px);
+    background: rgba(0, 0, 0, 0.384);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.logoutPopUp{
+    width: 35%;
+    height: 40%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+}
+
+.logoutPopUp h1{
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 30px;
+
+    b{
+        color: red;
+        font-weight: 700;
+    }
+}
+
+.logoutPopUpHeader{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.logoutbButtonHolder{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logoutbButtonHolder button{
+    width: 90px;
+    height: 35px;
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background: #C0392B;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.logoutbButtonHolder .cancelBtn{
+    border: 1.5px solid #C0392B;
+    background: white;
+    color: black;
+    cursor: pointer;
+}
+
+
+
+
+
+@media only screen and (max-width: 1440px) {
+}
+@media only screen and (max-width: 1200px) {
+}
+
+@media only screen and (max-width: 900px) {
+}
+
+@media only screen and (max-width: 760px) {
+    .SideBArWrapper, .SideBArWrapperPusher{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+.SideBArWrapper, .SideBArWrapperPusher{
+    display: none;
+}
+}
+
+@media only screen and (max-width: 379px) {
+}
