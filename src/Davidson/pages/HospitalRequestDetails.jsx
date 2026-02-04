@@ -29,7 +29,7 @@ const HospitalRequestDetails = () => {
     hospitalId: ""
   });
 
-  // Disable all past dates and dates beyond hospital's preferred date
+
   const disabledDate = (current) => {
     if (!anHospital?.preferredDate) return current && current < dayjs().endOf("day");
     const preferred = dayjs(anHospital.preferredDate);
@@ -61,7 +61,7 @@ const HospitalRequestDetails = () => {
       const data = res?.data?.data;
       setAnHospital(data);
 
-      // Check if request is expired
+    
       if (data?.preferredDate && dayjs().isAfter(dayjs(data.preferredDate), "day")) {
         setIsExpired(true);
       }

@@ -15,10 +15,10 @@ const Appointment = () => {
   const [declining, setDeclining] = useState(false);
 
   const userToken = useSelector((state) => state?.token);
-  const user = useSelector((state) => state?.user); // 👈 Added to access user info
+  const user = useSelector((state) => state?.user);
   const VITE_BASEURL_REN = import.meta.env.VITE_BASEURL_REN;
 
-  // 🔹 Fetch appointments
+
   const fetchAppointment = async () => {
     if (!userToken) {
       message.warning("No authentication token found. Please log in again.");
@@ -47,7 +47,7 @@ const Appointment = () => {
     fetchAppointment();
   }, []);
 
-  // 🔹 Format date
+
   const formatDate = (dateStr) => {
     if (!dateStr) return "N/A";
     const date = new Date(dateStr);
@@ -58,7 +58,7 @@ const Appointment = () => {
     });
   };
 
-  // 🔹 Modal controls
+  
   const showDetails = (appointment) => {
     setSelectedAppointment(appointment);
     setIsModalOpen(true);
@@ -69,7 +69,7 @@ const Appointment = () => {
     setSelectedAppointment(null);
   };
 
-  // ✅ Accept appointment (with hospital restriction)
+  
   const handleAccept = async () => {
     if (!selectedAppointment?._id) return;
 
@@ -77,7 +77,7 @@ const Appointment = () => {
     const preferredHospital = user?.preferredHospital;
     const appointmentHospital = selectedAppointment?.hospital?.name;
 
-    // 🔒 Restrict donor from accepting beyond their preferred hospital
+    
     if (
       preferredHospital &&
       appointmentHospital &&
@@ -112,7 +112,7 @@ const Appointment = () => {
     }
   };
 
-  // ❌ Cancel appointment
+  
   const handleDecline = async () => {
     if (!selectedAppointment?._id) return;
 
@@ -140,7 +140,7 @@ const Appointment = () => {
     }
   };
 
-  // 🔹 Get dynamic badge color class
+  
   const getStatusClass = (status) => {
     if (!status) return "pending";
     switch (status.toLowerCase()) {
@@ -154,7 +154,7 @@ const Appointment = () => {
     }
   };
 
-  // 🔹 Loading state
+
   if (loading) return <LoadComponents />;
 
   return (
@@ -218,7 +218,7 @@ const Appointment = () => {
               (user?.preferredHospital &&
                 selectedAppointment?.hospital?.name &&
                 user.preferredHospital !== selectedAppointment.hospital.name)
-            } // 👈 Disable button if hospital doesn’t match
+            } 
           >
             Accept Appointment
           </Button>,
