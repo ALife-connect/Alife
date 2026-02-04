@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
-import '../../Davidson/pages/Beahero.css'
+import '../../Davidson/pages/BeaHero.css'
 
 const BeaHero = () => {
   const navigate = useNavigate();
