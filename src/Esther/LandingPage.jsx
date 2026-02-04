@@ -1,7 +1,7 @@
 import React from "react";
 import "../Esther/styles/landing.css";
 import Benefit from "../components/Benefit/Benefit";
-import Sponsors from "../components/sponsors/Sponsors";
+import Sponsors from "../components/Sponsors/Sponsors";
 import Impacts from "../components/impacts/Impacts";
 import { useNavigate } from "react-router";
 import BeaHero from "../Davidson/pages/BeaHero";
@@ -30,7 +30,7 @@ const LandingPage = () => {
       <Sponsors />
       <Benefit />
       <Impacts />
-      <BeaHero/>
+      <BeaHero />
       {/* <Testify/> */}
     </div>
   );
