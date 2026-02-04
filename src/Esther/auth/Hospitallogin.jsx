@@ -9,7 +9,7 @@ import { LuEye, LuEyeClosed } from "react-icons/lu";
 import { toast } from "sonner";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 
-const Base_Url = import.meta.env.VITE_BASEURL_REN;
+const VITE_BASEURL = import.meta.env.VITE_BASEURL;
 
 const Hospitallogin = () => {
   const nav = useNavigate();
@@ -53,7 +53,7 @@ const Hospitallogin = () => {
       return;
     }
 
-    if (!Base_Url) {
+    if (!VITE_BASEURL) {
       toast.error("Base URL is missing. Check your environment variables.");
       return;
     }
@@ -61,7 +61,7 @@ const Hospitallogin = () => {
     setIsLoading(true);
 
     try {
-      const res = await axios.post(`${Base_Url}/hospital/login`, hospitalLoginData);
+      const res = await axios.post(`${VITE_BASEURL}/hospital/login`, hospitalLoginData);
 
       const status = res?.data?.status;
       const message = res?.data?.data?.message || res?.data?.message || "Login successful";

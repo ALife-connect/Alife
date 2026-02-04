@@ -7,7 +7,7 @@ import { toast } from 'sonner'
 import axios from 'axios'
 import { logIn, saveToken } from '../../global/Slice'
 
-const Base_Url = import.meta.env.VITE_BASEURL
+const VITE_BASEURL = import.meta.env.VITE_BASEURL
 
 
 const Adminlogin = () => {
@@ -28,7 +28,7 @@ const Adminlogin = () => {
       }
       setLoadState(true)
       try{
-        const res = await axios.post(`${Base_Url}/admin/login`, adminData)
+        const res = await axios.post(`${VITE_BASEURL}/admin/login`, adminData)
         dispatch(logIn(res?.data?.data))
         dispatch(saveToken(res?.data?.token))
         toast.success(res?.data?.message)

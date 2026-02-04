@@ -6,7 +6,7 @@ import '../../Esther/styles/reset.css'
 import { toast } from 'sonner'
 import { HiOutlineArrowCircleLeft } from 'react-icons/hi';
 
-const Base_Url = import.meta.env.VITE_BASEURL
+const VITE_BASEURL = import.meta.env.VITE_BASEURL
 
 const Adminreset = () => {
   const [newPassword, setNewPassword] = useState("")
@@ -26,7 +26,7 @@ const Adminreset = () => {
       return
     }
     try{
-      const ress = await axios.post(`${Base_Url}/admin/resetPassword/${token}`, {
+      const ress = await axios.post(`${VITE_BASEURL}/admin/resetPassword/${token}`, {
       newPassword
       });      
       setLoading(false)

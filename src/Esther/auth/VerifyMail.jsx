@@ -3,7 +3,7 @@ import '../styles/verifyMail.css';
 import { useNavigate, useParams } from 'react-router';
 import axios from 'axios';
 
-const Base_Url = import.meta.env.VITE_BASEURL
+const VITE_BASEURL = import.meta.env.VITE_BASEURL
 
 export default function VerifyMail() {
   const [loadStatus, setLoadStatus] = useState(false);
@@ -15,7 +15,7 @@ export default function VerifyMail() {
   const verifyEmail = async () => {
     setLoadStatus(true);
     try {
-      const res = await axios.get(`${Base_Url}/verify-donor/${token}`);
+      const res = await axios.get(`${VITE_BASEURL}/verify-donor/${token}`);
       setVerificationStatus('success');
     } catch (err) {
       console.error(err);

@@ -6,7 +6,7 @@ import FadeLoader from 'react-spinners/CircleLoader';
 import { toast } from 'sonner';
 import { HiOutlineArrowCircleLeft } from 'react-icons/hi';
 
-const Base_Url = import.meta.env.VITE_BASEURL;
+const VITE_BASEURL = import.meta.env.VITE_BASEURL;
 
 const AdminForgotPassword = () => {
   const [email, setEmail] = useState('');
@@ -16,7 +16,7 @@ const AdminForgotPassword = () => {
   const handleForgotPassword = async () => {
     setLoadState(true)
     try {
-      const res = await axios.post(`${Base_Url}/admin/forgotPassword`, { email });
+      const res = await axios.post(`${VITE_BASEURL}/admin/forgotPassword`, { email });
       toast.success(res?.data?.message)
       setLoadState(false)
       return

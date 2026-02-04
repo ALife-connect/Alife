@@ -1,7 +1,6 @@
 import React from "react";
-import { GrLinkedin } from "react-icons/gr";
-import { FaGithub } from "react-icons/fa6";
-import { FaFacebook } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaFacebook } from "react-icons/fa";
+
 
 const Team = () => {
   return (
@@ -26,7 +25,8 @@ const Team = () => {
             <h2>Mary Patrick</h2>
             <p>Product Designer</p>
             <a href="#">
-              <GrLinkedin />
+              <FaLinkedin />
+              <FaGithub />
               <FaFacebook />
             </a>
           </div>
@@ -40,7 +40,8 @@ const Team = () => {
             <h2>Sarah Emojoro</h2>
             <p>Product Designer</p>
             <a href="#">
-              <GrLinkedin />
+              <FaLinkedin />
+              <FaGithub />
               <FaFacebook />
             </a>
           </div>
@@ -54,7 +55,7 @@ const Team = () => {
             <h2>Willams Esther</h2>
             <p>Frontend Developer</p>
             <a href="#">
-              <GrLinkedin />
+              <FaLinkedin />
               <FaGithub />
               <FaFacebook />
             </a>
@@ -69,7 +70,7 @@ const Team = () => {
             <h2>Ekah Davidson</h2>
             <p>Frontend Developer</p>
             <a href="#">
-              <GrLinkedin />
+              <FaLinkedin />
               <FaGithub />
               <FaFacebook />
             </a>
@@ -84,7 +85,22 @@ const Team = () => {
             <h2>Kingsley Adio</h2>
             <p>Frontend Developer</p>
             <a href="#">
-              <GrLinkedin />
+              <FaLinkedin />
+              <FaGithub />
+              <FaFacebook />
+            </a>
+          </div>
+        </div>
+
+        <div className="first-team-card">
+          <div className="team-card-img">
+            <img src="images/azeez.png" alt="Obadina Azeez" />
+          </div>
+          <div className="team-card-title">
+            <h2>Obadina Azeez</h2>
+            <p>Backend Developer</p>
+            <a href="#">
+              <FaLinkedin />
               <FaGithub />
               <FaFacebook />
             </a>
@@ -99,27 +115,13 @@ const Team = () => {
             <h2>Jeffery Abiuwa</h2>
             <p>Backend Developer</p>
             <a href="#">
-              <GrLinkedin/>
-              <FaGithub/>
-              <FaFacebook/>
-            </a>
-          </div>
-        </div> */}
-
-        <div className="first-team-card">
-          <div className="team-card-img">
-            <img src="images/azeez.png" alt="Obadina Azeez" />
-          </div>
-          <div className="team-card-title">
-            <h2>Obadina Azeez</h2>
-            <p>Backend Developer</p>
-            <a href="#">
-              <GrLinkedin />
+              <FaLinkedin />
               <FaGithub />
               <FaFacebook />
             </a>
           </div>
-        </div>
+        </div> */}
+
       </div>
     </div>
   );

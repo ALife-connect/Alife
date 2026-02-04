@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import { Link, useNavigate } from "react-router";
 import { useParams } from "react-router";
 
-const Base_Url = import.meta.env.VITE_BASEURL;
+const VITE_BASEURL = import.meta.env.VITE_BASEURL;
 
 const ResetOtp = () => {
   const { email } = useParams();
@@ -30,7 +30,7 @@ const ResetOtp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${Base_Url}/resetPassword`, formData);
+      const response = await axios.post(`${VITE_BASEURL}/resetPassword`, formData);
       console.log(response?.data?.status);
       if (response?.data?.status) {
         toast.success(response?.data?.message);

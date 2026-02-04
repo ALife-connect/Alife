@@ -20,17 +20,18 @@ const AboutHeader = () => {
       </div>
       <div className="image-div">
         <div className="img1">
-          <img src="images/abthead.png" alt="" />
+          <img src="/images/abthead.png" alt="" />
         </div>
         <div className="img2">
-          <img src="images/abthead1.png" alt="" />
+          <img src="/images/abthead1.png" alt="" />
         </div>
         <div className="img3">
-          <img src="images/abthead2.png" alt="" />
+          <img src="/images/abthead2.png" alt="" />
         </div>
         <div className="img4">
-          <img src="images/abtheade3.png" alt="" />
+          <img src="/images/abtheade3.png" alt="" />
         </div>
+
       </div>
     </>
   );

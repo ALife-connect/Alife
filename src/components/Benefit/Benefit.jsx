@@ -1,60 +1,67 @@
+import { motion } from "framer-motion";
 import { useNavigate } from "react-router";
 import "../Benefit/Benefit.css";
-import Sponsors from "../Sponsors/Sponsors";
+// import Sponsors from "../Sponsors/Sponsors";
 
 const Benefit = () => {
-  const nav = useNavigate()
+  const nav = useNavigate();
+ 
+
   return (
     <>
-      <div className="landingpagebenefits">
+    <section className="benefits">
+      <div className="benefits-header">
+        <h2>Benefits for you</h2>
+        <p>Donating blood isn't just heroicーit's healthy</p>
+      </div>
+       <div className="benefits-grid">
+        <div className="benefit-card">
+          <div className="icon red"><img src="/images/Heart.png" alt="" /></div>
+          <h3>Health Benefits</h3>
+          <p>
+            Regular donation reduces iron overload,<br /> improves cardiovascular
+            health, and <br /> provides free health screenings.
+          </p>
+        </div>
 
-        <h1>KEY BENEFITS FOR DONORS</h1>
-        <div className="landingbenefitsinner">
+        <div className="benefit-card">
+          <div className="icon green"><img src="/images/Brain.png" alt="" /></div>
+          <h3>Mental Well-being</h3>
+          <p>
+            Experience the joy of giving. Studies show donors report higher life
+            satisfaction and <br /> purpose.
+          </p>
+        </div>
 
-          <div className="landingbenefitsinner1">
-
-            <h2>Saves lives while gaining valuable benefits.</h2>
-            <p>
-              When you donate blood, you’re not just <br /> saving lives you’re
-              also gaining valuable <br /> benefits. Make an impact while taking
-              care <br /> of your own well-being.
-            </p>
-            <button className="benefitsbtn" onClick={() => nav('/dashboard')}>Donate</button>
-          </div>
-          <div className="landingbenefitsinner2">
-            <div className="landingincentives">
-              <div className="incentiveheader">
-                <img src="images/Group.png" alt="" />
-              </div>
-              <h2> Free basic health checkups (e.g blood pressure, general wellnes)</h2>
-            </div>
-            <div className="landingincentives">
-              <div className="incentiveheader">
-                <img src="images/Group.png" alt="" />
-              </div>
-              <h2> Reduces the risk of heartdiseses <br />
-                and some cancers</h2>
-
-            </div>
-            <div className="landingincentives">
-              <div className="incentiveheader">
-                <img src="images/Group.png" alt="" />
-              </div>
-              <h2>Enhanced mental well-being</h2>
-
-            </div>
-            <div className="landingincentives">
-              <div className="incentiveheader">
-                <img src="images/Group.png" alt="" />
-              </div>
-              <h2>
-                Provision of valuable information <br /> about your health.
-              </h2>
-
-            </div>
-          </div>
+        <div className="benefit-card">
+          <div className="icon teal"><img src="/images/phone.png" alt="" /></div>
+          <h3>Easy Scheduling</h3>
+          <p>
+            Book appointments at your convenience with our seamless
+            mobile-first platform.
+          </p>
         </div>
       </div>
+      <div className="benifit-cont">
+         <div className="benefit-card1">
+          <div className="icon red"><img src="/images/heads.png" alt="" /></div>
+          <h3>Community Impact</h3>
+          <p>
+            Join a community of heroes making Nigeria healthier, one donation at
+            a time.
+          </p>
+        </div>
+
+        <div className="benefit-card1">
+          <div className="icon teal"><img src="/images/chat.png" alt="" /></div>
+          <h3>Impact Transparency</h3>
+          <p>
+            See exactly where your donation goes and <br />track the real lives
+            you’ve helped save in <br />real-time.
+          </p>
+        </div>
+      </div>
+    </section>
 
     </>
   );

@@ -1,20 +1,22 @@
-.sponsorwrapper {
+.whyuswrapper {
     width: 100%;
-    height: 296px;
+    height: 277px;
+    padding: 40px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    background-color: #D6EAF8;
-    margin-bottom: 6%;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 6px;
     animation: fadeIn 1.2s ease-in-out; 
+    margin-top: 20px;
 }
 
-.sponsorwrapper h1 {
+.whyuswrapper h1 {
     font-size: 36px;
     font-family: Poppins;
     font-weight: 700;
-    color: black;
+    color: #212121;
     opacity: 0;
     transform: translateY(-20px);
     animation: slideDown 1s ease-in-out forwards;
@@ -22,18 +24,18 @@
 }
 
 .sponsorsLogos {
-    width: 60%;
-    height: 50%;
+    width: 40%;
+    height: 60%;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: 40px;
-    gap: 20px;
+   
 }
 
 .sponsorsLogos img {
-    max-width: 150px;
-    height: auto;
+    width: 90px;
+    padding: 10px;
+    margin-top: 20px;
     object-fit: contain;
     animation: float 3s ease-in-out infinite; 
     transition: transform 0.3s ease-in-out;
@@ -68,8 +70,49 @@
 }
 
 
-@media only screen and (max-width: 480px) {
+@media (max-width: 480px) {
     .sponsorwrapper {
+        width: 100%;
+        padding: 40px 20px;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+   
+}
+
+.sponsorsLogos {
+    display: flex;
+    justify-content: center;
+    /* flex-wrap: wrap; */
+    gap: 30px;
+   
+}
+
+.sponsorsLogos img {
+    max-width: 120px;
+    height: auto;
+}
+
+.sponsorsLogos img:nth-child(1),
+.sponsorsLogos img:nth-child(2) {
+  display: block;
+}
+
+.whyuswrapper {
+    /* background-color: blueviolet; */
+    display: flex;
+    align-items: center;
+}
+
+.whyuswrapper h1{
+   
+    /* padding: 0 10px; */
+}
+}
+
+  
+/*
+  .sponsorwrapper {
         height: max-content;
         gap: 10px;
         padding: 20px;
@@ -82,4 +125,8 @@
     .sponsorsLogos img {
         width: 80px;
     }
-}
+    .whyuswrapper {
+        /* background-color: blueviolet; */
+        /* display: flex;
+        align-items: center;
+    }  */

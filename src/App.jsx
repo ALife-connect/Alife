@@ -99,7 +99,7 @@ const App = () => {
             { path: "request", element: <RequstPage /> },
             { path: "hospitalsrequest", element: <HospitalRequestsPage /> },
             {
-              path: "hospitalsrequestdetails/:bloodRequestId",
+              path: "/dashboard/hospitalsrequestdetails/:bloodRequestId",
               element: <HospitalRequestDetails />,
             },
             {

@@ -9,7 +9,7 @@ import { toast } from "sonner";
 import { logIn, saveToken } from "../../global/Slice";
 import { LuEye, LuEyeClosed } from 'react-icons/lu'
 import { IoArrowBackCircleOutline } from 'react-icons/io5'
-const Base_Url = import.meta.env.VITE_BASEURL;
+const VITE_BASEURL = import.meta.env.VITE_BASEURL;
 
 
 
@@ -18,6 +18,7 @@ const Donorslogin = () => {
     email: "",
     password: ""
   })
+  const [formError, setFormError] = useState("");
   const dispatch = useDispatch()
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword1, setShowPassword1] = useState(true)
@@ -27,15 +28,15 @@ const Donorslogin = () => {
   const handleLogin = async () => {
     setIsLoading(true);
     try {
-      const res = await axios.post(`${Base_Url}/login`, userLoginData);
+      const res = await axios.post(`${VITE_BASEURL}/login`, userLoginData);
       const user = res?.data?.data;
       if (!user?.isVerified) {
         toast.error('Account not verified. Please check your email.');
-        nav("/checkmail", {state: {email:userLoginData.email} })
+        nav("/checkmail", { state: { email: userLoginData.email } })
 
         try {
-            await axios.post(`${Base_Url}/resend-otp`, {
-              email: userLoginData.email,
+          await axios.post(`${VITE_BASEURL}/resend-otp`, {
+            email: userLoginData.email,
           });
         } catch (err) {
           console.error("Error sending re-verification email:", err);
@@ -63,11 +64,15 @@ const Donorslogin = () => {
     e.preventDefault();
 
     if (!userLoginData.email || !userLoginData.password) {
-      setRess("Please input all field")
+      setFormError("Please input all fields")
       return
     }
 
-    handleLogin(userLoginData, Base_Url, setIsLoading, nav);
+    // clear previous error
+    setFormError("");
+
+    // call the login function (it uses component state)
+    await handleLogin();
   };
 
 
@@ -75,7 +80,7 @@ const Donorslogin = () => {
   return (
     <div className='donorloginwrapper'>
       <div className='donorloginmobilewrap'>
-      <div className='smallarrow' ><IoArrowBackCircleOutline onClick={()=>nav(-1)}/></div>
+        <div className='smallarrow' ><IoArrowBackCircleOutline onClick={() => nav(-1)} /></div>
 
         <h2>LOG IN</h2>
       </div>
@@ -85,7 +90,7 @@ const Donorslogin = () => {
           <Link to="/">
             <img src="images/alifenobg.png" alt="Logo" className='donorloginlogo' />
           </Link>
-          <HiOutlineArrowCircleLeft size={50} onClick={()=> nav(-1)} />
+          <HiOutlineArrowCircleLeft size={50} onClick={() => nav(-1)} />
         </div>
         <div className='donorlogininfo1'>
           <h2>LOG IN</h2>
@@ -99,16 +104,17 @@ const Donorslogin = () => {
           <div className='donorlogininputwrapper'>
             <p>ENTER PASSWORD</p>
             <div className="donorlogininputAndIcon">
-            <input
-              type={showPassword1? "password" : "text"}
-              className='donorssignpasswordinput'
-              placeholder='Password'
-              value={userLoginData.password}
-              onChange={(e) => setUserLoginData(prev => ({ ...prev, password: e.target.value }))}
-            />
-            {showPassword1? <LuEyeClosed onClick={()=> setShowPassword1(false)}/> : <LuEye onClick={()=> setShowPassword1(true)}/>}
+              <input
+                type={showPassword1 ? "password" : "text"}
+                className='donorssignpasswordinput'
+                placeholder='Password'
+                value={userLoginData.password}
+                onChange={(e) => setUserLoginData(prev => ({ ...prev, password: e.target.value }))}
+              />
+              {showPassword1 ? <LuEyeClosed onClick={() => setShowPassword1(false)} /> : <LuEye onClick={() => setShowPassword1(true)} />}
             </div>
           </div>
+          {formError && <p className="formError" style={{ color: 'red', marginTop: 8 }}>{formError}</p>}
           <button className='donorloginbtn' onClick={handleSubmit}>{isLoading ? <FadeLoader color="white" size={25} /> : "LOG-IN"}</button>
           <div className='donorloginforgotwrap'>
             <p onClick={() => nav("/donorssignup")} className='AuthRedirectionLinkWrap'>DON'T HAVE AN ACCOUNT? SIGNUP</p>

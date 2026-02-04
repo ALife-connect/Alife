@@ -7,7 +7,7 @@ import { toast } from 'sonner'
 import { HiOutlineArrowCircleLeft } from 'react-icons/hi';
 import { IoArrowBackCircleOutline } from 'react-icons/io5';
 
-const Base_Url = import.meta.env.VITE_BASEURL
+const VITE_BASEURL = import.meta.env.VITE_BASEURL
 
 const Resetpassword = () => {
   const [newPassword, setNewPassword] = useState("")
@@ -27,7 +27,7 @@ const Resetpassword = () => {
       return
     }
     try{
-      const ress = await axios.post(`${Base_Url}/resetPassword/${token}`, {
+      const ress = await axios.post(`${VITE_BASEURL}/resetPassword/${token}`, {
       newPassword
       });      
       (ress)

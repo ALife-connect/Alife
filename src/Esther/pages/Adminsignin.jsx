@@ -6,7 +6,7 @@ import { toast } from 'sonner'
 import { useDispatch } from 'react-redux'
 import { logIn } from '../../global/Slice'
 import FadeLoader from 'react-spinners/CircleLoader'
-const Base_Url = import.meta.env.VITE_BASEURL
+const VITE_BASEURL = import.meta.env.VITE_BASEURL
 
 const Adminsignin = () => {
   const [adminData, setAdminData] = useState({
@@ -32,7 +32,7 @@ const Adminsignin = () => {
     }
     setLoadState(true)
     try{
-      const res = await axios.post(`${Base_Url}/admin/newRegister`, adminData)
+      const res = await axios.post(`${VITE_BASEURL}/admin/newRegister`, adminData)
       dispatch(logIn(res))
       toast.success(res?.data?.message)
       nav("/dashboard")
