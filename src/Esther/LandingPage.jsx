@@ -2,10 +2,9 @@ import React from "react";
 import "../Esther/styles/landing.css";
 import Benefit from "../components/Benefit/Benefit";
 import Sponsors from "../components/Sponsors/Sponsors";
-import Whyjoinus from "../components/whyus/Whyjoinus";
 import Impacts from "../components/impacts/Impacts";
-// import Testify from "../components/testify/Testify";
 import { useNavigate } from "react-router";
+import BeaHero from "../Davidson/pages/BeaHero";
 
 
 const LandingPage = () => {
@@ -28,10 +27,10 @@ const LandingPage = () => {
           <button className="landingbutton" onClick={() => nav('/dashboard')}>Donate</button>
         </div>
       </div>
-      <Benefit />
       <Sponsors />
-      <Whyjoinus />
+      <Benefit />
       <Impacts />
+      <BeaHero />
       {/* <Testify/> */}
     </div>
   );

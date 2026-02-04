@@ -55,7 +55,7 @@ const WhyUs = () => {
       </div>
 
       <div className="get-listed-btn">
-        <button onClick={() => nav('/hospitalsignup')}>
+        <button onClick={() => nav('/hospitalsignup')} className="get-listed-bt">
           Get Listed
         </button>
       </div>

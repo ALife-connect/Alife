@@ -6,7 +6,7 @@ import '../styles/usersPage.css';
 import LoadComponents from '../../components/componentsLoadScreen/LoadComponents';
 import { toast } from 'sonner';
 
-const Base_Url = import.meta.env.VITE_BASEURL;
+const VITE_BASEURL = import.meta.env.VITE_BASEURL;
 
 const UsersPage = () => {
   const token = useSelector((state) => state.token);
@@ -20,7 +20,7 @@ const UsersPage = () => {
   const getUsers = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`${Base_Url}/admin/users`, {
+      const res = await axios.get(`${VITE_BASEURL}/admin/users`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -36,7 +36,7 @@ const UsersPage = () => {
 
   const deleteUser = async () => {
     try {
-      const ress = await axios.delete(`${Base_Url}/admin/delete/${deletingUserId}`, {
+      const ress = await axios.delete(`${VITE_BASEURL}/admin/delete/${deletingUserId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

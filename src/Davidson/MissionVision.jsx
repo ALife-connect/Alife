@@ -22,6 +22,7 @@ const MissionVision = () => {
             to lack of blood availability.
           </h3>
         </div>
+         <div className="divider"></div> {/* Divider line here */}
         <div className="text-div4">
           <h3>
             To bridge the gap between blood donors, <br />

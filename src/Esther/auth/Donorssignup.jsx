@@ -8,7 +8,7 @@ import axios from 'axios';
 import { LuEyeClosed, LuEye } from "react-icons/lu";
 import { IoArrowBackCircleOutline } from 'react-icons/io5';
 
-const Base_Url = import.meta.env.VITE_BASEURL;
+const VITE_BASEURL = import.meta.env.VITE_BASEURL;
 
 const Donorssignup = () => {
   const [click,setClick] = useState(false);
@@ -41,7 +41,7 @@ const Donorssignup = () => {
     }
       setIsLoading(true);
       try {
-        const res = await axios.post(`${Base_Url}/register`, userData);
+        const res = await axios.post(`${VITE_BASEURL}/register`, userData);
         toast.success(res.data.message);
         setTimeout(() => {
           nav("/checkmail");

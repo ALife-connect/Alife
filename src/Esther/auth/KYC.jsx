@@ -19,7 +19,7 @@ const KYC = () => {
   const [licenseNumber, setLicenseNumber] = useState('');
 
   const userToken = useSelector((state) => state?.token);
-  const Base_Url = import.meta.env.VITE_BASEURL;
+  const VITE_BASEURL = import.meta.env.VITE_BASEURL;
 
   const handleFileChange = (e, setFile) => {
     const file = e.target.files[0];
@@ -39,7 +39,7 @@ const KYC = () => {
     formData.append('licenseNumber', licenseNumber);
     setLoadState(true)
     try {
-      const res = await axios.post(`${Base_Url}/kyc/kyc`, formData, {
+      const res = await axios.post(`${VITE_BASEURL}/kyc/kyc`, formData, {
         headers: {
           Authorization: `Bearer ${userToken}`,
           'Content-Type': 'multipart/form-data',

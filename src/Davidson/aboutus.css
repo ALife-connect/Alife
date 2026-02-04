@@ -1,10 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@400;500;600;700&display=swap");
 
+/* GLOBAL RESETS */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+
 
 html,
 body {
@@ -17,66 +20,132 @@ body {
   margin: 0 auto;
 }
 
+/* ABOUT US BODY */
 .aboutus-cnt-body {
   max-width: 100%;
   min-height: 100vh;
   text-align: center;
-  background-color: #fff;
+  background-color: #f9f9f9; /* Corrected from f9f9f */
   padding-top: 70px;
 }
 
+/* === ABOUT HEADER BASE (Updated with animations) === */
+.hilight-text {
+  width: 100%;
+  text-align: center;
+  margin-top: 50px;
+  opacity: 0;
+  animation: fadeDown 1.2s ease-out forwards;
+}
+
 .highlight {
-  font-weight: 700;
+  /* Updated styles from second block */
+  font-weight: 700; 
   font-family: Poppins;
-  font-size: 36px;
+  font-size: 36px; 
+  letter-spacing: 1px;
+  color: black; 
+  /* Animation added */
+  animation: slideInDown 1.2s ease-out forwards;
 }
 
 .text-div {
-  margin-top: 70px;
+  margin-top: 20px; /* Reduced from 70px */
   height: max-content;
+  opacity: 0;
+  animation: fadeUp 1.2s ease-in forwards;
+  animation-delay: 0.3s;
 }
 
 .text-div h3 {
-  font-family: Poppins;
+  /* Updated styles from second block */
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 22px;
-  line-height: 100%;
+  font-size: 24px; 
+  color: black; 
+  line-height: 1.6; 
 }
 
+/* === IMAGE CONTAINER (Updated with animations) === */
 .image-div {
-  margin-top: 40px;
+  margin-top: 50px; /* Adjusted margin-top */
   display: flex;
-  flex-wrap: wrap;
-  gap: 11px;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
+  justify-content: space-between;
+  gap: 25px;
+  margin: 40px auto;
+  width: 95%;
+  margin: 40px auto;
+}
+
+/* IMAGES ANIMATION BASE STYLE */
+.image-div div {
+  border-radius: 15px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInImage 1s ease-out forwards;
 }
 
 .img1,
 .img4 {
-  width: 320px;
+  width: 302px;
   height: 361px;
-  border-radius: 15px;
+  padding: 10px;
 }
-
 .img2,
 .img3 {
   width: 302px;
   height: 234px;
-  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin-top: 50px;
 }
+
+
+.img2,
+.img3 {
+  animation-delay: 0.4s;
+ 
+}
+
+.img2 {
+  
+  animation-delay: 0.6s;
+ 
+}
+.img3 {
+  animation-delay: 0.8s;
+ 
+}
+.img4 {
+  animation-delay: 1s; /* Added delay for img4 */
+}
+
 
 .image-div img {
   width: 100%;
-  height: 100%;
+  /* background: #000; */
+  height: 100%; /* Keep height 100% of parent wrapper */
   object-fit: cover;
-  border-radius: 5px;
+  border-radius: 15px; /* Adjusted radius */
   display: block;
+  transition: transform 0.4s ease-in-out;
+  animation: floatImage 5s ease-in-out infinite;
 }
 
+/* Hover effect for extra life */
+.image-div img:hover {
+  transform: scale(1.05);
+}
+
+
+
+
+/* TEXT DIV 2 CONTENT */
 .text-div2-cnt {
-  margin-top: 120px;
+  margin-top: 70px;
   gap: 28px;
   display: flex;
   flex-direction: column;
@@ -94,23 +163,24 @@ body {
 }
 
 .bridging p {
-  margin-bottom: 180px;
   font-size: 20px;
   font-weight: 400;
 }
 
+/* MISSION DIV */
 .mission-div {
-  margin-top: 30px;
+  margin-top: 70px;
   text-align: center;
   padding: 40px 20px;
-  margin-left: calc(-1 * ((100vw - 100%) / 2));
-  width: 100vw;
+  width: 100%;
   height: 493px;
   background-color: #d6eaf8;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-top-left-radius: 1000px;
+  border-top-right-radius: 1000px;
 }
 
 .mission-div h3 {
@@ -118,15 +188,20 @@ body {
   font-size: 20px;
   font-family: Poppins;
 }
+.divider {
+  width: 2px;
+  height: 150px;
+  background-color: #000;
+}
 
+/* TEXT DIV 3 & 4 CONTENT */
 .text-div3-cnt {
   margin-top: 100px;
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  gap: 100px;
+  gap: 10px;
   text-align: center;
 }
 
@@ -138,47 +213,220 @@ body {
 
 .text-div3 h3 {
   font-family: Poppins;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
   text-align: center;
 }
 
 .text-div4 h3 {
   font-family: Poppins;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
   text-align: center;
 }
 
-.achivement-container {
-  width: 100%;
-  background-color: #ffffff;
-  margin-top: 70px;
+.our-story-section {
+  padding: 6rem 2rem;
+  background-color: #f9f9f9; 
 }
 
-.ach-img-cnt {
-  padding: 70px 20px;
+.our-story-header h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.our-story-container{
   display: flex;
-  justify-content: center;
-  gap: 70px;
-  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-start;
+  /* max-width: 1200px; */
+  margin: 0 auto;
+  border-radius: 20px;
 }
 
-.ach-img1 {
-  width: 360px;
-  height: 372px;
-  background-color: #ffffff;
-  border: 1px solid #2c3e50;
-  border-radius: 15px;
+.our-story-header h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #111827;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 50px;
+   text-align: center;
+}
+
+.main-image {
+  width: auto;
+  height: 100%;
+  object-fit: cover;
+  padding: 10px;
+}
+.main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.small-image {
+  position: absolute;
+  bottom: -2rem;
+  left: -2rem;
+  width: 400px;
+  max-width: 320px;
+  border: 5px solid #ffffff;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.our-story-images {
   display: flex;
   flex-direction: column;
-  position: relative;
+  gap: 15px;
+  
 }
 
-.ach-img1 img {
-  width: 100%;
-  height: auto;
+.our-story-text {
+  max-width: 550px;
+  color: black; /* since background is black */
+  line-height: 1.7;
 }
+
+.our-story-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+
+
+
+@media (min-width: 1024px) {
+  .our-story-grid {
+    /* grid-template-columns: 1fr 1fr;
+    gap: 4rem; */
+  }
+}
+
+.our-story-images {
+  object-fit: cover;
+  position: relative;
+  margin-top: 2.5rem;
+}
+
+@media (min-width: 1024px) {
+  .our-story-images {
+  order: 1;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* Make the whole layout column */
+  .our-story-container {
+    
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Text comes first */
+  .our-story-text {
+    order: 1;
+  }
+
+  /* Big image comes after the text */
+  .main-image {
+    order: 2;
+  }
+
+  /* Hide small second image */
+  .small-image {
+    display: none !important;
+  }
+
+  /* Center the image on mobile */
+  .our-story-images {
+    align-items: center;
+  }
+
+  .our-story-images img {
+    width: 100%;
+    border-radius: 10px;
+  }
+}
+
+@media (min-width: 640px) {
+  .our-story-container{
+  flex-direction: row;
+  gap: 40px;
+  
+}
+  .our-story-section{
+    padding: 4rem 1rem;
+  }
+}
+
+
+
+
+@media (max-width: 640px) {
+  /* Show only the first image */
+  .img1 {
+    display: block;
+    width: 100% !important;
+  }
+
+  /* Hide the other three images */
+  .img2,
+  .img3,
+  .img4 {
+    display: none !important;
+  }
+
+  /* Make the container clean on mobile */
+  .image-div {
+    display: block;
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .image-div img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .text-div{
+    text-align: left;
+    padding: 10px;
+    display: flex;
+   
+  }
+}
+
+
+@media (min-width: 640px) {
+  .our-story-text {
+    font-size: 1.125rem;
+  }
+}
+
+.our-story-text p {
+  text-align: left;
+  margin-bottom: 1.5rem;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.our-story-text p:last-child {
+  margin-bottom: 0;
+}
+
 
 .sec-img-con {
   width: 100%;
@@ -237,12 +485,13 @@ body {
   justify-content: center;
   padding: 40px 20px;
   gap: 20px;
+  
 }
 
 .step-box {
-  width: 280px;
+  width: 340px;
   padding: 2rem 1.5rem;
-  background: #fff;
+  background: white;
   border: 1.5px solid grey;
   border-radius: 10px;
   text-align: center;
@@ -286,9 +535,12 @@ body {
   height: 50px;
 }
 
+/* THE TEAM SECTION */
 .the-team-cnt {
   margin-top: 50px;
   text-align: center;
+  background: linear-gradient(135deg, #e3f2fd, #fdfdfd);
+  padding: 50px 0;
 }
 
 .the-team-cnt p {
@@ -311,10 +563,19 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   border-radius: 1000px;
-  border: 2px solid #2c3e50;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   margin: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.first-team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
 }
 
 .team-card-img {
@@ -371,6 +632,75 @@ body {
   font-weight: bold;
   color: #c0392b;
 }
+.get-listed-btn {
+  padding: 20px;
+  width: 224px;
+  height: 60px;
+  border-radius: 8px;
+  color: white;
+  background-color: #FF1B03;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+
+/* === KEYFRAMES (Added from second block) === */
+@keyframes fadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInImage {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatImage {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* MEDIA QUERIES */
 
 @media only screen and (max-width: 1440px) {
   .mission-div {
@@ -378,41 +708,95 @@ body {
   }
 }
 
+@media (max-width:768px) {
+  .text-div3-cnt {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .text-div3{
+    order: 1;
+  }
+
+  .text-div4{
+    order: 2;
+  }
+
+  .divider{
+    display: none;
+  }
+
+  .text-div3 h3,
+  .text-div4 h3 {
+    /* background: #000;  */
+    color: #000;
+    text-align: left;
+    /* padding: 8px; */
+    line-height: 1.5;
+    border-radius: 6px;
+    font-size: 1.1rem;
+   
+  }
+
+   .mission-div span {
+    margin: 0 !important;          
+    padding: 0 !important;
+    font-size: 1.5rem !important;
+    
+  }
+
+}
+
+@media (min-width: 640px) {
+  .mv-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .text-div3 h3,
+  .text-div4 h3 {
+    /* background: #000;  */
+    color: #000;
+    text-align: left;
+    padding: 12px;
+    line-height: 1.7;
+    border-radius: 6px;
+    font-size: 1.1rem;
+  }
+
+  
+     .mission-div span {
+    margin: 0 !important;          /* Remove large spacing */
+    padding: 0 !important;
+    font-size: 1.5rem !important;
+  }
+
+  
+}
+
 @media only screen and (max-width: 1200px) {
   .text-div3-cnt {
     gap: 50px;
+  }
+  .bridging p {
+    font-size: 20px;
+    padding: 40px;
   }
 }
 
 @media only screen and (max-width: 900px) {
   .team-card-title h2 {
     font-size: 22px;
-    flex-direction: column;
   }
 }
 
-@media only screen and (max-width: 768px) {
-  .first-team-card {
-    width: 90%;
-  }
-
-  .team-card-title h2 {
-    font-size: 20px;
-  }
-
-  .team-card-title p {
-    font-size: 16px;
-  }
-
-  .mission-div h3 {
-    font-size: 22px;
-  }
-
-  .mission-div p {
-    font-size: 16px;
-    padding: 0 10px;
-  }
+.bridging p {
+ 
+  padding: 30px;
+  text-align: left;
 }
+
 
 @media only screen and (max-width: 480px) {
   .hilight-text{
@@ -420,7 +804,6 @@ body {
     flex-direction: column;
     align-items: center;
   }
-
 
   .text-div {
     width: 90%;
@@ -436,18 +819,23 @@ body {
 
   .image-div{
     height: max-content;
+    gap: 10px; /* Adjusted to fit better on smaller screens */
   }
 
-  .img1,
-  .img4 {
-    width: 150px;
+  /* Resetting image wrappers for tiny screens */
+  .image-div div {
+    width: 48%; /* Adjust to fit two images side-by-side */
+    height: auto;
+  }
+
+  .img1
+   {
     height: 180px;
     border-radius: 15px;
   }
 
-  .img2,
-  .img3 {
-    width: 150px;
+  .img1
+  {
     height: 150px;
     border-radius: 15px;
   }
@@ -458,7 +846,7 @@ body {
 }
 
 .bridging p {
-  margin-bottom: 180px;
+  margin-bottom: 20px;
   font-size: 17px;
   font-weight: 400;
 }
@@ -551,5 +939,178 @@ body {
 @media only screen and (max-width: 379px) {
   .team-card-title h2 {
     font-size: 16px;
+  }
+   .hilight-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .text-div {
+    width: 90%;
+    text-align: center;
+  }
+
+  .text-div h3 {
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 100%;
+  }
+
+  .image-div{
+    height: max-content;
+    gap: 10px; /* Adjusted to fit better on smaller screens */
+  }
+
+  /* Resetting image wrappers for tiny screens */
+  .image-div div {
+    width: 48%; /* Adjust to fit two images side-by-side */
+    height: auto;
+  }
+
+  .img1 {
+    height: 180px;
+    border-radius: 15px;
+  }
+
+  .img1
+ {
+    height: 150px;
+    border-radius: 15px;
+  }
+
+.text-div2-cnt {
+  height: max-content;
+  margin: 0;
+}
+
+.bridging p {
+  margin-bottom: 20px;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+  .mission-div {
+    height: max-content;
+    margin: 0;
+  }
+
+  .text-div3 h3, .text-div4 h3{
+    font-size: 17px;
+  }
+
+  .step-box-cnt{
+    width: 100%;
+    padding: 0;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .step-box{
+    width: 48%;
+    height: 250px;
+    justify-content: center;
+  }
+
+  .step-box h3{
+    font-size: 15px;
+  }
+
+  .step-box p{
+    font-size: 14px;
+  }
+
+  .the-team-cnt p {
+    margin-top: 40px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .team-card-one {
+    margin-top: 20px;
+    gap: 0px;
+  }
+
+  .first-team-card {
+    width: 40%;
+    height: max-content;
+    padding: 10px;
+    gap: 5px;
+  }
+
+  .team-card-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 1000px;
+    margin-top: 0px;
+  }
+
+  .team-card-title{
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .team-card-title h2 {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .team-card-title p{
+    font-size: 15px;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  .team-card-title a{
+    font-size: 16px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+
+  .what-makes-us-cnt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    padding: 0 15px;
+  }
+
+  .step-box-cnt {
+    display: flex;
+    flex-direction: column;   /* STACK ALL STEP BOXES */
+    width: 100%;
+    gap: 20px;
+  }
+
+  .step-box {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .step-box .icon img {
+    width: 60px;    /* Responsive icon */
+    height: auto;
+  }
+
+  .what-makes-us-cnt span:first-child {
+    font-size: 28px !important;
+  }
+
+  .what-makes-us-cnt span:nth-child(2) {
+    font-size: 16px !important;
+    margin-top: 10px !important;
   }
 }

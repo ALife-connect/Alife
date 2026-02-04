@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import { HiOutlineArrowCircleLeft } from "react-icons/hi";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 
-const Base_Url = import.meta.env.VITE_BASEURL;
+const VITE_BASEURL = import.meta.env.VITE_BASEURL;
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -17,7 +17,7 @@ const ForgotPassword = () => {
   const handleForgotPassword = async () => {
     setLoadState(true);
     try {
-      const res = await axios.post(`${Base_Url}/forgotPassword`, { email });
+      const res = await axios.post(`${VITE_BASEURL}/forgotPassword`, { email });
       toast.success(res?.data?.message);
       setLoadState(false);
       setTimeout(() => {

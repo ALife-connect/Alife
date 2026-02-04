@@ -1,18 +1,16 @@
 import React from 'react'
-import '../Sponsors/sponsor.css'
-
+import './sponsors.css'
 const Sponsors = () => {
-  return (
-    <>
-      <div className='sponsorwrapper'>
-        <h1>SPONSORS</h1>
-        <div className="sponsorsLogos">
-          <img src="/images/Sponsor8.png" alt="sponsor8" />
-          <img src="/images/Sponsor9.png" alt="sponsor9" />
+    return (
+        <div className='whyuswrapper'>
+            <h1>sponsors</h1>
+            <div className="sponsorsLogos">
+                <img src="/images/sponsors1.png" alt="sponsors1" />
+                <img src="/images/sponsors2.png" alt="sponsors2" />
+                <img src="/images/Kora.png" alt="Kora" />
+            </div>
         </div>
-      </div>
-    </>
-  )
+    )
 }
 
 export default Sponsors

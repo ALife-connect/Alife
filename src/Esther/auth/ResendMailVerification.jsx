@@ -7,7 +7,7 @@ import { toast } from 'sonner';
 import FadeLoader from 'react-spinners/CircleLoader'
 
 
-const Base_Url = import.meta.env.VITE_BASEURL;
+const VITE_BASEURL = import.meta.env.VITE_BASEURL;
 
 const ResendMailVerification = () => {
   const [email, setEmail] = useState("");
@@ -19,7 +19,7 @@ const ResendMailVerification = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const reverifyRes = await axios.post(`${Base_Url}/resend-otp`, { email });
+      const reverifyRes = await axios.post(`${VITE_BASEURL}/resend-otp`, { email });
       setStatus('success');
     } catch (err) {
       console.error("Error sending re-verification email:", err);

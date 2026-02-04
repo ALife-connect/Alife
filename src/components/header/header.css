@@ -50,9 +50,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+ 
 }
 .headerwrapperinner1 img {
-  width: 150px;
+  width: 40px;
+  gap: 20px;
+  padding-right: 5px;
+}
+.headerwrapperinner1 h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
 }
 .headerwrapperinner2 {
   width: 40%;
@@ -80,9 +89,9 @@
   border-radius: 10px;
 }
 
-.headerliactive {
+/* .headerliactive {
   border: 1px solid #c0392b;
-}
+} */
 .headerwrapperinner3 {
   width: 30%;
   height: 80px;
@@ -94,34 +103,45 @@
 .headerbtn {
   width: 120px;
   height: 40px;
-  background-color: #c0392b;
-  color: white;
-  border-radius: 6px;
+  background-color: #fff;
+  color: #FF1B03;
+  border-radius: 20px;
   font-family: Poppins;
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 10px rgba(192, 57, 43, 0.3);
+  transition: all 0.3s ease;
 }
 .headerbtn:hover {
-  background-color: #d6eaf8;
-  color: black;
+  background-color: #FF1B03;
+  color: #fff;
+  transform: translateX(-2px);
+  border: 1px solid #8b8888;
 }
 .headerbtn1 {
   width: 120px;
   height: 40px;
-  background-color: white;
-  color: #c0392b;
-  border-radius: 6px;
+  background-color: #FF1B03;
+  color: #fff;
+  border-radius: 20px;
   font-family: Poppins;
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
-  border: 1px solid #c0392b;
+  border: 1px solid rgba(192, 57, 43, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 10px rgba(192, 57, 43, 0.1);
+  transition: all 0.3s ease;
 }
 .headerbtn1:hover {
-  background-color: #d6eaf8;
-  color: black;
-  border: none;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #000;
+  transform: translateY(-2px);
 }
 
 .mobileSearchInputWrapper {
@@ -229,8 +249,16 @@
     font-size: 17px;
     color: white;
     border-radius: 7px;
-    background: #c0392b;
+    background: rgba(192, 57, 43, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: 0.3s;
   }
+
+  .sideDrawerNavigateHolder ul button:nth-child(2):hover {
+  background: rgba(192, 57, 43, 0.8);
+}
   .sideDrawerNavigateHolder ul button:nth-child(3) {
     width: 100%;
     height: max-content;
@@ -238,8 +266,17 @@
     font-size: 17px;
     color: #c0392b;
     border-radius: 7px;
-    border: 1.9px solid #c0392b;
+    background: 1.9px solid rgba(255, 255, 255, 0.3);
+    border: 1.9px solid rgba(192, 57, 43, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: 0.3s;
   }
+
+  .sideDrawerNavigateHolder ul button:nth-child(3):hover {
+  background: rgba(255, 255, 255, 0.5);
+  color: #000;
+}
 
   .mobileSideBarProfileNav {
     display: flex;
@@ -489,30 +526,36 @@
       }
     }
 
-    .mobileLogoutWrapper {
-      width: 70%;
-      height: max-content;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 20px;
-      gap: 10px;
-
-      button {
+    .mobileLogoutWrapper  button {
         width: max-content;
         height: max-content;
         padding: 10px 20px;
         border-radius: 5px;
         color: white;
-        background: red;
+        background: rgba(255, 0, 0, 0.6);
+        border: 1px solid rgba(225, 225, 225, 0.2);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        transition: 0.3s;
       }
 
+       .mobileLogoutWrapper  button:hover{
+        background: rgba(255, 0, 0, 0.8);
+       }
+
       .MobileLogoutBtn {
-        background: white;
-        border: 1px solid red;
+        background: rgba(225, 225, 225, 0.3);
+        border: 1px solid rgba(225, 0, 0, 0.4);
         color: black;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        transition: 0.3s;
       }
-    }
+
+      .MobileLogoutBtn:hover {
+        background: rgba(255, 255, 255, 0.5);
+      }
+    
   }
 }
 

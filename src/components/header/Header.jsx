@@ -19,7 +19,7 @@ import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-const VITE_BASEURL = import.meta.env.VITE_BASEURL;
+// const VITE_BASEURL = import.meta.env.VITE_BASEURL;
 const VITE_BASEURL_REN = import.meta.env.VITE_BASEURL_REN;
 
 const Header = () => {
@@ -46,7 +46,7 @@ const Header = () => {
   ];
 
   const handleSubmit = () => {
-    handleLogout(VITE_BASEURL, nav, token, dispatch, setLoadLogOut, setLogoutPopUp);
+    handleLogout(VITE_BASEURL_REN, nav, token, dispatch, setLoadLogOut, setLogoutPopUp);
   };
 
   // ✅ FIX 1: Use dynamic environment base URL instead of hardcoded one
@@ -176,7 +176,8 @@ const Header = () => {
       <div className={`headerwrapper ${isFixed ? "headerwrapperfixed" : ""}`} data-aos="fade-down">
         <div className="HeaderInnerWrapper">
           <div className="headerwrapperinner1">
-            <img src="/images/alifenobg.png" alt="LifeLink Logo" className="logo-breath" />
+            <img src="/images/div(1).png" alt="LifeLink Logo" className="logo-breath" />
+            <h1> ALIFE</h1>
           </div>
           <div className="headerwrapperinner2" data-aos="fade-up">
             <ul className="headerul">
@@ -184,7 +185,7 @@ const Header = () => {
                 <li
                   key={idx}
                   className={`${link.path === location.pathname &&
-                    "text-black border-b-2 border-red-300"
+                    "text-red-500 "
                     } capitalize text-[14px] font-medium hover:text-red-300 transition-all`}
                 >
                   <Link to={link.path}>{link.name}</Link>
@@ -200,11 +201,11 @@ const Header = () => {
             </div>
           ) : (
             <div className="headerwrapperinner3" data-aos="fade-left">
-              <Link to={"/signup"}>
-                <button className="headerbtn" data-aos="zoom-in" data-aos-delay="200">Sign Up</button>
-              </Link>
               <Link to={"/login"}>
-                <button className="headerbtn1" data-aos="zoom-in" data-aos-delay="400">Log In</button>
+                <button className="headerbtn" data-aos="zoom-in" data-aos-delay="200">Log In</button>
+              </Link>
+              <Link to={"/signup"}>
+                <button className="headerbtn1" data-aos="zoom-in" data-aos-delay="400">Sign Up</button>
               </Link>
             </div>
           )}
@@ -212,13 +213,17 @@ const Header = () => {
       </div>
 
       <div className="MobileHeader" data-aos="fade-down">
-        <img
-          src="/images/public/images/alifenobg.png"
-          alt="LifeLink Logo"
-          onClick={() => nav("/")}
-          className="logo-breath"
-          data-aos="zoom-in"
-        />
+        <div className="mobileHeaderLogo" >
+          <img
+            src="/images/div(1).png"
+            alt="LifeLink Logo"
+            onClick={() => nav("/")}
+            className="logo-breath"
+            data-aos="zoom-in"
+          />
+          <h1>ALIVE</h1>
+        </div>
+
         <div className="dashboardHeaderSearchWrapper" data-aos="fade-up"
           data-aos-delay="300">
           {userInfo.role === "donor" ? <div className="carousel-card">
@@ -273,10 +278,10 @@ const Header = () => {
                 }}
               >
                 <div className="MobileSideProfilePic">
-                  <img src="/images/default profile pic.jpg" alt="" />
+                  <img src="/images/default-profile-pic.jpg" alt="" />
                 </div>
                 <div className="MobileSideProfileName">
-                  <h1 style={{ fontSize: 35 }}>Visitor</h1>
+                  <h1 style={{ fontSize: 35 }}></h1>
                 </div>
 
                 <div className="mobileSideBarIcon">
@@ -491,8 +496,8 @@ const Header = () => {
                 ) : null
             ) : (
               <>
-                <button onClick={() => nav("/login")}>Login</button>
                 <button onClick={() => nav("/signup")}>Signup</button>
+                <button onClick={() => nav("/login")}>Login</button>
                 <li
                   onClick={() => {
                     setOpenSideDrawer(false);
@@ -575,7 +580,10 @@ const Header = () => {
                       onClick={(e) => {
                         e.stopPropagation();
                         markNotificationAsRead(notification._id);
-                        nav(`/hospitalsrequestdetails/${notification?.appointmentId || notification?.requestId}`);;
+                        nav(`/dashboard/hospitalsrequestdetails/${notification?.bloodRequest ||
+                          notification?.bloodRequestId ||
+                          notification?.requestId // only if this is truly the blood request id in your payload
+                          }`);
                         setNotificationSideBar(false);
                         setOpenSideDrawer(false);
                       }}

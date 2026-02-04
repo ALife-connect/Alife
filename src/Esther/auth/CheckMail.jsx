@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { useLocation, useNavigate } from "react-router";
 import axios from "axios";
 
-const Base_Url = import.meta.env.VITE_BASEURL;
+const VITE_BASEURL = import.meta.env.VITE_BASEURL;
 
 export default function CheckMail() {
   const nav = useNavigate();
@@ -53,7 +53,7 @@ export default function CheckMail() {
     }
 
     try {
-      const res = await axios.post(`${Base_Url}/verify-otp`, {email, otp: finalOtp });
+      const res = await axios.post(`${VITE_BASEURL}/verify-otp`, {email, otp: finalOtp });
       toast.success("OTP Verified Successfully!");
       nav("/dashboard");
     } catch (err) {
@@ -64,7 +64,7 @@ export default function CheckMail() {
 
   const handleResend = async () => {
     try {
-      await axios.post(`${Base_Url}/resend-otp`,{email});
+      await axios.post(`${VITE_BASEURL}/resend-otp`,{email});
       toast.info("A new OTP has been sent to your email.");
       setCounter(60); // reset countdown
     } catch (err) {

@@ -1,449 +1,141 @@
-.landingpagebenefits{
-    width: 100%;
-    height: max-content;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 3%;
+.benefits {
+  padding: 80px 5%;
+  background-color: #ffffff;
+  text-align: center;
+ 
+  
 }
-.landingpagebenefits h1{
-    font-family: Poppins;
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 100%;
-    letter-spacing: 0%;
-    color: #2C3E50;
+
+.benefits-header h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0f172a;
 }
-.landingbenefitsinner{
-    width: 100%;
-    height: 100vh;
-    background-color: #fff;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 20px;
+
+.benefits-header p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #64748b;
 }
-.landingbenefitsinner1{
-    width: 30%;
-    height: 470px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    
+
+.benefits-grid {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
 }
-.landingbenefitsinner1 h2{
-    font-family: Poppins;
-    font-weight: 600;
-    font-size: 18px;
-    
+
+.benefit-card {
+  background: #D6EAF8;
+  padding: 28px 24px;
+  border-radius: 16px;
+  width: 31%;
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
 }
-.landingbenefitsinner1 p{
-    font-family: Poppins;
-    font-weight: 300;
-    font-size: 14px;
-    
+
+.benefit-card:hover {
+  transform: translateY(-6px);
 }
-.benefitsbtn{
-    width: 120px;
-  height: 40px;
-  background-color: #c0392b;
-  color: white;
-  border-radius: 6px;
-  font-family: Poppins;
+
+.benefit-card h3 {
   font-size: 16px;
   font-weight: 600;
-  cursor: pointer;
+  margin-top: 15px;
+  color: #0f172a;
 }
-.benefitsbtn:hover{
-    background-color: #D6EAF8;
-    color: black;
+
+.benefit-card p {
+  font-size: 13px;
+  margin-top: 8px;
+  color: #475569;
+  line-height: 1.6;
 }
-.landingbenefitsinner2{
-    width: 60%;
-    height: 500px;
+
+.icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.icon.red {
+  background-color: #fde2e2;
+}
+
+.icon.green {
+  background-color: #d1fae5;
+}
+
+.icon.teal {
+  background-color: #ccfbf1;
+}
+
+.benifit-cont {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
+
+.benefit-card1{
+  background: #D6EAF8;
+  padding: 28px 24px;
+  border-radius: 16px;
+  width: 31%;
+  text-align: left;
+  margin-top: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+  
+}
+
+.benefit-card1:hover {
+  transform: translateY(-6px);
+}
+
+.benefit-card1 h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 15px;
+  color: #0f172a;
+}
+
+.benefit-card1 p {
+  font-size: 13px;
+  margin-top: 8px;
+  color: #475569;
+  line-height: 1.6;
+}
+
+
+
+@media (max-width: 900px) {
+
+  .benefits-grid {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
-}
+    gap: 30px;
+  }
 
-.landingbenefitsinner2 h2{
-     font-family: Poppins;
-    font-size: 22px;
-    font-weight: 600;
-    text-align: center;
-    color: #212121;
-}
-
-.landingincentives{
-    width: 340px;
-    height: 230px;
-    background-color: white;
-    border-radius: 10px;
-    border: 1px solid black;
-    padding: 10px;
-}
-.landingincentives h2{
-    font-family: Poppins;
-    font-size: 22px;
-    font-weight: 600;
-    text-align: center;
-    color: #212121;
-}
-.landingincentives p{
-    font-family: Poppins;
-    font-weight: 400;
-    font-size: 15px;
-    text-align: center;
-}
-.incentiveheader{
-    width: 150px;
-    height: 50px;
+  .benifit-cont {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: 5px;
-}
-.incentiveheader img{
-    width: 30%;
-}
+    gap: 30px;
+    margin-top: 30px;
+  }
 
 
-
-@media only screen and (max-width: 1440px){
-   
-}
-@media only screen and (max-width: 1200px){
-   
+  .benefit-card,
+  .benefit-card1 {
+    width: 90%;
+    max-width: 600px;
+  }
 }
 
-
-@media only screen and (max-width: 900px){  
-    .landingpagebenefits{
-        width: 100%;
-        height: max-content;
-        background-color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 3%;
-    }
-    .landingpagebenefits h1{
-        font-family: Poppins;
-        font-size: 36px;
-        font-weight: 700;
-        line-height: 100%;
-        letter-spacing: 0%;
-        color: #2C3E50;
-        text-align: center;
-    }
-    .landingbenefitsinner{
-        width: 100%;
-        height: max-content;
-        background-color: white;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        flex-direction: column;
-
-        padding: 20px;
-    }
-    .landingbenefitsinner1{
-        width: 90%;
-        height: 470px;
-        display: flex;
-        flex-wrap: nowrap;
-        gap: 20px;
-        
-    }
-    .landingbenefitsinner1 h2{
-        font-family: Poppins;
-        font-weight: 400;
-        font-size: 15px;
-        
-    }
-    .landingbenefitsinner1 p{
-        font-family: Poppins;
-        font-weight: 300;
-        font-size: 14px;
-        
-    }
-    .benefitsbtn{
-        width: 120px;
-      height: 40px;
-      background-color: #c0392b;
-      color: white;
-      border-radius: 6px;
-      font-family: Poppins;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-    .benefitsbtn:hover{
-        background-color: #D6EAF8;
-        color: black;
-    }
-    .landingbenefitsinner2{
-        width: 100%;
-        height: max-content;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-    .landingincentives{
-        width: 46%;
-        height: 210px;
-        /* background-color: #D6EAF8; */
-        border-radius: 10px;
-        border: 1px solid black;
-        padding: 10px;
-    }
-    .landingincentives h2{
-        font-family: Poppins;
-        font-size: 20px;
-        font-weight: 600;
-        text-align: center;
-        color: #212121;
-    }
-    .landingincentives p{
-        font-family: Poppins;
-        font-weight: 400;
-        font-size: 12px;
-        text-align: center;
-    }
-    .incentiveheader{
-        width: 150px;
-        height: 50px;
-        display: flex;
-        align-items: center;
-        padding: 5px;
-    }
-    .incentiveheader img{
-        width: 30%;
-    }
-    
-}
-
-
-@media only screen and (max-width: 760px){
-    .landingpagebenefits{
-        width: 100%;
-        height: max-content;
-        background-color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 3%;
-    }
-    .landingpagebenefits h1{
-        font-family: Poppins;
-        font-size: 36px;
-        font-weight: 700;
-        line-height: 100%;
-        letter-spacing: 0%;
-        color: #2C3E50;
-        text-align: center;
-    }
-    .landingbenefitsinner{
-        width: 100%;
-        height: max-content;
-        background-color: white;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        flex-direction: column;
-
-        padding: 20px;
-    }
-    .landingbenefitsinner1{
-        width: 90%;
-        height: 470px;
-        display: flex;
-        flex-wrap: nowrap;
-        gap: 20px;
-        
-    }
-    .landingbenefitsinner1 h2{
-        font-family: Poppins;
-        font-weight: 600;
-        font-size: 40px;
-        
-    }
-    .landingbenefitsinner1 p{
-        font-family: Poppins;
-        font-weight: 300;
-        font-size: 14px;
-        
-    }
-    .benefitsbtn{
-        width: 120px;
-      height: 40px;
-      background-color: #c0392b;
-      color: white;
-      border-radius: 6px;
-      font-family: Poppins;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-    .benefitsbtn:hover{
-        background-color: #D6EAF8;
-        color: black;
-    }
-    .landingbenefitsinner2{
-        width: 100%;
-        height: max-content;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-    .landingincentives{
-        width: 46%;
-        height: 210px;
-        /* background-color: #D6EAF8; */
-        border-radius: 10px;
-        border: 1px solid black;
-        padding: 10px;
-    }
-    .landingincentives h2{
-        font-family: Poppins;
-        font-size: 20px;
-        font-weight: 600;
-        text-align: center;
-        color: #212121;
-    }
-    .landingincentives p{
-        font-family: Poppins;
-        font-weight: 400;
-        font-size: 12px;
-        text-align: center;
-    }
-    .incentiveheader{
-        width: 150px;
-        height: 50px;
-        display: flex;
-        align-items: center;
-        padding: 5px;
-    }
-    .incentiveheader img{
-        width: 30%;
-    }
-}
-
-
-@media only screen and (max-width: 480px) {
-    .landingpagebenefits{
-        width: 100%;
-        height: max-content;
-        background-color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 3%;
-    }
-    .landingpagebenefits h1{
-        font-family: Poppins;
-        font-size: 36px;
-        font-weight: 700;
-        line-height: 100%;
-        letter-spacing: 0%;
-        color: #2C3E50;
-        text-align: center;
-    }
-    .landingbenefitsinner{
-        width: 100%;
-        height: max-content;
-        background-color: white;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        flex-direction: column;
-
-        padding: 20px;
-    }
-    .landingbenefitsinner1{
-        width: 90%;
-        height: 470px;
-        display: flex;
-        flex-wrap: nowrap;
-        gap: 20px;
-        height: max-content;
-        padding: 15px 0px;
-    }
-    .landingbenefitsinner1 h2{
-        font-family: Poppins;
-        font-weight: 600;
-        font-size: 25px;
-        
-    }
-    .landingbenefitsinner1 p{
-        font-family: Poppins;
-        font-weight: 300;
-        font-size: 14px;
-        
-    }
-    .benefitsbtn{
-        width: 120px;
-      height: 40px;
-      background-color: #c0392b;
-      color: white;
-      border-radius: 6px;
-      font-family: Poppins;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-    .benefitsbtn:hover{
-        background-color: #D6EAF8;
-        color: black;
-    }
-    .landingbenefitsinner2{
-        width: 100%;
-        height: max-content;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-    .landingincentives{
-        width: 46%;
-        height: 210px;
-        /* background-color: #D6EAF8; */
-        border-radius: 10px;
-        border: 1px solid black;
-        padding: 10px;
-    }
-    .landingincentives h2{
-        font-family: Poppins;
-        font-size: 20px;
-        font-weight: 600;
-        text-align: center;
-        color: #212121;
-    }
-    .landingincentives p{
-        font-family: Poppins;
-        font-weight: 400;
-        font-size: 12px;
-        text-align: center;
-    }
-    .incentiveheader{
-        width: 150px;
-        height: 50px;
-        display: flex;
-        align-items: center;
-        padding: 5px;
-    }
-    .incentiveheader img{
-        width: 30%;
-    }
-}
-
-
-@media only screen and (max-width: 379px) {
-
-}

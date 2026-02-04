@@ -1,54 +1,73 @@
-import React from 'react'
-import '../../components/footer/footer.css'
-import { PiUserCircleDashedThin } from 'react-icons/pi'
-import { IoMdMail } from "react-icons/io";
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
-import { Link } from 'react-router'
+import React from "react";
+import { FaFacebook } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa";
+import "./footer.css";
 
 const Footer = () => {
   return (
-    <div className='footerwrapper'>
-      <div className='footerlogo'>
-        <div className='footerlogo1'>  <img src="images/logo.png" alt="LifeLink logo" className="logo-breath" /> </div>
+    <footer className="footer">
+      <div className="footer-top">
+      
+        <div className="footer-brand">
+          <div className="brand-logo">
+            <img src="/images/div(1).png" alt="LifeLink Logo" className="logo-breath" />
+            <h3>ALIFE</h3>
+          </div>
+          <p>
+            Connecting life-savers with those <br />
+            who need them most across Nigeria.
+          </p>
 
-        <h3>ALIFE</h3>
-      </div>
-      <div className='footernewsletter'>
-        <h1>Join the mission to save lives through blood donation.</h1>
-        <div className='footerinput'>
-
-          <IoMdMail color='white' />
-          <p style={{ color: "white" }}>alife.connect20@gmail.com</p>
-        </div>
-        <div className="footer-col">
           <div className="social-icons">
-            <a href="#"><FaFacebookF /></a>
-            <a href="#"><FaTwitter /></a>
-            <a href="#"><FaInstagram /></a>
-            <a href="#"><FaLinkedinIn /></a>
+            <span><FaFacebook /></span>
+            <span><FaXTwitter /></span>
+            <span><FaInstagram /></span>
+            <span><FaLinkedinIn /></span>
           </div>
         </div>
+
+      
+        <div className="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li>How It Works</li>
+            <li>For Donors</li>
+            <li>For Hospitals</li>
+            <li>About Us</li>
+            <li>Blog</li>
+          </ul>
+        </div>
+
+        
+        <div className="footer-links">
+          <h4>Support</h4>
+          <ul>
+            <li>FAQs</li>
+            <li>Contact Us</li>
+            <li>Privacy Policy</li>
+            <li>Terms of Service</li>
+          </ul>
+        </div>
+
+        
+        <div className="footer-links">
+          <h4>Contact</h4>
+          <ul>
+            <li>📞 +234 9013717091</li>
+            <li>✉️ alife.connect@gmail.com</li>
+          </ul>
+        </div>
       </div>
-      <div className='footerfeatures'>
-        <ul className='featureslist'>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About Us</Link>
-          </li>
-          <li>
-            <Link to="/howitworks">How it works</Link>
-          </li>
-          <li>Contact us</li>
-        </ul>
-      </div>
+
+      
       <div className="footer-bottom">
-        <p style={{ color: "white" }}>© 2025 ALIFE | All rights reserved.</p>
+        <p>© 2024 ALIFE. All rights reserved. Saving lives, one drop at a time.</p>
+        <span className="verified"><img src="/images/svg.png" alt="Verified" />Verified by Nigerian Health Authority</span>
       </div>
+    </footer>
+  );
+};
 
-    </div>
-  )
-}
-
-export default Footer
+export default Footer;
