@@ -64,7 +64,7 @@ const Footer = () => {
       
       <div className="footer-bottom">
         <p>© 2024 ALIFE. All rights reserved. Saving lives, one drop at a time.</p>
-        <span className="verified"><img src="/images/svg.png" alt="Verified" />Verified by Nigerian Health Authority</span>
+        {/* <span className="verified"><img src="/images/svg.png" alt="Verified" />Nigerian Health Authority</span> */}
       </div>
     </footer>
   );

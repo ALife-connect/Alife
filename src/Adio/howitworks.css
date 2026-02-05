@@ -1,14 +1,17 @@
+.howitworks-cnt-body{
+  /* padding-bottom: 50px; */
+}
 .lifelink-Howitworks-first-section {
   height: 100vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 4rem 2rem;
+  /* padding: 10rem 0rem; */
   max-width: 1200px;
   margin: 0 auto;
   gap: 2rem;
-  border-bottom: 1px solid black;
+ 
 }
 
 .lifelink-text {
@@ -71,17 +74,67 @@
 
 
 .hospital-steps {
-  height: 615.11px;
+  height: 100vh;
+  background:#d6eaf8;
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
+   border-top-left-radius: 150px;
+   border-top-right-radius: 150px;
   flex-direction: column;
   justify-content: space-around;
-  border-bottom: 1px solid black;
+  
+}
+
+.hospital-steps-cnt {
+  height: auto;
+  background:#d6eaf8;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  border-bottom-left-radius: 150px;
+  border-bottom-right-radius: 150px;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+  overflow: visible;
+}
+
+.hospital-steps::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* height: 180px;  */
+  background: linear-gradient(to top, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+
+.hospital-steps-cnt{
+  position: relative;
+  overflow: hidden;
+}
+
+.hospital-steps-cnt::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 180px;
+  background:linear-gradient(to bottom, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .section-title {
+  position: relative;
+  z-index: 3;
   font-size: 1.75rem;
   font-weight: 800;
   color: #1a1a1a;
@@ -152,23 +205,39 @@
   font-weight: 500;
 }
 
-.cta-btn {
-  background-color: #d73333;
+.cta-btn1 {
+  background-color: #FF1B03;
   color: white;
-  padding: 0.9rem 2rem;
+  padding: 10px 30px;
   border: none;
-  border-radius: 8px;
+  border-radius: 20px;
   font-weight: 600;
   cursor: pointer;
   width: max-content;
   transition: background-color 0.3s ease;
 }
 
-.cta-btn:hover {
+.cta-btn1:hover {
+  background-color: #b92b2b;
+}
+.cta-btn2 {
+  background-color: #FF1B03;
+  color: white;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  width: max-content;
+  transition: background-color 0.3s ease;
+  margin-bottom: 50px;
+}
+
+.cta-btn2:hover {
   background-color: #b92b2b;
 }
 
-.hospital-steps .cta-btn {
+.hospital-steps .cta-btn2 {
   display: inline-block;
 }
 
@@ -242,32 +311,6 @@
 
 
 
-
-
-
-@media (max-width: 900px) {
-  .hospital-steps {
-    height: auto;
-  }
-
-  .steps-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-  }
-
-  .step-boxes {
-    width: 100%;
-    max-width: 100%;
-    transform: none !important;
-  }
-
-  .cta-btn {
-    width: 100%;
-    text-align: center;
-  }
-}
-
 @media (max-width: 1024px) {
   .lifelink-Howitworks-first-section {
     flex-direction: column;
@@ -283,7 +326,106 @@
   }
 }
 
+@media (max-width: 900px) {
 
+  
+  .hospitla-steps-cnt,
+  .hospital-steps {
+    height: 100%;
+    background-color: white;
+    padding: 40px 20px;
+  }
+
+  .section-title {
+    font-size: 20px;
+    padding-top: 20px;
+    text-align: center;
+  }
+
+
+  .lifelink-Howitworks-first-section {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+    height: auto;
+  }
+
+  .lifelink-text h2 {
+    font-size: 20px;
+    margin-top: 10px;
+  }
+
+  .lifelink-text p {
+    font-size: 15px;
+    text-align: center;
+   
+  }
+
+  .lifelink-images img {
+    width: 180px;
+    
+  }
+
+  .img-front {
+    width: 180px;
+    transform: translateY(-20%);
+  }
+
+ 
+  .steps-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .step-boxes {
+    width: 100%;
+    max-width: 500px;
+    transform: none !important;
+  }
+
+  .cta-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+ 
+  .why-it-matters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+ 
+  .cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .card {
+    width: 90%;
+    max-width: 500px;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+  
+  }
+
+  .card-1,
+  .card-2,
+  .card-3 {
+    padding: 25px 15px;
+  }
+}
+
+
+
+/* 
 @media (max-width: 480px) {
   .section-title {
     font-size: 20px;
@@ -341,11 +483,11 @@
     background-size: contain;
     background-position: center;
   }
-}
+} */
 
 
 
-@media (max-width: 379px) {
+/* @media (max-width: 379px) {
   .lifelink-text p {
     font-size: 10px;
     text-align: center;
@@ -364,4 +506,4 @@
   .lifelink-images img {
     width: 130px;
   }
-}
+} */

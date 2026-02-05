@@ -213,6 +213,13 @@
 }
 
 @media only screen and (max-width: 900px) {
+  .carousel-card {
+  /* background-color: blue; */
+  margin-left: 20px;
+  }
+  .mobileHeaderLogo{
+    margin-right: 10px;
+  }
 }
 
 @media only screen and (max-width: 760px) {

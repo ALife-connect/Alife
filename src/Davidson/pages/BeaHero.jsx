@@ -29,7 +29,7 @@ const BeaHero = () => {
       </div>
       <div className='safty-cnt'>
         <img src="/images/svg.png" alt="" />
-        <p className='cta-footer'>100% Safty & Verified • Free Health Screening • Track Your Impact</p>
+        <p className='cta-footer'>100% Safty • Free Health Screening • Track Your Impact</p>
       </div>
 
     </section>

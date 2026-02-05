@@ -5,11 +5,11 @@ import { useSelector } from "react-redux";
 
 const Howitworks = () => {
   const nav = useNavigate()
-  const user = useSelector((state)=> state.token)
+  const user = useSelector((state) => state.token)
 
   return (
     <>
-      <div>
+      <div className="howitworks-cnt-body">
         <section className="lifelink-Howitworks-first-section">
           <div className="lifelink-text">
             <h2>Saving Lives, Made <br /> Simple</h2>
@@ -34,70 +34,71 @@ const Howitworks = () => {
           </div>
         </section>
 
+        <div className="hospital-steps-cnt-1">
+          <section className="hospital-steps">
+            <h2 className="section-title">HOW IT WORKS FOR DONORS</h2>
 
-        <section className="hospital-steps">
-          <h2 className="section-title">HOW IT WORKS FOR DONORS</h2>
+            <div className="steps-container">
+              <div className="step-boxes step-1">
+                <div className="icon"><img src="images/Group.png" /></div>
+                <h3>Find a Donation <br /> Center</h3>
+                <p>Locate a nearby hospital or blood bank using ALIFE</p>
+              </div>
 
-          <div className="steps-container">
-            <div className="step-boxes step-1">
-              <div className="icon"><img src="images/Group.png"/></div>
-              <h3>Find a Donation <br /> Center</h3>
-              <p>Locate a nearby verified hospital or blood bank using ALIFE</p>
+              <div className="step-boxes step-2">
+                <div className="icon"><img src="images/Group.png" /></div>
+                <h3>Donate Blood</h3>
+                <p>Visit the center provide your unique code, & give blood safely.</p>
+              </div>
+
+              <div className="step-boxes step-3">
+                <div className="icon"><img src="images/Group.png" /></div>
+                <h3>Track Your Impact</h3>
+                <p>Get updates on your donation history & see how many lives you’ve helped saved.</p>
+              </div>
+
+              <div className="step-boxes step-4">
+                <div className="icon"><img src="images/Group.png" /></div>
+                <h3>Enjoy Donor Benefits</h3>
+                <p>Receive incentives like free health checkups & wellness perks as a token of appriciation.</p>
+              </div>
             </div>
 
-            <div className="step-boxes step-2">
-              <div className="icon"><img src="images/Group.png"/></div>
-              <h3>Donate Blood</h3>
-              <p>Visit the center provide your unique code, & give blood safely.</p>
-            </div>
+            <button className="cta-btn1" onClick={() => nav(`${user ? "/dashboard" : "/donorssignup"}`)}>Donate</button>
+          </section>
 
-            <div className="step-boxes step-3">
-              <div className="icon"><img src="images/Group.png"/></div>
-              <h3>Track Your Impact</h3>
-              <p>Get updates on your donation history & see how many lives you’ve helped saved.</p>
-            </div>
+        </div>
 
-            <div className="step-boxes step-4">
-              <div className="icon"><img src="images/Group.png"/></div>
-              <h3>Enjoy Donor Benefits</h3>
-              <p>Receive incentives like free health checkups & wellness perks as a token of appriciation.</p>
-            </div>
-          </div>
-
-          <button className="cta-btn" onClick={()=> nav(`${user? "/dashboard" : "/donorssignup"}`)}>Donate</button>
-        </section>
-
-
-        <section className="hospital-steps">
+        <section className="hospital-steps-cnt">
           <h2 className="section-title">How It Works For Hospital & Blood Banks</h2>
 
           <div className="steps-container">
             <div className="step-boxes step-1">
-              <div className="icon"><img src="images/Group.png"/></div>
+              <div className="icon"><img src="images/Group.png" /></div>
               <h3>Register &<br />Get Verified</h3>
               <p>Sign up on ALIFE & get verified as a trusted hospital or blood bank.</p>
             </div>
 
             <div className="step-boxes step-2">
-              <div className="icon"><img src="images/Group.png"/></div>
+              <div className="icon"><img src="images/Group.png" /></div>
               <h3>Update Blood<br />Availability</h3>
               <p>Keep donors and patients informed by updating your blood supply in real time.</p>
             </div>
 
             <div className="step-boxes step-3">
-              <div className="icon"><img src="images/Group.png"/></div>
+              <div className="icon"><img src="images/Group.png" /></div>
               <h3>Receive Donors</h3>
               <p>Accept donors who visit with their unique ALIFE codes & confirm their donations.</p>
             </div>
 
             <div className="step-boxes step-4">
-              <div className="icon"><img src="images/Group.png"/></div>
+              <div className="icon"><img src="images/Group.png" /></div>
               <h3>Save More Lives</h3>
               <p>Easily connect with donors & ensure a steady supply of safe & reliable blood.</p>
             </div>
           </div>
 
-          <button className="cta-btn" onClick={()=> nav(`${user? "/dashboard" : "/hospitalsignup"}`)}>Get Listed</button>
+          <button className="cta-btn2" onClick={() => nav(`${user ? "/dashboard" : "/hospitalsignup"}`)}>Get Listed</button>
         </section>
 
         <section className="why-it-matters">

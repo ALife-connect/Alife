@@ -17,7 +17,7 @@ const WhyUs = () => {
           <div className="icon">
             <img src="/images/Group.png" alt="" />
           </div>
-          <h3>Verified & Trusted Network</h3>
+          <h3>Trusted Network</h3>
           <p>We partner only with accredited hospital and blood banks...</p>
         </div>
 
