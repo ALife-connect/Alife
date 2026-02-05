@@ -5,8 +5,7 @@ const Sponsors = () => {
         <div className='whyuswrapper'>
             <h1>sponsors</h1>
             <div className="sponsorsLogos">
-                <img src="/images/sponsors1.png" alt="sponsors1" />
-                <img src="/images/sponsors2.png" alt="sponsors2" />
+                <img src="/images/The_Curve.jpg" alt="The Curve" />
                 <img src="/images/Kora.png" alt="Kora" />
             </div>
         </div>
