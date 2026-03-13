@@ -20,7 +20,7 @@ const LandingPage = () => {
           <p>
             Every day, thousands of Nigerians need blood to survive accidents,
             surgeries, and medical conditions. <br /> Yet, blood shortages
-            remain a challenge. ALIFE connects willing donors to hospitals
+            remain a challenge. SLODAT connects willing donors to hospitals
             and blood <br /> banks, making it easier to save lives while
             ensuring you get rewarded for your generosity.
           </p>

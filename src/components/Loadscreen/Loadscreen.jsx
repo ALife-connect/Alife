@@ -33,7 +33,7 @@ const LoadingScreen = ({ children }) => {
   return loading ? (
     <div className="loader-container">
       <div className="loader-logo-section">
-        <img src="images/alifelogo.JPG" alt="Logo" className="loader-logo" />
+        <img src="images/Slodat.jpeg" alt="Logo" className="loader-logo" />
       </div>
     </div>
   ) : (

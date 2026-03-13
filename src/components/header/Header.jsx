@@ -176,8 +176,8 @@ const Header = () => {
       <div className={`headerwrapper ${isFixed ? "headerwrapperfixed" : ""}`} data-aos="fade-down">
         <div className="HeaderInnerWrapper">
           <div className="headerwrapperinner1">
-            <img src="/images/div(1).png" alt="LifeLink Logo" className="logo-breath" />
-            <h1> ALIFE</h1>
+            <img src="/images/Slodat.jpeg" alt="LifeLink Logo" className="logo-breath" />
+            <h1> SLODAT</h1>
           </div>
           <div className="headerwrapperinner2" data-aos="fade-up">
             <ul className="headerul">
@@ -215,7 +215,7 @@ const Header = () => {
       <div className="MobileHeader" data-aos="fade-down">
         <div className="mobileHeaderLogo" >
           <img
-            src="/images/div(1).png"
+            src="/images/Slodat.jpeg"
             alt="LifeLink Logo"
             onClick={() => nav("/")}
             className="logo-breath"

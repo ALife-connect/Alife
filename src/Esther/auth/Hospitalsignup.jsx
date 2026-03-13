@@ -9,7 +9,7 @@ import axios from 'axios';
 import { IoArrowBackCircleOutline } from 'react-icons/io5';
 
 
-const VITE_BASEURL = import.meta.env.VITE_BASEURL;
+const VITE_BASEURL_REN = import.meta.env.VITE_BASEURL_REN;
 
 const Hospitalsignup = () => {
   const [click,setClick] = useState(false);
@@ -41,9 +41,10 @@ const Hospitalsignup = () => {
    
       setIsLoading(true);
       try {
-        const res = await axios.post(`${VITE_BASEURL}/hospital/register`, hospitalInput);
+        const res = await axios.post(`${VITE_BASEURL_REN}/hospital/register`, hospitalInput);
         if(res?.status ===201) toast.success(res?.data?.message)
-          nav('/checkmail')
+          nav('/checkmail',{
+        state: {email: hospitalInput.email}})
         return res.data.message;
       } catch (err) {
         console.log(err)

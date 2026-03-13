@@ -53,9 +53,11 @@
  
 }
 .headerwrapperinner1 img {
-  width: 40px;
+  width: 60px;
+  height: fit-content;
   gap: 20px;
   padding-right: 5px;
+  border-radius: 50px;
 }
 .headerwrapperinner1 h1 {
   font-family: 'Poppins', sans-serif;

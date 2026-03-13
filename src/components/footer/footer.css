@@ -18,6 +18,7 @@
 }
 
 .brand-logo {
+
   display: flex;
   align-items: center;
   gap: 10px;
@@ -27,6 +28,14 @@
 .brand-logo h3 {
   font-size: 24px;
   font-weight: 700;
+}
+
+.brand-logo img {
+  width: 60px;
+  height: fit-content;
+  gap: 20px;
+  padding-right: 5px;
+ 
 }
 
 .footer-brand p {
