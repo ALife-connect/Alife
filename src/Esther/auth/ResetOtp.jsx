@@ -5,7 +5,7 @@ import { HiOutlineArrowCircleLeft } from 'react-icons/hi'
 
 import axios from "axios";
 import { toast } from "sonner";
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
 import { useParams } from "react-router";
 
 const VITE_BASEURL = import.meta.env.VITE_BASEURL;
