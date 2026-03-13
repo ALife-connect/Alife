@@ -9,11 +9,11 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-top">
-      
+
         <div className="footer-brand">
           <div className="brand-logo">
-            <img src="/images/div(1).png" alt="LifeLink Logo" className="logo-breath" />
-            <h3>ALIFE</h3>
+            <img src="/images/Slodat.jpeg" alt="LifeLink Logo" className="logo-breath" />
+            <h3>SLODAT</h3>
           </div>
           <p>
             Connecting life-savers with those <br />
@@ -28,7 +28,7 @@ const Footer = () => {
           </div>
         </div>
 
-      
+
         <div className="footer-links">
           <h4>Quick Links</h4>
           <ul>
@@ -40,7 +40,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        
+
         <div className="footer-links">
           <h4>Support</h4>
           <ul>
@@ -51,19 +51,19 @@ const Footer = () => {
           </ul>
         </div>
 
-        
+
         <div className="footer-links">
           <h4>Contact</h4>
           <ul>
             <li>📞 +234 9013717091</li>
-            <li>✉️ alife.connect@gmail.com</li>
+            <li>✉️ slodat.connect@gmail.com</li>
           </ul>
         </div>
       </div>
 
-      
+
       <div className="footer-bottom">
-        <p>© 2024 ALIFE. All rights reserved. Saving lives, one drop at a time.</p>
+        <p>© 2024 SLODAT. All rights reserved. Saving lives, one drop at a time.</p>
         {/* <span className="verified"><img src="/images/svg.png" alt="Verified" />Nigerian Health Authority</span> */}
       </div>
     </footer>

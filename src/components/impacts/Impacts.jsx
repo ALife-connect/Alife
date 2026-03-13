@@ -7,7 +7,7 @@ const Impacts = () => {
   return (
    
     <section className="why-different">
-      <h2>What Makes ALIFE Different</h2>
+      <h2>What Makes SLODAT Different</h2>
       <p className="subtitle">
         The most trusted blood donation platform in Nigeria
       </p>

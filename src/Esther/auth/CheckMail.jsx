@@ -1,10 +1,18 @@
 import { useState, useRef, useEffect } from "react";
 import "../styles/checkmail.css";
 import { toast } from "react-toastify";
-import { useLocation, useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const VITE_BASEURL = import.meta.env.VITE_BASEURL;
+const VITE_BASEURL_REN = import.meta.env.VITE_BASEURL_REN;
+
+// Create axios instance with default headers
+const api = axios.create({
+  baseURL: VITE_BASEURL_REN,
+  headers: {
+    'Content-Type': 'application/json'
+  }
+});
 
 export default function CheckMail() {
   const nav = useNavigate();
@@ -53,7 +61,7 @@ export default function CheckMail() {
     }
 
     try {
-      const res = await axios.post(`${VITE_BASEURL}/verify-otp`, {email, otp: finalOtp });
+      const res = await api.post('/verify-otp', { email, otp: finalOtp });
       toast.success("OTP Verified Successfully!");
       nav("/dashboard");
     } catch (err) {
@@ -64,7 +72,7 @@ export default function CheckMail() {
 
   const handleResend = async () => {
     try {
-      await axios.post(`${VITE_BASEURL}/resend-otp`,{email});
+      await api.post('/resend-otp', { email });
       toast.info("A new OTP has been sent to your email.");
       setCounter(60); // reset countdown
     } catch (err) {
@@ -79,7 +87,7 @@ export default function CheckMail() {
 
         <h1>Enter OTP</h1>
         <p>
-          We’ve sent a 6-digit OTP code to your email.  
+          We've sent a 6-digit OTP code to your email.  
           Please enter it below to verify your account.
         </p>
 
@@ -101,7 +109,7 @@ export default function CheckMail() {
         <button onClick={handleSubmit}>Verify</button>
 
         <p className="resend-text">
-          Didn’t get it?{" "}
+          Didn't get it?{" "}
           {counter > 0 ? (
             <span className="resend-disabled">Resend OTP in {counter}s</span>
           ) : (
