@@ -8,9 +8,9 @@ const WhyUs = () => {
       <span
         style={{ fontFamily: "poppins", fontSize: "36px", fontWeight: "700" }}
       >
-        What makes ALIVE different
+        What makes SOLDAT different
       </span>
-      <span style={{ fontFamily: "poppins", fontSize: "25px", fontWeight: "400", marginTop: "2%" }}> Every detail of ALIVE is designed to make donating blood easier, safer, and more impactful.</span>
+      <span style={{ fontFamily: "poppins", fontSize: "25px", fontWeight: "400", marginTop: "2%" }}> Every detail of SOLDAT is designed to make donating blood easier, safer, and more impactful.</span>
 
       <div className="step-box-cnt">
         <div className="step-box">

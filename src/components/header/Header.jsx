@@ -221,7 +221,7 @@ const Header = () => {
             className="logo-breath"
             data-aos="zoom-in"
           />
-          <h1>ALIFE</h1>
+          <h1>SLODAT</h1>
         </div>
 
         <div className="dashboardHeaderSearchWrapper" data-aos="fade-up"

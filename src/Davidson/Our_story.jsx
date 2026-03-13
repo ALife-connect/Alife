@@ -13,13 +13,13 @@ const Our_story = () => {
             <div className="main-image">
               <img
                 src="images/Our_story.jpeg"
-                alt="ALIVE team group photo"
+                alt="SOLDAT team group photo"
               />
             </div>
             <div className="small-image">
               <img
                 src="images/Our_story1.jpeg"
-                alt="Another photo of the ALIVE team"
+                alt="Another photo of the SOLDAT team"
               />
             </div>
           </div>
@@ -27,7 +27,7 @@ const Our_story = () => {
         </div>
         <div className="our-story-text">
           <p>
-            ALIVE was born out of a simple but urgent reality, too many
+            SOLDAT was born out of a simple but urgent reality, too many
             patients in Nigeria struggle to find blood when they need it most.
             The shortage is not because people don’t want to donate, but
             because there’s no easy bridge connecting willing donors to
@@ -35,7 +35,7 @@ const Our_story = () => {
           </p>
           <p>
             In April 2025, our team came together at a hackathon with one
-            mission — to build that bridge. We designed ALIVE to connect
+            mission — to build that bridge. We designed SOLDAT to connect
             donors, hospitals, and blood banks on one platform, making the
             donation process more transparent, reliable, and impactful.
           </p>
