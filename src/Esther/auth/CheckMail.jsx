@@ -6,97 +6,150 @@ import axios from "axios";
 
 const VITE_BASEURL_REN = import.meta.env.VITE_BASEURL_REN;
 
-// Create axios instance with default headers
-const api = axios.create({
-  baseURL: VITE_BASEURL_REN,
-  headers: {
-    'Content-Type': 'application/json'
-  }
-});
-
 export default function CheckMail() {
   const nav = useNavigate();
   const location = useLocation();
-  const email = location.state?.email;
+
+  // ✅ Get email safely (state OR localStorage)
+  const email =
+    location.state?.email ||
+    localStorage.getItem("email");
+
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const inputsRef = useRef([]);
+  const [counter, setCounter] = useState(45);
 
-  const [counter, setCounter] = useState(45); // countdown in seconds
-
-  // Countdown effect
+  // ✅ Protect page if email missing
   useEffect(() => {
-    let timer;
-    if (counter > 0) {
-      timer = setTimeout(() => setCounter(counter - 1), 1000);
+    if (!email) {
+      toast.error("Email missing. Please login again.");
+      nav("/login");
     }
+  }, [email, nav]);
+
+  // ✅ Auto focus first input
+  useEffect(() => {
+    inputsRef.current[0]?.focus();
+  }, []);
+
+  // ✅ Countdown
+  useEffect(() => {
+    if (counter === 0) return;
+
+    const timer = setTimeout(() => {
+      setCounter(prev => prev - 1);
+    }, 1000);
+
     return () => clearTimeout(timer);
   }, [counter]);
 
-  // Handle OTP input
+  // ✅ Handle OTP input
   const handleChange = (e, index) => {
-    const value = e.target.value.replace(/\D/g, ""); // Only numbers
-    if (!value) return;
+    const value = e.target.value.replace(/\D/g, "");
 
     const newOtp = [...otp];
-    newOtp[index] = value[0]; // only 1 digit per box
+    newOtp[index] = value;
     setOtp(newOtp);
 
-    if (index < 5 && value) {
-      inputsRef.current[index + 1].focus();
+    if (value && index < 5) {
+      inputsRef.current[index + 1]?.focus();
     }
   };
 
-  // Handle backspace
+  // ✅ Backspace navigation
   const handleKeyDown = (e, index) => {
     if (e.key === "Backspace" && !otp[index] && index > 0) {
-      inputsRef.current[index - 1].focus();
+      inputsRef.current[index - 1]?.focus();
     }
   };
 
+  // ✅ Verify OTP - FIXED: Added headers
   const handleSubmit = async () => {
     const finalOtp = otp.join("");
-    if (finalOtp.length < 6) {
-      toast.error("Please enter the full 6-digit code");
+
+    if (!email || finalOtp.length !== 6) {
+      toast.error("Email and 6-digit OTP are required");
       return;
     }
 
     try {
-      const res = await api.post('/verify-otp', { email, otp: finalOtp });
+      await axios.post(
+        `${VITE_BASEURL_REN}/verify-otp`,
+        {
+          email,
+          otp: finalOtp
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+
       toast.success("OTP Verified Successfully!");
+
+      // Optional: clear stored email
+      localStorage.removeItem("email");
+
       nav("/dashboard");
+
     } catch (err) {
-      console.error(err);
-      toast.error("Invalid OTP, please try again.");
+      console.log(err.response?.data);
+      toast.error(err.response?.data?.message || "Invalid OTP, please try again.");
     }
   };
 
+  // ✅ Resend OTP - FIXED: Added headers
   const handleResend = async () => {
+    if (!email) {
+      toast.error("Email missing.");
+      return;
+    }
+
     try {
-      await api.post('/resend-otp', { email });
+      await axios.post(
+        `${VITE_BASEURL_REN}/resend-otp`,
+        {
+          email
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+
       toast.info("A new OTP has been sent to your email.");
-      setCounter(60); // reset countdown
+      setCounter(60);
+
     } catch (err) {
-      toast.error("Failed to resend OTP. Try again later.");
+      console.log(err.response?.data);
+      toast.error(err.response?.data?.message || "Failed to resend OTP. Try again later.");
     }
   };
 
   return (
     <div className="checkmail-wrapper">
       <div className="checkmail-card">
-        <img src="/images/checkmail.png" alt="Check mail" className="mail-img" />
+        <img
+          src="/images/checkmail.png"
+          alt="Check mail"
+          className="mail-img"
+        />
 
         <h1>Enter OTP</h1>
         <p>
-          We've sent a 6-digit OTP code to your email.  
+          We've sent a 6-digit OTP code to your email.
           Please enter it below to verify your account.
         </p>
 
-        {/* OTP Input Boxes */}
+        {/* OTP Inputs */}
         <div className="otp-inputs">
           {otp.map((digit, index) => (
             <input
               key={index}
               type="text"
+              inputMode="numeric"
               maxLength="1"
               value={digit}
               onChange={(e) => handleChange(e, index)}
@@ -106,14 +159,21 @@ export default function CheckMail() {
           ))}
         </div>
 
-        <button onClick={handleSubmit}>Verify</button>
+        <button onClick={handleSubmit}>
+          Verify
+        </button>
 
         <p className="resend-text">
           Didn't get it?{" "}
           {counter > 0 ? (
-            <span className="resend-disabled">Resend OTP in {counter}s</span>
+            <span className="resend-disabled">
+              Resend OTP in {counter}s
+            </span>
           ) : (
-            <span className="resend-link" onClick={handleResend}>
+            <span
+              className="resend-link"
+              onClick={handleResend}
+            >
               Resend OTP
             </span>
           )}
