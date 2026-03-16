@@ -43,7 +43,7 @@ const DashboardSideBar = () => {
       <div className="SideBArWrapper">
         <div className="innerSideBArWrapper">
           <img
-            src="images/alifenobg.png"
+            src="/images/Slodat.jpeg"
             alt="LifeLink Logo"
             className="sideBarLogo"
             onClick={() => nav("/")}
