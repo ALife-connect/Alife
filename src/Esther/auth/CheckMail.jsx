@@ -10,10 +10,9 @@ export default function CheckMail() {
   const nav = useNavigate();
   const location = useLocation();
 
-  // ✅ Get email safely (state OR localStorage)
-  const email =
-    location.state?.email ||
-    localStorage.getItem("email");
+  // ✅ Get email and userType from state OR localStorage
+  const email = location.state?.email || localStorage.getItem("email");
+  const userType = location.state?.userType || localStorage.getItem("pendingUserType");
 
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const inputsRef = useRef([]);
@@ -63,7 +62,7 @@ export default function CheckMail() {
     }
   };
 
-  // ✅ Verify OTP - FIXED: Added headers
+  // ✅ Verify OTP - Routes based on userType
   const handleSubmit = async () => {
     const finalOtp = otp.join("");
 
@@ -88,10 +87,18 @@ export default function CheckMail() {
 
       toast.success("OTP Verified Successfully!");
 
-      // Optional: clear stored email
+      // ✅ Clear stored data
       localStorage.removeItem("email");
+      localStorage.removeItem("pendingUserType");
 
-      nav("/dashboard");
+      // ✅ Route based on user type
+      if (userType === "hospital") {
+        nav("/hospitallogin");
+      } else if (userType === "donor") {
+        nav("/donorslogin");
+      } else {
+        nav("/dashboard");
+      }
 
     } catch (err) {
       console.log(err.response?.data);
@@ -99,7 +106,7 @@ export default function CheckMail() {
     }
   };
 
-  // ✅ Resend OTP - FIXED: Added headers
+  // ✅ Resend OTP
   const handleResend = async () => {
     if (!email) {
       toast.error("Email missing.");

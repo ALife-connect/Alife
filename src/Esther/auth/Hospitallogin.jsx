@@ -103,7 +103,7 @@ const Hospitallogin = () => {
       <div className="hoslogininfowrap">
         <div className="hosloginlogohold">
           <Link to="/">
-            <img src="/images/alifenobg.png" alt="Logo" className="hosloginlogo" />
+            <img src="/images/Slodat.jpeg" alt="Logo" className="hosloginlogo" />
           </Link>
         </div>
 

@@ -12,16 +12,16 @@ import { IoArrowBackCircleOutline } from 'react-icons/io5';
 const VITE_BASEURL_REN = import.meta.env.VITE_BASEURL_REN;
 
 const Hospitalsignup = () => {
-  const [click,setClick] = useState(false);
+  const [click, setClick] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
   const nav = useNavigate();
-  
-  
-  
+
+
+
   const [showPassword1, setShowPassword1] = useState(true)
   const [showPassword2, setShowPassword2] = useState(true)
-  const [confirmPassword,setConfirmPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
   const [hospitalInput, setHospitalInput] = useState({
     fullName: "",
     email: "",
@@ -32,27 +32,49 @@ const Hospitalsignup = () => {
     role: "hospital",
   });
 
-  const handleSubmit = async()=>{
-    if(hospitalInput.password !== confirmPassword) {
-      return toast.error('please input all fields');
-    }if( !hospitalInput.fullName || !hospitalInput.email || !hospitalInput.password || !hospitalInput.location || !hospitalInput.city || !hospitalInput.phone) {
-      return toast.error('please input all fields')
+  const handleSubmit = async () => {
+    if (hospitalInput.password !== confirmPassword) {
+      return toast.error('Passwords do not match');
     }
-   
-      setIsLoading(true);
-      try {
-        const res = await axios.post(`${VITE_BASEURL_REN}/hospital/register`, hospitalInput);
-        if(res?.status ===201) toast.success(res?.data?.message)
-          nav('/checkmail',{
-        state: {email: hospitalInput.email}})
-        return res.data.message;
-      } catch (err) {
-        console.log(err)
-        toast.error(err?.response?.data?.message)
-      } finally {
-        setIsLoading(false);
+    if (!hospitalInput.fullName || !hospitalInput.email || !hospitalInput.password || !hospitalInput.location || !hospitalInput.city || !hospitalInput.phone) {
+      return toast.error('Please fill in all fields')
+    }
+
+    setIsLoading(true);
+    try {
+      const res = await axios.post(
+        `${VITE_BASEURL_REN}/hospital/register`,
+        hospitalInput,
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+
+      if (res?.status === 201) {
+        toast.success(res?.data?.message);
       }
-    
+
+      // ✅ Store email and userType for CheckMail routing
+      localStorage.setItem("email", hospitalInput.email);
+      localStorage.setItem("pendingUserType", "hospital");
+
+      // ✅ Pass userType to CheckMail
+      nav('/checkmail', {
+        state: {
+          email: hospitalInput.email,
+          userType: "hospital"
+        }
+      });
+
+    } catch (err) {
+      console.log(err)
+      toast.error(err?.response?.data?.message || "Registration failed")
+    } finally {
+      setIsLoading(false);
+    }
+
   }
 
   const lagosLGAs = [
@@ -81,109 +103,109 @@ const Hospitalsignup = () => {
   return (
     <div className='hospitalsignwrapper'>
       <div className='hossignmobilewrap'>
-        <div className='smallarrow' ><IoArrowBackCircleOutline onClick={()=>nav(-1)}/></div>
+        <div className='smallarrow' ><IoArrowBackCircleOutline onClick={() => nav(-1)} /></div>
         <h1>CREATE AN ACCOUNT</h1>
         <p>REGISTER AS HOSPITAL/ <br /> BLOODBANK</p>
       </div>
       <div className='hospisigninfowrap'>
         <div className='hospisignlogohold'>
-        <HiOutlineArrowCircleLeft size={50} onClick={()=> nav(-1)} />
+          <HiOutlineArrowCircleLeft size={50} onClick={() => nav(-1)} />
           <Link to="/">
-            <img src="images/alifenobg.png" alt="Logo" className='hospisignlogo'/>
+            <img src="/images/Slodat.jpeg" alt="Logo" className='hospisignlogo' />
           </Link>
         </div>
         <div className='hospisigninfo1'>
           <h1>REGISTER AS HOSPITAL/ <br /> BLOODBANK</h1>
           <div className='hossigninputwrapper'>
             <p>FACILITY NAME</p>
-            <input type="text" placeholder='FACILITY NAME' className='hossigninput' 
-            value={hospitalInput.fullName}
-            onChange={(e)=>setHospitalInput((prev) => ({ ...prev, fullName: e.target.value }))}
+            <input type="text" placeholder='FACILITY NAME' className='hossigninput'
+              value={hospitalInput.fullName}
+              onChange={(e) => setHospitalInput((prev) => ({ ...prev, fullName: e.target.value }))}
             />
           </div>
           <div className='hossigninputwrapper'>
             <p>OFFICE ADDRESS</p>
             <input type="text" placeholder='ADDRESS' className='hossigninput'
-            value={hospitalInput.location} 
-            onChange={(e)=>setHospitalInput((prev)=> ({...prev,location:e.target.value}))} 
+              value={hospitalInput.location}
+              onChange={(e) => setHospitalInput((prev) => ({ ...prev, location: e.target.value }))}
             />
           </div>
           <div className='hossigninputwrapper'>
             <p>LGA</p>
             <select
-            className="hossigninput"
-            value={hospitalInput.city}
-            onChange={(e)=>setHospitalInput((prev)=> ({...prev, city:e.target.value}))}
-            id="local Government"
-            name="LGA"
-          >
-            <option value="">Select your LGA</option>
-            {lagosLGAs.map((item, index) => (
-              <option key={index} value={item.value}>{item?.value}</option>
-            ))}
-          </select>
+              className="hossigninput"
+              value={hospitalInput.city}
+              onChange={(e) => setHospitalInput((prev) => ({ ...prev, city: e.target.value }))}
+              id="local Government"
+              name="LGA"
+            >
+              <option value="">Select your LGA</option>
+              {lagosLGAs.map((item, index) => (
+                <option key={index} value={item.value}>{item?.value}</option>
+              ))}
+            </select>
 
 
           </div>
           <div className='hossigninputwrapper'>
             <p>EMAIL</p>
             <input type="email" placeholder='you@example.com' className='hossigninput'
-            value={hospitalInput.email}
-            onChange={(e)=>setHospitalInput((prev)=> ({...prev,email:e.target.value}))}
+              value={hospitalInput.email}
+              onChange={(e) => setHospitalInput((prev) => ({ ...prev, email: e.target.value }))}
             />
           </div>
           <div className='hossigninputwrapper'>
             <p>PHONE NUMBER</p>
-            <input type="text" placeholder='+234**********' className='hossigninput' 
-            value={hospitalInput.phone}
-            onChange={(e)=>setHospitalInput((prev)=> ({...prev, phone:e.target.value}))}
+            <input type="text" placeholder='+234**********' className='hossigninput'
+              value={hospitalInput.phone}
+              onChange={(e) => setHospitalInput((prev) => ({ ...prev, phone: e.target.value }))}
             />
           </div>
           <div className='hossigninputwrapper'>
             <p>CREATE PASSWORD</p>
             <div className="inputAndIcon">
-            <input
-              type={showPassword1? "password" : "text"}
-              className='donorssignpasswordinput'
-              placeholder='Confirm Password'
-              value={hospitalInput.password}
-              onChange={(e) => setHospitalInput(prev => ({...prev, password: e.target.value}))}
-            />
-            {showPassword1? <LuEyeClosed onClick={()=> setShowPassword1(false)}/> : <LuEye onClick={()=> setShowPassword1(true)}/>}
+              <input
+                type={showPassword1 ? "password" : "text"}
+                className='donorssignpasswordinput'
+                placeholder='Create Password'
+                value={hospitalInput.password}
+                onChange={(e) => setHospitalInput(prev => ({ ...prev, password: e.target.value }))}
+              />
+              {showPassword1 ? <LuEyeClosed onClick={() => setShowPassword1(false)} /> : <LuEye onClick={() => setShowPassword1(true)} />}
             </div>
           </div>
           <div className='hossigninputwrapper'>
             <p>CONFIRM PASSWORD</p>
             <div className="inputAndIcon">
-            <input
-              type={showPassword2? "password" : "text"}
-              className='donorssignpasswordinput'
-              placeholder='Confirm Password'
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-            {showPassword2? <LuEyeClosed onClick={()=> setShowPassword2(false)}/> : <LuEye onClick={()=> setShowPassword2(true)}/>}
+              <input
+                type={showPassword2 ? "password" : "text"}
+                className='donorssignpasswordinput'
+                placeholder='Confirm Password'
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+              {showPassword2 ? <LuEyeClosed onClick={() => setShowPassword2(false)} /> : <LuEye onClick={() => setShowPassword2(true)} />}
             </div>
           </div>
           <div className='checkboxwrapper'>
-            <input type="checkbox" 
-            onClick={()=>setClick(!click)}
+            <input type="checkbox"
+              onClick={() => setClick(!click)}
             />
-            
-            <p>I agree to the <a href="" onClick={()=>nav("/hospiterms")} className='tandc'>TERMS AND CONDITIONS</a></p>
+
+            <p>I agree to the <a href="" onClick={() => nav("/hospiterms")} className='tandc'>TERMS AND CONDITIONS</a></p>
           </div>
           <button className='hospibtn'
-          onClick={handleSubmit}
-          disabled={!click || isLoading}
+            onClick={handleSubmit}
+            disabled={!click || isLoading}
           >
-            {isLoading ? <FadeLoader color="white" size={25}/> : "REGISTER"}
+            {isLoading ? <FadeLoader color="white" size={25} /> : "REGISTER"}
           </button>
           <div className='hosloginforgotwrap'>
-            <p onClick={()=>nav("/hospitallogin")}>ALREADY HAVE AN ACCOUNT? <a href="" style={{color:"blue"}}>LOGIN</a></p>
+            <p onClick={() => nav("/hospitallogin")}>ALREADY HAVE AN ACCOUNT? <a href="" style={{ color: "blue" }}>LOGIN</a></p>
           </div>
         </div>
       </div>
-      <img src="images/Subtract.png" alt="" className='hospisignimage'/>
+      <img src="images/Subtract.png" alt="" className='hospisignimage' />
     </div>
   )
 }
