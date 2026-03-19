@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../../Esther/styles/donorssign.css';
-import { Link, useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router-dom';
 import FadeLoader from 'react-spinners/CircleLoader'
 import { toast } from 'sonner';
 import { HiOutlineArrowCircleLeft } from 'react-icons/hi';
@@ -35,26 +35,47 @@ const Donorssignup = () => {
     if (userData.password !== confirmPassword) {
       toast.error('Passwords do not match!');
       return;
-    } if (!userData.fullName || !userData.email || !userData.location || !userData.password || !userData.age || !userData.bloodType) {
-      toast.error("Please input all field")
+    } 
+    if (!userData.fullName || !userData.email || !userData.location || !userData.password || !userData.age || !userData.bloodType) {
+      toast.error("Please input all fields")
       return
     }
-      setIsLoading(true);
-      try {
-        const res = await axios.post(`${VITE_BASEURL}/register`, userData);
-        toast.success(res.data.message);
-        setTimeout(() => {
-          nav("/checkmail");
-        }, 1000);
-        return res.data.message;
-      } catch (err) {
-        if(err.status === 400){
-          toast.error(err.response.data.message);
+    
+    setIsLoading(true);
+    try {
+      const res = await axios.post(
+        `${VITE_BASEURL}/register`, 
+        userData,
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
         }
-
-      } finally {
-        setIsLoading(false);
+      );
+      
+      toast.success(res.data.message);
+      
+      // ✅ Store email and userType for CheckMail routing
+      localStorage.setItem("email", userData.email);
+      localStorage.setItem("pendingUserType", "donor");
+      
+      // ✅ Pass userType to CheckMail
+      setTimeout(() => {
+        nav("/checkmail", {
+          state: { 
+            email: userData.email,
+            userType: "donor"
+          }
+        });
+      }, 1000);
+      
+    } catch (err) {
+      if(err.status === 400){
+        toast.error(err.response.data.message);
       }
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

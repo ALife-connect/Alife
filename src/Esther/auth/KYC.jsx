@@ -84,7 +84,7 @@ const KYC = () => {
         <div className="kyclogohold">
           <HiOutlineArrowCircleLeft size={50} onClick={() => nav(-1)} />
           <Link to="/">
-            <img src="images/alifenobg.png" alt="Logo" className="kyclogo" />
+            <img src="/images/Slodat.jpeg" alt="Logo" className="kyclogo" />
           </Link>
         </div>
 
