@@ -7,7 +7,7 @@ import { FaCamera } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { logIn, profilePic } from "../../global/Slice";
 
-const Base_Url = import.meta.env.VITE_BASEURL;
+const Base_Url = import.meta.env.VITE_BASEURL_REN;
 
 const SettingsPage = () => {
   const InitialUserData = useSelector((state) => state?.loggedInUser);

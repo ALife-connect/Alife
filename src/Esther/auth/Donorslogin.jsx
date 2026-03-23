@@ -28,32 +28,52 @@ const Donorslogin = () => {
   const handleLogin = async () => {
     setIsLoading(true);
     try {
-      const res = await axios.post(`${VITE_BASEURL}/login`, userLoginData);
+      // ✅ FIXED: Added Content-Type header
+      const res = await axios.post(
+        `${VITE_BASEURL}/login`,
+        userLoginData,
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+
       const user = res?.data?.data;
       if (!user?.isVerified) {
         toast.error('Account not verified. Please check your email.');
         nav("/checkmail", { state: { email: userLoginData.email } })
 
         try {
-          await axios.post(`${VITE_BASEURL}/resend-otp`, {
-            email: userLoginData.email,
-          });
+          // ✅ FIXED: Added Content-Type header to resend-otp
+          await axios.post(
+            `${VITE_BASEURL}/resend-otp`,
+            {
+              email: userLoginData.email,
+            },
+            {
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            }
+          );
         } catch (err) {
           console.error("Error sending re-verification email:", err);
         }
         return;
       }
+
       toast.success(res?.data?.message);
       dispatch(logIn(res?.data?.data))
       dispatch(saveToken(res?.data?.token))
       setTimeout(() => {
         nav("/dashboard");
       }, 1000);
-      return res.message;
+
     } catch (err) {
       console.error("Login error:", err?.response?.data?.message || err);
       toast.error(
-        err?.response?.data?.message || "Something went wrong during registration."
+        err?.response?.data?.message || "Something went wrong during login."
       );
     } finally {
       setIsLoading(false);
