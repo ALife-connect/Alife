@@ -1,116 +1,159 @@
+/* ==========================================================================
+   SLODAT Light-Theme Call-To-Action (CTA) Styles
+   ========================================================================== */
+
 .cta-wrapper {
   width: 100%;
-  padding: 80px 20px;
-  background-color: #ffffff;
+  padding: 120px 24px;
+  background-color: #ffffff; /* Explicitly forced clean white background */
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  gap: 18px;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.cta-content-box {
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
 }
 
 .cta-wrapper h1 {
-  font-size: 36px;
-  font-weight: 700;
-  color: #0f172a;
-  font-family: Poppins, sans-serif;
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(32px, 4.5vw, 48px);
+  font-weight: 800;
+  color: #000000; /* High contrast crisp black text */
+  margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 .cta-subtitle {
-  max-width: 600px;
-  font-size: 16px;
-  color: #64748b;
+  font-family: 'Poppins', sans-serif;
+  max-width: 640px;
+  font-size: clamp(16px, 2.2vw, 19px);
+  color: #4a4a4a; /* Readable dark charcoal gray text */
   line-height: 1.6;
-  font-family: Poppings, sans-serif;
+  margin: 0 auto;
 }
 
 .cta-buttons {
   display: flex;
   gap: 16px;
-  margin-top: 10px;
-  flex-wrap: nowrap;
+  margin-top: 12px;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
-
-.btn-primary {
-  background-color: #ff1b03;
+/* Primary Brand Action Button: Pure Emergency Red */
+.btn-brand-primary {
+  background-color: #F02222;
   color: #ffffff;
-  padding: 14px 26px;
-  width: 220px;
+  padding: 0 32px;
+  width: 240px;
   height: 60px;
-  border-radius: 8px;
-  font-size: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
   font-weight: 600;
   white-space: nowrap;
   border: none;
   cursor: pointer;
+  box-shadow: 0 4px 14px rgba(240, 34, 34, 0.2);
+  transition: all 0.2s ease-in-out;
 }
 
-.btn-primary:hover {
-  background-color: #cc1602;
+.btn-brand-primary:hover {
+  background-color: #d11919;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(240, 34, 34, 0.3);
 }
 
-.btn-secondary {
-  background-color:#E5E7EB;
-  color: #0f172a;
-  padding: 14px 26px;
-  width: 224px;
+/* Secondary Brand Action Button: Electric Blue Borderless/White Style */
+.btn-brand-secondary {
+  background-color: #ffffff;
+  color: #2902F1;
+  padding: 0 32px;
+  width: 240px;
   height: 60px;
-  border-radius: 8px;
-  font-size: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
   font-weight: 600;
   white-space: nowrap;
-  border: none;
+  border: 2px solid #2902F1;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
-.btn-secondary:hover {
-  background-color: #e2e8f0;
+.btn-brand-secondary:hover {
+  background-color: rgba(41, 2, 241, 0.04);
+  transform: translateY(-2px);
+}
+
+/* Footer / Safety Badge Row Layout */
+.safety-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 16px;
+  padding: 8px 16px;
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: 100px;
+}
+
+.safety-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
 }
 
 .cta-footer {
+  font-family: 'Poppins', sans-serif;
   font-size: 14px;
-  color: #64748b;
-  margin-top: 8px;
-  font-family: Poppins, sans-serif;
+  font-weight: 500;
+  color: #4a4a4a;
+  margin: 0;
 }
 
-.safty-cnt {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 12px;
-}
+/* ==========================================================================
+   Fluid Responsive Structural Breakpoints
+   ========================================================================== */
 
-@media (max-width:900px){
-  .cta-wrapper{
-    margin-top: 50px;
-    display:flex ;
-    padding: 20px 10px;
-    margin-bottom: 50px;
+@media (max-width: 768px) {
+  .cta-wrapper {
+    padding: 80px 20px;
   }
 
-  .cta-wrapper h1{
-    width: 334px;
-    font-size: 25.77px;
-    font-weight: 700;
-    font-style: bold;
+  .cta-content-box {
+    gap: 20px;
   }
 
-  .cta-buttons{
-    width: 224px;
-    height: 31px;
-    margin-top: 20px;
-    padding: 40px;
+  .cta-buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px; /* Locks execution bounds inside clean layout rules */
+    gap: 14px;
   }
 
-  .btn-primary,
-  .btn-secondary{
-    width: 125%;
+  .btn-brand-primary,
+  .btn-brand-secondary {
+    width: 100%; /* Spans full responsive width elegantly */
+    height: 56px;
+    font-size: 16px;
+  }
 
+  .safety-container {
+    background-color: transparent;
+    padding: 0;
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
   }
 }

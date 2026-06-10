@@ -3,28 +3,14 @@ import React from "react";
 const BridgingGap = () => {
   return (
     <div className="text-div2-cnt">
-      <span
-        style={{
-          fontFamily: "poppins",
-          fontSize: "32px",
-          fontWeight: "700",
-          lineHeight: "100%",
-          marginTop: "50px",
-        }}
-      >
-        Bridging the Blood Supply Gap
-      </span>
+      <h3>Bridging the Blood Supply Gap</h3>
       <div className="bridging">
         <p>
           We streamline the process with real-time blood availability updates,
-          transparency, and <br />
-          exclusive benefits like free health checkups. For hospitals and blood
-          banks, we provide <br />
-          an efficient way to request and manage blood supplies. By leveraging
-          technology, we <br />
-          create a trusted network where donate is easier, faster, and more
-          impactful because <br />
-          every drop saves a life.
+          transparency, and exclusive benefits like free health checkups. For hospitals and blood
+          banks, we provide an efficient way to request and manage blood supplies. By leveraging
+          technology, we create a trusted network where donating is easier, faster, and more
+          impactful because every drop saves a life.
         </p>
       </div>
     </div>

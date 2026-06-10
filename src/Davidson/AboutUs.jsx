@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./aboutus.css";
 import AboutHeader from "./AboutHeader";
 import BridgingGap from "./BridgingGap";
@@ -8,19 +8,22 @@ import Team from "./Team";
 import Our_story from "./Our_story";
 
 const AboutUs = () => {
+  // Ensure page views start smoothly from the top on route transitions
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   return (
-    <div className="aboutus-cnt-body">
-      <div className="main-cnt">
-        <div className="about-content">
-          <AboutHeader />
-          <BridgingGap />
-          <Our_story />
-          <MissionVision />
-          <WhyUs />
-          <Team />
-        </div>
+    <main className="aboutus-page-wrapper">
+      <div className="aboutus-content-container">
+        <AboutHeader />
+        <BridgingGap />
+        <Our_story />
+        <MissionVision />
+        <WhyUs />
+        <Team />
       </div>
-    </div>
+    </main>
   );
 };
 

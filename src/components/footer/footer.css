@@ -1,119 +1,175 @@
+/* --- Modernized Footer Base --- */
 .footer {
-  background-color: #2C3E50;
-  color: #cbd5e1;
-  font-family: Poppins, sans-serif;
+  background-color: #0f172a; /* Deep modern slate background */
+  color: #94a3b8;
+  font-family: 'Poppins', sans-serif;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .footer-top {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 60px 20px;
+  padding: 80px 20px 50px 20px;
   display: flex;
   justify-content: space-between;
   gap: 40px;
 }
 
 .footer-brand {
-  max-width: 300px;
+  max-width: 320px;
 }
 
 .brand-logo {
-
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   color: #ffffff;
+  margin-bottom: 16px;
 }
 
 .brand-logo h3 {
   font-size: 24px;
   font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .brand-logo img {
-  width: 60px;
-  height: fit-content;
-  gap: 20px;
-  padding-right: 5px;
- 
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .footer-brand p {
-  margin: 14px 0;
   font-size: 14px;
   line-height: 1.6;
+  color: #94a3b8;
 }
 
+/* --- Social Icons Tray --- */
 .social-icons {
   display: flex;
-  gap: 10px;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.social-icons a {
+  text-decoration: none;
 }
 
 .social-icons span {
-  width: 40px;
-  height: 40px;
-  background-color: #3f566d;
+  width: 38px;
+  height: 38px;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 16px;
   cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.social-icons span:hover {
+  background-color: #ef4444; /* Matches app red identity */
+  color: #ffffff;
+  transform: translateY(-3px);
+  border-color: #ef4444;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
+}
+
+/* --- Navigation Links styling --- */
 .footer-links h4 {
   color: #ffffff;
-  margin-bottom: 16px;
-  font-size: 18px;
-  font-weight: 700;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .footer-links ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links li a {
   font-size: 14px;
-  margin-bottom: 10px;
-  cursor: pointer;
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
-.footer-links li:hover {
-  color: #ffffff;
+.footer-links li a:hover {
+  color: #ef4444; /* Active brand color link hover */
 }
 
-.footer-bottom {
-  border-top: 1px solid #1F2937;
-  padding: 20px;
+/* Contact block tweaks */
+.contact-info-list li a {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  font-size: 12px;
+  gap: 8px;
+  color: #94a3b8;
+  text-decoration: none;
+}
+
+.contact-emoji {
+  font-size: 14px;
+}
+
+/* --- Footer Copyright Section --- */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 26px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
   max-width: 1200px;
   margin: 0 auto;
+  color: #64748b;
 }
 
-.verified {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: #9CA3AF;
-}
-
-.logo-breath {
-  animation: breathing 3s ease-in-out infinite;
-  transform-origin: center;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
+/* --- Responsive Layout Configurations --- */
+@media (max-width: 868px) {
   .footer-top {
-    flex-direction: column;
+    padding: 50px 24px 40px 24px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Forms a clean 2x2 grid instead of structural column bloat */
+    gap: 40px 20px;
+  }
+
+  .footer-brand {
+    grid-column: span 2;
+    max-width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding-bottom: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-top {
+    grid-template-columns: 1fr; /* Fallback to clean single row on extreme tiny screens */
+  }
+  
+  .footer-brand {
+    grid-column: span 1;
+  }
+
+  /* CRITICAL: Safe zone offset spacer prevents floating mobile nav menu overlap */
+  .footer {
+    padding-bottom: 100px; 
   }
 
   .footer-bottom {
-    flex-direction: column;
-    gap: 10px;
     text-align: center;
+    padding: 20px 24px;
+    line-height: 1.5;
   }
 }

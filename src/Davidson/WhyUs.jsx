@@ -1,64 +1,59 @@
 import React from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 const WhyUs = () => {
-  const nav = useNavigate()
+  const navigate = useNavigate();
+  
   return (
     <div className="what-makes-us-cnt">
-      <span
-        style={{ fontFamily: "poppins", fontSize: "36px", fontWeight: "700" }}
-      >
-        What makes SOLDAT different
-      </span>
-      <span style={{ fontFamily: "poppins", fontSize: "25px", fontWeight: "400", marginTop: "2%" }}> Every detail of SOLDAT is designed to make donating blood easier, safer, and more impactful.</span>
+      <h3>What makes SLODAT different</h3>
+      <p className="section-subtitle"> Every detail of SLODAT is designed to make donating blood easier, safer, and more impactful.</p>
 
       <div className="step-box-cnt">
         <div className="step-box">
           <div className="icon">
-            <img src="/images/Group.png" alt="" />
+            <img src="/images/Group.png" alt="Network icon" />
           </div>
           <h3>Trusted Network</h3>
-          <p>We partner only with accredited hospital and blood banks...</p>
+          <p>We partner only with accredited hospitals and blood banks to ensure compliance and safety.</p>
         </div>
 
         <div className="step-box">
           <div className="icon">
-            <img src="/images/Group.png" alt="" />
+            <img src="/images/Group.png" alt="Availability icon" />
           </div>
-          <h3>Real Time Donor Availability</h3>
-          <p>Hospitals can instantly see where donors are available...</p>
+          <h3>Real-Time Availability</h3>
+          <p>Hospitals can instantly see where required blood types and voluntary donors are available.</p>
         </div>
 
         <div className="step-box">
           <div className="icon">
-            <img src="/images/Group.png" alt="" />
+            <img src="/images/Group.png" alt="Experience icon" />
           </div>
-          <h3>Seamless Donor Experience</h3>
-          <p>From easy registration to tracking donation history...</p>
+          <h3>Seamless Experience</h3>
+          <p>From easy registration to securely tracking your donation timeline and medical history history.</p>
         </div>
 
         <div className="step-box">
           <div className="icon">
-            <img src="/images/Group.png" alt="" />
+            <img src="/images/Group.png" alt="Incentive icon" />
           </div>
           <h3>Incentives for Donors</h3>
-          <p>Health checkups & wellness perks for donors.</p>
+          <p>Gain access to complimentary mini-health checkups and automated wellness perks.</p>
         </div>
 
         <div className="step-box">
           <div className="icon">
-            <img src="/images/Group.png" alt="" />
+            <img src="/images/Group.png" alt="Mission icon" />
           </div>
           <h3>Impact-Driven Mission</h3>
-          <p>Every donation directly saves lives...</p>
+          <p>Every single registration and reservation directly helps secure a life-saving match.</p>
         </div>
       </div>
 
-      <div className="get-listed-btn">
-        <button onClick={() => nav('/hospitalsignup')} className="get-listed-bt">
-          Get Listed
-        </button>
-      </div>
+      <button onClick={() => navigate('/hospitalsignup')} className="get-listed-btn">
+        Get Listed
+      </button>
     </div>
   );
 };
