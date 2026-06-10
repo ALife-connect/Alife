@@ -40,11 +40,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px;
+  padding: 0px;
 }
 
 .auth-hero-image {
-  width: 80%;
+  width: 50%;
   max-width: 440px;
   height: auto;
   filter: drop-shadow(0 15px 25px rgba(15, 23, 42, 0.12));

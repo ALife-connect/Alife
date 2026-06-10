@@ -159,8 +159,8 @@ const Header = () => {
               </div>
             ) : (
               <div className="headerwrapperinner3_guest">
-                <Link to="/login"><button className="headerbtn">Log In</button></Link>
-                <Link to="/signup"><button className="headerbtn1">Sign Up</button></Link>
+                {/* <Link to="/login"><button className="headerbtn">Log In</button></Link>
+                <Link to="/signup"><button className="headerbtn1">Sign Up</button></Link> */}
               </div>
             )}
           </div>

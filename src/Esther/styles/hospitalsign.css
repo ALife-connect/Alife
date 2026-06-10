@@ -1,253 +1,458 @@
-.hospitalsignwrapper{
-    width: 100%;
-    height: 100vh;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 34px;
-}
-.hossignmobilewrap,.smallarrow{
-    display: none;
-}
-.hospisigninfowrap{
-    width: 50%;
-    height: 690px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-.hospisignlogohold{
-    width: 90%;
-    height: 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.hospisignlogo{
-    width: 120px;
-}
-.hospisigninfo1{
-    width: 380px;
-    height: 620px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-.hospisigninfo1 h1 {
-    font-size: 20px;
-    font-weight: 700;
-    font-family: Poppins;
-    text-align: center;
-}
-.hossigninputwrapper{
-    width: 360px;
-    height: 70px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    
-}
-.hossigninputwrapper p{
-    font-size: 12px;
-    font-weight: 600;
-    width: 93%;
-    color: #21212180;
-}
-.hossigninput{
-    width: 340px;
-    height: 40px;
-    background-color: #ededed;
-    border-radius: 5px;
-    font-size: 10px;
-    padding: 4px;
-    border: 2px solid #F9F9F9;
-}
-.checkboxwrapper{
-    width: 360px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-family: Poppins;
-}
-.hospibtn{
-    width: 200px;
-    height: 36px;
-    background-color: #c0392b;
-    border-radius: 6px;
-    color: white;
-    font-family: Poppins;
-    font-weight: 400;
-    font-size: 13px;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 8px;
+/* ==========================================================================
+   DESIGN SYSTEM VARIABLE TOKENS (Shared Global Theme Match)
+   ========================================================================== */
+:root {
+  --font-stack: 'Poppins', sans-serif;
+  --color-crimson: #c0392b;
+  --color-crimson-hover: #a62c20;
+  --color-navy-slate: #2c3e50;
+  --color-text-main: #212121;
+  --color-text-muted: rgba(33, 33, 33, 0.5);
+  --color-input-bg: #ededed;
+  
+  --radius-standard: 6px;
+  --radius-input: 5px;
+  --fluid-transition: 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.tandc{
-    color: green;
+/* ==========================================================================
+   PAGE BASE ARCHITECTURE (Vertically Arranged Layout Setup)
+   ========================================================================== */
+.hospitalsignwrapper {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column; /* Matches layout direction vector */
+  align-items: center;
+  justify-content: flex-start;
+  font-family: var(--font-stack);
 }
-.hospisignimage{
-    width: 35%;
-    filter: drop-shadow(rgba(0, 0, 0, 0.418)0px 8px 10px);
+
+.hossignmobilewrap {
+  display: none;
 }
+
+/* ==========================================================================
+   TOP HALF: FORM WRAPPER PANEL (Widescreen Tracking Matrix)
+   ========================================================================== */
+.hospisigninfowrap {
+  width: 100%;
+  max-width: 900px; /* Synchronized horizontal spread track bounds */
+  display: flex;
+  flex-direction: column;
+  padding: 40px 40px 60px 40px;
+  box-sizing: border-box;
+}
+
+.hospisignlogohold {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.hospisignlogo {
+  width: 130px;
+  height: auto;
+  object-fit: contain;
+}
+
+.desktop-back-btn {
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: color var(--fluid-transition);
+}
+
+.desktop-back-btn:hover {
+  color: var(--color-crimson);
+}
+
+/* ==========================================================================
+   FORM GRID CONFIGURATION (Splits Field Layouts Into Pairs)
+   ========================================================================== */
+.hospisigninfo1 {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Twin column processing arrays */
+  column-gap: 32px;
+  row-gap: 24px;
+}
+
+.form-main-title {
+  grid-column: span 2;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-text-main);
+  margin: 0 0 10px 0;
+  text-align: center;
+  letter-spacing: -0.5px;
+}
+
+/* Individual Core Input Container Wrapper Block */
+.hossigninputwrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hossigninputwrapper p {
+  font-weight: 600;
+  font-size: 11px;
+  color: var(--color-text-muted);
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+/* Base Structured Inputs */
+.hossigninput {
+  width: 100%;
+  box-sizing: border-box;
+  height: 44px;
+  background-color: var(--color-input-bg);
+  padding: 0 14px;
+  border-radius: var(--radius-input);
+  font-family: var(--font-stack);
+  font-size: 13px;
+  font-weight: 400;
+  border: 1.5px solid transparent;
+  outline: none;
+  transition: border-color var(--fluid-transition), background-color var(--fluid-transition);
+}
+
+.hossigninput:focus {
+  border-color: var(--color-crimson);
+  background-color: #ffffff;
+}
+
+.select-input {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23212121' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+/* Dual Eye-Toggler Password Groups wrapper block */
+.inputAndIcon {
+  width: 100%;
+  box-sizing: border-box;
+  height: 44px;
+  background-color: var(--color-input-bg);
+  border-radius: var(--radius-input);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  border: 1.5px solid transparent;
+  transition: border-color var(--fluid-transition), background-color var(--fluid-transition);
+}
+
+.inputAndIcon:focus-within {
+  border-color: var(--color-crimson);
+  background-color: #ffffff;
+}
+
+.inputAndIcon .donorssignpasswordinput {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  outline: none;
+  font-family: var(--font-stack);
+  font-size: 13px;
+  font-weight: 400;
+  padding: 0;
+}
+
+.inputAndIcon svg {
+  cursor: pointer;
+  color: var(--color-text-muted);
+  transition: color var(--fluid-transition);
+}
+
+.inputAndIcon svg:hover {
+  color: var(--color-text-main);
+}
+
+/* ==========================================================================
+   FORM SPAN LAYOUT SYSTEM FOOTERS
+   ========================================================================== */
+.checkboxwrapper {
+  grid-column: span 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.checkboxwrapper label {
+  font-size: 12px;
+  color: var(--color-text-main);
+  cursor: pointer;
+}
+
+.tandc {
+  color: var(--color-crimson);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.tandc:hover {
+  text-decoration: underline;
+}
+
+.hosloginforgotwrap {
+  grid-column: span 2;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  text-align: center;
+  margin: 4px 0;
+}
+
+.hosloginforgotwrap p {
+  margin: 0;
+  cursor: pointer;
+}
+
+/* Main Submission Button Form Element Trigger */
+.hospibtn {
+  grid-column: span 2;
+  width: 100%;
+  max-width: 320px;
+  justify-self: center; /* Perfectly tracks alignment to midpoint matching donor */
+  height: 46px;
+  background-color: var(--color-crimson);
+  border-radius: var(--radius-standard);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(192, 57, 43, 0.2);
+  transition: background-color var(--fluid-transition), transform var(--fluid-transition);
+  margin-top: 10px;
+}
+
+.hospibtn:hover:not(:disabled) {
+  background-color: var(--color-crimson-hover);
+  transform: translateY(-1px);
+}
+
 .hospibtn:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-    opacity: 0.6;
+  background-color: #cbd5e1;
+  color: #94a3b8;
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+/* ==========================================================================
+   BOTTOM HALF: VISUAL INFO BENEFITS PANEL (Flattened Horizon View Row)
+   ========================================================================== */
+.hospisign-visual-panel {
+  width: 100%;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px 80px 40px;
+  box-sizing: border-box;
+}
+
+.hos-benefits-box {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hos-benefits-badge {
+  align-self: center;
+  background-color: rgba(192, 57, 43, 0.08);
+  color: var(--color-crimson);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 6px 14px;
+  border-radius: 50px;
+  margin-bottom: 16px;
+}
+
+.hos-benefits-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--color-navy-slate);
+  line-height: 1.25;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.5px;
+  text-align: center;
+}
+
+.hos-benefits-subtitle {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0 0 45px 0;
+  text-align: center;
+  max-width: 700px;
+  align-self: center;
+}
+
+/* Triple-Column Balanced Horizontal Information Matrix Grid Setup */
+.hos-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.hos-benefit-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid #edf2f7;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.02);
+}
+
+.hos-icon-frame {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  background-color: rgba(192, 57, 43, 0.05);
+  border-radius: 50%;
+  color: var(--color-crimson);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hos-benefit-text h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-navy-slate);
+  margin: 0 0 6px 0;
+}
+
+.hos-benefit-text p {
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ==========================================================================
+   CLEAN RESPONSIVE RESPONSIVENESS MATRIX
+   ========================================================================== */
+@media (max-width: 850px) {
+  .hos-benefits-grid {
+    grid-template-columns: 1fr; /* Stacks data displays down on tight monitors */
+    gap: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .hospisigninfo1 {
+    grid-template-columns: 1fr; /* Form fields drop into vertical chain layouts smoothly */
+    row-gap: 20px;
+  }
+  .form-main-title,
+  .checkboxwrapper,
+  .hosloginforgotwrap,
+  .hospibtn {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .hospitalsignwrapper {
+    background-color: #f8fafc;
+    padding: 0;
   }
 
+  .hospisign-visual-panel {
+    display: none; /* Safely strips away bottom info blocks across mobile devices */
+  }
 
-@media only screen and (max-width: 1440px){
-    
-}
-@media only screen and (max-width: 1200px){
-    .hospitalsignwrapper{
-        height: 100vh;
-        padding: 20px;
-    }
-    
-    .hospisignimage{
-        width: 38%;
-    }
-}
+  .hossignmobilewrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 180px;
+    background-color: var(--color-navy-slate);
+    border-radius: 0px 0px 60px 0px;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+    padding: 0 20px;
+  }
 
+  .smallarrow {
+    position: absolute;
+    top: 24px;
+    left: 20px;
+    cursor: pointer;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+  }
+  
+  .smallarrow svg {
+    width: 36px;
+    height: 36px;
+  }
 
-@media only screen and (max-width: 900px){  
-    .hospitalsignwrapper{
-        height: max-content;
-        padding: 30px;
-    }
-    
-    .hospisignimage{
-        width: 38%;
-    }
-}
+  .hossignmobilewrap h1 {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 22px;
+    text-align: center;
+    margin: 20px 0 2px 0;
+    letter-spacing: -0.5px;
+  }
 
+  .hossignmobilewrap p {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 600;
+    font-size: 13px;
+    text-align: center;
+    margin: 0;
+  }
 
-@media only screen and (max-width: 760px){
-    .hospitalsignwrapper{
-        height: max-content;
-        padding: 20px;
-    }
-    
-    .hospisignimage{
-        width: 38%;
-    }
-}
+  .hospisigninfowrap {
+    padding: 40px 20px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    margin-top: -30px;
+    position: relative;
+    z-index: 5;
+    background-color: #ffffff;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.03);
+  }
 
+  .hospisignlogohold,
+  .form-main-title {
+    display: none;
+  }
 
-
-@media only screen and (max-width: 480px) {
-    .smallarrow{
-        display: block;
-        width: 90%;
-        color: white;
-        display: flex;
-        align-items: center;
-        padding-left: 20px;
-        padding-top: 20px;
-        font-size: 25px;
-        
-    }
-    .hospitalsignwrapper{
-        height: max-content;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
-    .hossignmobilewrap{
-        width: 480px;
-        height: 200px;
-        background-color: #2C3E50;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        gap: 15px;
-        color: white;
-        border-radius: 0px 0px 80px 10px;
-    }
-    .hossignmobilewrap h1{
-        font-family: Poppins;
-        font-weight: 700;
-        font-size: 26px;
-        text-align: center;
-    }
-    .hossignmobilewrap p{
-        font-family: Poppins;
-        font-weight: 700;
-        font-size: 18px;
-        text-align: center;
-    }
-    .hospisignimage{
-        display: none;
-    }
-    .hospisignlogohold{
-        display: none;
-    }
-    
-    .hospisigninfo1 h1{
-        display: none;
-    }
-    .hospibtn{
-        background-color: #2C3E50;
-    }
-}
-
-
-
-@media only screen and (max-width: 379px) {
-    .smallarrow{
-        display: block;
-        width: 90%;
-
-    }
-    .hospitalsignwrapper{
-        height: max-content;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
-    .hossignmobilewrap{
-        width: 380px;
-        height: 200px;
-        background-color: #2C3E50;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        gap: 15px;
-        color: white;
-        border-radius: 0px 0px 80px 10px;
-    }
-    .hossignmobilewrap h1{
-        font-family: Poppins;
-        font-weight: 700;
-        font-size: 26px;
-        text-align: center;
-    }
-    .hossignmobilewrap p{
-        font-family: Poppins;
-        font-weight: 700;
-        font-size: 18px;
-        text-align: center;
-    }
-    .hospisignimage{
-        display: none;
-    }
-    .hospisignlogohold{
-        display: none;
-    }
-    .hospisigninfo1{
-        width: 380px;
-    }
-    .hospisigninfo1 h1{
-        display: none;
-    }
+  .hospibtn {
+    max-width: 100%;
+    background-color: var(--color-navy-slate);
+    box-shadow: 0 4px 12px rgba(44, 62, 80, 0.2);
+  }
 }

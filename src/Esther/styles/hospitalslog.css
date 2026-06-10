@@ -1,178 +1,408 @@
-.hosloginwrapper{
+/* ==========================================================================
+   DESIGN SYSTEM VARIABLE TOKENS (Mirrored from Donors Portal)
+   ========================================================================== */
+:root {
+  --font-stack: 'Poppins', sans-serif;
+  
+  /* Shared Branding Colors */
+  --color-crimson: #c0392b;
+  --color-crimson-hover: #a62c20;
+  --color-navy-slate: #2c3e50;
+  --color-text-main: #212121;
+  --color-text-muted: rgba(33, 33, 33, 0.5);
+  --color-input-bg: #ededed;
+  
+  /* Component Utilities */
+  --radius-standard: 6px;
+  --radius-input: 5px;
+  --fluid-transition: 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ==========================================================================
+   PAGE BASE ARCHITECTURE
+   ========================================================================== */
+.hosloginwrapper {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  font-family: var(--font-stack);
+}
+
+/* Desktop Left Half Institutional Benefits Panel Container */
+.hoslogin-visual-panel {
+  flex: 1.1; /* Gives slightly more visual emphasis to the features panel */
+  background: linear-gradient(135deg, #fdfdfd 0%, #f1f5f9 100%);
+  border-right: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+}
+
+.hoslogmobilewrap {
+  display: none;
+}
+
+/* ==========================================================================
+   HOSPITAL BENEFITS DISPLAY STYLING 
+   ========================================================================== */
+.hospital-benefits-box {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hospital-benefits-badge {
+  align-self: flex-start;
+  background-color: rgba(44, 62, 80, 0.08); /* Brand specific muted slate tint */
+  color: var(--color-navy-slate);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 6px 14px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+}
+
+.hospital-benefits-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--color-navy-slate);
+  line-height: 1.25;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.75px;
+}
+
+.hospital-benefits-subtitle {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0 0 40px 0;
+}
+
+.hospital-benefits-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.hospital-benefit-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.hospital-icon-frame {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  color: var(--color-crimson);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  border: 1px solid #edf2f7;
+}
+
+.hospital-benefit-text h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-navy-slate);
+  margin: 0 0 4px 0;
+}
+
+.hospital-benefit-text p {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ==========================================================================
+   RIGHT HALF CONTENT PANEL BOX
+   ========================================================================== */
+.hoslogininfowrap {
+  flex: 1;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 80px;
+  box-sizing: border-box;
+}
+
+/* Top Row Logo Positioner */
+.hosloginlogohold {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: auto; /* Clean layout center pushing weight */
+  padding-bottom: 40px;
+}
+
+.hosloginlogo {
+  width: 140px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ==========================================================================
+   FORM BODY & COMPONENT INPUT INTERFACES
+   ========================================================================== */
+.hoslogininfo1 {
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hoslogininfo1 h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-text-main);
+  margin: 0 0 8px 0;
+  text-align: center;
+}
+
+.hoslogininputwrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hoslogininputwrapper p {
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  letter-spacing: 0.5px;
+  margin: 0;
+  width: auto;
+}
+
+/* Standardized Email Text Box Field */
+.hoslogininput {
+  width: 100%;
+  box-sizing: border-box;
+  height: 44px;
+  background-color: var(--color-input-bg);
+  padding: 0 14px;
+  border-radius: var(--radius-input);
+  font-family: var(--font-stack);
+  font-size: 13px;
+  font-weight: 400;
+  border: 1.5px solid transparent;
+  outline: none;
+  transition: border-color var(--fluid-transition), background-color var(--fluid-transition);
+}
+
+.hoslogininput:focus {
+  border-color: var(--color-crimson);
+  background-color: #ffffff;
+}
+
+/* Password Combination Block Wrapper Container */
+.donorlogininputAndIcon {
+  width: 100%;
+  box-sizing: border-box;
+  height: 44px;
+  background-color: var(--color-input-bg);
+  border-radius: var(--radius-input);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  border: 1.5px solid transparent;
+  transition: border-color var(--fluid-transition), background-color var(--fluid-transition);
+}
+
+.donorlogininputAndIcon:focus-within {
+  border-color: var(--color-crimson);
+  background-color: #ffffff;
+}
+
+.donorssignpasswordinput {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  outline: none;
+  font-family: var(--font-stack);
+  font-size: 13px;
+  font-weight: 400;
+  padding: 0;
+}
+
+.donorlogininputAndIcon svg {
+  cursor: pointer;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 0 8px;
+}
+
+.donorlogininputAndIcon svg:hover {
+  color: var(--color-text-main);
+}
+
+/* ==========================================================================
+   TRIGGERS & HYPERLINK LAYOUT FOOTER
+   ========================================================================== */
+.hosloginbtn {
+  width: 100%;
+  height: 44px;
+  background-color: var(--color-crimson);
+  border-radius: var(--radius-standard);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(192, 57, 43, 0.2);
+  transition: background-color var(--fluid-transition), transform var(--fluid-transition);
+}
+
+.hosloginbtn:hover:not(:disabled) {
+  background-color: var(--color-crimson-hover);
+  transform: translateY(-1px);
+}
+
+.hosloginbtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.hosloginforgotwrap {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.hosloginforgotwrap p {
+  margin: 0;
+  cursor: pointer;
+  transition: color var(--fluid-transition);
+}
+
+.hosloginforgotwrap p:hover {
+  color: var(--color-crimson);
+  text-decoration: underline;
+}
+
+/* Custom internal span reset to overwrite hardcoded blue text */
+.hosloginforgotwrap p span {
+  color: inherit !important; 
+  font-weight: inherit;
+}
+
+/* ==========================================================================
+   CLEAN COMPACT VIEWPORT RESPONSIVENESS
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hoslogininfowrap {
+    padding: 60px 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hoslogin-visual-panel {
+    display: none; /* Safely removes the extra feature panel text block */
+  }
+  .hoslogininfowrap {
+    max-width: 100%;
+    padding: 60px 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hosloginwrapper {
+    flex-direction: column;
+    background-color: #f8fafc;
+    padding: 0;
+  }
+
+  /* Curves the color layout block matching the donor dashboard top banner */
+  .hoslogmobilewrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
-    height: 100vh;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 34px;
-}
-.hoslogmobilewrap{
-    display: none;
-}
-.hoslogininfowrap{
-    width: 50%;
-    height: 660px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 30px;
-}
-.hosloginlogohold{
-    width: 90%;
-    height: 90px;
+    height: 180px;
+    background-color: var(--color-navy-slate);
+    border-radius: 0px 0px 60px 0px;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .smallarrow {
+    position: absolute;
+    top: 24px;
+    left: 20px;
+    cursor: pointer;
+    color: #ffffff;
     display: flex;
     align-items: center;
-}
-.hosloginlogo{
-    width: 140px;
-}
-.hoslogininfo1{
-    width: 65%;
-    height: 320px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-around;
-}
-.hoslogininfo1 h2{
-    font-size: 20px;
-    font-weight: 700;
-    font-family: Poppins;
-}
-.hoslogininputwrapper{
-    width: 360px;
-    height: 75px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-.hoslogininputwrapper p{
-    font-family: Poppins;
-    font-weight: 600;
-    font-size: 13px;
-    width: 93%;
-    color: #21212180;
-}
-.hoslogininput{
-    width: 340px;
-    height: 40px;
-    background-color: #ededed;
-    padding: 10px;
-    border-radius: 5px;
-    font-family: Poppins;
-    font-size: 11px;
-    font-weight: 300;
-}
-.hosloginbtn{
-    width: 300px;
+  }
+  
+  .smallarrow svg {
+    width: 36px;
     height: 36px;
-    background-color: #c0392b;
-    border-radius: 6px;
-    color: white;
-    font-family: Poppins;
-    font-weight: 400;
-    font-size: 13px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.hosloginforgotwrap{
-    width: 360px;
-    height: 33px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 10px;
-    font-weight: 600;
-    color: #21212180;
-}
-.hospiloginimage{
-    width: 35%;
-    filter: drop-shadow(rgba(0, 0, 0, 0.418)0px 8px 10px);
-}
+  }
 
+  .hoslogmobilewrap h2 {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 26px;
+    text-align: center;
+    margin: 20px 0 0 0;
+    letter-spacing: -0.5px;
+  }
 
-@media only screen and (max-width: 1440px){
-   
-}
-@media only screen and (max-width: 1200px){
-    .hosloginwrapper{
-        height: max-content;
-        padding: 20px;
-    }
-    .hospiloginimage{
-        width: 38%;
-    }
-}
+  .hoslogininfowrap {
+    padding: 40px 20px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    margin-top: -30px; /* Snaps form block over the header space fluidly */
+    position: relative;
+    z-index: 5;
+    background-color: #ffffff;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.03);
+  }
 
+  .hosloginlogohold,
+  .hoslogininfo1 h2 {
+    display: none; /* Hidden beautifully as mobile banner takes focus precedence */
+  }
 
-@media only screen and (max-width: 900px){  
-    .hosloginwrapper{
-        height: max-content;
-        padding: 30px;
-    }
-    .hospiloginimage{
-        width: 38%;
-    }
-}
+  .hoslogininfo1 {
+    max-width: 100%;
+  }
 
-
-@media only screen and (max-width: 760px){
-    .hosloginwrapper{
-        height: max-content;
-        padding: 20px;
-    }
-    .hospiloginimage{
-        width: 38%;
-    }
-}
-
-
-@media only screen and (max-width: 480px) {
-    .hosloginlogohold{
-        display: none;
-    }
-    .hospiloginimage{
-        display: none;
-    }
-    .hoslogininfo1 h2{
-        display: none;
-    }
-    .hosloginwrapper{
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-    .hoslogmobilewrap{
-        width: 480px;
-        height: 200px;
-        background-color: #2C3E50;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        border-radius: 0px 0px 80px 10px
-    }
-    .hoslogmobilewrap h2{
-        color: white;
-        font-family: Poppins;
-        font-weight: 700;
-        font-size: 26px;
-        text-align: center;
-    }
-    .hosloginbtn{
-        background-color: #2C3E50;
-    }
-}
-
-
-
-
-
-@media only screen and (max-width: 379px) {
-    .hoslogmobilewrap{
-        width: 380px;
-    }
+  .hosloginbtn {
+    background-color: var(--color-navy-slate); /* Fluid design token transformation */
+    box-shadow: 0 4px 12px rgba(44, 62, 80, 0.2);
+  }
+  
+  .hosloginforgotwrap p:hover {
+    color: var(--color-navy-slate);
+  }
 }
