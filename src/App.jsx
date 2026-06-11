@@ -49,6 +49,7 @@ import HospitalRequestsPage from "./Davidson/pages/HospitalRequestsPage.jsx";
 import HospitalRequestDetails from "./Davidson/pages/HospitalRequestDetails.jsx";
 import { toast } from "sonner";
 import ResetOtp from "./Esther/auth/ResetOtp.jsx";
+import HealthTipsPage from "./Davidson/pages/HealthTipsPage.jsx";
 
 const App = () => {
   useEffect(() => {
@@ -97,6 +98,7 @@ const App = () => {
             { path: "appointment", element: <Appointment /> },
             { path: "records", element: <RecordPage /> },
             { path: "request", element: <RequstPage /> },
+            { path: "tips", element: <HealthTipsPage /> },
             { path: "hospitalsrequest", element: <HospitalRequestsPage /> },
             {
               path: "/dashboard/hospitalsrequestdetails/:bloodRequestId",

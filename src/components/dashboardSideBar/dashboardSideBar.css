@@ -1,192 +1,247 @@
-.SideBArWrapper{
-    width: 130px;
-    height: 95vh;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: white;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    position: fixed;
-    left: 10px;
+:root {
+  --sidebar-width: 260px;
+  --bg-primary: #ffffff;
+  --bg-hover: #f1f5f9;
+  --bg-active: #0f172a;
+  --text-main: #334155;
+  --text-active: #ffffff;
+  --text-muted: #64748b;
+  --accent-red: #ef4444;
+  --accent-red-hover: #dc2626;
+  --border-color: #e2e8f0;
+  --font-family: 'Poppins', sans-serif;
+  --radius-md: 12px;
+  --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.SideBArWrapperPusher{
-    width: 120px;
-    height: 95vh;
-    background: whitesmoke;
+.SideBArWrapper {
+  width: var(--sidebar-width);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-primary);
+  border-right: 1px solid var(--border-color);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 50;
 }
 
-.innerSideBArWrapper{
-    width: 100%;
-    height: 95%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+.SideBArWrapperPusher {
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: transparent;
+  flex-shrink: 0;
 }
 
-.sideBarLogo{
-    width: 90px;
-    cursor: pointer;
+.innerSideBArWrapper {
+  width: 88%;
+  height: 94%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
 }
 
-.innerSideBArWrapper ul{
-    width: 100%;
-    height: max-content;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
+.sideBarLogo {
+  width: 110px;
+  height: auto;
+  object-fit: contain;
+  cursor: pointer;
+  padding-left: 12px;
+  transition: var(--transition-smooth);
 }
 
-.sideBarIocns{
-    width: max-content;
-    height: max-content;
-    padding: 5px;
-    border-radius: 50%;
-    background: whitesmoke;
-    font-size: 16px;
+.sideBarLogo:hover {
+  opacity: 0.8;
 }
 
-.innerSideBArWrapper ul li{
-    width: 100%;
-    height: max-content;
-    padding: 6px 0px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-family: Poppins;
-    font-size:  13px;
-    font-weight: 400;
-    gap: 5px;
-    transition: all 280ms ease-in-out;
-    cursor: pointer
+.innerSideBArWrapper ul {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.innerSideBArWrapper ul li:hover{
-    background: #00274D;
-    color: white;
-    transition: all 280ms ease-in-out;
+.innerSideBArWrapper ul li {
+  width: 100%;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: row; /* Horizontal alignment */
+  align-items: center;
+  justify-content: flex-start;
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-main);
+  gap: 12px;
+  border-radius: var(--radius-md);
+  transition: var(--transition-smooth);
+  cursor: pointer;
 }
 
-.activeBar{
-    background: #00274D;
-    color: white;
-    transition: all 280ms ease-in-out;
+/* Base icon styling wrapper */
+.sideBarIocns {
+  font-size: 20px;
+  color: var(--text-muted);
+  transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.logoutBtn .sideBarIocns{
-    background: red;
-    color: white;
+/* Hover States */
+.innerSideBArWrapper ul li:hover {
+  background: var(--bg-hover);
+  color: var(--bg-active);
 }
 
-ul .logoutBtn{
-    color: red;
+.innerSideBArWrapper ul li:hover .sideBarIocns {
+  color: var(--bg-active);
 }
 
-.innerSideBArWrapper ul .logoutBtn:hover{
-    background: red;
+/* Active State Styles */
+.activeBar {
+  background: var(--bg-active) !important;
+  color: var(--text-active) !important;
 }
 
-
-.popUpWrapper{
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    -webkit-backdrop-filter: blur(2px);
-    backdrop-filter: blur(2px);
-    background: rgba(0, 0, 0, 0.384);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
+.activeBar .sideBarIocns {
+  color: var(--text-active) !important;
 }
 
-.logoutPopUp{
-    width: 35%;
-    height: 40%;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: white;
+/* Logout Actions button layout */
+.innerSideBArWrapper ul .logoutBtn {
+  color: var(--accent-red);
+  margin-top: 16px;
+  border-top: 1px solid var(--border-color);
+  border-radius: 0;
+  padding-top: 20px;
 }
 
-.logoutPopUp h1{
-    font-size: 18px;
-    font-weight: 600;
-    text-align: center;
-    margin-top: 30px;
-
-    b{
-        color: red;
-        font-weight: 700;
-    }
+.innerSideBArWrapper ul .logoutBtn .sideBarIocns {
+  color: var(--accent-red);
 }
 
-.logoutPopUpHeader{
-    width: 100%;
-    height: 15%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 10px;
+.innerSideBArWrapper ul .logoutBtn:hover {
+  background: #fef2f2;
+  color: var(--accent-red-hover);
+  border-radius: var(--radius-md);
 }
 
-.logoutbButtonHolder{
-    display: flex;
-    align-items: center;
-    gap: 20px;
+.innerSideBArWrapper ul .logoutBtn:hover .sideBarIocns {
+  color: var(--accent-red-hover);
 }
 
-.logoutbButtonHolder button{
-    width: 90px;
-    height: 35px;
-    border-radius: 20px;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    background: #C0392B;
-    font-size: 16px;
-    font-weight: 500;
-    margin-top: 20px;
-    cursor: pointer;
+/* Glassmorphism Popup Styles */
+.popUpWrapper {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: rgba(15, 23, 42, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: fadeIn 0.2s ease-out;
 }
 
-.logoutbButtonHolder .cancelBtn{
-    border: 1.5px solid #C0392B;
-    background: white;
-    color: black;
-    cursor: pointer;
+.logoutPopUp {
+  width: 90%;
+  max-width: 400px;
+  padding: 24px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-
-
-
-
-@media only screen and (max-width: 1440px) {
-}
-@media only screen and (max-width: 1200px) {
-}
-
-@media only screen and (max-width: 900px) {
+.logoutPopUpHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: var(--text-muted);
+  transition: var(--transition-smooth);
 }
 
-@media only screen and (max-width: 760px) {
-    .SideBArWrapper, .SideBArWrapperPusher{
-        display: none;
-    }
+.logoutPopUpHeader svg:hover {
+  color: var(--bg-active);
 }
 
-@media only screen and (max-width: 480px) {
-.SideBArWrapper, .SideBArWrapperPusher{
+.logoutPopUp h1 {
+  font-family: var(--font-family);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--bg-active);
+  text-align: center;
+  margin: 16px 0 24px 0;
+  line-height: 1.5;
+}
+
+.logoutPopUp h1 b {
+  color: var(--accent-red);
+  font-weight: 600;
+}
+
+.logoutbButtonHolder {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+}
+
+.logoutbButtonHolder button {
+  flex: 1;
+  height: 44px;
+  border-radius: var(--radius-md);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: var(--accent-red);
+  font-family: var(--font-family);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.logoutbButtonHolder button:hover {
+  background: var(--accent-red-hover);
+}
+
+.logoutbButtonHolder .cancelBtn {
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  color: var(--text-main);
+}
+
+.logoutbButtonHolder .cancelBtn:hover {
+  background: var(--bg-hover);
+  color: var(--bg-active);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Clean Responsiveness mapping */
+@media only screen and (max-width: 768px) {
+  .SideBArWrapper, .SideBArWrapperPusher {
     display: none;
-}
-}
-
-@media only screen and (max-width: 379px) {
+  }
 }

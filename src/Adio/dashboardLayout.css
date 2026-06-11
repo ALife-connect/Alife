@@ -1,74 +1,148 @@
-.DonordashboardWrapper{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: whitesmoke;
-}
-.DonordashboardLeftSideWrapper{
-    width: 90%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    background: whitesmoke;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  --sidebar-desktop-width: 260px;
+  --header-desktop-height: 70px;
+  --header-mobile-height: 60px;
+  
+  /* Core Semantic Color Palette Array */
+  --bg-dashboard-surface: #f8fafc;
+  --bg-workspace-canvas: #ffffff;
+  --border-subtle-divider: #f1f5f9;
+  --brand-crimson-accent: #c0392b;
+  
+  --transition-smooth-flow: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-subtle-elevation: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
 }
 
-.DonordashboardLeftSideWrapper .headerwrapper{
+/* Base Viewport Reset Configurations */
+.dashboard-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  background-color: var(--bg-dashboard-surface);
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   SIDEBAR HOUSING STRUCTURAL SPECIFICATIONS
+   ========================================================================== */
+.dashboard-sidebar-wrapper {
+  width: var(--sidebar-desktop-width);
+  height: 100vh;
+  flex-shrink: 0;
+  z-index: 40;
+  transition: var(--transition-smooth-flow);
+  background-color: #ffffff;
+  border-right: 1px solid var(--border-subtle-divider);
+}
+
+/* ==========================================================================
+   MAIN DASHBOARD PRIMARY VIEWPORT PANEL ENGINE
+   ========================================================================== */
+.dashboard-main-viewport {
+  flex: 1;
+  min-width: 0; /* Prevents layout items with heavy contents from fracturing grid system layout metrics */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-workspace-canvas);
+}
+
+/* Desktop Explicit Header Containment Framework */
+.dashboard-header-desktop {
+  height: var(--header-desktop-height);
+  width: 100%;
+  background-color: var(--bg-workspace-canvas);
+  border-bottom: 1px solid var(--border-subtle-divider);
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Mobile Alternative Component Stream Default Configuration Layer */
+.dashboard-header-mobile {
+  display: none;
+  height: var(--header-mobile-height);
+  width: 100%;
+  background-color: var(--bg-workspace-canvas);
+  border-bottom: 1px solid var(--border-subtle-divider);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   FLUID SAAS WORKSPACE APPLICATION CANVAS
+   ========================================================================== */
+.dashboard-workspace-content {
+  width: 100%;
+  flex: 1;
+  overflow-y: auto;
+  background-color: var(--bg-dashboard-surface);
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Modern Minimalist Native Viewport Scrollbars customization layer */
+.dashboard-workspace-content::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.dashboard-workspace-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dashboard-workspace-content::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+  border: 2px solid var(--bg-dashboard-surface);
+}
+
+.dashboard-workspace-content::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN VIEWPORT LAYOUT ADAPTATION SYSTEMS
+   ========================================================================== */
+@media (max-width: 1024px) {
+  /* Turn layout structure into an off-canvas drawer mode configuration */
+  .dashboard-sidebar-wrapper {
+    position: fixed;
+    left: 0;
+    top: 0;
+    transform: translateX(-100%);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  .dashboard-sidebar-wrapper.is-mobile-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-mobile-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(15, 23, 42, 0.3);
+    backdrop-filter: blur(4px);
+    z-index: 30;
+    animation: fadeInOverlay 0.2s ease-out;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Swap header modules over seamlessly across device classes */
+  .dashboard-header-desktop {
     display: none;
+  }
+  
+  .dashboard-header-mobile {
+    display: block;
+  }
 }
 
-.outletWRapper{
-    width: 95%;
-    height: 83%;
-    border-radius: 10px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    overflow-y: scroll;
-    position: relative;
+/* CSS Base Micro-Animations */
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
-
-
-
-
-@media only screen and (max-width: 1440px) {
-    .outletWRapper{
-        width: 95%;
-        height: 85%;
-    }
-}
-@media only screen and (max-width: 1200px) {
-}
-
-@media only screen and (max-width: 900px) {
-}
-
-@media only screen and (max-width: 760px) {
-    .DonordashboardLeftSideWrapper{
-        width: 100%;
-        padding: 0;
-    }
-
-    .outletWRapper{
-        width: 100%;
-        height: 100%;
-    }
-}
-
-@media only screen and (max-width: 480px) {
-    .DonordashboardLeftSideWrapper{
-        width: 100%;
-        padding: 0;
-    }
-
-    .outletWRapper{
-        width: 100%;
-        height: 100%;
-    }
-}
-
-@media only screen and (max-width: 379px) {
-}
-
-

@@ -7,20 +7,17 @@ import { useSelector } from 'react-redux';
 import LoadComponents from '../../components/componentsLoadScreen/LoadComponents';
 import { toast } from 'react-toastify';
 
-// Ensure your .env contains this correctly:
-// VITE_BASEURL_REN=https://lifelink-7pau.onrender.com/api/v1
-const VITE_BASEURL_REN = import.meta.env.VITE_BASEURL_REN;
+const VITE_BASEURL_REN = import.meta.env.VITE_BASEURL;
 
 const HistoryPage = () => {
   const token = useSelector((state) => state.token);
 
   const [donations, setDonations] = useState([]);
   const [viewDetailsPopUp, setViewDetailsPopUp] = useState(null);
-  const [status, setStatus] = useState("pending");
+  const [status] = useState("pending");
   const [loadingState, setLoadingState] = useState(false);
   const [appointmentsHistory, setAppointmentHistory] = useState([]);
 
-  // Helper: validate token before making requests
   const validateToken = () => {
     if (!token || typeof token !== "string" || token.trim() === "") {
       toast.error("User not authenticated. Please log in again.");
@@ -29,13 +26,12 @@ const HistoryPage = () => {
     return true;
   };
 
-  // Fetch donations by status
-  const getDonationsByStatus = async (status) => {
+  const getDonationsByStatus = async (targetStatus) => {
     if (!validateToken()) return;
 
     setLoadingState(true);
     try {
-      const res = await axios.get(`${VITE_BASEURL_REN}/donations/${status}`, {
+      const res = await axios.get(`${VITE_BASEURL_REN}/donations/${targetStatus}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -53,7 +49,6 @@ const HistoryPage = () => {
     }
   };
 
-  // Fetch appointments
   const getAppointments = async () => {
     if (!validateToken()) return;
 
@@ -74,7 +69,6 @@ const HistoryPage = () => {
     }
   };
 
-  // Cancel appointment
   const cancelAppointment = async (appointmentId) => {
     if (!validateToken()) return;
 
@@ -92,13 +86,13 @@ const HistoryPage = () => {
       toast.success("Appointment cancelled successfully");
       setViewDetailsPopUp(null);
       getDonationsByStatus(status);
+      getAppointments(); // Refresh the schedules view seamlessly
     } catch (error) {
       console.error("❌ Cancel appointment error:", error);
       toast.error("Failed to cancel appointment.");
     }
   };
 
-  // Effects
   useEffect(() => {
     if (token && status) {
       getDonationsByStatus(status);
@@ -117,114 +111,119 @@ const HistoryPage = () => {
 
   return (
     <>
-      {/* Appointment History */}
-      <div className='HistoryPageWrapper'>
-        <h1>Appointment History</h1>
+      {/* SECTION 1: Appointment History */}
+      <div className="HistoryPageWrapper">
+        <h2>Appointment History</h2>
 
-        <div className="DonationsHistoryCardsHeading">
-          <div className="DonationsHistoryCardsInnerWrapper">
-            <h1>Facility Name</h1>
-            <h1>VIEW DETAILS</h1>
-            <h1><SlCalender /> DATE</h1>
-            <h1>LOCATION</h1>
-            <h1>STATUS</h1>
-          </div>
+        <div className="DonationsHistoryCardsHeading historyTableGrid">
+          <h4>Facility Name</h4>
+          <h4><SlCalender /> Date</h4>
+          <h4 className="locationHeader">Location</h4>
+          <h4>Status</h4>
         </div>
 
         <div className="DonationsHistoryCardsWrapper">
           {donations.length > 0 ? (
             donations.map((donation, index) => (
-              <div className="DonationsHistoryCards" key={index}>
-                <div className="DonationsHistoryCardsInnerWrapper">
-                  <h3>{donation.hospital?.fullName || "N/A"}</h3>
+              <div className="DonationsHistoryCards historyTableGrid" key={donation._id || index}>
+                <div className="facilityMetaBlock">
+                  <span>{donation.hospital?.fullName || "N/A"}</span>
                   <button
                     className="view-btn-dtl"
                     onClick={() => setViewDetailsPopUp(donation)}
                   >
-                    VIEW DETAILS
+                    View Details
                   </button>
+                </div>
 
-                  <h3><SlCalender /> {new Date(donation.date).toLocaleDateString()}</h3>
-                  <h3>{donation.hospital?.location || "N/A"}</h3>
-                  <h3>
-                    <span className={`status-btn status-${donation.status?.toLowerCase()}`}>
-                      {donation.status}
-                    </span>
-                  </h3>
+                <div className="dateBlock">
+                  <SlCalender /> {donation.date ? new Date(donation.date).toLocaleDateString() : "N/A"}
+                </div>
+                
+                <div className="locationBlock">
+                  {donation.hospital?.location || "N/A"}
+                </div>
+
+                <div className="statusBadgeContainer">
+                  <span className={`status-btn status-${donation.status?.toLowerCase()}`}>
+                    {donation.status || "Unknown"}
+                  </span>
                 </div>
               </div>
             ))
           ) : (
-            <p>No {status} donations yet.</p>
+            <p className="noDataFallbackText">No records found matching your {status} donation logs.</p>
           )}
         </div>
       </div>
 
-      {/* Schedule History */}
-      <div className='HistoryPageWrapper'>
-        <h1>Schedule History</h1>
+      {/* SECTION 2: Schedule History */}
+      <div className="HistoryPageWrapper">
+        <h2>Schedule History</h2>
 
-        <div className="DonationsHistoryCardsHeading">
-          <div className="DonationsHistoryCardsInnerWrapper">
-            <h1>Facility Name</h1>
-            <h1><SlCalender /> DATE</h1>
-            <h1>LOCATION</h1>
-            <h1>STATUS</h1>
-          </div>
+        <div className="DonationsHistoryCardsHeading historyTableGrid">
+          <h4>Facility Name</h4>
+          <h4><SlCalender /> Date</h4>
+          <h4 className="locationHeader">Location</h4>
+          <h4>Status</h4>
         </div>
 
         <div className="DonationsHistoryCardsWrapper">
           {appointmentsHistory.length > 0 ? (
-            appointmentsHistory.map((donation, index) => (
-              <div className="DonationsHistoryCards" key={index}>
-                <div className="DonationsHistoryCardsInnerWrapper">
-                  <h3>{donation.hospital?.email || "N/A"}</h3>
-                  <h3><SlCalender /> {new Date(donation.date).toLocaleDateString()}</h3>
-                  <h3>{donation.hospital?.location || "N/A"}</h3>
-                  <h3>
-                    <span className={`status-btn status-${donation.status?.toLowerCase()}`}>
-                      {donation.status}
-                    </span>
-                  </h3>
+            appointmentsHistory.map((appointment, index) => (
+              <div className="DonationsHistoryCards historyTableGrid" key={appointment._id || index}>
+                <div className="facilityMetaBlock">
+                  {/* Fixed bug here: Changed tracking source from raw email string over to clean facility designation string */}
+                  <span>{appointment.hospital?.fullName || "N/A"}</span>
+                </div>
+
+                <div className="dateBlock">
+                  <SlCalender /> {appointment.date ? new Date(appointment.date).toLocaleDateString() : "N/A"}
+                </div>
+
+                <div className="locationBlock">
+                  {appointment.hospital?.location || "N/A"}
+                </div>
+
+                <div className="statusBadgeContainer">
+                  <span className={`status-btn status-${appointment.status?.toLowerCase()}`}>
+                    {appointment.status || "Unknown"}
+                  </span>
                 </div>
               </div>
             ))
           ) : (
-            <p>No scheduled appointments yet.</p>
+            <p className="noDataFallbackText">No active upcoming healthcare procedures scheduled yet.</p>
           )}
         </div>
       </div>
 
-      {/* Modal for View Details */}
+      {/* Overhauled System Metadata Control Center Modal */}
       <Modal
         open={!!viewDetailsPopUp}
         onCancel={() => setViewDetailsPopUp(null)}
         footer={null}
+        centered
+        destroyOnClose
       >
         {viewDetailsPopUp && (
           <div className="viewDetailsPopUpWrapper">
-            <h1>Details</h1>
-            <p>Name: <b>{viewDetailsPopUp.hospital?.fullName}</b></p>
-            <p>Location: <b>{viewDetailsPopUp.hospital?.location}</b></p>
-            <p>Date: <b>{new Date(viewDetailsPopUp.date).toLocaleDateString()}</b></p>
-            <p>Time: <b>{viewDetailsPopUp.time || "No time specified"}</b></p>
-            <p>Status: <b>{viewDetailsPopUp.status}</b></p>
-            <img src="/images/hospital image.jpg" alt="Hospital image" />
+            <h3>Appointment Information</h3>
+            
+            <p>Facility Name: <b>{viewDetailsPopUp.hospital?.fullName || "N/A"}</b></p>
+            <p>Target Destination: <b>{viewDetailsPopUp.hospital?.location || "N/A"}</b></p>
+            <p>Booking Date: <b>{viewDetailsPopUp.date ? new Date(viewDetailsPopUp.date).toLocaleDateString() : "N/A"}</b></p>
+            <p>Arrival Windows: <b>{viewDetailsPopUp.time || "No custom window assigned"}</b></p>
+            <p>Current Status: <b>{viewDetailsPopUp.status || "N/A"}</b></p>
+            
+            <img src="/images/hospital image.jpg" alt="Target Healthcare Center Showcase Asset" />
 
             {viewDetailsPopUp.status === "pending" && (
               <button
-                style={{
-                  backgroundColor: "#c0392b",
-                  color: "white",
-                  padding: "10px 15px",
-                  borderRadius: "5px",
-                  marginTop: "15px",
-                  cursor: "pointer",
-                  border: "none"
-                }}
+                className="modalCancelActionButton"
                 onClick={() => cancelAppointment(viewDetailsPopUp._id)}
               >
-                Cancel Request
+                Cancel Scheduled Appointment
               </button>
             )}
           </div>

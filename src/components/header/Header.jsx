@@ -18,7 +18,7 @@ import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-const VITE_BASEURL_REN = import.meta.env.VITE_BASEURL_REN;
+const VITE_BASEURL_REN = import.meta.env.VITE_BASEURL;
 
 const Header = () => {
   const [logoutPopUp, setLogoutPopUp] = useState(false);

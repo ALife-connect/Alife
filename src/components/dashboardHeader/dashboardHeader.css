@@ -1,238 +1,447 @@
-.dashboardHeaderWrapper{
-    width: 95%;
-    height: 80px;
-    border-radius: 10px;
-    background: white;
-    margin-top: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+:root {
+  --header-bg-surface: #ffffff;
+  --header-border-line: #f1f5f9;
+  --header-input-bg: #f8fafc;
+  
+  --corporate-crimson: #c0392b;
+  --corporate-crimson-hover: #a62c20;
+  --corporate-crimson-light: #fdf2f2;
+  
+  --header-txt-main: #0f172a;
+  --header-txt-body: #475569;
+  --header-txt-muted: #94a3b8;
+  
+  --header-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+  --header-radius-inner: 8px;
+  --header-radius-outer: 12px;
+  --header-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.dashboardHeaderName{
-    width: max-content;
-    height: max-content;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+.ModernHeaderContainer {
+  width: 100%;
+  height: 100%;
+  background-color: var(--header-bg-surface);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  box-sizing: border-box;
+  position: relative;
 }
 
-.dashboardHeaderName h1{
-    font-size: 17px;
-    font-weight: 600;
-    margin: 0;
-    letter-spacing: 0;
-    line-height: 100%;
-    display: flex;
-    align-items: center;
+.HeaderGreetingPane {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-shrink: 0;
 }
 
-.dashboardHeaderName span{
-    font-size: 16px;
-    font-weight: 400;
+.HeaderGreetingPane h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--header-txt-main);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: -0.3px;
 }
 
-.dashboardHeaderSearchWrapper{
-    width: max-content;
-    height: max-content;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
-    border-radius: 10px;
-    text-align: center;
+.AnimatedGreetingHand {
+  font-size: 18px;
+  display: inline-block;
 }
 
-.carousel-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 40px;
-  }
-  
-  .carousel-card {
-    background-color: #fff;
-    padding: 10px 15px;
-    border-radius: 5px;
-    max-width: 600px;
-    width: 90%;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-  }
-  
-  .carousel-text {
-    font-size: 10px;
-    font-weight: 500;
-    text-align: center;
-    color: #444;
-    opacity: 1;
-    transition: opacity 0.3s ease;
-  }
-  
-  .fade-in {
-    opacity: 1;
-  }
-  
-  .fade-out {
-    opacity: 0;
-  }
-  
-
-.dashboardHeaderSearchWrapper input{
-    width: 450px;
-    border: none;
-    outline: none;
+.HeaderGreetingPane p {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--header-txt-muted);
+  margin: 0;
 }
 
-.profilePicAndNotification{
-    width: max-content;
-    height: max-content;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
+.HeaderSearchAndTipsBlock {
+  flex: 1;
+  max-width: 680px;
+  margin: 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-.dashboardHeaderWrapper .profilePicture{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: whitesmoke;
+.HeaderSearchContainer {
+  position: relative;
+  flex: 1.2;
+  display: flex;
+  align-items: center;
 }
 
-.dashboardHeaderWrapper .profilePicture img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
+.SearchBoxPrefixIcon {
+  position: absolute;
+  left: 14px;
+  color: var(--header-txt-muted);
+  font-size: 16px;
+  pointer-events: none;
 }
 
-.notificationsCardsWrap {
-    background-color: #fff;
-    border: 1px solid #eee;
-    border-left: 5px solid transparent;
-    border-radius: 12px;
-    padding: 16px 20px;
-    margin-bottom: 15px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-  }
-  
-  .notificationsCardsWrap:hover {
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
-  }
-  
-  .notificationsCardsWrap h1 {
-    font-size: 16px;
-    margin: 0 0 8px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 600;
-    color: #333;
-  }
-  
-  .notificationsCardsWrap span {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 10px;
-    color: #555;
-    line-height: 1.4;
-  }
-  
-  .notificationsCardsWrap button {
-    background-color: #e50914;
-    color: #fff;
-    border: none;
-    padding: 8px 14px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: background-color 0.3s ease;
-    margin-top: 5px;
-  }
-  
-  .notificationsCardsWrap button:hover {
-    background-color: #c40811;
-  }
-  
-  .notificationsCardsWrap p {
-    font-size: 12px;
-    color: #888;
-    margin-top: 10px;
-  }
-
-  
-  .refreshWrapperHeader{
-    width: 100%;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-
-.searchDropdown {
-    position: absolute;
-    background: white;
-    border: 1px solid #ccc;
-    width: 300px;
-    max-height: 200px;
-    overflow-y: auto;
-    z-index: 10;
-    margin-top: 5px;
-  }
-  
-  .searchResultItem {
-    padding: 10px;
-    cursor: pointer;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .searchResultItem:hover {
-    background-color: #f3f3f3;
-  }
-  
-  .noResult {
-    padding: 10px;
-    color: gray;
-  }
-  
-  
-
-
-
-@media only screen and (max-width: 1440px) {
-}
-@media only screen and (max-width: 1200px) {
+.SearchEngineInputElement {
+  width: 100%;
+  height: 40px;
+  background-color: var(--header-input-bg);
+  border: 1px solid var(--header-border-line);
+  border-radius: var(--header-radius-inner);
+  padding: 0 16px 0 42px;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--header-txt-main);
+  transition: var(--header-transition);
+  box-sizing: border-box;
 }
 
-@media only screen and (max-width: 900px) {
-  .carousel-card {
-  /* background-color: blue; */
-  margin-left: 20px;
-  }
-  .mobileHeaderLogo{
-    margin-right: 10px;
-  }
+.SearchEngineInputElement:focus {
+  outline: none;
+  background-color: var(--header-bg-surface);
+  border-color: var(--corporate-crimson);
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.08);
 }
 
-@media only screen and (max-width: 760px) {
-    .dashboardHeaderWrapper{
-        display: none;
-    }
+.HeaderSearchDropdownPanel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 100%;
+  background-color: var(--header-bg-surface);
+  border: 1px solid var(--header-border-line);
+  border-radius: var(--header-radius-inner);
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+  max-height: 260px;
+  overflow-y: auto;
+  z-index: 100;
+  padding: 6px;
+  box-sizing: border-box;
 }
 
-@media only screen and (max-width: 480px) {
-    .dashboardHeaderWrapper{
-        display: none;
-    }
+.SearchDropdownResultRow {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--header-txt-body);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: var(--header-transition);
+  box-sizing: border-box;
 }
 
-@media only screen and (max-width: 379px) {
+.SearchDropdownResultRow:hover {
+  background-color: var(--corporate-crimson-light);
+  color: var(--corporate-crimson);
+}
+
+.ActionRowIndicatorIcon {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.SearchDropdownNoResultsRow {
+  padding: 16px;
+  font-size: 13px;
+  color: var(--header-txt-muted);
+  text-align: center;
+}
+
+/* Updated Interactive Tips Carousel Card Container Styles */
+.TipsCarouselWrapperCard {
+  flex: 1;
+  background-color: #fff8f8;
+  border: 1px dashed rgba(192, 57, 43, 0.25);
+  border-radius: var(--header-radius-inner);
+  padding: 8px 14px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  cursor: pointer; /* Explicit clickable indicator cursor link */
+  transition: var(--header-transition);
+  user-select: none;
+}
+
+.TipsCarouselWrapperCard:hover {
+  background-color: var(--corporate-crimson-light);
+  border-style: solid;
+  border-color: rgba(192, 57, 43, 0.4);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(192, 57, 43, 0.04);
+}
+
+.TipsCarouselWrapperCard:active {
+  transform: translateY(0);
+}
+
+.TipsCarouselInnerBodyText {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--corporate-crimson);
+  margin: 0;
+  text-align: center;
+  line-height: 1.4;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  transition: opacity 0.3s ease;
+}
+
+.fade-in { opacity: 1; }
+.fade-out { opacity: 0; }
+
+.HeaderActionControllersCluster {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-shrink: 0;
+}
+
+.HeaderNotificationBellButton {
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--header-txt-body);
+  cursor: pointer;
+  border-radius: 50%;
+  transition: var(--header-transition);
+}
+
+.HeaderNotificationBellButton:hover {
+  background-color: var(--header-input-bg);
+  color: var(--corporate-crimson);
+}
+
+.HeaderActiveAlertNotificationBadge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 9px;
+  height: 9px;
+  background-color: var(--corporate-crimson);
+  border: 2px solid var(--header-bg-surface);
+  border-radius: 50%;
+}
+
+.HeaderUserProfileAvatarFrame {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid var(--header-border-line);
+  overflow: hidden;
+  cursor: pointer;
+  background-color: var(--header-input-bg);
+  transition: var(--header-transition);
+}
+
+.HeaderUserProfileAvatarFrame:hover {
+  border-color: var(--corporate-crimson);
+  transform: scale(1.02);
+}
+
+.HeaderUserProfileAvatarFrame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.DrawerActionControlsBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--header-border-line);
+  margin-bottom: 16px;
+}
+
+.DrawerUtilityActionTextButton {
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--header-txt-body);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: var(--header-transition);
+}
+
+.DrawerUtilityActionTextButton:hover {
+  background-color: var(--header-input-bg);
+  color: var(--header-txt-main);
+}
+
+.DrawerUtilityActionTextButton.variantClearAll {
+  color: #64748b;
+}
+
+.DrawerUtilityActionTextButton.variantClearAll:hover {
+  background-color: #fff2f2;
+  color: var(--corporate-crimson);
+}
+
+.DrawerNotificationsScrollerList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.DrawerNotificationDataCard {
+  background-color: var(--header-bg-surface);
+  border: 1px solid var(--header-border-line);
+  border-radius: var(--header-radius-inner);
+  padding: 14px;
+  cursor: pointer;
+  transition: var(--header-transition);
+  box-sizing: border-box;
+}
+
+.DrawerNotificationDataCard:hover {
+  border-color: #cbd5e1;
+  background-color: var(--header-input-bg);
+}
+
+.DrawerNotificationDataCard.isUnreadCardAlert {
+  background-color: #fffdfd;
+  border-color: rgba(192, 57, 43, 0.15);
+}
+
+.NotificationCardHeaderLine {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.NotificationCardHeaderLine h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--header-txt-main);
+  margin: 0;
+}
+
+.UnreadIndicatorDotTag {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--corporate-crimson);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: var(--corporate-crimson-light);
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.NotificationCardCollapsedSnippet {
+  font-size: 12px;
+  color: var(--header-txt-body);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.NotificationCardExpandedBodyText p {
+  font-size: 12px;
+  color: var(--header-txt-body);
+  margin: 0 0 12px 0;
+  line-height: 1.5;
+}
+
+.NotificationCardActionActionButton {
+  background-color: var(--corporate-crimson);
+  color: #ffffff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--header-transition);
+}
+
+.NotificationCardActionActionButton:hover {
+  background-color: var(--corporate-crimson-hover);
+}
+
+.NotificationCardTimestampString {
+  display: block;
+  font-size: 10px;
+  color: var(--header-txt-muted);
+  margin-top: 8px;
+}
+
+.DrawerEmptyTrayStateFallback {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.EmptyTrayEmojiContext {
+  font-size: 32px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.DrawerEmptyTrayStateFallback h4 {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--header-txt-main);
+  margin: 0 0 4px 0;
+}
+
+.DrawerEmptyTrayStateFallback p {
+  font-size: 12px;
+  color: var(--header-txt-muted);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.animateBodyExpansion {
+  animation: expandCard 0.2s ease-out forwards;
+}
+
+@keyframes expandCard {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+
+/* ... [Keep all previous header CSS styles exactly the same] ... */
+
+/* ==========================================================================
+   DYNAMIC STRUCTURAL MODIFIERS FOR CONDITIONALLY RENDERED SEARCH SLOTS
+   ========================================================================== */
+.TipsCarouselWrapperCard.isCenteredFullWidth {
+  flex: 1;
+  max-width: 100%;
+  background-color: var(--header-input-bg);
+  border-color: var(--header-border-line);
+}
+
+.TipsCarouselWrapperCard.isCenteredFullWidth:hover {
+  background-color: var(--corporate-crimson-light);
+  border-color: rgba(192, 57, 43, 0.3);
+}
+
+.TipsCarouselWrapperCard.isCenteredFullWidth .TipsCarouselInnerBodyText {
+  font-size: 12px;
+  max-width: 540px;
 }

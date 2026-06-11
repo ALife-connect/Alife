@@ -8,7 +8,7 @@ import { toast } from 'sonner';
 import axios from 'axios';
 import { IoArrowBackCircleOutline } from 'react-icons/io5';
 
-const VITE_BASEURL_REN = import.meta.env.VITE_BASEURL_REN;
+const VITE_BASEURL_REN = import.meta.env.VITE_BASEURL;
 
 const Hospitalsignup = () => {
   const [click, setClick] = useState(false);

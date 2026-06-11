@@ -19,23 +19,21 @@ import { BiGitPullRequest } from "react-icons/bi";
 const DashboardSideBar = () => {
   const nav = useNavigate();
   const [deletePopup, setDeletePopup] = useState(false);
-  const [loadLogOut, setLoadLogOut] = useState(false)
+  const [loadLogOut, setLoadLogOut] = useState(false);
   const location = useLocation();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const Base_Url = import.meta.env.VITE_BASEURL;
-
-  const userData = useSelector((state) => state?.loggedInUser)
-  const token = useSelector((state) => state?.token)
-
+  const userData = useSelector((state) => state?.loggedInUser);
+  const token = useSelector((state) => state?.token);
 
   const logOutFunc = () => {
     handleLogout(Base_Url, nav, token, dispatch, setLoadLogOut, setDeletePopup);
-    dispatch(logOut())
+    dispatch(logOut());
   };
 
-  if(loadLogOut){
-    return <LoadComponents/>
+  if (loadLogOut) {
+    return <LoadComponents />;
   }
 
   return (
@@ -52,57 +50,38 @@ const DashboardSideBar = () => {
           {userData?.role === "donor" ? (
             <ul>
               <li
-                onClick={() => {
-                  nav("");
-                }}
-                className={`${location.pathname === "/dashboard" ? "activeBar" : ""
-                  }`}
+                onClick={() => nav("")}
+                className={`${location.pathname === "/dashboard" ? "activeBar" : ""}`}
               >
-                <FaUser className="sideBarIocns" color="black" />
+                <FaUser className="sideBarIocns" />
                 Profile
               </li>
               <li
-                onClick={() => {
-                  nav("findhospital");
-                }}
-                className={`${location.pathname === "/dashboard/findhospital"
-                    ? "activeBar"
-                    : ""
-                  }`}
+                onClick={() => nav("findhospital")}
+                className={`${location.pathname === "/dashboard/findhospital" ? "activeBar" : ""}`}
               >
-                <TbHomeSearch className="sideBarIocns" color="black" />
+                <TbHomeSearch className="sideBarIocns" />
                 Find Hospital
               </li>
               <li
-                onClick={() => {
-                  nav("hospitalsrequest");
-                }}
-                className={`${location.pathname === "/dashboard/hospitalsrequest"
-                    ? "activeBar"
-                    : ""
-                  }`}
+                onClick={() => nav("hospitalsrequest")}
+                className={`${location.pathname === "/dashboard/hospitalsrequest" ? "activeBar" : ""}`}
               >
-                <BiGitPullRequest className="sideBarIocns" color="black" />
-                 Requests
+                <BiGitPullRequest className="sideBarIocns" />
+                Requests
               </li>
               <li
-                onClick={() => {
-                  nav("history");
-                }}
-                className={`${location.pathname === "/dashboard/history" ? "activeBar" : ""
-                  }`}
+                onClick={() => nav("history")}
+                className={`${location.pathname === "/dashboard/history" ? "activeBar" : ""}`}
               >
-                <MdHistory className="sideBarIocns" color="black" />
+                <MdHistory className="sideBarIocns" />
                 History
               </li>
               <li
-                onClick={() => {
-                  nav("settings");
-                }}
-                className={`${location.pathname === "/dashboard/settings" ? "activeBar" : ""
-                  }`}
+                onClick={() => nav("settings")}
+                className={`${location.pathname === "/dashboard/settings" ? "activeBar" : ""}`}
               >
-                <IoSettingsOutline className="sideBarIocns" color="black" />
+                <IoSettingsOutline className="sideBarIocns" />
                 Settings
               </li>
               <li onClick={() => setDeletePopup(true)} className="logoutBtn">
@@ -115,67 +94,38 @@ const DashboardSideBar = () => {
           {userData?.role === "hospital" ? (
             <ul>
               <li
-                onClick={() => {
-                  nav("");
-                }}
-                className={`${location.pathname === "/dashboard" ? "activeBar" : ""
-                  }`}
+                onClick={() => nav("")}
+                className={`${location.pathname === "/dashboard" ? "activeBar" : ""}`}
               >
-                <FaUser className="sideBarIocns" color="black" />
+                <FaUser className="sideBarIocns" />
                 Profile
               </li>
               <li
-                onClick={() => {
-                  nav("request");
-                }}
-                className={`${location.pathname === "/dashboard/request" ? "activeBar" : ""
-                  }`}
+                onClick={() => nav("request")}
+                className={`${location.pathname === "/dashboard/request" ? "activeBar" : ""}`}
               >
-                <PiGitPullRequest className="sideBarIocns" color="black" />
+                <PiGitPullRequest className="sideBarIocns" />
                 Make Request
               </li>
               <li
-                onClick={() => {
-                  nav("/dashboard/requesthistory");
-                }}
-                className={`${location.pathname === "/dashboard/requesthistory"
-                    ? "activeBar"
-                    : ""
-                  }`}
+                onClick={() => nav("/dashboard/requesthistory")}
+                className={`${location.pathname === "/dashboard/requesthistory" ? "activeBar" : ""}`}
               >
-                <MdHistory className="sideBarIocns" color="black" />
+                <MdHistory className="sideBarIocns" />
                 Request History
               </li>
               <li
-                onClick={() => {
-                  nav("appointment");
-                }}
-                className={`${location.pathname === "/dashboard/appointment"
-                    ? "activeBar"
-                    : ""
-                  }`}
+                onClick={() => nav("appointment")}
+                className={`${location.pathname === "/dashboard/appointment" ? "activeBar" : ""}`}
               >
-                <IoList className="sideBarIocns" color="black" />
+                <IoList className="sideBarIocns" />
                 Appointments
               </li>
-              {/* <li
-                onClick={() => {
-                  nav("records");
-                }}
-                className={`${location.pathname === "/dashboard/records" ? "activeBar" : ""
-                  }`}
-              >
-                <MdOutlineHistoryToggleOff className="sideBarIocns" color="black" />
-                Records
-              </li> */}
               <li
-                onClick={() => {
-                  nav("/dashboard/hospitalsettings");
-                }}
-                className={`${location.pathname === "/dashboard/settings" ? "activeBar" : ""
-                  }`}
+                onClick={() => nav("/dashboard/hospitalsettings")}
+                className={`${location.pathname === "/dashboard/settings" ? "activeBar" : ""}`}
               >
-                <IoSettingsOutline className="sideBarIocns" color="black" />
+                <IoSettingsOutline className="sideBarIocns" />
                 Settings
               </li>
               <li onClick={() => setDeletePopup(true)} className="logoutBtn">
@@ -185,61 +135,34 @@ const DashboardSideBar = () => {
             </ul>
           ) : null}
 
-            {userData?.role === "admin" ? (
+          {userData?.role === "admin" ? (
             <ul>
               <li
-                onClick={() => {
-                  nav("");
-                }}
-                className={`${location.pathname === "/dashboard" ? "activeBar" : ""
-                  }`}
+                onClick={() => nav("")}
+                className={`${location.pathname === "/dashboard" ? "activeBar" : ""}`}
               >
-                <FaUser className="sideBarIocns" color="black" />
+                <FaUser className="sideBarIocns" />
                 Profile
               </li>
-              
               <li
-                onClick={() => {
-                  nav("allusers");
-                }}
-                className={`${location.pathname === "/dashboard/allusers"
-                    ? "activeBar"
-                    : ""
-                  }`}
+                onClick={() => nav("allusers")}
+                className={`${location.pathname === "/dashboard/allusers" ? "activeBar" : ""}`}
               >
-                <HiUsers className="sideBarIocns" color="black" />
+                <HiUsers className="sideBarIocns" />
                 Users
               </li>
-              {/* <li
-                onClick={() => {
-                  nav("adminblacklist");
-                }}
-                className={`${location.pathname === "/dashboard/adminblacklist"
-                    ? "activeBar"
-                    : ""
-                  }`}
-              >
-                <IoIosListBox className="sideBarIocns" color="black" />
-                Black List
-              </li> */}
               <li
-                onClick={() => {
-                  nav("adminverification");
-                }}
-                className={`${location.pathname === "/dashboard/adminverification" ? "activeBar" : ""
-                  }`}
+                onClick={() => nav("adminverification")}
+                className={`${location.pathname === "/dashboard/adminverification" ? "activeBar" : ""}`}
               >
-                <MdVerified className="sideBarIocns" color="black" />
+                <MdVerified className="sideBarIocns" />
                 Verification
               </li>
               <li
-                onClick={() => {
-                  nav("adminsettings");
-                }}
-                className={`${location.pathname === "/dashboard/adminsettings" ? "activeBar" : ""
-                  }`}
+                onClick={() => nav("adminsettings")}
+                className={`${location.pathname === "/dashboard/adminsettings" ? "activeBar" : ""}`}
               >
-                <IoSettingsOutline className="sideBarIocns" color="black" />
+                <IoSettingsOutline className="sideBarIocns" />
                 Settings
               </li>
               <li onClick={() => setDeletePopup(true)} className="logoutBtn">
@@ -253,7 +176,7 @@ const DashboardSideBar = () => {
 
       {deletePopup && (
         <div className="popUpWrapper" onClick={() => setDeletePopup(false)}>
-          <div className="logoutPopUp">
+          <div className="logoutPopUp" onClick={(e) => e.stopPropagation()}>
             <div className="logoutPopUpHeader">
               <CiCircleRemove
                 cursor="pointer"
@@ -273,7 +196,6 @@ const DashboardSideBar = () => {
               >
                 Cancel
               </button>
-
               <button onClick={logOutFunc}>Logout</button>
             </div>
           </div>

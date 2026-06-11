@@ -3,18 +3,26 @@ import './dashboardHeader.css';
 import { MdCircleNotifications } from "react-icons/md";
 import { Drawer } from 'antd';
 import { GoUnread } from "react-icons/go";
-import { useNavigate } from 'react-router';
+import { useNavigate, useLocation } from 'react-router'; // Added useLocation hook integration
 import axios from 'axios';
 import { IoMdRefreshCircle } from "react-icons/io";
 import { RiDeleteBin6Fill } from "react-icons/ri";
+import { FiSearch, FiChevronRight } from "react-icons/fi"; 
 import { useSelector } from 'react-redux';
+import { toast } from 'sonner';
 
 const Base_Url = import.meta.env.VITE_BASEURL;
-const VITE_BASEURL_REN = import.meta.env.VITE_BASEURL_REN;
+const VITE_BASEURL_REN = import.meta.env.VITE_BASEURL;
 
 const DashBoardHeader = () => {
   const loggedInUser = useSelector((state) => state?.loggedInUser);
   const token = useSelector((state) => state?.token);
+
+  const nav = useNavigate();
+  const location = useLocation(); // Hook initialization to track active route changes
+
+  // Dynamic route verification (Adjust this string to match your routing architecture)
+  const isFindHospitalPage = location.pathname === '/dashboard/findhospital';
 
   const [notificationSideBar, setNotificationSideBar] = useState(false);
   const [openedMessageIndex, setOpenedMessageIndex] = useState(null);
@@ -23,12 +31,10 @@ const DashBoardHeader = () => {
   const [hospitals, setHospitals] = useState([]);
   const [filteredHospitals, setFilteredHospitals] = useState([]);
 
-  const nav = useNavigate();
-
   const headerNameSplit = loggedInUser?.fullName?.split(" ");
   const headerNamePrompt = headerNameSplit?.[0];
 
-  // ✅ Fetch donor notifications
+  // Fetch donor notifications
   const getDonorNotification = async () => {
     try {
       const response = await axios.get(`${VITE_BASEURL_REN}/donor/notifications`, {
@@ -40,7 +46,7 @@ const DashBoardHeader = () => {
     }
   };
 
-  // ✅ Periodic refresh of notifications
+  // Periodic refresh of notifications
   useEffect(() => {
     if (!token) return;
 
@@ -53,7 +59,7 @@ const DashBoardHeader = () => {
     return () => clearInterval(interval);
   }, [token]);
 
-  // ✅ Fetch hospitals
+  // Fetch hospitals
   const fetchHospitals = async () => {
     try {
       const res = await axios.get(`${Base_Url}/hospitals`);
@@ -69,7 +75,29 @@ const DashBoardHeader = () => {
     fetchHospitals();
   }, []);
 
-  // ✅ Mark notification as read
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchQuery(value);
+    
+    if (value.trim() === "") {
+      setFilteredHospitals(hospitals);
+    } else {
+      const internalFilter = hospitals.filter((hospital) =>
+        hospital?.name?.toLowerCase().includes(value.toLowerCase())
+      );
+      setFilteredHospitals(internalFilter);
+    }
+  };
+
+  const handleDeleteAllNotifications = () => {
+    if (notifications.length === 0) {
+      toast.info("Your notification tray is already completely empty.");
+      return;
+    }
+    setNotifications([]);
+    toast.success("All local notification records cleared.");
+  };
+
   const markNotificationAsRead = async (notificationId) => {
     try {
       await axios.put(
@@ -83,12 +111,10 @@ const DashBoardHeader = () => {
     }
   };
 
-  // ✅ Toggle open/close of message
   const handleOpenedMessageToggle = (index) => {
     setOpenedMessageIndex((prev) => (prev === index ? null : index));
   };
 
-  // ✅ Donor and Hospital tips
   const donationTips = [
     "Stay hydrated! Drink plenty of water before and after your donation.",
     "Eat a healthy meal before donating — avoid fatty foods.",
@@ -108,147 +134,188 @@ const DashBoardHeader = () => {
   ];
 
   const hospitalTips = [
-    "✅ Keep your hospital profile and KYC documents updated for better visibility.",
-    "⏱️ Respond to donor matches quickly to avoid losing opportunities.",
-    "🩸 Clearly list your required blood types and update needs in real time.",
-    "🛋️ Provide a clean, comfortable, and welcoming environment for donors.",
-    "📲 Log in regularly to stay active and manage donation requests promptly.",
-    "👨‍⚕️ Train staff to treat donors with respect and professionalism.",
-    "💌 Send a thank-you message after donations to build long-term trust.",
-    "📊 Use dashboard analytics to track donation trends and optimize planning.",
-    "📣 Promote your hospital's presence on social media and local platforms.",
-    "🛡️ Stay compliant with all health and safety regulations to ensure donor confidence.",
+    "Keep your hospital profile and KYC documents updated for better visibility.",
+    "Respond to donor matches quickly to avoid losing opportunities.",
+    "Clearly list your required blood types and update needs in real time.",
+    "Provide a clean, comfortable, and welcoming environment for donors.",
+    "Log in regularly to stay active and manage donation requests promptly.",
+    "Train staff to treat donors with respect and professionalism.",
+    "Send a thank-you message after donations to build long-term trust.",
+    "Use dashboard analytics to track donation trends and optimize planning.",
+    "Promote your hospital's presence on social media and local platforms.",
+    "Stay compliant with all health and safety regulations to ensure donor confidence.",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fadeClass, setFadeClass] = useState("fade-in");
 
-  // ✅ Tips carousel animation
+  const tips = loggedInUser?.role === "donor" ? donationTips : hospitalTips;
+
   useEffect(() => {
     const interval = setInterval(() => {
       setFadeClass("fade-out");
       setTimeout(() => {
-        setCurrentIndex((prev) => (prev + 1) % donationTips.length);
+        setCurrentIndex((prev) => (prev + 1) % tips.length);
         setFadeClass("fade-in");
-      }, 300);
-    }, 4000);
+      }, 500);
+    }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
-
-  // ✅ Choose tips based on user role
-  const tips = loggedInUser?.role === "donor" ? donationTips : hospitalTips;
+  }, [tips]);
 
   return (
-    <div className="dashboardHeaderWrapper">
-      <div className="dashboardHeaderName">
+    <div className="ModernHeaderContainer">
+      {/* Left Block: Welcoming Context Stream */}
+      <div className="HeaderGreetingPane">
         <h1>
-          Hello {headerNamePrompt || 'Visitor'}{" "}
-          <p style={{ fontSize: '15px' }}>&#128522;</p>
+          Hello, {headerNamePrompt || 'User'}{" "}
+          <span className="AnimatedGreetingHand">👋</span>
         </h1>
-        <span>“Save a life today”</span>
+        <p>“Save a life today”</p>
       </div>
 
-      <div className="dashboardHeaderSearchWrapper">
-        <div className="carousel-card">
-          <p className={`carousel-text ${fadeClass}`}>
-            {tips[currentIndex]}
+      {/* Middle Block: Conditionally Isolated Layout Panel */}
+      <div className="HeaderSearchAndTipsBlock">
+        {/* Conditional Search Layer Injection */}
+        {isFindHospitalPage && (
+          <div className="HeaderSearchContainer">
+            <FiSearch className="SearchBoxPrefixIcon" />
+            <input 
+              type="text"
+              placeholder="Search verified medical centers..."
+              value={searchQuery}
+              onChange={handleSearchChange}
+              className="SearchEngineInputElement"
+            />
+            
+            {searchQuery && (
+              <div className="HeaderSearchDropdownPanel">
+                {filteredHospitals.length > 0 ? (
+                  filteredHospitals.map((h) => (
+                    <div
+                      key={h.id || h._id}
+                      className="SearchDropdownResultRow"
+                      onClick={() => {
+                        nav(`/hospital/${h.id || h._id}`);
+                        setSearchQuery('');
+                      }}
+                    >
+                      <span>{h.name}</span>
+                      <FiChevronRight className="ActionRowIndicatorIcon" />
+                    </div>
+                  ))
+                ) : (
+                  <div className="SearchDropdownNoResultsRow">No matching clinics or hospitals found</div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Tips Carousel Wrapper Card (Grows to full center width if search is absent) */}
+        <div 
+          className={`TipsCarouselWrapperCard ${!isFindHospitalPage ? 'isCenteredFullWidth' : ''}`}
+          onClick={() => nav('/dashboard/tips')}
+          title="Click to view all health guidelines and tips"
+        >
+          <p className={`TipsCarouselInnerBodyText ${fadeClass}`}>
+            💡 {tips[currentIndex]}
           </p>
         </div>
       </div>
 
-      {searchQuery && (
-        <div className="searchDropdown">
-          {filteredHospitals.length > 0 ? (
-            filteredHospitals.map((h) => (
-              <div
-                key={h.id}
-                className="searchResultItem"
-                onClick={() => nav(`/hospital/${h.id}`)}
-              >
-                {h.name}
-              </div>
-            ))
-          ) : (
-            <div className="noResult">No hospitals found</div>
-          )}
-        </div>
-      )}
-
-      <div className="profilePicAndNotification">
-        <div
-          className="notificationIconWrapper"
+      {/* Right Block: Action Triggers Panel */}
+      <div className="HeaderActionControllersCluster">
+        <button 
+          className="HeaderNotificationBellButton"
           onClick={() => setNotificationSideBar(true)}
+          aria-label="Open notifications window drawer"
         >
-          <MdCircleNotifications size={30} cursor="pointer" />
+          <MdCircleNotifications size={32} />
           {notifications?.some((n) => !n.isRead) && (
-            <span className="notificationDot"></span>
+            <span className="HeaderActiveAlertNotificationBadge"></span>
           )}
-        </div>
+        </button>
 
-        <div className="profilePicture">
-          {loggedInUser?.profilePics || loggedInUser?.profilePicture ? (
-            <img
-              src={loggedInUser?.profilePics || loggedInUser?.profilePicture}
-              alt="profile"
-              className="profileAvatar"
-            />
-          ) : (
-            <img
-              src="/images/default profile pic.jpg"
-              alt="default"
-              className="profileAvatar"
-            />
-          )}
+        <div className="HeaderUserProfileAvatarFrame" onClick={() => nav('/dashboard/settings')}>
+          <img
+            src={loggedInUser?.profilePics || loggedInUser?.profilePicture || "/images/default profile pic.jpg"}
+            alt="User Account Profile Vector"
+          />
         </div>
       </div>
 
+      {/* Ant Design Sidebar Notification Housing Drawer */}
       <Drawer
         open={notificationSideBar}
         onClose={() => setNotificationSideBar(false)}
-        title="Notifications"
+        title="Notification Center"
+        width={380}
+        className="ModernHeaderSystemDrawer"
       >
-        <div className="refreshWrapperHeader">
-          <RiDeleteBin6Fill size={30} cursor="pointer" title="Delete all" />
-          <IoMdRefreshCircle
-            size={30}
-            cursor="pointer"
-            title="Refresh"
+        <div className="DrawerActionControlsBar">
+          <button 
+            className="DrawerUtilityActionTextButton variantClearAll"
+            onClick={handleDeleteAllNotifications}
+          >
+            <RiDeleteBin6Fill size={16} /> Clear All
+          </button>
+          <button 
+            className="DrawerUtilityActionTextButton" 
             onClick={getDonorNotification}
-          />
+          >
+            <IoMdRefreshCircle size={18} /> Refresh Tray
+          </button>
         </div>
 
-        <div className="notificationsWrapper">
+        <div className="DrawerNotificationsScrollerList">
           {notifications.length > 0 ? (
             notifications.map((notification, index) => (
               <div
                 key={notification._id || index}
-                className="notificationsCardsWrap"
+                className={`DrawerNotificationDataCard ${!notification.isRead ? 'isUnreadCardAlert' : ''}`}
                 onClick={() => handleOpenedMessageToggle(index)}
               >
-                <h1>
-                  {notification.from} {!notification.isRead && <GoUnread />}
-                </h1>
+                <div className="NotificationCardHeaderLine">
+                  <h4>{notification.from || "Medical Request Center"}</h4> 
+                  {!notification.isRead && (
+                    <span className="UnreadIndicatorDotTag">
+                      <GoUnread /> New
+                    </span>
+                  )}
+                </div>
 
-                {openedMessageIndex === index && (
-                  <>
-                    <span>{notification.message}</span>
+                {openedMessageIndex === index ? (
+                  <div className="NotificationCardExpandedBodyText animateBodyExpansion">
+                    <p>{notification.message}</p>
                     <button
-                      onClick={() => {
+                      className="NotificationCardActionActionButton"
+                      onClick={(e) => {
+                        e.stopPropagation();
                         markNotificationAsRead(notification._id);
                         nav(`/hospitalsrequestdetails/${notification?._id}`);
                         setNotificationSideBar(false);
                       }}
                     >
-                      View Hospital
+                      View Request Details
                     </button>
-                    <p>{new Date(notification.date).toLocaleString()}</p>
-                  </>
+                    <span className="NotificationCardTimestampString">
+                      {new Date(notification.date).toLocaleString()}
+                    </span>
+                  </div>
+                ) : (
+                  <p className="NotificationCardCollapsedSnippet">
+                    {notification.message ? `${notification.message.substring(0, 55)}...` : "Click to view request parameters"}
+                  </p>
                 )}
               </div>
             ))
           ) : (
-            <p>No notifications yet 📭</p>
+            <div className="DrawerEmptyTrayStateFallback">
+              <span className="EmptyTrayEmojiContext">📭</span>
+              <h4>Your tray is completely clear</h4>
+              <p>We will let you know when new donation queries surface matching your file data.</p>
+            </div>
           )}
         </div>
       </Drawer>

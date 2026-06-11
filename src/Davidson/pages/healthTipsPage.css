@@ -1,0 +1,314 @@
+:root {
+  --tips-bg-surface: #ffffff;
+  --tips-bg-canvas: #f8fafc;
+  --tips-border-color: #e2e8f0;
+  
+  --corporate-crimson: #c0392b;
+  --corporate-crimson-hover: #a62c20;
+  --corporate-crimson-light: #fdf2f2;
+  
+  --tips-text-dark: #0f172a;
+  --tips-text-muted: #475569;
+  --tips-text-light: #94a3b8;
+  
+  --tips-shadow-card: 0 4px 6px -1px rgba(15, 23, 42, 0.03), 0 2px 4px -2px rgba(15, 23, 42, 0.03);
+  --tips-shadow-hover: 0 12px 20px -8px rgba(15, 23, 42, 0.08);
+  --tips-transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Master Structure Container */
+.TipsHubPageMasterFrame {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--tips-bg-canvas);
+  padding: 40px 32px;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+/* Title Header Segment Blocks */
+.TipsHubHeaderBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.TipsHubBackButton {
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--tips-text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 6px 0;
+  align-self: flex-start;
+  transition: var(--tips-transition);
+}
+
+.TipsHubBackButton:hover {
+  color: var(--corporate-crimson);
+  transform: translateX(-2px);
+}
+
+.TipsHubTitleContext h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--tips-text-dark);
+  margin: 0 0 6px 0;
+  letter-spacing: -0.5px;
+}
+
+.TipsHubTitleContext p {
+  font-size: 14px;
+  color: var(--tips-text-muted);
+  margin: 0;
+  max-width: 720px;
+  line-height: 1.5;
+}
+
+/* Interactive Controls and Filtering Row Matrix */
+.TipsHubControlBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+  background-color: var(--tips-bg-surface);
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--tips-border-color);
+  box-shadow: var(--tips-shadow-card);
+  flex-wrap: wrap;
+}
+
+.TipsCategoryPillGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.CategoryFilterPillButton {
+  background-color: var(--tips-bg-canvas);
+  border: 1px solid var(--tips-border-color);
+  color: var(--tips-text-muted);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: var(--tips-transition);
+}
+
+.CategoryFilterPillButton:hover {
+  background-color: #f1f5f9;
+  color: var(--tips-text-dark);
+}
+
+.CategoryFilterPillButton.isActivePill {
+  background-color: var(--corporate-crimson);
+  border-color: var(--corporate-crimson);
+  color: #ffffff;
+}
+
+/* Operational Search Frame Nodes */
+.TipsHubSearchBoxWrapper {
+  position: relative;
+  width: 280px;
+}
+
+@media (max-width: 768px) {
+  .TipsHubSearchBoxWrapper {
+    width: 100%;
+  }
+}
+
+.SearchIconContextElement {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--tips-text-light);
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.TipsHubSearchInputElement {
+  width: 100%;
+  height: 38px;
+  background-color: var(--tips-bg-canvas);
+  border: 1px solid var(--tips-border-color);
+  border-radius: 8px;
+  padding: 0 16px 0 40px;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--tips-text-dark);
+  transition: var(--tips-transition);
+  box-sizing: border-box;
+}
+
+.TipsHubSearchInputElement:focus {
+  outline: none;
+  background-color: var(--tips-bg-surface);
+  border-color: var(--corporate-crimson);
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.06);
+}
+
+/* Content Grid Area Display Modules */
+.TipsGridMainContentArea {
+  width: 100%;
+}
+
+.TipsDashboardCardGridLayout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* Individual Showcase Cards Content Modules */
+.TipInteractiveShowcaseCard {
+  background-color: var(--tips-bg-surface);
+  border: 1px solid var(--tips-border-color);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: var(--tips-shadow-card);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  transition: var(--tips-transition);
+  box-sizing: border-box;
+}
+
+.TipInteractiveShowcaseCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--tips-shadow-hover);
+  border-color: #cbd5e1;
+}
+
+.TipCardDecorativeIconHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.TipCategoryIconBox {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+/* Color Palette Coding Based on Tip Categorization Substructures */
+.TipInteractiveShowcaseCard.category-preparation .TipCategoryIconBox,
+.TipInteractiveShowcaseCard.category-logistics .TipCategoryIconBox {
+  background-color: #eff6ff;
+  color: #2563eb;
+}
+
+.TipInteractiveShowcaseCard.category-recovery .TipCategoryIconBox,
+.TipInteractiveShowcaseCard.category-donor-care .TipCategoryIconBox {
+  background-color: #f0fdf4;
+  color: #16a34a;
+}
+
+.TipInteractiveShowcaseCard.category-impact .TipCategoryIconBox,
+.TipInteractiveShowcaseCard.category-operations .TipCategoryIconBox {
+  background-color: var(--corporate-crimson-light);
+  color: var(--corporate-crimson);
+}
+
+.TipCardCategoryBadgeString {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--tips-text-light);
+  background-color: var(--tips-bg-canvas);
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.TipCardPrimaryDescriptionText {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--tips-text-dark);
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+}
+
+.TipCardFooterStatusRow {
+  border-top: 1px solid #f1f5f9;
+  padding-top: 14px;
+}
+
+.VerifiedActionTag {
+  font-size: 11px;
+  font-weight: 500;
+  color: #64748b;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.VerifiedActionTag svg {
+  color: #10b981;
+}
+
+/* Empty Search Result Fallbacks Elements */
+.TipsEmptySearchFallbackState {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: var(--tips-bg-surface);
+  border-radius: 12px;
+  border: 1px dashed var(--tips-border-color);
+  max-width: 480px;
+  margin: 40px auto;
+}
+
+.EmptyStateFallbackGraphic {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.TipsEmptySearchFallbackState h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--tips-text-dark);
+  margin: 0 0 6px 0;
+}
+
+.TipsEmptySearchFallbackState p {
+  font-size: 13px;
+  color: var(--tips-text-muted);
+  margin: 0 0 20px 0;
+  line-height: 1.5;
+}
+
+.ResetFiltersActionBtn {
+  background-color: var(--corporate-crimson);
+  color: #ffffff;
+  border: none;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--tips-transition);
+}
+
+.ResetFiltersActionBtn:hover {
+  background-color: var(--corporate-crimson-hover);
+}

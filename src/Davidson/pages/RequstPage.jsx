@@ -21,7 +21,7 @@ const RequestPage = () => {
 
   const nav = useNavigate();
   const Base_Url = import.meta.env.VITE_BASEURL;
-  const VITE_BASEURL_REN = import.meta.env.VITE_BASEURL_REN;
+  const VITE_BASEURL_REN = import.meta.env.VITE_BASEURL;
 
   const [formData, setFormData] = useState({
     bloodGroup: "",
