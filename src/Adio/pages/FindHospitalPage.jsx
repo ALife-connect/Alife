@@ -5,8 +5,8 @@ import LoadComponents from "../../components/componentsLoadScreen/LoadComponents
 import { useSelector } from "react-redux";
 import axios from "axios";
 
-const Base_Url = import.meta.env.VITE_BASEURL;
-const VITE_BASEURL_REN = import.meta.env.VITE_BASEURL_REN;
+const VITE_BASEURL_REN = import.meta.env.VITE_BASEURL;
+console.log(VITE_BASEURL_REN)
 
 const tips = [
   "One blood donation can save up to 3 lives",
@@ -24,11 +24,14 @@ const FindHospitalPage = () => {
   const [listOfHospitals, setListOfHospitals] = useState([]);
   const [error, setError] = useState("");
 
+  const alltheHospitals = axios.get(`${VITE_BASEURL_REN}/hospitals`);
+  console.log("All the hospitals:", alltheHospitals);
+
   const token = useSelector((state) => state?.token);
 
   const getListOfHospitals = async () => {
     setIsLoading(true);
-    setError(""); // reset error message
+    setError(""); 
     try {
       console.log("🔑 Auth token:", token);
       console.log("🌍 Fetching hospitals from:", `${VITE_BASEURL_REN}/hospitals`);
@@ -69,39 +72,31 @@ const FindHospitalPage = () => {
 
       {error && <p className="error-text">{error}</p>}
 
-      <div className="hospitalCardsWRapper">
-        {listOfHospitals && listOfHospitals.length > 0 ? (
-          listOfHospitals.map((hospital, index) => (
-            <HospitalCard key={index} hospital={hospital} index={index} />
-          ))
-        ) : (
-          !isLoading && <p className="noHospitalText">No Hospital Found 🏥</p>
-        )}
-      </div>
+      <div className="pageMainContentContainer">
+        {/* Main Grid View */}
+        <div className="hospitalCardsWRapper">
+          {listOfHospitals && listOfHospitals.length > 0 ? (
+            listOfHospitals.map((hospital, index) => (
+              <HospitalCard key={index} hospital={hospital} index={index} />
+            ))
+          ) : (
+            !isLoading && <p className="noHospitalText">No Hospital Found 🏥</p>
+          )}
+        </div>
 
-      <div className="quickTipsAndFunFactWrapper">
-        <h1>Quick Tips & Fun Facts</h1>
+        {/* Sidebar Analytics/Tips view panel */}
+        <div className="quickTipsAndFunFactWrapper">
+          <h1>Quick Tips & Fun Facts</h1>
 
-        {tips.map((tip, idx) => (
-          <div
-            key={idx}
-            className="landingincentives"
-            style={{
-              width: "268px",
-              height: "153px",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <div className="incentiveheader" style={{ width: "100%" }}>
-              <img src="/images/Group.png" alt="icon" style={{ width: "41px" }} />
+          {tips.map((tip, idx) => (
+            <div key={idx} className="landingincentives">
+              <div className="incentiveheader">
+                <img src="/images/Group.png" alt="icon" />
+              </div>
+              <h2>{tip}</h2>
             </div>
-            <h2 style={{ fontSize: "16px", width: "80%", textAlign: "center" }}>
-              {tip}
-            </h2>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

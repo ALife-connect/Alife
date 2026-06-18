@@ -1,25 +1,30 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./settingsPage.css";
 import { toast } from "sonner";
-import FadeLoader from "react-spinners/CircleLoader";
+import CircleLoader from "react-spinners/CircleLoader";
 import axios from "axios";
-import { FaCamera } from "react-icons/fa";
+import { FaCamera, FaTrashAlt, FaCloudUploadAlt } from "react-icons/fa";
+import { LuEye, LuEyeClosed } from "react-icons/lu"; // Added eye icon tracking components
 import { useDispatch, useSelector } from "react-redux";
 import { logIn, profilePic } from "../../global/Slice";
 
 const Base_Url = import.meta.env.VITE_BASEURL;
 
 const SettingsPage = () => {
-  const InitialUserData = useSelector((state) => state?.loggedInUser);
+  const dispatch = useDispatch();
+  const fileInputRef = useRef(null);
+  const token = useSelector((state) => state?.token);
+  const InitialUserData = useSelector((state) => state?.loggedInUser) || {};
 
+  // Form states tracking profile configuration changes
   const [userData, setUserData] = useState({
-    fullName: InitialUserData.fullName,
-    gender: InitialUserData.gender || "Male/Female",
-    location: InitialUserData.location,
-    phoneNumber: InitialUserData.phoneNumber || "+234***********",
-    email: InitialUserData.email,
-    age: InitialUserData.age,
-    bloodType: InitialUserData.bloodType,
+    fullName: InitialUserData?.fullName || "",
+    gender: InitialUserData?.gender || "",
+    location: InitialUserData?.location || "",
+    phoneNumber: InitialUserData?.phoneNumber || "",
+    email: InitialUserData?.email || "",
+    age: InitialUserData?.age || "",
+    bloodType: InitialUserData?.bloodType || "",
   });
 
   const [changePasswordDatas, setChangePasswordDatas] = useState({
@@ -28,117 +33,67 @@ const SettingsPage = () => {
   });
 
   const [confirmPassword, setConfirmPassword] = useState("");
-
-  const [passwordLoading, setPasswordLoading] = useState(false);
   const [loading, setLoading] = useState(false);
-  const dispatch = useDispatch();
+  const [passwordLoading, setPasswordLoading] = useState(false);
+  const [photoLoading, setPhotoLoading] = useState(false);
 
-  const token = useSelector((state) => state?.token);
+  // Visibility toggle states for each secure input field
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const handleUpdateProfile = async () => {
-    if (
-      !userData.fullName &&
-      !userData.gender &&
-      !userData.location &&
-      !userData.phoneNumber &&
-      !userData.email &&
-      !userData.age &&
-      !userData.bloodType
-    ) {
-      toast.error("Please input fields");
-      return;
-    }
-    if (!profilePicture) {
-      toast.error("Please select an image first");
-      return;
-    }
-    setLoading(true);
-    try {
-      const res = await axios.put(`${Base_Url}/update-profile`, userData, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      toast.success(res?.data?.message);
+  // Initialize visual states with existing user imagery assets
+  const [imagePreview, setImagePreview] = useState(InitialUserData?.profilePics || null);
+  const [profilePicture, setProfilePicture] = useState(null);
+
+  // Sync internal local state hooks if store dependencies change asynchronously
+  useEffect(() => {
+    if (InitialUserData) {
       setUserData({
-        fullName: "",
-        gender: "",
-        location: "",
-        phoneNumber: "",
-        email: "",
-        age: "",
-        bloodType: "",
+        fullName: InitialUserData.fullName || "",
+        gender: InitialUserData.gender || "",
+        location: InitialUserData.location || "",
+        phoneNumber: InitialUserData.phoneNumber || "",
+        email: InitialUserData.email || "",
+        age: InitialUserData.age || "",
+        bloodType: InitialUserData.bloodType || "",
       });
-      dispatch(logIn(res?.data?.data));
-      dispatch(profilePic(res?.data?.data?.profilePics));
-    } catch (err) {
-      toast.error(err?.response?.data?.message);
-    } finally {
-      setLoading(false);
+      if (InitialUserData.profilePics) {
+        setImagePreview(InitialUserData.profilePics);
+      }
+    }
+  }, [InitialUserData]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUserData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setProfilePicture(file);
+      setImagePreview(URL.createObjectURL(file));
     }
   };
 
   const handleDeletePhoto = () => {
-    setImagePreview(null);
+    setImagePreview(InitialUserData?.profilePics || null);
     setProfilePicture(null);
-    fileInputRef.current.value = "";
-  };
-
-  const handleResetPassword = async () => {
-    if (changePasswordDatas.newPassword !== confirmPassword) {
-      toast.error("New Password do not match");
-      return;
-    }
-    if (
-      !changePasswordDatas.newPassword ||
-      !changePasswordDatas.currentPassword ||
-      !confirmPassword
-    ) {
-      toast.error("Please input a new Password");
-      return;
-    }
-    setPasswordLoading(true);
-    try {
-      const res = await axios.put(
-        `${Base_Url}/changePassword`,
-        changePasswordDatas,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      toast.success(res?.data?.message);
-      setPasswordLoading(false);
-      setNewPasswords("");
-      setConfirmPassword("");
-
-      return;
-    } catch (err) {
-      toast.error(err?.response?.data?.message);
-      setPasswordLoading(false);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
     }
   };
 
-  const fileInputRef = useRef(null);
-  const [imagePreview, setImagePreview] = useState(null);
-  const [profilePicture, setProfilePicture] = useState(null);
-  const [resetInput, setResetInput] = useState(false);
-
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-
-    if (file) {
-      setProfilePicture(file);
-      setImagePreview(URL.createObjectURL(file));
-    } else {
-      setProfilePicture(null);
-      setImagePreview(null);
-    }
-  };
-
-  const handleSubmit = async (e) => {
+  const handlePhotoSubmit = async (e) => {
     e.preventDefault();
+    if (!profilePicture) {
+      toast.error("Please choose a new image file first.");
+      return;
+    }
+
     try {
-      setLoading(true);
+      setPhotoLoading(true);
       const formData = new FormData();
       formData.append("profilePics", profilePicture);
 
@@ -148,180 +103,285 @@ const SettingsPage = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      setResetInput((prev) => !prev);
-      setLoading(false);
-      toast.success(res?.data?.message);
-      dispatch(profilePic(res?.data?.data));
+
+      toast.success(res?.data?.message || "Profile picture updated!");
+      dispatch(profilePic(res?.data?.data?.profilePics || res?.data?.data));
+      setProfilePicture(null);
     } catch (err) {
-      if (err.response && err.response.data && err.response.data.message) {
-        toast.error(err.response.data.message);
-      } else {
-        console.error("An error occurred while submitting the form:", err);
+      toast.error(err?.response?.data?.message || "Failed to upload image file.");
+    } finally {
+      setPhotoLoading(false);
+    }
+  };
+
+  const handleUpdateProfile = async (e) => {
+    e.preventDefault();
+    if (!userData.fullName.trim() || !userData.email.trim()) {
+      toast.error("Full Name and Email address fields cannot be left blank.");
+      return;
+    }
+
+    try {
+      setLoading(true);
+      const res = await axios.put(`${Base_Url}/update-profile`, userData, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      toast.success(res?.data?.message || "Profile text records updated!");
+      if (res?.data?.data) {
+        dispatch(logIn(res.data.data));
       }
+    } catch (err) {
+      toast.error(err?.response?.data?.message || "An error occurred during updating.");
     } finally {
       setLoading(false);
     }
   };
 
+  const handleResetPassword = async (e) => {
+    e.preventDefault();
+    if (!changePasswordDatas.currentPassword || !changePasswordDatas.newPassword) {
+      toast.error("Please fill in all security password fields.");
+      return;
+    }
+    if (changePasswordDatas.newPassword !== confirmPassword) {
+      toast.error("Your newly assigned passwords do not match.");
+      return;
+    }
+
+    try {
+      setPasswordLoading(true);
+      const res = await axios.put(`${Base_Url}/changePassword`, changePasswordDatas, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      toast.success(res?.data?.message || "Password updated successfully.");
+      setChangePasswordDatas({ currentPassword: "", newPassword: "" });
+      setConfirmPassword("");
+      
+      // Reset eye dropdown parameters back to obscure mask visibility configurations
+      setShowCurrentPassword(false);
+      setShowNewPassword(false);
+      setShowConfirmPassword(false);
+    } catch (err) {
+      toast.error(err?.response?.data?.message || "Failed to update security credentials.");
+    } finally {
+      setPasswordLoading(false);
+    }
+  };
+
   return (
     <div className="SettingsPageWrapper">
-      <h1>Profile Settings</h1>
+      <header className="SettingsHeader">
+        <h1>Account Settings</h1>
+        <p>Manage your public profile information, contact channels, and account security credentials.</p>
+      </header>
 
-      <div className="SettingssideWrapper">
-        <div className="profilePageProflePicWrapper">
-          <label htmlFor="imageUpload">
-            <div className="settingsProfilePicture">
-              {!imagePreview && <FaCamera className="cam" />}
-              {imagePreview && <img src={imagePreview} alt="User Profile" />}
-              <input
-                key={resetInput ? "reset" : "normal"}
-                ref={fileInputRef}
-                type="file"
-                id="imageUpload"
-                accept="image/*"
-                name="addImage"
-                className="UploadFileInput"
-                onChange={handleImageChange}
-              />
+      <div className="SettingsLayoutGrid">
+        {/* Left Section: Profile Info and Image Management */}
+        <div className="SettingsPrimaryColumn">
+          <section className="SettingsCard">
+            <h3>Profile Photo</h3>
+            <div className="AvatarUploadContext">
+              <div className="AvatarPreviewFrame">
+                {imagePreview ? (
+                  <img src={imagePreview} alt="User Avatar Viewport" />
+                ) : (
+                  <FaCamera className="FallbackCameraIcon" />
+                )}
+                <label htmlFor="imageUpload" className="FloatingCameraBadge" title="Choose new image file">
+                  <FaCamera />
+                </label>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  id="imageUpload"
+                  accept="image/*"
+                  className="HiddenInputNode"
+                  onChange={handleImageChange}
+                />
+              </div>
+
+              <div className="AvatarActionControls">
+                <button 
+                  className="PrimaryActionButton textIconButton" 
+                  onClick={handlePhotoSubmit}
+                  disabled={photoLoading || !profilePicture}
+                >
+                  {photoLoading ? <CircleLoader color="#ffffff" size={16} /> : <><FaCloudUploadAlt /> Save Photo</>}
+                </button>
+                {profilePicture && (
+                  <button className="SecondaryActionButton textIconButton variantDelete" onClick={handleDeletePhoto}>
+                    <FaTrashAlt /> Discard
+                  </button>
+                )}
+              </div>
             </div>
-          </label>
-          <button onClick={handleSubmit}> Add Photo</button>
-          <button onClick={handleDeletePhoto}>Delete</button>
+          </section>
+
+          <section className="SettingsCard">
+            <h3>Personal Information</h3>
+            <form onSubmit={handleUpdateProfile} className="FormLayoutGrid">
+              <div className="FormGroup fullWidthRow">
+                <label>Full Name</label>
+                <input
+                  type="text"
+                  name="fullName"
+                  value={userData.fullName}
+                  onChange={handleInputChange}
+                  placeholder="John Doe"
+                />
+              </div>
+
+              <div className="FormGroup">
+                <label>Gender</label>
+                <select name="gender" value={userData.gender} onChange={handleInputChange}>
+                  <option value="">Select Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+
+              <div className="FormGroup">
+                <label>Age</label>
+                <input
+                  type="number"
+                  name="age"
+                  value={userData.age}
+                  onChange={handleInputChange}
+                  placeholder="25"
+                />
+              </div>
+
+              <div className="FormGroup">
+                <label>Blood Type</label>
+                <select name="bloodType" value={userData.bloodType} onChange={handleInputChange}>
+                  <option value="">Select Type</option>
+                  {["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"].map((type) => (
+                    <option key={type} value={type}>{type}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="FormGroup">
+                <label>Location</label>
+                <input
+                  type="text"
+                  name="location"
+                  value={userData.location}
+                  onChange={handleInputChange}
+                  placeholder="Lagos, Nigeria"
+                />
+              </div>
+
+              <div className="FormGroup">
+                <label>Phone Number</label>
+                <input
+                  type="tel"
+                  name="phoneNumber"
+                  value={userData.phoneNumber}
+                  onChange={handleInputChange}
+                  placeholder="+234..."
+                />
+              </div>
+
+              <div className="FormGroup">
+                <label>Email Address</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={userData.email}
+                  onChange={handleInputChange}
+                  placeholder="example@domain.com"
+                />
+              </div>
+
+              <div className="FormActionWrapper fullWidthRow">
+                <button type="submit" className="PrimaryActionButton" disabled={loading}>
+                  {loading ? <CircleLoader color="#ffffff" size={20} /> : "Save Profile Changes"}
+                </button>
+              </div>
+            </form>
+          </section>
         </div>
 
-        <div className="settingsInputsWrapper">
-          <label>Full Name</label>
-          <input
-            type="text"
-            className="settingInputs"
-            value={userData.fullName}
-            onChange={(e) =>
-              setUserData({ ...userData, fullName: e.target.value })
-            }
-          />
-          <label>Gender</label>
-          <select
-            className="settingInputs"
-            value={userData.gender}
-            onChange={(e) =>
-              setUserData({ ...userData, gender: e.target.value })
-            }
-          >
-            <option value="">
-              {InitialUserData.gender
-                ? InitialUserData.gender
-                : "--Male/Female--"}
-            </option>
-            <option value="Male">male</option>
-            <option value="Female">female</option>
-          </select>
+        {/* Right Section: Security Configuration */}
+        <div className="SettingsSecondaryColumn">
+          <section className="SettingsCard">
+            <h3>Security & Password</h3>
+            <form onSubmit={handleResetPassword} className="SingleColumnForm">
+              
+              <div className="FormGroup">
+                <label>Current Password</label>
+                <div className="PasswordInputContainer">
+                  <input
+                    type={showCurrentPassword ? "text" : "password"}
+                    placeholder="Enter current password"
+                    value={changePasswordDatas.currentPassword}
+                    onChange={(e) =>
+                      setChangePasswordDatas((prev) => ({ ...prev, currentPassword: e.target.value }))
+                    }
+                  />
+                  <button
+                    type="button"
+                    className="PasswordToggleToggle"
+                    onClick={() => setShowCurrentPassword(!showCurrentPassword)}
+                    aria-label={showCurrentPassword ? "Hide password" : "Show password"}
+                  >
+                    {showCurrentPassword ? <LuEyeClosed /> : <LuEye />}
+                  </button>
+                </div>
+              </div>
 
-          <label>Location</label>
-          <input
-            type="text"
-            className="settingInputs"
-            value={userData.location}
-            onChange={(e) =>
-              setUserData({ ...userData, location: e.target.value })
-            }
-          />
-          <label>Phone Number</label>
-          <input
-            type="text"
-            className="settingInputs"
-            value={userData.phoneNumber}
-            onChange={(e) =>
-              setUserData({ ...userData, phoneNumber: e.target.value })
-            }
-          />
-          <label>Email</label>
-          <input
-            type="text"
-            className="settingInputs"
-            value={userData.email}
-            onChange={(e) =>
-              setUserData({ ...userData, email: e.target.value })
-            }
-          />
-          <label>Age</label>
-          <input
-            type="text"
-            className="settingInputs"
-            value={userData.age}
-            onChange={(e) => setUserData({ ...userData, age: e.target.value })}
-          />
-          <label>Blood Type</label>
-          <select
-            className="settingInputs"
-            value={userData.bloodType}
-            onChange={(e) =>
-              setUserData({ ...userData, bloodType: e.target.value })
-            }
-          >
-            <option value="">-- BloodType --</option>
-            <option value="A+">A+</option>
-            <option value="A-">A-</option>
-            <option value="B+">B+</option>
-            <option value="B-">B-</option>
-            <option value="AB+">AB+</option>
-            <option value="AB-">AB-</option>
-            <option value="O+">O+</option>
-            <option value="O-">O-</option>
-          </select>
+              <div className="FormGroup">
+                <label>New Password</label>
+                <div className="PasswordInputContainer">
+                  <input
+                    type={showNewPassword ? "text" : "password"}
+                    placeholder="Enter new password"
+                    value={changePasswordDatas.newPassword}
+                    onChange={(e) =>
+                      setChangePasswordDatas((prev) => ({ ...prev, newPassword: e.target.value }))
+                    }
+                  />
+                  <button
+                    type="button"
+                    className="PasswordToggleToggle"
+                    onClick={() => setShowNewPassword(!showNewPassword)}
+                    aria-label={showNewPassword ? "Hide password" : "Show password"}
+                  >
+                    {showNewPassword ? <LuEyeClosed /> : <LuEye />}
+                  </button>
+                </div>
+              </div>
 
-          <button
-            className="editProfileButton"
-            onClick={handleUpdateProfile}
-            disabled={loading}
-          >
-            {loading ? <FadeLoader color="white" size={25} /> : "Edit Profile"}
-          </button>
-        </div>
-      </div>
+              <div className="FormGroup">
+                <label>Confirm New Password</label>
+                <div className="PasswordInputContainer">
+                  <input
+                    type={showConfirmPassword ? "text" : "password"}
+                    placeholder="Confirm new password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                  />
+                  <button
+                    type="button"
+                    className="PasswordToggleToggle"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    aria-label={showConfirmPassword ? "Hide password" : "Show password"}
+                  >
+                    {showConfirmPassword ? <LuEyeClosed /> : <LuEye />}
+                  </button>
+                </div>
+              </div>
 
-      <div className="SettingsPasswordsideWrapper">
-        <div className="settingsInputsWrapper">
-          <label>Current Password</label>
-          <input
-            type="password"
-            className="settingInputs"
-            placeholder="Current Password"
-            value={changePasswordDatas.currentPassword}
-            onChange={(e) =>
-              setChangePasswordDatas((prev) => ({
-                ...prev,
-                currentPassword: e.target.value,
-              }))
-            }
-          />
-          <label>New Password</label>
-          <input
-            type="password"
-            className="settingInputs"
-            placeholder="New Password"
-            value={changePasswordDatas.newPassword}
-            onChange={(e) =>
-              setChangePasswordDatas((prev) => ({
-                ...prev,
-                newPassword: e.target.value,
-              }))
-            }
-          />
-          <label>Confirm Password</label>
-          <input
-            type="password"
-            className="settingInputs"
-            placeholder="Confirm Password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-          <button className="editProfileButton" onClick={handleResetPassword}>
-            {passwordLoading ? (
-              <FadeLoader color="white" size={25} />
-            ) : (
-              "Change Password"
-            )}
-          </button>
+              <div className="FormActionWrapper">
+                <button type="submit" className="PrimaryActionButton variantSecurity" disabled={passwordLoading}>
+                  {passwordLoading ? <CircleLoader color="#ffffff" size={20} /> : "Update Password"}
+                </button>
+              </div>
+            </form>
+          </section>
         </div>
       </div>
     </div>

@@ -1,209 +1,460 @@
-.donorloginwrapper{
+/* ==========================================================================
+   DESIGN SYSTEM VARIABLE TOKENS
+   ========================================================================== */
+:root {
+  --font-stack: 'Poppins', sans-serif;
+  
+  /* Shared Branding Colors */
+  --color-crimson: #c0392b;
+  --color-crimson-hover: #a62c20;
+  --color-navy-slate: #2c3e50;
+  --color-text-main: #212121;
+  --color-text-muted: rgba(33, 33, 33, 0.5);
+  --color-input-bg: #ededed;
+  
+  /* Component Utilities */
+  --radius-standard: 6px;
+  --radius-input: 5px;
+  --fluid-transition: 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ==========================================================================
+   PAGE BASE ARCHITECTURE
+   ========================================================================== */
+.donor-login-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  font-family: var(--font-stack);
+}
+
+/* Desktop Left Half Benefits Panel Container */
+.donor-login-visual-panel {
+  flex: 1.1; /* Gives slightly more visual emphasis to the content panel */
+  background: linear-gradient(135deg, #fdfdfd 0%, #f1f5f9 100%);
+  border-right: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+}
+
+.donor-login-mobile-banner {
+  display: none;
+}
+
+/* Right Half Content Panel Box */
+.donor-login-form-panel {
+  flex: 1;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 80px;
+}
+
+/* ==========================================================================
+   DONOR BENEFITS DISPLAY STYLING
+   ========================================================================== */
+.benefits-display-box {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+}
+
+.benefits-badge {
+  align-self: flex-start;
+  background-color: rgba(192, 57, 43, 0.08);
+  color: var(--color-crimson);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 6px 14px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+}
+
+.benefits-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--color-navy-slate);
+  line-height: 1.25;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.75px;
+}
+
+.benefits-subtitle {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0 0 40px 0;
+}
+
+.benefits-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.benefit-item-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.benefit-icon-frame {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  color: var(--color-crimson);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  border: 1px solid #edf2f7;
+}
+
+.benefit-txt-content h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-navy-slate);
+  margin: 0 0 4px 0;
+}
+
+.benefit-txt-content p {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ==========================================================================
+   TOP ROW BRANDING AND NAV BUTTON
+   ========================================================================== */
+.donor-login-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: auto; /* Pushes form elements cleanly into focus center */
+  padding-bottom: 40px;
+}
+
+.donor-login-logo {
+  width: 140px;
+  height: auto;
+  object-fit: contain;
+}
+
+.desktop-back-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  transition: color var(--fluid-transition), transform var(--fluid-transition);
+  display: flex;
+  align-items: center;
+}
+
+.desktop-back-btn:hover {
+  color: var(--color-crimson);
+  transform: translateX(-4px);
+}
+
+/* ==========================================================================
+   FORM BODY & STRUCTURE ELEMENTS
+   ========================================================================== */
+.donor-login-form-box {
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.donor-login-form-box h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-text-main);
+  margin: 0 0 8px 0;
+  text-align: center;
+}
+
+.donor-login-input-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.donor-login-input-group label {
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  letter-spacing: 0.5px;
+}
+
+/* Standardized Field Box Elements */
+.donor-login-field {
+  width: 100%;
+  box-sizing: border-box;
+  height: 44px;
+  background-color: var(--color-input-bg);
+  padding: 0 14px;
+  border-radius: var(--radius-input);
+  font-family: var(--font-stack);
+  font-size: 13px;
+  font-weight: 400;
+  border: 1.5px solid transparent;
+  outline: none;
+  transition: border-color var(--fluid-transition), background-color var(--fluid-transition);
+}
+
+.donor-login-field:focus {
+  border-color: var(--color-crimson);
+  background-color: #ffffff;
+}
+
+/* Combined Password Box Area Wrapper */
+.donor-login-password-combo-box {
+  width: 100%;
+  box-sizing: border-box;
+  height: 44px;
+  background-color: var(--color-input-bg);
+  border-radius: var(--radius-input);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  border: 1.5px solid transparent;
+  transition: border-color var(--fluid-transition), background-color var(--fluid-transition);
+}
+
+.donor-login-password-combo-box:focus-within {
+  border-color: var(--color-crimson);
+  background-color: #ffffff;
+}
+
+.donor-login-password-inner-field {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  outline: none;
+  font-family: var(--font-stack);
+  font-size: 13px;
+  font-weight: 400;
+  padding: 0;
+}
+
+.password-toggle-visibility-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 0 8px;
+}
+
+.password-toggle-visibility-btn:hover {
+  color: var(--color-text-main);
+}
+
+/* ==========================================================================
+   ERRORS, TRIGGERS & HYPERLINK SYSTEM
+   ========================================================================== */
+.form-runtime-error-msg {
+  color: #e74c3c;
+  font-size: 12px;
+  font-weight: 500;
+  margin: -8px 0 0 0;
+}
+
+.donor-login-action-btn {
+  width: 100%;
+  height: 44px;
+  background-color: var(--color-crimson);
+  border-radius: var(--radius-standard);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(192, 57, 43, 0.2);
+  transition: background-color var(--fluid-transition), transform var(--fluid-transition);
+}
+
+.donor-login-action-btn:hover:not(:disabled) {
+  background-color: var(--color-crimson-hover);
+  transform: translateY(-1px);
+}
+
+.donor-login-action-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.donor-login-hyperlink-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.auth-redirect-link {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  margin: 0;
+  transition: color var(--fluid-transition);
+}
+
+.auth-redirect-link:hover {
+  color: var(--color-crimson);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   CLEAN COHESIVE INTERFACE VIEWPORT RESPONSIVENESS
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .donor-login-form-panel {
+    padding: 60px 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .donor-login-container {
+    flex-direction: column;
+  }
+  .donor-login-visual-panel {
+    padding: 40px 32px;
+    border-right: none;
+    border-top: 1px solid #e2e8f0;
+  }
+  .donor-login-form-panel {
+    max-width: 100%;
+    padding: 60px 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .donor-login-container {
+    flex-direction: column;
+    background-color: #f8fafc;
+  }
+
+  /* Explicit Flex Ordering System to keep Form up and Tips down */
+  .donor-login-mobile-banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
-    height: 100vh;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 34px;
-}
-.donorloginmobilewrap{
-    display: none;
-}
-.donorlogininfowrap{
-    width: 50%;
-    height: 660px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 30px;
-}
-.donorloginlogohold{
-    width: 90%;
-    height: 90px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.donorloginlogo{
-    width: 140px;
-}
-.donorlogininfo1{
-    width: 65%;
-    height: 350px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-around;
-}
-.donorlogininfo1 h2{
-    font-size: 20px;
-    font-weight: 700;
-    font-family: Poppins;
-}
-.donorlogininputwrapper{
-    width: 360px;
-    height: 75px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-.donorlogininputwrapper p{
-    font-family: Poppins;
-    font-weight: 600;
-    font-size: 13px;
-    width: 93%;
-    color: #21212180;
-}
-.donorlogininput{
-    width: 340px;
-    height: 40px;
-    background-color: #ededed;
-    padding: 10px;
-    border-radius: 5px;
-    font-family: Poppins;
-    font-size: 11px;
-    font-weight: 300;
-    outline: none;
-}
+    height: 180px;
+    background-color: var(--color-navy-slate);
+    border-radius: 0px 0px 40px 0px;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    order: 1; /* First */
+  }
 
-.donorlogininputAndIcon{
-    width: 340px;
-    height: 40px;
-    background-color: #ededed;
-    padding: 10px;
-    border-radius: 5px;
-    font-family: Poppins;
-    font-size: 11px;
-    font-weight: 300;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+  .donor-login-form-panel {
+    padding: 40px 20px;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    margin-top: -24px; 
+    position: relative;
+    z-index: 5;
+    background-color: #ffffff;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.03);
+    max-width: 100%;
+    order: 2; /* Second (Form Up) */
+  }
 
-.donorlogininputAndIcon input{
-    width: 98%;
-    height: 100%;
-    border: 0;
-    outline: none;
-}
+  .donor-login-visual-panel {
+    display: flex; /* Kept visible on mobile view */
+    padding: 40px 20px 60px 20px;
+    background: #f8fafc;
+    border-top: 1px solid #edf2f7;
+    order: 3; /* Third (Tips Down) */
+  }
 
-.donorloginbtn{
-    width: 80%;
-    height: 36px;
-    background-color: #c0392b;
-    border-radius: 6px;
-    color: white;
-    font-family: Poppins;
-    font-weight: 400;
-    font-size: 13px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .mobile-back-btn {
+    position: absolute;
+    top: 24px;
+    left: 20px;
+    background: none;
+    border: none;
+    color: #ffffff;
     cursor: pointer;
-}
+  }
 
-.donorloginforgotwrap{
-    width: 360px;
-    height: 33px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 10px;
-    font-weight: 600;
-    color: #21212180;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.donorslogimage{
-    width: 35%;
-    filter: drop-shadow(rgba(0, 0, 0, 0.418)0px 8px 10px);
-}
+  .donor-login-mobile-banner h2 {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 26px;
+    text-align: center;
+    margin: 20px 0 0 0;
+    letter-spacing: -0.5px;
+  }
 
+  .donor-login-header-row,
+  .donor-login-form-box h2 {
+    display: none; 
+  }
 
+  .donor-login-form-box {
+    max-width: 100%;
+  }
 
-@media only screen and (max-width: 1440px){
-   
-}
-@media only screen and (max-width: 1200px){
-    .donorloginwrapper{
-        height: max-content;
-        padding: 20px;
-    }
-    .donorslogimage{
-        width: 38%;
-    }
-}
+  /* Prevent iOS input field automatic scaling layout distortions */
+  .donor-login-field,
+  .donor-login-password-inner-field {
+    font-size: 16px !important;
+    height: 46px;
+  }
+  
+  .donor-login-password-combo-box {
+    height: 46px;
+  }
 
+  .donor-login-action-btn {
+    background-color: var(--color-navy-slate); 
+    box-shadow: 0 4px 12px rgba(44, 62, 80, 0.2);
+    height: 46px;
+  }
+  
+  .auth-redirect-link:hover {
+    color: var(--color-navy-slate);
+  }
 
+  .benefits-title {
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  .benefits-subtitle {
+    text-align: center;
+    font-size: 13px;
+    margin-bottom: 30px;
+  }
 
-
-@media only screen and (max-width: 900px){  
-    .donorloginwrapper{
-        height: max-content;
-        padding: 30px;
-    }
-    .donorslogimage{
-        width: 38%;
-    }
-    
-}
-
-
-@media only screen and (max-width: 760px){
-    .donorloginwrapper{
-        height: max-content;
-        padding: 20px;
-    }
-    .donorslogimage{
-        width: 38%;
-    }
-}
-
-
-
-@media only screen and (max-width: 480px) {
-    .donorslogimage{
-        display: none;
-    }
-    .donorloginlogohold{
-        display: none;
-    }
-    .donorlogininfo1 h2{
-        display: none;
-    }
-    .donorloginmobilewrap{
-        width: 480px;
-        height: 200px;
-        background-color: #2C3E50;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        border-radius: 0px 0px 80px 10px
-    }
-    .donorloginmobilewrap h2{
-        color: white;
-        font-family: Poppins;
-        font-weight: 700;
-        font-size: 26px;
-        text-align: center;
-    }
-    .donorloginwrapper{
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-    .donorloginbtn{
-        background-color: #2C3E50;
-    }
-}
-
-
-@media only screen and (max-width: 379px) {
-    .donorloginmobilewrap{
-        width: 380px;
-    }
+  .benefits-badge {
+    align-self: center;
+  }
 }

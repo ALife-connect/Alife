@@ -1,130 +1,58 @@
-.whyuswrapper {
-    width: 100%;
-    height: 200px;
-    padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    animation: fadeIn 1.2s ease-in-out; 
+.sponsors-section {
+  width: 100%;
+  background-color: var(--bg-subtle); /* Very soft grey to divide whitespace zones */
+  border-top: 1px solid #eef0f2;
+  border-bottom: 1px solid #eef0f2;
+  padding: 40px 24px;
+  display: flex;
+  justify-content: center;
 }
 
-.whyuswrapper h1 {
-    font-size: 36px;
-    font-family: Poppins;
-    font-weight: 700;
-    color: #212121;
-    opacity: 0;
-    transform: translateY(-20px);
-    animation: slideDown 1s ease-in-out forwards;
-    animation-delay: 0.3s; 
+.sponsors-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
-.sponsorsLogos {
-    width: 40%;
-    height: 60%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-   
+.sponsors-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #8c8c8c;
+  margin: 0;
 }
 
-.sponsorsLogos img {
-    width: 125px;
-    padding: 10px;
-    margin-top: 10px;
-    object-fit: contain;
-    animation: float 3s ease-in-out infinite; 
-    transition: transform 0.3s ease-in-out;
+.sponsors-logos-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap;
 }
 
-.sponsorsLogos img:hover {
-    transform: scale(1.1); 
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
 }
 
-
-
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+.sponsors-logos-grid img {
+  height: 100%;
+  width: auto;
+  max-width: 130px;
+  object-fit: contain;
+  filter: grayscale(1) contrast(1);
+  opacity: 0.4;
+  transition: all 0.25s ease;
 }
 
-@keyframes slideDown {
-    0% {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.sponsors-logos-grid img:hover {
+  filter: grayscale(0) contrast(1);
+  opacity: 1;
 }
-
-@keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0); }
-}
-
-
-@media (max-width: 480px) {
-    .sponsorwrapper {
-        width: 100%;
-        padding: 40px 20px;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-   
-}
-
-.sponsorsLogos {
-    display: flex;
-    justify-content: center;
-    /* flex-wrap: wrap; */
-    gap: 30px;
-   
-}
-
-.sponsorsLogos img {
-    max-width: 120px;
-    height: auto;
-}
-
-.sponsorsLogos img:nth-child(1),
-.sponsorsLogos img:nth-child(2) {
-  display: block;
-}
-
-.whyuswrapper {
-    /* background-color: blueviolet; */
-    display: flex;
-    align-items: center;
-}
-
-.whyuswrapper h1{
-   
-    /* padding: 0 10px; */
-}
-}
-
-  
-/*
-  .sponsorwrapper {
-        height: max-content;
-        gap: 10px;
-        padding: 20px;
-    }
-    .sponsorsLogos {
-        flex-wrap: wrap;
-        gap: 10px;
-        height: max-content;
-    }
-    .sponsorsLogos img {
-        width: 80px;
-    }
-    .whyuswrapper {
-        /* background-color: blueviolet; */
-        /* display: flex;
-        align-items: center;
-    }  */

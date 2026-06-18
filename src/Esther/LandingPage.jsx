@@ -6,32 +6,59 @@ import Impacts from "../components/impacts/Impacts";
 import { useNavigate } from "react-router";
 import BeaHero from "../Davidson/pages/BeaHero";
 
-
 const LandingPage = () => {
-  const nav = useNavigate()
+  const nav = useNavigate();
+
   return (
-    <div className="landingmainwrapper">
-      <div className="landingwrapper">
-        <div className="landingpagecenter">
-          <h1>
-            Every Drop Counts,
-            <br /> Be the Life-Line Someone Needs
+    <div className="landing-main-wrapper">
+      {/* Background Decorative Glow Element */}
+      <div className="hero-glow-effect" aria-hidden="true"></div>
+
+      <header className="hero-section">
+        <div className="hero-container">
+          
+          {/* Modern Feature Pill */}
+          <div className="hero-badge">
+            <span className="badge-pulse"></span>
+            <span className="badge-text">SLODAT Global Movement</span>
+          </div>
+
+          {/* Upgraded Scalable Headline */}
+          <h1 className="hero-title">
+            Saving Lives. One Donation At A Time.
           </h1>
-          <p>
-            Every day, thousands of Nigerians need blood to survive accidents,
-            surgeries, and medical conditions. <br /> Yet, blood shortages
-            remain a challenge. SLODAT connects willing donors to hospitals
-            and blood <br /> banks, making it easier to save lives while
-            ensuring you get rewarded for your generosity.
+
+          {/* Expanded Copy for Global Emergency Scope */}
+          <p className="hero-subtitle">
+            Connecting real-time generosity with urgent global needs. Whether it is 
+            critical blood shortages, disaster relief, or emergency medical supplies, 
+            SLODAT bridges the gap between willing helpers and crisis points instantly.
           </p>
-          <button className="landingbutton" onClick={() => nav('/dashboard')}>Donate</button>
+
+          {/* Dual CTAs for Balance */}
+          <div className="hero-cta-group">
+            <button 
+              className="btn btn-primary" 
+              onClick={() => nav('/dashboard')}
+            >
+              Start Donating
+            </button>
+            <button 
+              className="btn btn-secondary" 
+              onClick={() => nav('/request-help')}
+            >
+              Request Support
+            </button>
+          </div>
+
         </div>
-      </div>
+      </header>
+
+      {/* Subsequent Page Sections */}
       <Sponsors />
       <Benefit />
       <Impacts />
       <BeaHero />
-      {/* <Testify/> */}
     </div>
   );
 };

@@ -1,69 +1,102 @@
+import React from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router";
 import "../Benefit/Benefit.css";
-// import Sponsors from "../Sponsors/Sponsors";
 
 const Benefit = () => {
-  const nav = useNavigate();
- 
+  // Framer Motion Animation Variants for Staggered Card Loadins
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { type: "spring", stiffness: 100, damping: 15 } 
+    }
+  };
 
   return (
-    <>
-    <section className="benefits">
+    <section className="benefits-section">
       <div className="benefits-header">
-        <h2>Benefits for you</h2>
-        <p>Donating blood isn't just heroicーit's healthy</p>
+        <span className="section-eyebrow">Why It Matters</span>
+        <h2>The Power of Giving</h2>
+        <p>Donating support isn't just life-saving for others—it transforms your own world too.</p>
       </div>
-       <div className="benefits-grid">
-        <div className="benefit-card">
-          <div className="icon red"><img src="/images/Heart.png" alt="" /></div>
-          <h3>Health Benefits</h3>
-          <p>
-            Regular donation reduces iron overload,<br /> improves cardiovascular
-            health, and <br /> provides free health screenings.
-          </p>
-        </div>
 
-        <div className="benefit-card">
-          <div className="icon green"><img src="/images/Brain.png" alt="" /></div>
+      <motion.div 
+        className="benefits-modern-grid"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        {/* Card 1: Health */}
+        <motion.div className="benefit-card-modern" variants={cardVariants}>
+          <div className="icon-wrapper brand-red">
+            <img src="/images/Heart.png" alt="Heart Icon" />
+          </div>
+          <h3>Health Vitality</h3>
+          <p>
+            Regular donation reduces iron overload, balances cardiovascular health, 
+            and provides crucial real-time health updates during screenings.
+          </p>
+        </motion.div>
+
+        {/* Card 2: Mental */}
+        <motion.div className="benefit-card-modern" variants={cardVariants}>
+          <div className="icon-wrapper brand-green">
+            <img src="/images/Brain.png" alt="Brain Icon" />
+          </div>
           <h3>Mental Well-being</h3>
           <p>
-            Experience the joy of giving. Studies show donors report higher life
-            satisfaction and <br /> purpose.
+            Experience the psychological validation of altruism. Purpose-driven activities 
+            are clinically shown to boost personal life satisfaction scales.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="benefit-card">
-          <div className="icon teal"><img src="/images/phone.png" alt="" /></div>
-          <h3>Easy Scheduling</h3>
+        {/* Card 3: Scheduling */}
+        <motion.div className="benefit-card-modern" variants={cardVariants}>
+          <div className="icon-wrapper brand-teal">
+            <img src="/images/phone.png" alt="Phone Icon" />
+          </div>
+          <h3>Instant Coordination</h3>
           <p>
-            Book appointments at your convenience with our seamless
-            mobile-first platform.
+            No waiting rooms, no massive queues. Book rapid-response windows around your 
+            schedule using our decentralized layout engine.
           </p>
-        </div>
-      </div>
-      <div className="benifit-cont">
-         <div className="benefit-card1">
-          <div className="icon red"><img src="/images/heads.png" alt="" /></div>
-          <h3>Community Impact</h3>
-          <p>
-            Join a community of heroes making Nigeria healthier, one donation at
-            a time.
-          </p>
-        </div>
+        </motion.div>
 
-        <div className="benefit-card1">
-          <div className="icon teal"><img src="/images/chat.png" alt="" /></div>
-          <h3>Impact Transparency</h3>
+        {/* Card 4: Community */}
+        <motion.div className="benefit-card-modern" variants={cardVariants}>
+          <div className="icon-wrapper brand-red">
+            <img src="/images/heads.png" alt="Community Icon" />
+          </div>
+          <h3>Global Alliance</h3>
           <p>
-            See exactly where your donation goes and <br />track the real lives
-            you’ve helped save in <br />real-time.
+            Join a borderless network of verified crisis response heroes making local 
+            communities safer, healthier, and more resilient under stress.
           </p>
-        </div>
-      </div>
+        </motion.div>
+
+        {/* Card 5: Transparency */}
+        <motion.div className="benefit-card-modern" variants={cardVariants}>
+          <div className="icon-wrapper brand-teal">
+            <img src="/images/chat.png" alt="Chat Icon" />
+          </div>
+          <h3>Absolute Transparency</h3>
+          <p>
+            Track your contribution path from point of transfer to destination. 
+            See precisely how your support directly changes lives in real-time.
+          </p>
+        </motion.div>
+      </motion.div>
     </section>
-
-    </>
   );
 };
 

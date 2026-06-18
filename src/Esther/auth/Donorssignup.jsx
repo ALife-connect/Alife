@@ -5,13 +5,13 @@ import FadeLoader from 'react-spinners/CircleLoader'
 import { toast } from 'sonner';
 import { HiOutlineArrowCircleLeft } from 'react-icons/hi';
 import axios from 'axios';
-import { LuEyeClosed, LuEye } from "react-icons/lu";
+import { LuEyeClosed, LuEye, LuActivity, LuHeartHandshake, LuBellRing } from "react-icons/lu";
 import { IoArrowBackCircleOutline } from 'react-icons/io5';
 
 const VITE_BASEURL = import.meta.env.VITE_BASEURL;
 
 const Donorssignup = () => {
-  const [click,setClick] = useState(false);
+  const [click, setClick] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [userData, setUserData] = useState({
     fullName: "",
@@ -22,12 +22,10 @@ const Donorssignup = () => {
     age: "",
   });
 
-
   const [showPassword1, setShowPassword1] = useState(true)
   const [showPassword2, setShowPassword2] = useState(true)
   const [confirmPassword, setConfirmPassword] = useState("");
   const nav = useNavigate();
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,12 +52,9 @@ const Donorssignup = () => {
       );
       
       toast.success(res.data.message);
-      
-      // ✅ Store email and userType for CheckMail routing
       localStorage.setItem("email", userData.email);
       localStorage.setItem("pendingUserType", "donor");
       
-      // ✅ Pass userType to CheckMail
       setTimeout(() => {
         nav("/checkmail", {
           state: { 
@@ -71,7 +66,8 @@ const Donorssignup = () => {
       
     } catch (err) {
       if(err.status === 400){
-        toast.error(err.response.data.message);
+        toast.error(err.response.data.message || err.response.data.errors[0]);
+        console.log(err.response.data.message)
       }
     } finally {
       setIsLoading(false);
@@ -80,22 +76,24 @@ const Donorssignup = () => {
 
   return (
     <div className='donorsignwrapper'>
-      <img src="images/Subtract.png" alt="" className='donorsignimage' />
+      {/* Mobile Top Header */}
       <div className='donsignmobilewrap'>
-      <div className='smallarrow' ><IoArrowBackCircleOutline onClick={()=>nav(-1)}/></div>
-
+        <div className='smallarrow'><IoArrowBackCircleOutline onClick={() => nav(-1)}/></div>
         <h1>CREATE AN ACCOUNT</h1>
         <p>REGISTER AS A DONOR</p>
       </div>
+
+      {/* INPUT FORM PANEL - NOW AT THE TOP */}
       <div className='donorsigninfowrap'>
         <div className='donorsignlogohold'>
           <Link to="/">
             <img src="/images/Slodat.jpeg" alt="Logo" className='donorsignlogo' />
           </Link>
-          <HiOutlineArrowCircleLeft size={50} onClick={()=> nav(-1)} />
+          <HiOutlineArrowCircleLeft size={38} className="desktop-back-btn" onClick={() => nav(-1)} />
         </div>
-        <div className='donorsigninfo1'>
-          <h1>REGISTER AS A DONOR</h1>
+        
+        <form className='donorsigninfo1' onSubmit={handleSubmit}>
+          <h1 className="form-main-title">REGISTER AS A DONOR</h1>
 
           <div className='donorsigninputwrapper'>
             <p>NAME</p>
@@ -146,12 +144,12 @@ const Donorssignup = () => {
             <p>HAVE YOU DONATED BEFORE?</p>
             <div className='donorclickinner'>
               <div className='clickinner'>
-                <input type="radio" name='donatedBefore' />
-                <p>YES</p>
+                <input type="radio" name='donatedBefore' id="donatedYes" />
+                <label htmlFor="donatedYes">YES</label>
               </div>
               <div className='clickinner'>
-                <input type="radio" name='donatedBefore' />
-                <p>NO</p>
+                <input type="radio" name='donatedBefore' id="donatedNo" />
+                <label htmlFor="donatedNo">NO</label>
               </div>
             </div>
           </div>
@@ -160,7 +158,7 @@ const Donorssignup = () => {
             <h2>BLOOD GROUP</h2>
             <div className='bloodgrouphold'>
               {["A+", "B+", "AB+", "O-", "Unknown", "A-", "B-", "O+"].map((type) => (
-                <p key={type}>
+                <label key={type} className="blood-type-option">
                   <input
                     type="radio"
                     name="bloodType"
@@ -170,8 +168,8 @@ const Donorssignup = () => {
                       setUserData((prev) => ({ ...prev, bloodType: e.target.value }))
                     }
                   />
-                  {type}
-                </p>
+                  <span>{type}</span>
+                </label>
               ))}
             </div>
           </div>
@@ -179,56 +177,108 @@ const Donorssignup = () => {
           <div className='donorsigninputwrapper'>
             <p>CREATE PASSWORD</p>
             <div className="inputAndIcon">
-            <input
-              type={showPassword1? "password" : "text"}
-              className='donorssignpasswordinput'
-              placeholder='Password'
-              value={userData.password}
-              onChange={(e) => setUserData((prev) => ({ ...prev, password: e.target.value }))}
-            />
-            {showPassword1? <LuEyeClosed onClick={()=> setShowPassword1(false)}/> : <LuEye onClick={()=> setShowPassword1(true)}/>}
+              <input
+                type={showPassword1 ? "password" : "text"}
+                className='donorssignpasswordinput'
+                placeholder='Password'
+                value={userData.password}
+                onChange={(e) => setUserData((prev) => ({ ...prev, password: e.target.value }))}
+              />
+              {showPassword1 ? <LuEyeClosed onClick={() => setShowPassword1(false)}/> : <LuEye onClick={() => setShowPassword1(true)}/>}
             </div>
           </div>
-          <p className="passwordTips">† Password must be at least 6 characters long <br />
-          † Password must include at least one uppercase letter and a number.
-          </p>
 
           <div className='donorsigninputwrapper'>
             <p>CONFIRM PASSWORD</p>
             <div className="inputAndIcon">
-            <input
-              type={showPassword2? "password" : "text"}
-              className='donorssignpasswordinput'
-              placeholder='Confirm Password'
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-            {showPassword2? <LuEyeClosed onClick={()=> setShowPassword2(false)}/> : <LuEye onClick={()=> setShowPassword2(true)}/>}
+              <input
+                type={showPassword2 ? "password" : "text"}
+                className='donorssignpasswordinput'
+                placeholder='Confirm Password'
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+              {showPassword2 ? <LuEyeClosed onClick={() => setShowPassword2(false)}/> : <LuEye onClick={() => setShowPassword2(true)}/>}
             </div>
           </div>
+          
+          <p className="passwordTips">
+            † Password must be at least 6 characters long <br />
+            † Password must include at least one uppercase letter and a number.
+          </p>
 
           <div className='checkboxwrapper'>
-            <input type="checkbox" 
-            isClick={click}
-            onClick={()=>setClick(!click)}
-            required={true} />
-            <p>
+            <input 
+              type="checkbox" 
+              id="termsCheckbox"
+              checked={click}
+              onChange={() => setClick(!click)}
+              required
+            />
+            <label htmlFor="termsCheckbox">
               I agree to the{" "}
-              <a href="" onClick={() => nav("/donorterms")} className='tandc'>
+              <span onClick={() => nav("/donorterms")} className='tandc'>
                 TERMS AND CONDITIONS
-              </a>
-            </p>
-          </div>
-          <div className='hosloginforgotwrap'>
-            <p onClick={()=>nav("/donorslogin")}>ALREADY HAVE AN ACCOUNT? <a href="" style={{color:"blue"}}>LOGIN</a></p>
+              </span>
+            </label>
           </div>
 
-          <button className='donsignbtn'
-          disabled={!click || isLoading}
-          onClick={handleSubmit} 
+          <div className='hosloginforgotwrap'>
+            <p onClick={() => nav("/donorslogin")}>
+              ALREADY HAVE AN ACCOUNT? <span style={{color: "var(--color-crimson)", fontWeight: "700"}}>LOGIN</span>
+            </p>
+          </div>
+
+          <button 
+            type="submit" 
+            className='donsignbtn'
+            disabled={!click || isLoading}
           >
-            {isLoading ? <FadeLoader color="white" size={25}/> : "REGISTER"}
+            {isLoading ? <FadeLoader color="white" size={20}/> : "REGISTER"}
           </button>
+        </form>
+      </div>
+
+      {/* VISUAL BENEFITS PANEL - NOW AT THE BOTTOM */}
+      <div className='donorsign-visual-panel'>
+        <div className='donor-benefits-box'>
+          <span className='donor-benefits-badge'>DONOR NETWORK</span>
+          <h2 className='donor-benefits-title'>Join our lifesaving community of heroes.</h2>
+          <p className='donor-benefits-subtitle'>
+            A single blood donation can save up to three lives. Register today to track your impact, manage emergency requests, and bridge the gap.
+          </p>
+
+          <div className='donor-benefits-grid'>
+            <div className='donor-benefit-card'>
+              <div className='donor-icon-frame'>
+                <LuBellRing size={20} />
+              </div>
+              <div className='donor-benefit-text'>
+                <h3>Smart Match Alerts</h3>
+                <p>Receive real-time notifications when hospitals nearby urgently request your blood type.</p>
+              </div>
+            </div>
+
+            <div className='donor-benefit-card'>
+              <div className='donor-icon-frame'>
+                <LuActivity size={20} />
+              </div>
+              <div className='donor-benefit-text'>
+                <h3>Impact Tracking</h3>
+                <p>Monitor past donations, access health metrics, and view real lives influenced.</p>
+              </div>
+            </div>
+
+            <div className='donor-benefit-card'>
+              <div className='donor-icon-frame'>
+                <LuHeartHandshake size={20} />
+              </div>
+              <div className='donor-benefit-text'>
+                <h3>Seamless Ecosystem</h3>
+                <p>Connect securely with verified healthcare institutions under strict privacy parameters.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

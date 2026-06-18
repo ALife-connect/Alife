@@ -1,175 +1,533 @@
-.HospitalDetailsPageWrapper{
-    padding: 10px;
-    width: 100%;
-    height: 100%;
+:root {
+  --canvas-bg: #f8fafc;
+  --surface-bg: #ffffff;
+  --border-line: #e2e8f0;
+  
+  --brand-crimson: #c0392b;
+  --brand-crimson-hover: #a62c20;
+  --brand-crimson-light: #fdf2f2;
+  
+  --txt-heading: #0f172a;
+  --txt-body: #475569;
+  --txt-muted: #94a3b8;
+  
+  --shadow-card-resting: 0 4px 6px -1px rgba(15, 23, 42, 0.02), 0 2px 4px -2px rgba(15, 23, 42, 0.02);
+  --shadow-card-elevated: 0 20px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+  --radius-xl: 16px;
+  --radius-lg: 12px;
+  --radius-sm: 6px;
+  --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.HospitalDetailsPageWrapper h1{
-    font-size: 25px;
-    font-weight: 500;
-    font-family: Poppins;
+/* Base View Layout Configuration */
+.RequestDetailsMasterContainer {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--canvas-bg);
+  padding: 32px;
+  box-sizing: border-box;
+  font-family: inherit;
 }
 
-.HospitalDetailsPageWrapper span{
-    font-size: 15px;
-    text-align: center;
+/* Control Navigation Bar Elements */
+.RequestDetailsBackActionBar {
+  display: flex;
+  margin-bottom: 24px;
 }
 
-.detailsTextAndImageWrapper{
-    width: 100%;
-    height: 90%;
+.DetailsReturnBtn {
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--txt-body);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 6px 0;
+  transition: var(--transition-smooth);
+}
+
+.DetailsReturnBtn:hover {
+  color: var(--brand-crimson);
+  transform: translateX(-3px);
+}
+
+/* Top Level Header Segment Elements Mapping */
+.RequestDetailsHeaderSegment {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid var(--border-line);
+  padding-bottom: 24px;
+  margin-bottom: 32px;
+}
+
+.HeaderTitleWrapper h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--txt-heading);
+  margin: 0 0 6px 0;
+  letter-spacing: -0.5px;
+}
+
+.HeaderPostDateBadge {
+  font-size: 13px;
+  color: var(--txt-muted);
+}
+
+/* Urgency Status Pill System Layout rules */
+.RequestUrgencyPillBadge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.urgency-critical {
+  background-color: var(--brand-crimson-light);
+  color: var(--brand-crimson);
+  border: 1px solid rgba(192, 57, 43, 0.15);
+}
+
+.urgency-moderate {
+  background-color: #fff7ed;
+  color: #ea580c;
+  border: 1px solid rgba(234, 88, 12, 0.15);
+}
+
+.urgency-normal {
+  background-color: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid rgba(22, 163, 74, 0.15);
+}
+
+/* Main Split View Grid Columns Setup */
+.RequestDetailsLayoutGrid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+/* Left Sidebar Frame Layout Containers */
+.DetailsViewLeftColumnFrame {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.FacilityHeroShowcaseCard {
+  background-color: var(--surface-bg);
+  border: 1px solid var(--border-line);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-card-resting);
+}
+
+.FacilityImageContainerMask {
+  width: 100%;
+  height: 180px;
+  background-color: #f1f5f9;
+}
+
+.FacilityImageContainerMask img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.FacilityIdentityFooterBlock {
+  padding: 18px;
+}
+
+.FacilityIdentityFooterBlock h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--txt-heading);
+  margin: 0 0 4px 0;
+}
+
+.FacilityIdentityFooterBlock p {
+  font-size: 13px;
+  color: var(--txt-body);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.FacilityDirectoryMetaCard {
+  background-color: var(--surface-bg);
+  border: 1px solid var(--border-line);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  box-shadow: var(--shadow-card-resting);
+}
+
+.FacilityDirectoryMetaCard h4 {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--txt-muted);
+  margin: 0 0 20px 0;
+}
+
+.DirectoryRowItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.DirectoryRowItem:last-child {
+  margin-bottom: 0;
+}
+
+.RowIconRef {
+  color: var(--txt-muted);
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.DirectoryRowItem label {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--txt-muted);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.DirectoryRowItem span {
+  font-size: 13.5px;
+  color: var(--txt-heading);
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+/* Right Content Main Frame Layout Elements mapping */
+.DetailsViewRightColumnFrame {
+  background-color: var(--surface-bg);
+  border: 1px solid var(--border-line);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  box-shadow: var(--shadow-card-resting);
+}
+
+.ColumnSectionTitleLabel {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--txt-heading);
+  margin: 0 0 20px 0;
+}
+
+/* System Expired Inline Warning Notification Banner */
+.ExpiredSystemAlertNotificationBanner {
+  background-color: #fff7ed;
+  border: 1px solid rgba(234, 88, 12, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  color: #c2410c;
+  margin-bottom: 24px;
+}
+
+.ExpiredSystemAlertNotificationBanner h5 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.ExpiredSystemAlertNotificationBanner p {
+  font-size: 13px;
+  line-height: 1.4;
+  color: #7c2d12;
+  margin: 0;
+}
+
+/* Clinical Parameter Rows Grid Blueprint mapping structures */
+.ClinicalParametersGridRows {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.ParameterMetricSummaryCard {
+  background-color: var(--canvas-bg);
+  border: 1px solid var(--border-line);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.MetricIconWrapperBox {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background-color: #ffffff;
+  border: 1px solid var(--border-line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--txt-body);
+  flex-shrink: 0;
+}
+
+.ParameterMetricSummaryCard.highlight-droplet .MetricIconWrapperBox {
+  background-color: var(--brand-crimson-light);
+  color: var(--brand-crimson);
+  border-color: rgba(192, 57, 43, 0.1);
+}
+
+.MetricValueContentHolder {
+  display: flex;
+  flex-direction: column;
+}
+
+.MetricCardTitleTextLabel {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--txt-muted);
+  letter-spacing: 0.3px;
+}
+
+.MetricCardCoreValueData {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--txt-heading);
+  margin-top: 2px;
+}
+
+/* Action Trigger Operations Cluster Row blocks */
+.DetailsSubmissionCTACluster {
+  border-top: 1px solid var(--border-line);
+  padding-top: 24px;
+}
+
+.GlobalActionTriggerButton {
+  background-color: var(--brand-crimson);
+  color: #ffffff;
+  border: none;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 28px;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.GlobalActionTriggerButton:hover:not(.variant-disabled) {
+  background-color: var(--brand-crimson-hover);
+  box-shadow: 0 4px 12px rgba(192, 57, 43, 0.2);
+}
+
+.GlobalActionTriggerButton.variant-disabled {
+  background-color: #e2e8f0;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   INTERACTIVE ANTD MODAL SCHEDULER SYSTEM OVERRIDES
+   ========================================================================== */
+.PremiumModernSchedulingSystemModal .ant-modal-content {
+  border-radius: var(--radius-xl) !important;
+  padding: 28px !important;
+}
+
+.ModalSchedulingFormInnerStructure {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ModalFormTitleBanner h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--txt-heading);
+  margin: 0 0 4px 0;
+}
+
+.ModalFormTitleBanner p {
+  font-size: 13px;
+  color: var(--txt-body);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.ModalFormInputGroupField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ModalFieldInputLabel {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--txt-heading);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ModalFieldInputLabel svg {
+  color: var(--txt-muted);
+}
+
+/* Custom Input Field Mechanics Extensions */
+.ModalSystemCustomDatePicker {
+  width: 100% !important;
+  height: 40px !important;
+  border-radius: var(--radius-sm) !important;
+  border-color: var(--border-line) !important;
+}
+
+.ModalSystemCustomDatePicker:focus,
+.ModalSystemCustomDatePicker:hover {
+  border-color: var(--brand-crimson) !important;
+}
+
+/* Multi-choice Selector Grid Node Mapping */
+.CustomInteractiveChipRadiosGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.InteractiveTimeRadioChipBox {
+  background-color: var(--canvas-bg);
+  border: 1px solid var(--border-line);
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+}
+
+.InteractiveTimeRadioChipBox:hover {
+  background-color: #f1f5f9;
+  border-color: var(--txt-muted);
+}
+
+.HiddenNativeRadioControlBubble {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.ChipRadioLabelStringText {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--txt-body);
+}
+
+.InteractiveTimeRadioChipBox.isRadioChipChecked {
+  background-color: var(--brand-crimson-light);
+  border-color: var(--brand-crimson);
+}
+
+.InteractiveTimeRadioChipBox.isRadioChipChecked .ChipRadioLabelStringText {
+  color: var(--brand-crimson);
+  font-weight: 600;
+}
+
+.ModalFormSubmissionTriggerActionButton {
+  width: 100%;
+  height: 42px;
+  background-color: var(--brand-crimson);
+  color: #ffffff;
+  border: none;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  margin-top: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+}
+
+.ModalFormSubmissionTriggerActionButton:hover {
+  background-color: var(--brand-crimson-hover);
+}
+
+/* ==========================================================================
+   RESPONSIVE ADAPTIVE MEDIA VIEWPORTS DOWN-TUNING
+   ========================================================================== */
+@media only screen and (max-width: 992px) {
+  .RequestDetailsLayoutGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .FacilityHeroShowcaseCard {
     display: flex;
     align-items: center;
-    gap: 15px;
+  }
+  
+  .FacilityImageContainerMask {
+    width: 200px;
+    height: 120px;
+  }
+  
+  .FacilityIdentityFooterBlock {
+    flex: 1;
+  }
 }
 
-.detailsTextAndImageWrapper .detailsImageWrapper{
-    width: 40%;
-    height: 90%;
-    border-radius: 10px;
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-
-    img{
-        width: 100%;
-        height: 100%;
-        border-radius: 5px;
-    }
-}
-
-.detailsTextAndImageWrapper .detailsTextWrapper{
-    width: 40%;
-    height: 90%;
-    border-radius: 10px;
-}
-
-.innerTextWRapper{
-    width: 90%;
-    height: max-content;
-    padding: 10px;
-    display: flex;
+@media only screen and (max-width: 600px) {
+  .RequestDetailsMasterContainer {
+    padding: 16px;
+  }
+  
+  .RequestDetailsHeaderSegment {
     flex-direction: column;
-    gap: 15px;
-    border-radius: 10px;
-    background: #ffffff;
-
-    p{
-        font-size: 18px;
-
-        b{
-            font-weight: 500;
-        }
-    }
-}
-
-.scheduleDatePicker{
-    width: 80%;
-    height: max-content;
-    padding: 5px 10px;
-    border: 1px solid grey;
-    border-radius: 5px;
-    margin-top: 20px;
-}
-
-.detailsTextWrapper button{
-    width: max-content;
-    height: max-content;
-    padding: 8px 10px;
-    color: white;
-    margin-top: 10px;
-    cursor: pointer;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #C0392B;
-}
-
-.volunteerDateWrapper{
-    width: 100%;
-    height: max-content;
-    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .FacilityHeroShowcaseCard {
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    h1{
-        margin: 0;
-        font-weight: 500;
-        font-size: 25px;
-    }
-
-    .datePickerWrapper{
-        width: 40%;
-        height: max-content;
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-    }
-
-    p{
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    input[type="radio"]{
-        border: 1.5px solid #C0392B;
-    }
-
-    button{
-        width: max-content;
-        height: max-content;
-        padding: 10px 30px;
-        color: white;
-        background: #C0392B;
-        margin-top: 20px;
-        border-radius: 10px;
-        cursor: pointer;
-    }
-}
-
-
-
-
-
-
-
-@media only screen and (max-width: 1440px) {}
-
-@media only screen and (max-width: 1200px) {}
-
-@media only screen and (max-width: 900px) {}
-
-@media only screen and (max-width: 760px) {}
-
-@media only screen and (max-width: 480px) {
-    .detailsTextAndImageWrapper{
-        height: max-content;
-        display: flex;
-        flex-direction: column-reverse;
-    }
-
-.detailsTextAndImageWrapper .detailsImageWrapper{
+    align-items: flex-start;
+  }
+  
+  .FacilityImageContainerMask {
     width: 100%;
+    height: 160px;
+  }
+  
+  .ClinicalParametersGridRows {
+    grid-template-columns: 1fr;
+  }
+  
+  .DetailsViewRightColumnFrame {
+    padding: 20px;
+  }
+  
+  .CustomInteractiveChipRadiosGrid {
+    grid-template-columns: 1fr;
+  }
 }
-
-.HospitalDetailsPageWrapper{
-    gap: 10px;
-    display: flex;
-    flex-direction: column;
-}
-
-.detailsTextAndImageWrapper .detailsTextWrapper{
-    width: 100%;
-}
-
-.innerTextWRapper{
-    width: 100%;
-}
-}
-
-@media only screen and (max-width: 379px) {}

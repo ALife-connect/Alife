@@ -1,105 +1,197 @@
+/* ==========================================================================
+   SLODAT Unified Light-Theme Impacts Section
+   ========================================================================== */
+
 .why-different {
-    background-color: #dff1fb;
-    padding: 80px 20px;
+    background-color: #ffffff; /* Explicitly forced white background */
+    padding: 100px 24px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.section-intro {
     text-align: center;
+    max-width: 700px;
+    margin: 0 auto 64px auto;
+}
+
+.section-eyebrow {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #2902F1; /* Signature Electric Blue */
+    display: block;
+    margin-bottom: 12px;
 }
 
 .why-different h2 {
-    font-size: 32px;
-    font-weight: 700;
-    color: #0f172a;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    color: #000000; /* High contrast black heading */
+    margin: 0;
+    letter-spacing: -0.02em;
 }
 
 .subtitle {
-    font-size: 14px;
-    color: #475569;
-    margin-top: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(15px, 1.8vw, 18px);
+    color: #4a4a4a;
+    margin-top: 12px;
+    line-height: 1.5;
 }
 
 .why-different-content {
-    margin-top: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 60px;
+    gap: 80px;
     max-width: 1200px;
-    margin-inline: auto;
+    margin: 0 auto;
 }
 
-.why-image img {
-    width: 420px;
-    border-radius: 5px;
+/* Premium Image Frame & Wrapper Layout */
+.why-image-wrapper {
+    position: relative;
+    flex: 1;
+    max-width: 520px;
+}
+
+.why-image {
+    width: 100%;
+    height: auto;
+    max-height: 480px;
+    border-radius: 20px; /* Modernized soft corners */
     object-fit: cover;
+    display: block;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+    position: relative;
+    z-index: 2;
+}
+
+/* Subtle brand glow behind image asset */
+.image-accent-glow {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(circle, rgba(41, 2, 241, 0.05) 0%, rgba(255,255,255,0) 70%);
+    bottom: -20px;
+    left: -20px;
+    z-index: 1;
 }
 
 .why-features {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    max-width: 420px;
-    text-align: left;
+    gap: 36px;
+    max-width: 500px;
 }
 
 .feature-item {
     display: flex;
-    gap: 16px;
+    gap: 20px;
     align-items: flex-start;
+    transition: transform 0.2s ease;
 }
 
-.icon{
+/* Modernized structural icon frames with palette matching */
+.icon-container {
     width: 56px;
     height: 56px;
-    border-radius: 12px;
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
 }
 
-
-
-.feature-item h4 {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 4px;
-    color: #0f172a;
+.icon-container img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
 }
 
-.feature-item p {
-    font-size: 13px;
-    color: #475569;
-    line-height: 1.5;
+/* Tint assignments based on your brand variables */
+.flash-accent {
+    background-color: rgba(240, 34, 34, 0.07);
+    border: 1px solid rgba(240, 34, 34, 0.15);
+}
+
+.safety-accent {
+    background-color: rgba(41, 2, 241, 0.06);
+    border: 1px solid rgba(41, 2, 241, 0.15);
+}
+
+.seamless-accent {
+    background-color: rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Hover interactive highlights */
+.feature-item:hover .flash-accent {
+    background-color: #F02222;
+}
+.feature-item:hover .safety-accent {
+    background-color: #2902F1;
+}
+.feature-item:hover .seamless-accent {
+    background-color: #000000;
+}
+.feature-item:hover .icon-container img {
+    filter: brightness(0) invert(1); /* Switches icons to white when hovered */
+}
+
+.feature-text h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    color: #000000; /* Strong contrast alignment */
+}
+
+.feature-text p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14.5px;
+    color: #4a4a4a;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Responsive Adaptive Fluid Breakpoints */
+@media (max-width: 1024px) {
+    .why-different-content {
+        gap: 40px;
+    }
 }
 
 @media (max-width: 900px) {
-    .why-different{
-        background-color: white;
-        padding: 20px 10px;
+    .why-different {
+        padding: 60px 20px;
     }
 
-    .why-different h2{
-        font-size: 25px;
-        font-weight: 700;
-        font-style: bold;
+    .section-intro {
+        margin-bottom: 40px;
     }
+
     .why-different-content {
-        display: flex;
         flex-direction: column;
-       text-align: center;
-       gap: 30px;
-       
+        gap: 48px;
     }
 
-    .why-image {
-        order: 1;
-    }
-    .why-image img {
+    .why-image-wrapper {
         width: 100%;
-        max-width: 360px;
+        max-width: 440px;
     }
 
     .why-features {
-        order: 2;
         max-width: 100%;
+    }
+    
+    .feature-text {
+        text-align: left;
     }
 }

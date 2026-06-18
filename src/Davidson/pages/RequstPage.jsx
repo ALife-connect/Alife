@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./requestpage.css";
 import axios from "axios";
 import { DatePicker } from "antd";
@@ -6,40 +6,37 @@ import dayjs from "dayjs";
 import { toast } from "sonner";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import CircleLoader from "react-spinners/CircleLoader";
+import { 
+  FiDroplet, FiLayers, FiCalendar, 
+  FiAlertCircle, FiFileText, FiArrowRight 
+} from "react-icons/fi";
+import { BsShieldCheck } from "react-icons/bs";
 
 const RequestPage = () => {
-  const bloodGroups = [
-    { label: "A+", value: "A+" },
-    { label: "A-", value: "A-" },
-    { label: "B+", value: "B+" },
-    { label: "B-", value: "B-" },
-    { label: "AB+", value: "AB+" },
-    { label: "AB-", value: "AB-" },
-    { label: "O+", value: "O+" },
-    { label: "O-", value: "O-" },
-  ];
-
   const nav = useNavigate();
   const Base_Url = import.meta.env.VITE_BASEURL;
-  const VITE_BASEURL_REN = import.meta.env.VITE_BASEURL_REN;
+  const VITE_BASEURL_REN = import.meta.env.VITE_BASEURL;
 
+  const userToken = useSelector((state) => state?.token);
+  const user = useSelector((state) => state?.loggedInUser);
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     bloodGroup: "",
     numberOfPints: "",
     preferredDate: "",
     urgencyLevel: "",
     reason: "",
-    amount: 0,
   });
 
-  const userToken = useSelector((state) => state?.token);
-  const user = useSelector((state) => state?.loggedInUser);
+  const bloodGroups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
 
   const disabledDate = (current) => current && current < dayjs().startOf("day");
 
   const handleChange = (e) => {
-    
-    if (e?.$isDayjsObject) {
+    // Check if the parameter passed is an Ant Design Dayjs object
+    if (e && e.$isDayjsObject) {
       setFormData((prev) => ({
         ...prev,
         preferredDate: e.format("YYYY-MM-DD"),
@@ -56,7 +53,6 @@ const RequestPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("this is token", userToken)
 
     if (
       !formData.bloodGroup ||
@@ -64,17 +60,17 @@ const RequestPage = () => {
       !formData.urgencyLevel ||
       !formData.preferredDate
     ) {
-      toast.error("Please fill all required fields");
+      toast.error("Please populate all mandatory operational parameters.");
       return;
     }
 
     if (!user?.kycCompleted) {
-      toast.error("Please complete KYC before requesting");
+      toast.error("Account verification required. Complete KYC profile before posting requests.");
       return;
     }
 
     if (!userToken) {
-      toast.error("You are not logged in. Please log in.");
+      toast.error("Session missing. Please re-authenticate your institutional login.");
       return;
     }
 
@@ -87,11 +83,10 @@ const RequestPage = () => {
       amount: 0,
     };
 
-    toast.loading("Sending blood request...");
+    setIsSubmitting(true);
+    const toastId = toast.loading("Broadcasting emergency blood request across the local network...");
 
     try {
-      console.log("Payload being sent:", payload);
-
       const res = await axios.post(
         `${VITE_BASEURL_REN}/hospital/request-blood`,
         payload,
@@ -103,10 +98,8 @@ const RequestPage = () => {
         }
       );
 
-      toast.dismiss();
-
       if (res.status === 201 || res.status === 200) {
-        toast.success(res?.data?.message || "Blood request created successfully!");
+        toast.success(res?.data?.message || "Emergency request broadcasted successfully!", { id: toastId });
         setFormData({
           bloodGroup: "",
           numberOfPints: "",
@@ -116,106 +109,156 @@ const RequestPage = () => {
         });
         nav("/dashboard/requesthistory");
       } else {
-        toast.error("Unexpected server response");
+        toast.error("Unexpected pipeline response context.", { id: toastId });
       }
     } catch (err) {
-      toast.dismiss();
-
-      const errorMsg =
-        err?.response?.data?.message ||
-        "Internal server error. Please try again later.";
-
-      toast.error(errorMsg);
-      console.error("Request error details:", err?.response || err);
+      const errorMsg = err?.response?.data?.message || "Network request structural timeout error.";
+      toast.error(errorMsg, { id: toastId });
+      console.error("Transmission breakdown details:", err);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="request-form-container">
-      <h2 className="form-title">Blood Request Form</h2>
-
-      <form onSubmit={handleSubmit}>
-        {/* Blood Group */}
-        <div className="form-field">
-          <label htmlFor="bloodGroup">Blood Group Needed</label>
-          <select
-            id="bloodGroup"
-            name="bloodGroup"
-            value={formData.bloodGroup}
-            onChange={handleChange}
-            className="w-80 border h-10 border-gray-300 rounded text-sm text-gray-600 px-2"
-          >
-            <option value="">Select your blood group</option>
-            {bloodGroups.map((item, index) => (
-              <option key={index} value={item.value}>
-                {item.value}
-              </option>
-            ))}
-          </select>
+    <div className="RequestHubPageMasterFrame">
+      {/* Informative Header Title Section */}
+      <header className="RequestHubFormHeader">
+        <div className="HeaderTitleContext">
+          <h1>Create Blood Allocation Request</h1>
+          <p>Deploy a live localized broadcast request to connect matching verified regional donors with emergency clinic needs.</p>
         </div>
 
-        {/* Number of Pints */}
-        <div className="form-field">
-          <label htmlFor="pints">Number of Pints</label>
-          <input
-            type="number"
-            id="pints"
-            min={1}
-            name="numberOfPints"
-            placeholder="e.g. 3 Pints"
-            value={formData.numberOfPints}
-            onChange={handleChange}
-            className="record-input w-80 border h-10 border-gray-300 rounded text-sm text-gray-600 px-2"
-          />
-        </div>
+        {/* Dynamic Warning Alert Banner if KYC validation is absent */}
+        {!user?.kycCompleted && (
+          <div className="InstitutionalKYCWarningBanner">
+            <BsShieldCheck size={18} />
+            <div>
+              <h5>Verification Required</h5>
+              <p>Your institutional node must have an approved KYC file profile active before distribution queries execute.</p>
+            </div>
+          </div>
+        )}
+      </header>
 
-        {/* Preferred Date */}
-        <div className="form-field">
-          <label htmlFor="preferredDate">Preferred Date</label>
-          <DatePicker
-            onChange={handleChange}
-            disabledDate={disabledDate}
-            id="preferredDate"
-            name="preferredDate"
-            className="w-80 border h-10 border-gray-300 rounded text-sm text-gray-600 px-2"
-          />
-        </div>
+      {/* Main Structural core Grid Form Layout */}
+      <main className="RequestFormCardWrapper">
+        <form onSubmit={handleSubmit} className="ModernAsymmetricFormStructure">
+          
+          {/* Blood Group Target Dropdown */}
+          <div className="FormGroupInputField">
+            <label htmlFor="bloodGroup" className="FormElementFieldLabel">
+              <FiDroplet /> Target Blood Group
+            </label>
+            <div className="InteractiveInputContainerWrapper">
+              <select
+                id="bloodGroup"
+                name="bloodGroup"
+                value={formData.bloodGroup}
+                onChange={handleChange}
+                className="FormSelectInputElement"
+              >
+                <option value="">Select variance code</option>
+                {bloodGroups.map((group, idx) => (
+                  <option key={idx} value={group}>{group}</option>
+                ))}
+              </select>
+            </div>
+          </div>
 
-        {/* Urgency Level */}
-        <div className="form-field">
-          <label htmlFor="urgencyLevel">Urgency Level</label>
-          <select
-            id="urgencyLevel"
-            name="urgencyLevel"
-            onChange={handleChange}
-            value={formData.urgencyLevel}
-            className="w-80 border h-10 border-gray-300 rounded text-sm text-gray-600 px-2"
-          >
-            <option value="">Select urgency level</option>
-            <option value="high">High</option>
-            <option value="medium">Medium</option>
-            <option value="low">Low</option>
-          </select>
-        </div>
+          {/* Quantity Allocation Count Input */}
+          <div className="FormGroupInputField">
+            <label htmlFor="pints" className="FormElementFieldLabel">
+              <FiLayers /> Volumetric Pints Count Required
+            </label>
+            <div className="InteractiveInputContainerWrapper">
+              <input
+                type="number"
+                id="pints"
+                min={1}
+                name="numberOfPints"
+                placeholder="e.g. 4"
+                value={formData.numberOfPints}
+                onChange={handleChange}
+                className="FormGenericTextInputElement"
+              />
+            </div>
+          </div>
 
-        {/* Reason Field (instead of Incentive) */}
-        <div className="form-field">
-          <label htmlFor="reason">Reason for Request</label>
-          <textarea
-            id="reason"
-            name="reason"
-            placeholder="Briefly explain why blood is needed (e.g., emergency surgery)"
-            value={formData.reason}
-            onChange={handleChange}
-            className="record-input w-80 border rounded text-sm text-gray-600 px-2 py-2"
-            rows={3}
-          />
-        </div>
+          {/* Schedule Calendar Input */}
+          <div className="FormGroupInputField">
+            <label htmlFor="preferredDate" className="FormElementFieldLabel">
+              <FiCalendar /> Targeted Fulfillment Date
+            </label>
+            <DatePicker
+              onChange={handleChange}
+              disabledDate={disabledDate}
+              id="preferredDate"
+              name="preferredDate"
+              placeholder="Select target calendar point"
+              className="FormModernSystemDatePicker"
+            />
+          </div>
 
-        <button type="submit" className="submit-button">
-          Post Request
-        </button>
-      </form>
+          {/* Urgency Matrix Input */}
+          <div className="FormGroupInputField">
+            <label htmlFor="urgencyLevel" className="FormElementFieldLabel">
+              <FiAlertCircle /> Priority Classification Matrix
+            </label>
+            <div className="InteractiveInputContainerWrapper">
+              <select
+                id="urgencyLevel"
+                name="urgencyLevel"
+                onChange={handleChange}
+                value={formData.urgencyLevel}
+                className="FormSelectInputElement"
+              >
+                <option value="">Select response priority</option>
+                <option value="high">Critical / High Emergency</option>
+                <option value="medium">Moderate / Standard Allocation</option>
+                <option value="low">Low Routine Stocking</option>
+              </select>
+            </div>
+          </div>
+
+          {/* Reason Narrative Textarea Block (Takes full wide span) */}
+          <div className="FormGroupInputField fullWidthSpanField">
+            <label htmlFor="reason" className="FormElementFieldLabel">
+              <FiFileText /> Clinical Diagnosis / Reason for Request
+            </label>
+            <textarea
+              id="reason"
+              name="reason"
+              placeholder="Specify clinical context or diagnostic procedure validation data parameters (e.g. Scheduled emergency surgery)..."
+              value={formData.reason}
+              onChange={handleChange}
+              className="FormModernTextAreaElement"
+              rows={4}
+            />
+          </div>
+
+          {/* Operation Submit Row */}
+          <div className="FormActionFooterRow fullWidthSpanField">
+            <button 
+              type="submit" 
+              className={`FormHubSubmissionButton ${isSubmitting ? 'isButtonLoadingDisabled' : ''}`}
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? (
+                <>
+                  <CircleLoader color="#ffffff" size={18} />
+                  <span>Processing Protocol...</span>
+                </>
+              ) : (
+                <>
+                  <span>Broadcast Request Pipeline</span>
+                  <FiArrowRight size={16} />
+                </>
+              )}
+            </button>
+          </div>
+        </form>
+      </main>
     </div>
   );
 };

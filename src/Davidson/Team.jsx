@@ -1,127 +1,46 @@
 import React from "react";
 import { FaLinkedin, FaGithub, FaFacebook } from "react-icons/fa";
 
-
 const Team = () => {
+  const teamMembers = [
+    { name: "Mary Patrick", role: "Product Designer", img: "images/mary.png" },
+    { name: "Sarah Emojoro", role: "Product Designer", img: "images/sarah.png" },
+    { name: "Williams Esther", role: "Frontend Developer", img: "images/esther.png" },
+    { name: "Ekah Davidson", role: "Frontend Developer", img: "images/davidson.png" },
+    { name: "Kingsley Adio", role: "Frontend Developer", img: "images/adio.png" },
+    { name: "Obadina Azeez", role: "Backend Developer", img: "images/azeez.png" }
+  ];
+
   return (
     <div className="the-team-cnt">
-      <span
-        style={{ fontFamily: "Poppins", fontSize: "36px", fontWeight: "700" }}
-      >
-        THE TEAM
-      </span>
-      <p>
-        A group of young, passionate, and driven individuals <br /> dedicated to
-        creating impactful solutions
+      <h3>THE TEAM</h3>
+      <p className="team-subtitle">
+        A group of young, passionate, and driven individuals dedicated to creating impactful solutions.
       </p>
 
       <div className="team-card-one">
-
-        <div className="first-team-card">
-          <div className="team-card-img">
-            <img src="images/mary.png" alt="Mary Patrick" />
+        {teamMembers.map((member, index) => (
+          <div className="first-team-card" key={index}>
+            <div className="team-card-img">
+              <img src={member.img} alt={member.name} />
+            </div>
+            <div className="team-card-title">
+              <h2>{member.name}</h2>
+              <p>{member.role}</p>
+              <div className="team-social-links">
+                <a href="#linkedin" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                  <FaLinkedin />
+                </a>
+                <a href="#github" target="_blank" rel="noreferrer" aria-label="GitHub">
+                  <FaGithub />
+                </a>
+                <a href="#facebook" target="_blank" rel="noreferrer" aria-label="Facebook">
+                  <FaFacebook />
+                </a>
+              </div>
+            </div>
           </div>
-          <div className="team-card-title">
-            <h2>Mary Patrick</h2>
-            <p>Product Designer</p>
-            <a href="#">
-              <FaLinkedin />
-              <FaGithub />
-              <FaFacebook />
-            </a>
-          </div>
-        </div>
-
-        <div className="first-team-card">
-          <div className="team-card-img">
-            <img src="images/sarah.png" alt="Sarah Emojoro" />
-          </div>
-          <div className="team-card-title">
-            <h2>Sarah Emojoro</h2>
-            <p>Product Designer</p>
-            <a href="#">
-              <FaLinkedin />
-              <FaGithub />
-              <FaFacebook />
-            </a>
-          </div>
-        </div>
-
-        <div className="first-team-card">
-          <div className="team-card-img">
-            <img src="images/esther.png" alt="Willams Esther" />
-          </div>
-          <div className="team-card-title">
-            <h2>Willams Esther</h2>
-            <p>Frontend Developer</p>
-            <a href="#">
-              <FaLinkedin />
-              <FaGithub />
-              <FaFacebook />
-            </a>
-          </div>
-        </div>
-
-        <div className="first-team-card">
-          <div className="team-card-img">
-            <img src="images/davidson.png" alt="Ekah Davidson" />
-          </div>
-          <div className="team-card-title">
-            <h2>Ekah Davidson</h2>
-            <p>Frontend Developer</p>
-            <a href="#">
-              <FaLinkedin />
-              <FaGithub />
-              <FaFacebook />
-            </a>
-          </div>
-        </div>
-
-        <div className="first-team-card">
-          <div className="team-card-img">
-            <img src="images/adio.png" alt="Kingsley Adio" />
-          </div>
-          <div className="team-card-title">
-            <h2>Kingsley Adio</h2>
-            <p>Frontend Developer</p>
-            <a href="#">
-              <FaLinkedin />
-              <FaGithub />
-              <FaFacebook />
-            </a>
-          </div>
-        </div>
-
-        <div className="first-team-card">
-          <div className="team-card-img">
-            <img src="images/azeez.png" alt="Obadina Azeez" />
-          </div>
-          <div className="team-card-title">
-            <h2>Obadina Azeez</h2>
-            <p>Backend Developer</p>
-            <a href="#">
-              <FaLinkedin />
-              <FaGithub />
-              <FaFacebook />
-            </a>
-          </div>
-        </div>
-
-        {/* <div className="first-team-card">
-          <div className="team-card-img">
-            <img src="images/jeffery.png" alt="Jeffery Abiuwa" />
-          </div>
-          <div className="team-card-title">
-            <h2>Jeffery Abiuwa</h2>
-            <p>Backend Developer</p>
-            <a href="#">
-              <FaLinkedin />
-              <FaGithub />
-              <FaFacebook />
-            </a>
-          </div>
-        </div> */}
-
+        ))}
       </div>
     </div>
   );

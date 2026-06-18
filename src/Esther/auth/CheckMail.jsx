@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const VITE_BASEURL_REN = import.meta.env.VITE_BASEURL_REN;
+const VITE_BASEURL_REN = import.meta.env.VITE_BASEURL;
 
 export default function CheckMail() {
   const nav = useNavigate();

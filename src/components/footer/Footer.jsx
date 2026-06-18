@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FaFacebook } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
@@ -6,10 +7,11 @@ import { FaLinkedinIn } from "react-icons/fa";
 import "./footer.css";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="footer">
       <div className="footer-top">
-
         <div className="footer-brand">
           <div className="brand-logo">
             <img src="/images/Slodat.jpeg" alt="LifeLink Logo" className="logo-breath" />
@@ -21,50 +23,61 @@ const Footer = () => {
           </p>
 
           <div className="social-icons">
-            <span><FaFacebook /></span>
-            <span><FaXTwitter /></span>
-            <span><FaInstagram /></span>
-            <span><FaLinkedinIn /></span>
+            <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook">
+              <span><FaFacebook /></span>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noreferrer" aria-label="Twitter">
+              <span><FaXTwitter /></span>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">
+              <span><FaInstagram /></span>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+              <span><FaLinkedinIn /></span>
+            </a>
           </div>
         </div>
-
 
         <div className="footer-links">
           <h4>Quick Links</h4>
           <ul>
-            <li>How It Works</li>
-            <li>For Donors</li>
-            <li>For Hospitals</li>
-            <li>About Us</li>
-            <li>Blog</li>
+            <li><Link to="/howitworks">How It Works</Link></li>
+            <li><Link to="/signup">For Donors</Link></li>
+            <li><Link to="/signup">For Hospitals</Link></li>
+            <li><Link to="/about">About Us</Link></li>
+            <li><Link to="/blog">Blog</Link></li>
           </ul>
         </div>
-
 
         <div className="footer-links">
           <h4>Support</h4>
           <ul>
-            <li>FAQs</li>
-            <li>Contact Us</li>
-            <li>Privacy Policy</li>
-            <li>Terms of Service</li>
+            <li><Link to="/faqs">FAQs</Link></li>
+            <li><Link to="/contact">Contact Us</Link></li>
+            <li><Link to="/privacy">Privacy Policy</Link></li>
+            <li><Link to="/terms">Terms of Service</Link></li>
           </ul>
         </div>
 
-
         <div className="footer-links">
           <h4>Contact</h4>
-          <ul>
-            <li>📞 +234 9013717091</li>
-            <li>✉️ slodat.connect@gmail.com</li>
+          <ul className="contact-info-list">
+            <li>
+              <a href="tel:+2349013717091">
+                <span className="contact-emoji">📞</span> +234 901 371 7091
+              </a>
+            </li>
+            <li>
+              <a href="mailto:slodat.connect@gmail.com">
+                <span className="contact-emoji">✉️</span> slodat.connect@gmail.com
+              </a>
+            </li>
           </ul>
         </div>
       </div>
 
-
       <div className="footer-bottom">
-        <p>© 2024 SLODAT. All rights reserved. Saving lives, one drop at a time.</p>
-        {/* <span className="verified"><img src="/images/svg.png" alt="Verified" />Nigerian Health Authority</span> */}
+        <p>© {currentYear} SLODAT. All rights reserved. Saving lives, one drop at a time.</p>
       </div>
     </footer>
   );

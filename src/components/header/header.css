@@ -1,3 +1,4 @@
+/* --- Global Reset Helpers --- */
 .headerwrapper {
   width: 100%;
   height: 10vh;
@@ -9,557 +10,359 @@
 }
 
 .headerwrapperfixed {
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
   position: fixed;
   z-index: 999;
-  transition: 280ms;
-}
-
-.notificationIconWrapper {
-  width: max-content;
-  height: max-content;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-}
-
-.notificationDot {
-  width: 8px;
-  height: 8px;
-  background: red;
-  border-radius: 50%;
-  color: transparent;
+  top: 0;
 }
 
 .HeaderInnerWrapper {
-  width: 80%;
+  width: 85%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.MobileHeader,
-.mobileHeaderWrapperPusher {
-  display: none;
+.headerwrapperinner1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.headerwrapperinner1 {
-  width: 15%;
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
- 
-}
 .headerwrapperinner1 img {
-  width: 60px;
-  height: fit-content;
-  gap: 20px;
-  padding-right: 5px;
-  border-radius: 50px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
 }
+
 .headerwrapperinner1 h1 {
   font-family: 'Poppins', sans-serif;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
   color: #111827;
 }
+
 .headerwrapperinner2 {
-  width: 40%;
-  height: 80px;
-  display: flex;
-  align-items: center;
+  flex-grow: 1;
+  max-width: 55%;
 }
 
 .headerul {
   width: 100%;
-  height: 70px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  font-family: Poppins;
-  font-size: 18px;
-  font-weight: 600;
-}
-.headerli {
-  width: 30%;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
+  list-style: none;
 }
 
-/* .headerliactive {
-  border: 1px solid #c0392b;
-} */
 .headerwrapperinner3 {
-  width: 30%;
-  height: 80px;
-  display: flex;
-  /* justify-content: space-; */
-  align-items: center;
-  gap: 10px;
-}
-.headerbtn {
-  width: 120px;
-  height: 40px;
-  background-color: #fff;
-  color: #FF1B03;
-  border-radius: 20px;
-  font-family: Poppins;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 4px 10px rgba(192, 57, 43, 0.3);
-  transition: all 0.3s ease;
-}
-.headerbtn:hover {
-  background-color: #FF1B03;
-  color: #fff;
-  transform: translateX(-2px);
-  border: 1px solid #8b8888;
-}
-.headerbtn1 {
-  width: 120px;
-  height: 40px;
-  background-color: #FF1B03;
-  color: #fff;
-  border-radius: 20px;
-  font-family: Poppins;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  border: 1px solid rgba(192, 57, 43, 0.4);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 4px 10px rgba(192, 57, 43, 0.1);
-  transition: all 0.3s ease;
-}
-.headerbtn1:hover {
-  background-color: rgba(255, 255, 255, 0.5);
-  color: #000;
-  transform: translateY(-2px);
-}
-
-.mobileSearchInputWrapper {
-  width: 60%;
-  height: 60%;
-  padding: 10px 15px;
-  background: white;
-  border-radius: 8px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 5px;
-  background: whitesmoke;
+}
 
-  input {
-    width: 95%;
-    height: 100%;
-    outline: none;
-    border: 0;
-  }
+.headerwrapperinner3_guest {
+  display: flex;
+  gap: 12px;
+}
+
+.desktopAuthContainer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.desktopNotificationBtn {
+  position: relative;
+  cursor: pointer;
+  color: #4b5563;
+  transition: color 0.2s;
+}
+
+.desktopNotificationBtn:hover {
+  color: #ef4444;
+}
+
+.desktopNotificationBadge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  background: #ef4444;
+  border-radius: 50%;
 }
 
 .headerProfilePic {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: whitesmoke;
+  overflow: hidden;
   cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.headerProfilePic:hover {
+  border-color: #ef4444;
 }
 
 .headerProfilePic img {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
   object-fit: cover;
 }
 
+.desktopLogoutBtn {
+  background: transparent;
+  border: none;
+  color: #4b5563;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.desktopLogoutBtn:hover {
+  color: #ef4444;
+}
+
+/* Base Buttons styling */
+.headerbtn, .headerbtn1 {
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-family: Poppins;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.headerbtn {
+  background: #fff;
+  color: #ef4444;
+  border: 1px solid #ef4444;
+}
+
+.headerbtn:hover {
+  background: #ef4444;
+  color: #fff;
+}
+
+.headerbtn1 {
+  background: #ef4444;
+  color: #fff;
+  border: 1px solid transparent;
+}
+
+.headerbtn1:hover {
+  background: #b91c1c;
+}
+
+/* --- Breathing Logo Animation --- */
 .logo-breath {
-  animation: breathing 3s ease-in-out infinite;
-  transform-origin: center;
+  animation: breathing 4s ease-in-out infinite;
 }
 
 @keyframes breathing {
-  0% {transform: scale(1);}
-  25% {transform: scale(1.1);}
-  50% {transform: scale(1);}
-  75% {transform: scale(0.9);}
-  100% {transform: scale(1);}
-
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
 }
 
-@media only screen and (max-width: 1440px) {
-}
-@media only screen and (max-width: 1200px) {
-}
-
-@media only screen and (max-width: 900px) {
+/* --- Mobile Responsiveness Layout System --- */
+.MobileTopBrandingBar,
+.MobileFloatingBottomNav {
+  display: none;
 }
 
-@media only screen and (max-width: 760px) {
+@media (max-width: 768px) {
   .headerwrapper {
+    display: none !important;
+  }
+
+  /* Fixed Top Branding Header Bar */
+  .MobileTopBrandingBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+    z-index: 999;
+  }
+
+  .mobileHeaderLogo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .mobileHeaderLogo img {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+  }
+
+  .mobileHeaderLogo h1 {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #111827;
+  }
+
+  .mobileTopNotification {
+    position: relative;
+    color: #4b5563;
+  }
+
+  .mobileNotificationBadge {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 7px;
+    height: 7px;
+    background: #ef4444;
+    border-radius: 50%;
+  }
+
+  /* --- Advanced Swipeable Floating Action Dock --- */
+  .MobileFloatingBottomNav {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    max-width: 480px;
+    height: 66px;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 35px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    overflow: hidden;
+  }
+
+  /* Pure CSS Swipeable Track container (Instagram Style Layout mapping) */
+  .bottomNavScrollContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 16px;
+    overflow-x: auto;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Hide raw scrollbars across platforms cleanly */
+  .bottomNavScrollContainer::-webkit-scrollbar {
     display: none;
   }
-
-  .MobileHeader {
-    width: 100%;
-    height: 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    position: fixed;
-    z-index: 999;
-    background: white;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  .bottomNavScrollContainer {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
-  .mobileHeaderWrapperPusher {
-    display: block;
-    width: 100%;
-    height: 80px;
-  }
-
-  .MobileHeader img {
-    width: 40px;
-  }
-
-  .sideDrawerNavigateHolder {
-    width: 100%;
-    height: max-content;
-  }
-
-  .sideDrawerNavigateHolder ul {
-    width: 100%;
-    height: max;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  .sideDrawerNavigateHolder ul button:nth-child(2) {
-    width: 100%;
-    height: max-content;
-    padding: 10px 0px;
-    font-size: 17px;
-    color: white;
-    border-radius: 7px;
-    background: rgba(192, 57, 43, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    transition: 0.3s;
-  }
-
-  .sideDrawerNavigateHolder ul button:nth-child(2):hover {
-  background: rgba(192, 57, 43, 0.8);
-}
-  .sideDrawerNavigateHolder ul button:nth-child(3) {
-    width: 100%;
-    height: max-content;
-    padding: 10px 0px;
-    font-size: 17px;
-    color: #c0392b;
-    border-radius: 7px;
-    background: 1.9px solid rgba(255, 255, 255, 0.3);
-    border: 1.9px solid rgba(192, 57, 43, 0.4);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    transition: 0.3s;
-  }
-
-  .sideDrawerNavigateHolder ul button:nth-child(3):hover {
-  background: rgba(255, 255, 255, 0.5);
-  color: #000;
-}
-
-  .mobileSideBarProfileNav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 20px;
-    padding: 5px 10px;
-    border-radius: 4px;
-    background: whitesmoke;
-  }
-
-  .mobileSideBarProfileNav:hover {
-    background: rgba(128, 128, 128, 0.541);
-  }
-
-  .MobileSideProfilePic {
-    width: 80px;
-    height: 80px;
-    padding: 2px;
-    border-radius: 50%;
-    background: whitesmoke;
-
-    img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-    }
-  }
-
-  .MobileSideProfileName {
-    width: 55%;
-    height: 100%;
-
-    h1 {
-      font-size: 24px;
-      font-weight: 500;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-  }
-
-  .mobileSideBarIcon {
-    font-size: 20px;
-    padding: 5px;
-    border-radius: 50%;
-    color: white;
-    background: #c0392b;
-  }
-
-  .sideDrawerNavigateHolder ul li {
-    font-size: 20px;
-    padding: 5px 10px;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    gap: 2px;
-    background: whitesmoke;
-  }
-
-  .sideDrawerNavigateHolder ul li:hover {
-    background: #c0392b;
-    color: white;
-  }
-
-  .mobileLogoutPopUp {
-    width: 100%;
-    height: 100%;
-    display: flex;
+  .bottomNavIcon {
+    display: inline-flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    color: #6b7280;
+    min-width: 72px;
+    height: 100%;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
 
-    h1 {
-      font-size: 19px;
-      text-align: center;
-      margin-top: 25px;
+  .bottomNavIcon span {
+    font-size: 10px;
+    font-weight: 500;
+    margin-top: 3px;
+    font-family: 'Poppins', sans-serif;
+  }
 
-      b {
-        color: red;
-      }
-    }
+  /* Interactive States */
+  .activeNavIcon {
+    color: #ef4444;
+    transform: translateY(-2px);
+  }
 
-    .mobileLogoutWrapper {
-      width: 70%;
-      height: max-content;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 20px;
-      gap: 10px;
+  .bottomNavIcon.logoutStyle {
+    color: #9ca3af;
+  }
+  
+  .bottomNavIcon.logoutStyle:active {
+    color: #ef4444;
+  }
 
-      button {
-        width: max-content;
-        height: max-content;
-        padding: 10px 20px;
-        border-radius: 5px;
-        color: white;
-        background: red;
-      }
-
-      .MobileLogoutBtn {
-        background: white;
-        border: 1px solid red;
-        color: black;
-      }
-    }
+  /* Structural Content Spacer */
+  body {
+    padding-top: 70px;
+    padding-bottom: 105px;
   }
 }
 
-@media only screen and (max-width: 480px) {
-  .headerwrapper {
-    display: none;
-  }
-
-  .MobileHeader {
-    width: 100%;
-    height: 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    position: fixed;
-    z-index: 999;
-    background: white;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-  }
-
-  .mobileHeaderWrapperPusher {
-    display: block;
-    width: 100%;
-    height: 80px;
-  }
-
-  .MobileHeader img {
-    width: 40px;
-  }
-
-  .sideDrawerNavigateHolder {
-    width: 100%;
-    height: max-content;
-  }
-
-  .sideDrawerNavigateHolder ul {
-    width: 100%;
-    height: max;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  .sideDrawerNavigateHolder ul button:nth-child(2) {
-    width: 100%;
-    height: max-content;
-    padding: 10px 0px;
-    font-size: 17px;
-    color: white;
-    border-radius: 7px;
-    background: #c0392b;
-  }
-  .sideDrawerNavigateHolder ul button:nth-child(3) {
-    width: 100%;
-    height: max-content;
-    padding: 10px 0px;
-    font-size: 17px;
-    color: #c0392b;
-    border-radius: 7px;
-    border: 1.9px solid #c0392b;
-  }
-
-  .mobileSideBarProfileNav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 20px;
-    padding: 5px 10px;
-    border-radius: 4px;
-    background: whitesmoke;
-  }
-
-  .mobileSideBarProfileNav:hover {
-    background: rgba(128, 128, 128, 0.541);
-  }
-
-  .MobileSideProfilePic {
-    width: 80px;
-    height: 80px;
-    padding: 3px;
-    border-radius: 50%;
-    background: whitesmoke;
-
-    img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-    }
-  }
-
-  .MobileSideProfileName {
-    width: 55%;
-    height: 100%;
-
-    h1 {
-      font-size: 24px;
-      font-weight: 500;
-    }
-  }
-
-  .mobileSideBarIcon {
-    font-size: 20px;
-    padding: 5px;
-    border-radius: 50%;
-    color: white;
-    background: #c0392b;
-  }
-
-  .sideDrawerNavigateHolder ul li {
-    font-size: 20px;
-    padding: 5px 10px;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    gap: 2px;
-    background: whitesmoke;
-  }
-
-  .sideDrawerNavigateHolder ul li:hover {
-    background: #c0392b;
-    color: white;
-  }
-
-  .mobileLogoutPopUp {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    h1 {
-      font-size: 19px;
-      text-align: center;
-      margin-top: 25px;
-
-      b {
-        color: red;
-      }
-    }
-
-    .mobileLogoutWrapper  button {
-        width: max-content;
-        height: max-content;
-        padding: 10px 20px;
-        border-radius: 5px;
-        color: white;
-        background: rgba(255, 0, 0, 0.6);
-        border: 1px solid rgba(225, 225, 225, 0.2);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        transition: 0.3s;
-      }
-
-       .mobileLogoutWrapper  button:hover{
-        background: rgba(255, 0, 0, 0.8);
-       }
-
-      .MobileLogoutBtn {
-        background: rgba(225, 225, 225, 0.3);
-        border: 1px solid rgba(225, 0, 0, 0.4);
-        color: black;
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        transition: 0.3s;
-      }
-
-      .MobileLogoutBtn:hover {
-        background: rgba(255, 255, 255, 0.5);
-      }
-    
-  }
+/* --- Universal Modal Custom Overrides --- */
+.mobileLogoutPopUp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 5px;
+  text-align: center;
 }
 
-@media only screen and (max-width: 379px) {
+.mobileLogoutPopUp h1 {
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+  color: #1f2937;
+  line-height: 1.5;
+}
+
+.mobileLogoutWrapper {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  margin-top: 24px;
+}
+
+.mobileLogoutWrapper button {
+  flex: 1;
+  padding: 11px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.mobileLogoutWrapper button:last-child {
+  background: #ef4444;
+  color: white;
+}
+
+.mobileLogoutWrapper button:last-child:hover {
+  background: #dc2626;
+}
+
+.mobileLogoutWrapper .MobileLogoutBtn {
+  background: #f3f4f6;
+  color: #4b5563;
+}
+
+.mobileLogoutWrapper .MobileLogoutBtn:hover {
+  background: #e5e7eb;
 }

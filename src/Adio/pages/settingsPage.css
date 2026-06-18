@@ -1,175 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-app-surface: #f8fafc;
+  --bg-card: #ffffff;
+  --border-element: #e2e8f0;
+  --border-focus: #c0392b; /* Aligned input focus lines to brand context */
+  --text-title: #0f172a;
+  --text-body: #334155;
+  --text-explanation: #64748b;
+  
+  /* Website Brand Palette Match Token Update (Crimson Hex Array Mapping) */
+  --brand-primary: #c0392b;
+  --brand-hover: #a62c20;
+  --security-action: #c0392b;
+  --security-hover: #a62c20;
+  --destructive-base: #ef4444;
+  --destructive-light: #fef2f2;
+  
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-card: 0 4px 6px -1px rgba(15, 23, 42, 0.03), 0 2px 4px -2px rgba(15, 23, 42, 0.03);
+  --radius-inner: 8px;
+  --radius-card: 12px;
+  --transition-standard: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .SettingsPageWrapper {
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-    display: flex;
-    flex-wrap: wrap;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-app-surface);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
-.SettingsPageWrapper h1 {
-    width: 100%;
-    font-size: 20px;
-    font-weight: 500;
-    font-family: Poppins;
+.SettingsHeader h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-title);
+  margin: 0 0 6px 0;
+  letter-spacing: -0.5px;
 }
 
-.SettingssideWrapper {
-    width: 40%;
-    height: max-content;
-    display: flex;
+.SettingsHeader p {
+  font-size: 14px;
+  color: var(--text-explanation);
+  margin: 0;
+}
+
+.SettingsLayoutGrid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.SettingsPrimaryColumn,
+.SettingsSecondaryColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.SettingsCard {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-element);
+  border-radius: var(--radius-card);
+  padding: 28px;
+  box-shadow: var(--shadow-card);
+}
+
+.SettingsCard h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-title);
+  margin: 0 0 24px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-element);
+}
+
+.AvatarUploadContext {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.AvatarPreviewFrame {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: var(--bg-app-surface);
+  border: 2px solid var(--border-element);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.AvatarPreviewFrame img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.FallbackCameraIcon {
+  font-size: 28px;
+  color: var(--text-explanation);
+}
+
+.FloatingCameraBadge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  background-color: var(--security-action);
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  transition: var(--transition-standard);
+}
+
+.FloatingCameraBadge:hover {
+  transform: scale(1.05);
+  background-color: var(--security-hover);
+}
+
+.HiddenInputNode {
+  display: none;
+}
+
+.AvatarActionControls {
+  display: flex;
+  gap: 12px;
+}
+
+.FormLayoutGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.SingleColumnForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.fullWidthRow {
+  grid-column: 1 / -1;
+}
+
+.FormGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.FormGroup label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-body);
+}
+
+/* Password eye position controller alignment mechanics */
+.PasswordInputContainer {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.PasswordInputContainer input {
+  padding-right: 44px !important; /* Forces layout spacing safety padding away from eye overlap */
+}
+
+.PasswordToggleToggle {
+  position: absolute;
+  right: 4px;
+  width: 38px;
+  height: 38px;
+  background: transparent;
+  border: none;
+  color: var(--text-explanation);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  padding: 0;
+  border-radius: 50%;
+  transition: var(--transition-standard);
+}
+
+.PasswordToggleToggle:hover {
+  color: var(--text-title);
+  background-color: var(--bg-app-surface);
+}
+
+.FormGroup input[type="text"],
+.FormGroup input[type="email"],
+.FormGroup input[type="password"],
+.FormGroup input[type="number"],
+.FormGroup input[type="tel"],
+.FormGroup select {
+  width: 100%;
+  height: 44px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-element);
+  border-radius: var(--radius-inner);
+  padding: 0 14px;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text-title);
+  transition: var(--transition-standard);
+}
+
+.FormGroup input:focus,
+.FormGroup select:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(192, 91, 43, 0.12);
+}
+
+.PrimaryActionButton,
+.SecondaryActionButton {
+  height: 44px;
+  padding: 0 24px;
+  border-radius: var(--radius-inner);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: var(--transition-standard);
+}
+
+.PrimaryActionButton {
+  background-color: var(--brand-primary);
+  border: 1px solid var(--brand-primary);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(192, 57, 43, 0.15);
+}
+
+.PrimaryActionButton:hover:not(:disabled) {
+  background-color: var(--brand-hover);
+  border-color: var(--brand-hover);
+}
+
+.SecondaryActionButton {
+  background-color: transparent;
+  border: 1px solid var(--border-element);
+  color: var(--text-body);
+}
+
+.SecondaryActionButton:hover:not(:disabled) {
+  background-color: var(--bg-app-surface);
+  color: var(--text-title);
+}
+
+.SecondaryActionButton.variantDelete {
+  color: var(--destructive-base);
+  border-color: transparent;
+}
+
+.SecondaryActionButton.variantDelete:hover:not(:disabled) {
+  background-color: var(--destructive-light);
+}
+
+.textIconButton {
+  height: 38px;
+  padding: 0 16px;
+  font-size: 13px;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none !important;
+}
+
+.FormActionWrapper {
+  margin-top: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 1024px) {
+  .SettingsLayoutGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .SettingsPageWrapper {
+    padding: 20px 16px;
+  }
+  
+  .SettingsCard {
+    padding: 20px;
+  }
+  
+  .FormLayoutGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .AvatarUploadContext {
     flex-direction: column;
-    justify-content: center;
-    gap: 10px;
-}
-
-.SettingsPasswordsideWrapper {
-    width: 50%;
-    height: 95%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    gap: 10px;
-}
-
-.profilePageProflePicWrapper {
-    width: 380px;
-    height: 78px;
-    display: flex;
-    align-items: flex-end;
-    gap: 10px;
-}
-
-.profilePageProflePicWrapper .settingsProfilePicture {
-    width: 76px;
-    height: 76px;
-    border-radius: 50%;
-    background: #fff;
-    padding: 3px;
-    margin-left: 25px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.profilePageProflePicWrapper .settingsProfilePicture img{
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .AvatarActionControls {
     width: 100%;
-    height: 100%;
-    border-radius: 50%;
-}
-
-.UploadFileInput{
-    opacity: 0;
-}
-
-.profilePageProflePicWrapper button {
-    padding: 10px 10px;
-    font-size: 12px;
-    font-weight: 500;
-    border-radius: 10px;
-    color: white;
-    background: #2C3E50;
-    cursor: pointer;
-}
-
-.uploadIconLabel {
-    cursor: pointer;
-    font-size: 16px;
-    color: #555;
-    background-color: #f1f1f1;
-    padding: 10px;
-    border-radius: 50%;
-    display: inline-block;
-    transition: all 0.3s ease;
-    position: absolute;
-    right: 0;
-    bottom: -0;
+    flex-direction: column;
   }
   
-  .uploadIconLabel:hover {
-    background-color: #ddd;
+  .AvatarActionControls button,
+  .FormActionWrapper button {
+    width: 100%;
   }
-  
-  .hiddenFileInput {
-    display: none;
-  }
-  
-
-.profilePageProflePicWrapper :nth-child(3) {
-    background: transparent;
-    color: #000;
-    padding: 9px 15px;
-    border: 1.5px solid #2C3E50;
-    cursor: pointer;
 }
-
-.settingsInputsWrapper {
-    width: 380px;
-    padding: 10px;
-    border-radius: 10px;
-    background: white;
-}
-
-.settingInputs {
-    width: 340px;
-    height: 41px;
-    border: 1px solid grey;
-    outline: 0;
-    padding: 0px 10px;
-    margin-bottom: 10px;
-}
-
-.cam {
-    position: absolute;
-    left: -1;
-    bottom: -1;
-    font-size: 20px;
-  }
-  
-
-@media only screen and (max-width: 1440px) {}
-
-@media only screen and (max-width: 1200px) {}
-
-@media only screen and (max-width: 900px) {}
-
-@media only screen and (max-width: 760px) {
-    .SettingsPageWrapper {
-        flex-wrap: nowrap;
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
-    }
-
-.SettingsPageWrapper h1{
-    width: 70%;
-    font-size: 25px;
-}
-
-    .SettingssideWrapper {
-        height: max-content;
-        width: 90%;
-    }
-
-    .settingsInputsWrapper {
-        width: 100%;
-    }
-
-    .settingInputs {
-        width: 100%;
-    }
-
-.SettingsPasswordsideWrapper {
-    width: 90%;
-}
-}
-
-@media only screen and (max-width: 480px) {
-    .SettingsPageWrapper {
-        flex-wrap: nowrap;
-        flex-direction: column;
-    }
-}
-
-@media only screen and (max-width: 379px) {}

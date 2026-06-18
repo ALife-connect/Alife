@@ -1,140 +1,126 @@
-.benefits {
-  padding: 80px 5%;
-  background-color: #ffffff;
+/* ==========================================================================
+   SLODAT Light-Theme Benefits Grid Styles
+   ========================================================================== */
+
+.benefits-section {
+  padding: 100px 24px;
+  background-color: #ffffff; /* Explicitly forced white background */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.benefits-header {
   text-align: center;
-  
-  
+  margin-bottom: 60px;
+  max-width: 600px;
+}
+
+.section-eyebrow {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #2902F1; /* Using your electric blue for section identifiers */
+  display: block;
+  margin-bottom: 12px;
 }
 
 .benefits-header h2 {
-  font-size: 32px;
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(28px, 4vw, 42px);
   font-weight: 700;
-  color: #0f172a;
+  color: #000000; /* Crisp black text heading */
+  margin: 0 0 16px 0;
 }
 
 .benefits-header p {
-  margin-top: 8px; 
-  font-size: 14px;
-  color: #64748b;
-}
-
-.benefits-grid {
-  margin-top: 30px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
-}
-
-.benefit-card {
-  background: #D6EAF8;
-  padding: 28px 24px;
-  border-radius: 16px;
-  width: 31%;
-  text-align: left;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease;
-}
-
-.benefit-card:hover {
-  transform: translateY(-6px);
-}
-
-.benefit-card h3 {
+  font-family: 'Poppins', sans-serif;
   font-size: 16px;
-  font-weight: 600;
-  margin-top: 15px;
-  color: #0f172a;
+  color: #4a4a4a;
+  line-height: 1.5;
+  margin: 0;
 }
 
-.benefit-card p {
-  font-size: 13px;
-  margin-top: 8px;
-  color: #475569;
+.benefits-modern-grid {
+  display: grid;
+  width: 100%;
+  max-width: 1200px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+/* Premium Light-Theme Card Layout */
+.benefit-card-modern {
+  background: #ffffff;
+  border: 1px solid #e1e4e8; /* Fine subtle border outline */
+  padding: 32px;
+  border-radius: 16px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); /* Soft, invisible shadow depth */
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.benefit-card-modern:hover {
+  border-color: #2902F1; /* Outlines in blue when user hovers */
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(41, 2, 241, 0.08); /* Glows with a clean blue tint */
+}
+
+.benefit-card-modern h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #000000; /* Forcing solid black headings */
+  margin: 24px 0 12px 0;
+}
+
+.benefit-card-modern p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #4a4a4a;
   line-height: 1.6;
+  margin: 0;
 }
 
-.icon {
-  width: 64px;
-  height: 64px;
+/* High Contrast Icon Wrappers using clean background tints */
+.icon-wrapper {
+  width: 54px;
+  height: 54px;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
 }
 
-.icon.red {
-  background-color: #fde2e2;
+.icon-wrapper img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
 }
 
-.icon.green {
-  background-color: #d1fae5;
+.icon-wrapper.brand-red {
+  background-color: rgba(240, 34, 34, 0.08);
+  border: 1px solid rgba(240, 34, 34, 0.2);
 }
 
-.icon.teal {
-  background-color: #ccfbf1;
+.icon-wrapper.brand-green {
+  background-color: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
 }
 
-.benifit-cont {
-  display: flex;
-  justify-content: center;
-  gap: 100px;
+.icon-wrapper.brand-teal {
+  background-color: rgba(20, 184, 166, 0.08);
+  border: 1px solid rgba(20, 184, 166, 0.2);
 }
 
-.benefit-card1{
-  background: #D6EAF8;
-  padding: 28px 24px;
-  border-radius: 16px;
-  width: 31%;
-  text-align: left;
-  margin-top: 30px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease;
-  
+@media only screen and (max-width: 768px) {
+  .benefits-section { padding: 60px 20px; }
+  .benefits-header { margin-bottom: 40px; }
+  .benefit-card-modern { padding: 24px; }
 }
-
-.benefit-card1:hover {
-  transform: translateY(-6px);
-}
-
-.benefit-card1 h3 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-top: 15px;
-  color: #0f172a;
-}
-
-.benefit-card1 p {
-  font-size: 13px;
-  margin-top: 8px;
-  color: #475569;
-  line-height: 1.6;
-}
-
-
-
-@media (max-width: 900px) {
-
-  .benefits-grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-  }
-
-  .benifit-cont {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-  }
-
-
-  .benefit-card,
-  .benefit-card1 {
-    width: 90%;
-    max-width: 600px;
-  }
-}
-

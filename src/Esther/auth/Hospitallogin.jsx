@@ -5,9 +5,10 @@ import FadeLoader from "react-spinners/CircleLoader";
 import { useDispatch } from "react-redux";
 import { logIn, saveToken } from "../../global/Slice";
 import axios from "axios";
-import { LuEye, LuEyeClosed } from "react-icons/lu";
+import { LuEye, LuEyeClosed, LuShieldCheck, LuActivity, LuDatabase, LuBell } from "react-icons/lu";
 import { toast } from "sonner";
-import { IoArrowBackCircleOutline } from "react-icons/io5";
+// import { IoArrowBackCircleOutline } from "react-index-bootstrap"; // Adjusted or falling back to raw io5 imported below
+import { IoArrowBackCircleOutline as ArrowIcon } from "react-icons/io5";
 
 const VITE_BASEURL = import.meta.env.VITE_BASEURL;
 
@@ -93,13 +94,60 @@ const Hospitallogin = () => {
 
   return (
     <div className="hosloginwrapper">
+      {/* Mobile Top Header Banner */}
       <div className="hoslogmobilewrap">
         <div className="smallarrow">
-          <IoArrowBackCircleOutline onClick={() => nav(-1)} />
+          <ArrowIcon onClick={() => nav(-1)} />
         </div>
         <h2>LOG IN</h2>
       </div>
 
+      {/* New Desktop Left Panel: Hospital Benefits Display */}
+      <div className="hoslogin-visual-panel">
+        <div className="hospital-benefits-box">
+          <span className="hospital-benefits-badge">INSTITUTIONAL PORTAL</span>
+          <h1 className="hospital-benefits-title">Streamline Your Blood Logistics</h1>
+          <p className="hospital-benefits-subtitle">
+            Access secure tools designed to coordinate patient requests, cross-match donor components, and track real-time inventory levels.
+          </p>
+
+          <div className="hospital-benefits-grid">
+            <div className="hospital-benefit-card">
+              <div className="hospital-icon-frame"><LuDatabase size={22} /></div>
+              <div className="hospital-benefit-text">
+                <h3>Live Inventory Monitoring</h3>
+                <p>Track ready-to-use blood units, rare groups, and component allocations inside your bank pool instantly.</p>
+              </div>
+            </div>
+
+            <div className="hospital-benefit-card">
+              <div className="hospital-icon-frame"><LuBell size={22} /></div>
+              <div className="hospital-benefit-text">
+                <h3>Priority Emergency Requests</h3>
+                <p>Broadcast urgent emergency requests directly to targeted compatible donor channels matching your requirements.</p>
+              </div>
+            </div>
+
+            <div className="hospital-benefit-card">
+              <div className="hospital-icon-frame"><LuShieldCheck size={22} /></div>
+              <div className="hospital-benefit-text">
+                <h3>Verified Medical Logs</h3>
+                <p>Review comprehensive electronic donor screening metrics, donor histories, and dynamic health status markers.</p>
+              </div>
+            </div>
+
+            <div className="hospital-benefit-card">
+              <div className="hospital-icon-frame"><LuActivity size={22} /></div>
+              <div className="hospital-benefit-text">
+                <h3>Automated Compliance Tracking</h3>
+                <p>Generate clean analytics, export clinical tracking histories, and simplify reporting protocols seamlessly.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Right Form Interaction Panel */}
       <div className="hoslogininfowrap">
         <div className="hosloginlogohold">
           <Link to="/">
@@ -110,7 +158,6 @@ const Hospitallogin = () => {
         <div className="hoslogininfo1">
           <h2>LOG IN</h2>
 
-          {/* Inputs remain unchanged */}
           <div className="hoslogininputwrapper">
             <p>EMAIL ADDRESS</p>
             <input
@@ -122,8 +169,7 @@ const Hospitallogin = () => {
                 setHospitalLoginData((prev) => ({
                   ...prev,
                   email: e.target.value,
-                }))
-              }
+                }))}
             />
           </div>
 
@@ -163,8 +209,6 @@ const Hospitallogin = () => {
           </div>
         </div>
       </div>
-
-      <img src="/images/Subtract.png" alt="" className="hospiloginimage" />
     </div>
   );
 };

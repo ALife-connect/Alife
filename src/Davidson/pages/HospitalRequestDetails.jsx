@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import dayjs from "dayjs";
 import RequestNotAvailable from "./RequestNotAvailable";
 
-const VITE_BASEURL_REN = import.meta.env.VITE_BASEURL_REN;
+const VITE_BASEURL_REN = import.meta.env.VITE_BASEURL;
 
 const HospitalRequestDetails = () => {
   const [volunteerPopUp, setVolunteerPopUp] = useState(false);

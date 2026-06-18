@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../../Esther/styles/donorslog.css";
-import FadeLoader from "react-spinners/CircleLoader";
+import "../../Esther/styles/forgotPassword.css";
+import CircleLoader from "react-spinners/CircleLoader";
 import { toast } from "sonner";
 import { HiOutlineArrowCircleLeft } from "react-icons/hi";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
@@ -14,19 +14,26 @@ const ForgotPassword = () => {
   const [loadState, setLoadState] = useState(false);
   const nav = useNavigate();
 
-  const handleForgotPassword = async () => {
+  const handleForgotPassword = async (e) => {
+    e.preventDefault();
+
+    if (!email.trim()) {
+      return toast.error("Please enter your email address");
+    }
+
     setLoadState(true);
     try {
       const res = await axios.post(`${VITE_BASEURL}/forgotPassword`, { email });
-      toast.success(res?.data?.message);
-      setLoadState(false);
+      toast.success(res?.data?.message || "Reset link sent successfully!");
+      
       setTimeout(() => {
-        nav(`/reset-password-otp/${email}`);
+        nav(`/reset-password-otp/${encodeURIComponent(email)}`);
       }, 2000);
-      return;
+      
     } catch (err) {
-      console.log(err);
-      toast.error(err?.response?.data?.message);
+      console.error(err);
+      toast.error(err?.response?.data?.message || "Something went wrong. Please try again.");
+    } finally {
       setLoadState(false);
     }
   };
@@ -35,21 +42,21 @@ const ForgotPassword = () => {
     <div className="donorloginwrapper">
       <div className="donorloginmobilewrap"></div>
 
-      <img src="images/Subtract.png" alt="" className="donorslogimage" />
-
       <div className="donorlogininfowrap">
         <div className="smallarrow">
           <IoArrowBackCircleOutline onClick={() => nav(-1)} />
         </div>
-        <h2>LOG IN</h2>
+        
+        <h2>FORGOT PASSWORD</h2>
+        
         <div className="donorloginlogohold">
           <Link to="/">
-            <img src="images/logo.png" alt="Logo" className="donorloginlogo" />
+            <img src="/images/logo.png" alt="Logo" className="donorloginlogo" />
           </Link>
-          <HiOutlineArrowCircleLeft size={50} onClick={() => nav(-1)} />
+          <HiOutlineArrowCircleLeft size={38} onClick={() => nav(-1)} style={{ cursor: "pointer" }} />
         </div>
 
-        <div className="donorlogininfo1">
+        <form className="donorlogininfo1" onSubmit={handleForgotPassword}>
           <h2>INPUT YOUR MAIL</h2>
 
           <div className="donorlogininputwrapper">
@@ -60,23 +67,20 @@ const ForgotPassword = () => {
               className="donorlogininput"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </div>
 
-          <button className="donorloginbtn" onClick={handleForgotPassword}>
-            {loadState ? <FadeLoader color="white" size={25} /> : "Send Link"}
+          <button type="submit" className="donorloginbtn" disabled={loadState}>
+            {loadState ? <CircleLoader color="white" size={20} /> : "Send Link"}
           </button>
 
           <div className="donorloginforgotwrap">
-            <p
-              onClick={() => nav("/donorssignup")}
-              className="AuthRedirectionLinkWrap"
-              style={{ cursor: "pointer" }}
-            >
-              <a>DON'T HAVE AN ACCOUNT? SIGNUP</a>
-            </p>
+            <Link to="/donorssignup" className="AuthRedirectionLinkWrap">
+              DON'T HAVE AN ACCOUNT? SIGNUP
+            </Link>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );
