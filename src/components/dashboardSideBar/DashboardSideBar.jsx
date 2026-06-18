@@ -123,7 +123,7 @@ const DashboardSideBar = () => {
               </li>
               <li
                 onClick={() => nav("/dashboard/hospitalsettings")}
-                className={`${location.pathname === "/dashboard/settings" ? "activeBar" : ""}`}
+                className={`${location.pathname === "/dashboard/hospitalsettings" || location.pathname === "/dashboard/hospitalsettings" ? "activeBar" : ""}`}
               >
                 <IoSettingsOutline className="sideBarIocns" />
                 Settings

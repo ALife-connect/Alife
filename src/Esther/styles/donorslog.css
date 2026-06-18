@@ -31,21 +31,15 @@
   font-family: var(--font-stack);
 }
 
-/* Desktop Left Half Image Panel */
+/* Desktop Left Half Benefits Panel Container */
 .donor-login-visual-panel {
-  flex: 1;
-  background-color: #f8fafc;
+  flex: 1.1; /* Gives slightly more visual emphasis to the content panel */
+  background: linear-gradient(135deg, #fdfdfd 0%, #f1f5f9 100%);
+  border-right: 1px solid #e2e8f0;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px;
-}
-
-.donor-login-hero-img {
-  width: 75%;
-  max-width: 420px;
-  height: auto;
-  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.15));
+  padding: 60px;
 }
 
 .donor-login-mobile-banner {
@@ -60,6 +54,84 @@
   flex-direction: column;
   justify-content: center;
   padding: 60px 80px;
+}
+
+/* ==========================================================================
+   DONOR BENEFITS DISPLAY STYLING
+   ========================================================================== */
+.benefits-display-box {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+}
+
+.benefits-badge {
+  align-self: flex-start;
+  background-color: rgba(192, 57, 43, 0.08);
+  color: var(--color-crimson);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 6px 14px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+}
+
+.benefits-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--color-navy-slate);
+  line-height: 1.25;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.75px;
+}
+
+.benefits-subtitle {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0 0 40px 0;
+}
+
+.benefits-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.benefit-item-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.benefit-icon-frame {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  color: var(--color-crimson);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  border: 1px solid #edf2f7;
+}
+
+.benefit-txt-content h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-navy-slate);
+  margin: 0 0 4px 0;
+}
+
+.benefit-txt-content p {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin: 0;
 }
 
 /* ==========================================================================
@@ -174,7 +246,7 @@
   width: 100%;
   height: 100%;
   border: 0;
-  background: transparent; /* Clean removal of jagged browser background frames */
+  background: transparent;
   outline: none;
   font-family: var(--font-stack);
   font-size: 13px;
@@ -267,8 +339,13 @@
 }
 
 @media (max-width: 768px) {
+  .donor-login-container {
+    flex-direction: column;
+  }
   .donor-login-visual-panel {
-    display: none; /* Softly drops wide graphic elements when space gets small */
+    padding: 40px 32px;
+    border-right: none;
+    border-top: 1px solid #e2e8f0;
   }
   .donor-login-form-panel {
     max-width: 100%;
@@ -282,7 +359,7 @@
     background-color: #f8fafc;
   }
 
-  /* Curves the color layout block matching the auth dashboard top banner */
+  /* Explicit Flex Ordering System to keep Form up and Tips down */
   .donor-login-mobile-banner {
     display: flex;
     flex-direction: column;
@@ -290,9 +367,31 @@
     width: 100%;
     height: 180px;
     background-color: var(--color-navy-slate);
-    border-radius: 0px 0px 60px 0px;
+    border-radius: 0px 0px 40px 0px;
     position: relative;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    order: 1; /* First */
+  }
+
+  .donor-login-form-panel {
+    padding: 40px 20px;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    margin-top: -24px; 
+    position: relative;
+    z-index: 5;
+    background-color: #ffffff;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.03);
+    max-width: 100%;
+    order: 2; /* Second (Form Up) */
+  }
+
+  .donor-login-visual-panel {
+    display: flex; /* Kept visible on mobile view */
+    padding: 40px 20px 60px 20px;
+    background: #f8fafc;
+    border-top: 1px solid #edf2f7;
+    order: 3; /* Third (Tips Down) */
   }
 
   .mobile-back-btn {
@@ -314,152 +413,48 @@
     letter-spacing: -0.5px;
   }
 
-  .donor-login-form-panel {
-    padding: 40px 20px;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    margin-top: -30px; /* Snaps form block over the header space fluidly */
-    position: relative;
-    z-index: 5;
-    background-color: #ffffff;
-    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.03);
-  }
-
   .donor-login-header-row,
   .donor-login-form-box h2 {
-    display: none; /* Hidden beautifully as mobile banner takes focus precedence */
+    display: none; 
   }
 
   .donor-login-form-box {
     max-width: 100%;
   }
 
+  /* Prevent iOS input field automatic scaling layout distortions */
+  .donor-login-field,
+  .donor-login-password-inner-field {
+    font-size: 16px !important;
+    height: 46px;
+  }
+  
+  .donor-login-password-combo-box {
+    height: 46px;
+  }
+
   .donor-login-action-btn {
-    background-color: var(--color-navy-slate); /* Fluid design system token transformation */
+    background-color: var(--color-navy-slate); 
     box-shadow: 0 4px 12px rgba(44, 62, 80, 0.2);
+    height: 46px;
   }
   
   .auth-redirect-link:hover {
     color: var(--color-navy-slate);
   }
-}
 
-/* ==========================================================================
-   PAGE BASE ARCHITECTURE
-   ========================================================================== */
-.donor-login-container {
-  width: 100%;
-  min-height: 100vh;
-  background-color: #ffffff;
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  font-family: var(--font-stack);
-}
+  .benefits-title {
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  .benefits-subtitle {
+    text-align: center;
+    font-size: 13px;
+    margin-bottom: 30px;
+  }
 
-/* Desktop Left Half Benefits Panel Container */
-.donor-login-visual-panel {
-  flex: 1.1; /* Gives slightly more visual emphasis to the content panel */
-  background: linear-gradient(135deg, #fdfdfd 0%, #f1f5f9 100%);
-  border-right: 1px solid #e2e8f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 60px;
+  .benefits-badge {
+    align-self: center;
+  }
 }
-
-.donor-login-mobile-banner {
-  display: none;
-}
-
-/* ==========================================================================
-   DONOR BENEFITS DISPLAY STYLING
-   ========================================================================== */
-.benefits-display-box {
-  width: 100%;
-  max-width: 520px;
-  display: flex;
-  flex-direction: column;
-}
-
-.benefits-badge {
-  align-self: flex-start;
-  background-color: rgba(192, 57, 43, 0.08);
-  color: var(--color-crimson);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  padding: 6px 14px;
-  border-radius: 50px;
-  margin-bottom: 20px;
-}
-
-.benefits-title {
-  font-size: 32px;
-  font-weight: 800;
-  color: var(--color-navy-slate);
-  line-height: 1.25;
-  margin: 0 0 16px 0;
-  letter-spacing: -0.75px;
-}
-
-.benefits-subtitle {
-  font-size: 14px;
-  color: var(--color-text-muted);
-  line-height: 1.6;
-  margin: 0 0 40px 0;
-}
-
-.benefits-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
-
-.benefit-item-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 18px;
-}
-
-.benefit-icon-frame {
-  flex-shrink: 0;
-  width: 44px;
-  height: 44px;
-  background-color: #ffffff;
-  border-radius: 12px;
-  color: var(--color-crimson);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
-  border: 1px solid #edf2f7;
-}
-
-.benefit-txt-content h3 {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--color-navy-slate);
-  margin: 0 0 4px 0;
-}
-
-.benefit-txt-content p {
-  font-size: 13px;
-  color: var(--color-text-muted);
-  line-height: 1.5;
-  margin: 0;
-}
-
-/* ==========================================================================
-   RIGHT HALF CONTENT PANEL BOX
-   ========================================================================== */
-.donor-login-form-panel {
-  flex: 1;
-  max-width: 640px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 60px 80px;
-}
-
-/* Keep everything else below this line identical to your previous CSS stylesheet */

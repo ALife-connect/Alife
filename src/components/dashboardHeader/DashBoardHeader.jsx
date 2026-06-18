@@ -18,6 +18,8 @@ const DashBoardHeader = () => {
   const loggedInUser = useSelector((state) => state?.loggedInUser);
   const token = useSelector((state) => state?.token);
 
+  console.log(loggedInUser)
+
   const nav = useNavigate();
   const location = useLocation(); // Hook initialization to track active route changes
 
@@ -237,7 +239,7 @@ const DashBoardHeader = () => {
           )}
         </button>
 
-        <div className="HeaderUserProfileAvatarFrame" onClick={() => nav('/dashboard/settings')}>
+        <div className="HeaderUserProfileAvatarFrame" onClick={() => nav({ pathname: loggedInUser?.role === "donor" ? '/dashboard/settings' : '/dashboard/hospitalsettings' })}>
           <img
             src={loggedInUser?.profilePics || loggedInUser?.profilePicture || "/images/default profile pic.jpg"}
             alt="User Account Profile Vector"

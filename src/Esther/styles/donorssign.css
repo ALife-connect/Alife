@@ -27,6 +27,7 @@
   align-items: center;
   justify-content: flex-start;
   font-family: var(--font-stack);
+  box-sizing: border-box;
 }
 
 .donsignmobilewrap {
@@ -115,7 +116,7 @@
   padding: 0 14px;
   border-radius: var(--radius-input);
   font-family: var(--font-stack);
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 400;
   border: 1.5px solid transparent;
   outline: none;
@@ -154,7 +155,7 @@
   background: transparent;
   outline: none;
   font-family: var(--font-stack);
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 400;
   padding: 0;
 }
@@ -163,6 +164,7 @@
   cursor: pointer;
   color: var(--color-text-muted);
   transition: color var(--fluid-transition);
+  flex-shrink: 0;
 }
 
 .inputAndIcon svg:hover {
@@ -248,6 +250,7 @@
   align-items: center;
   gap: 6px;
   cursor: pointer;
+  user-select: none;
 }
 
 .blood-type-option span {
@@ -271,6 +274,7 @@
   font-size: 12px;
   color: var(--color-text-main);
   cursor: pointer;
+  line-height: 1.4;
 }
 
 .tandc {
@@ -431,12 +435,15 @@
 }
 
 /* ==========================================================================
-   CLEAN RESPONSIVE MEDIA QUERIES
+   CLEAN RESPONSIVE MEDIA QUERIES (TABLETS & RESPONSIVE GRID UPDATES)
    ========================================================================== */
 @media (max-width: 850px) {
   .donor-benefits-grid {
     grid-template-columns: 1fr; /* Stack dashboard cards on smaller devices */
     gap: 20px;
+  }
+  .donorsigninfowrap {
+    padding: 40px 24px;
   }
 }
 
@@ -445,18 +452,23 @@
     grid-template-columns: 1fr; /* Forms slide cleanly into single column stack */
     row-gap: 20px;
   }
+  
   .form-main-title,
   .passwordTips,
   .checkboxwrapper,
   .hosloginforgotwrap,
   .donsignbtn {
-    grid-column: span 1;
+    grid-column: span 1 !important;
   }
+  
   .bloodgrouphold {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
+/* ==========================================================================
+   MOBILE CRITICAL OPTIMIZATIONS (SMARTPHONES < 480px)
+   ========================================================================== */
 @media (max-width: 480px) {
   .donorsignwrapper {
     background-color: #f8fafc;
@@ -473,9 +485,11 @@
     width: 100%;
     height: 180px;
     background-color: var(--color-navy-slate);
-    border-radius: 0px 0px 60px 0px;
+    border-radius: 0px 0px 40px 0px; /* Sweeter rounded corner profile */
     position: relative;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+    padding: 0 20px;
   }
 
   .smallarrow {
@@ -489,36 +503,37 @@
   }
   
   .smallarrow svg {
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
   }
 
   .donsignmobilewrap h1 {
     color: #ffffff;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 22px;
     text-align: center;
-    margin: 20px 0 2px 0;
+    margin: 30px 0 4px 0;
     letter-spacing: -0.5px;
   }
 
   .donsignmobilewrap p {
     color: rgba(255, 255, 255, 0.7);
     font-weight: 600;
-    font-size: 13px;
+    font-size: 12px;
     text-align: center;
     margin: 0;
   }
 
   .donorsigninfowrap {
-    padding: 40px 20px;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    margin-top: -30px;
+    padding: 32px 16px;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    margin-top: -24px;
     position: relative;
     z-index: 5;
     background-color: #ffffff;
     box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.03);
+    width: 100%;
   }
 
   .donorsignlogohold,
@@ -526,8 +541,42 @@
     display: none;
   }
 
+  /* CRITICAL UX ADJUSTMENT: Forces standard forms inputs to 16px. 
+     This blocks iOS Safari engine from scaling up/zooming layout components when fields gain focus.
+  */
+  .donorsssigninput,
+  .donorssigninput,
+  .inputAndIcon .donorssignpasswordinput {
+    font-size: 16px !important;
+    height: 46px; /* Slightly taller finger tap safe targets */
+  }
+
+  .inputAndIcon {
+    height: 46px;
+  }
+
+  /* Enhancing blood group buttons spacing profile for mobile screen thumbs */
+  .bloodgrouphold {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 8px;
+  }
+
+  .blood-type-option {
+    padding: 8px 10px;
+    background: #f8fafc;
+    border: 1.5px solid #edf2f7;
+    border-radius: var(--radius-input);
+    transition: var(--fluid-transition);
+  }
+
+  .blood-type-option:has(input:checked) {
+    border-color: var(--color-navy-slate);
+    background: rgba(44, 62, 80, 0.04);
+  }
+
   .donsignbtn {
     max-width: 100%;
+    height: 48px;
     background-color: var(--color-navy-slate);
     box-shadow: 0 4px 12px rgba(44, 62, 80, 0.2);
   }

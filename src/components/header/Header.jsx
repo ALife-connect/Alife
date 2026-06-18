@@ -17,6 +17,7 @@ import LoadComponents from "../componentsLoadScreen/LoadComponents";
 import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { RiAccountCircleLine } from "react-icons/ri";
 
 const VITE_BASEURL_REN = import.meta.env.VITE_BASEURL;
 
@@ -26,6 +27,8 @@ const Header = () => {
   const [notifications, setNotifications] = useState([]);
   const [isFixed, setIsFixed] = useState(false);
 
+  console.log(notifications)
+
   const isSignedIn = useSelector((state) => state?.isLoggedIn);
   const userInfo = useSelector((state) => state?.loggedInUser);
   const token = useSelector((state) => state?.token);
@@ -34,7 +37,6 @@ const Header = () => {
   const nav = useNavigate();
   const location = useLocation();
 
-  // Dynamic routing based strictly on authentication state and user role
   const getNavLinks = () => {
     if (!isSignedIn) {
       return [
@@ -51,6 +53,7 @@ const Header = () => {
 
     if (role === "donor") {
       links.push(
+        { name: "Profile", path: "/dashboard", icon: <RiAccountCircleLine size={22} /> },
         { name: "Find Hospital", path: "/dashboard/findhospital", icon: <TbHomeSearch size={22} /> },
         { name: "Requests", path: "/dashboard/hospitalsrequest", icon: <BiGitPullRequest size={22} /> },
         { name: "History", path: "/dashboard/history", icon: <MdHistory size={22} /> },
@@ -58,6 +61,7 @@ const Header = () => {
       );
     } else if (role === "hospital") {
       links.push(
+        { name: "Profile", path: "/dashboard", icon: <RiAccountCircleLine size={22} /> },
         { name: "Make Request", path: "/dashboard/request", icon: <PiGitPullRequest size={22} /> },
         { name: "History", path: "/dashboard/requesthistory", icon: <MdHistory size={22} /> },
         { name: "Appointment", path: "/dashboard/appointment", icon: <IoList size={22} /> },
@@ -87,6 +91,7 @@ const Header = () => {
       setNotifications(res?.data?.notifications || []);
     } catch (err) {
       console.error("Notification Error:", err);
+      console.log(err)
     }
   };
 
@@ -167,7 +172,6 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Top Header (Minimal Branding) */}
       <div className="MobileTopBrandingBar">
         <div className="mobileHeaderLogo" onClick={() => nav("/")}>
           <img src="/images/Slodat.jpeg" alt="LifeLink Logo" className="logo-breath" />
@@ -181,7 +185,6 @@ const Header = () => {
         )}
       </div>
 
-      {/* Modern Floating Bottom Dock (No Drawer / Direct Links) */}
       <div className="MobileFloatingBottomNav">
         <div className="bottomNavScrollContainer">
           {currentLinks.map((link, idx) => {

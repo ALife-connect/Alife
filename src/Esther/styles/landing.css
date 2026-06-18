@@ -25,14 +25,14 @@
   background-image: url("../../../images/landing.png"); 
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: fixed; /* Parallax effect for desktop screens */
 }
 
 /* White Translucent Glass Overlay for Maximum Contrast legibility */
 .hero-container {
   width: 100%;
   padding: 40px 24px;
-  background-color: rgba(255, 255, 255, 0.822);
+  background-color: rgba(255, 255, 255, 0.452);
   backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;
@@ -147,8 +147,31 @@
   100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(240, 34, 34, 0); }
 }
 
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
 @media only screen and (max-width: 768px) {
-  .hero-container { padding: 60px 20px; gap: 20px; }
-  .hero-cta-group { flex-direction: column; width: 100%; max-width: 320px; }
-  .btn { width: 100%; padding: 14px 24px; }
+  .hero-section {
+    /* Safe-mode override: Stops mobile browsers from distorting or hiding the image */
+    background-attachment: scroll !important;
+    background-position: center center;
+  }
+
+  .hero-container { 
+    padding: 60px 20px; 
+    gap: 20px; 
+    /* Lightens up the overlay on mobile so your background image pops better */
+    background-color: rgba(255, 255, 255, 0.65); 
+  }
+  
+  .hero-cta-group { 
+    flex-direction: column; 
+    width: 100%; 
+    max-width: 320px; 
+  }
+  
+  .btn { 
+    width: 100%; 
+    padding: 14px 24px; 
+  }
 }
