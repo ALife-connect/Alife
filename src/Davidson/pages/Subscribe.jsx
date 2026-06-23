@@ -64,7 +64,7 @@ const Subscribe = () => {
     <div className="subscribe-container">
       <div className="subscribe-inner-container">
         <div className="welcome">
-          <h1>Welcome to ALIFE for Hospitals!</h1>
+          <h1>Welcome to SLODAT for Hospitals!</h1>
         </div>
 
         <div className="img-cnt">

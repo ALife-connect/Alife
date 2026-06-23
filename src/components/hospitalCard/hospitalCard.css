@@ -1,9 +1,13 @@
+/* ==========================================================================
+   SLODAT Light-Theme Hero & Hospital Request Styles
+   ========================================================================== */
+
 :root {
   --card-surface: #ffffff;
   --card-canvas-subtle: #f8fafc;
   --card-border-line: #e2e8f0;
   
-  /* Matches your design system parameters and guidelines */
+  /* System alignment color rules */
   --corporate-crimson: #c0392b;
   --corporate-crimson-hover: #a62c20;
   --corporate-crimson-light: #fdf2f2;
@@ -18,6 +22,41 @@
   --card-shadow-resting: 0 4px 6px -1px rgba(15, 23, 42, 0.02), 0 2px 4px -2px rgba(15, 23, 42, 0.02);
   --card-shadow-active: 0 12px 20px -4px rgba(15, 23, 42, 0.08), 0 4px 8px -2px rgba(15, 23, 42, 0.04);
   --card-transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base Page Layout Setup Structural Framing */
+.hospitalRequestPageWrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.hospitalPageHeader {
+  margin-bottom: 32px;
+}
+
+.hospitalPageHeader h2 {
+  font-size: 28px;
+  color: var(--card-txt-title);
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+.hospitalPageHeader p {
+  font-size: 15px;
+  color: var(--card-txt-body);
+  margin: 0;
+}
+
+/* Responsive Structural Auto-Grid Engine Layout */
+.hospitalCardsWRapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  width: 100%;
 }
 
 /* Card Wrapper Box Module Layout */
@@ -70,19 +109,27 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: rgba(255, 255, 255, 0.92);
+  background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  border: 1px solid rgba(16, 185, 129, 0.2);
-  color: #059669; /* Emerald thematic compliance signaling */
-  padding: 4px 10px;
+  border: 1px solid rgba(192, 57, 43, 0.15);
+  color: var(--corporate-crimson); 
+  padding: 6px 12px;
   border-radius: 20px;
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.badgePulseDot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--corporate-crimson);
+  border-radius: 50%;
+  display: inline-block;
 }
 
 /* Text Content Information Blocks Alignment */
@@ -91,7 +138,7 @@
   flex-direction: column;
   gap: 8px;
   padding: 0 2px;
-  flex: 1; /* Pushes action button cleanly to the bottom symmetrically */
+  flex: 1; 
 }
 
 .HospitalCardTitleText {
@@ -110,14 +157,13 @@
 /* Metadata Sub-row Elements Mapping */
 .HospitalCardMetadataRow {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 6px;
   color: var(--card-txt-body);
 }
 
 .MetaIconElement {
   color: var(--card-txt-muted);
-  margin-top: 2px;
   flex-shrink: 0;
 }
 
@@ -141,12 +187,12 @@
   border-radius: var(--card-radius-inner);
   font-family: inherit;
   font-size: 12.5px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 6px;
   transition: var(--card-transition);
   box-sizing: border-box;
 }
@@ -159,13 +205,48 @@
 
 .ActionBtnArrowIcon {
   transition: transform 0.2s ease;
+  font-weight: bold;
 }
 
 .PremiumHospitalCard:hover .ActionBtnArrowIcon {
-  transform: translateX(2px);
+  transform: translateX(3px);
+}
+
+/* Empty State Handling UI Design Rules */
+.emptyRequestsState {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: var(--card-canvas-subtle);
+  border: 1px dashed var(--card-border-line);
+  border-radius: var(--card-radius-outer);
+  margin-top: 20px;
+}
+
+.emptyRequestsState img {
+  max-width: 120px;
+  margin-bottom: 16px;
+  opacity: 0.7;
+}
+
+.emptyRequestsState h3 {
+  font-size: 18px;
+  color: var(--card-txt-title);
+  margin: 0 0 8px 0;
+}
+
+.emptyRequestsState p {
+  font-size: 14px;
+  color: var(--card-txt-body);
+  margin: 0;
 }
 
 /* Responsive Adaptive Viewports Tuning overrides */
+@media only screen and (max-width: 768px) {
+  .hospitalRequestPageWrapper { padding: 24px 16px; }
+  .hospitalPageHeader h2 { font-size: 24px; }
+  .hospitalCardsWRapper { gap: 16px; }
+}
+
 @media only screen and (max-width: 480px) {
   .PremiumHospitalCard {
     padding: 12px;

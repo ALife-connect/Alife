@@ -1,0 +1,367 @@
+/* ==========================================================================
+   SLODAT Interactive FAQ Module Styling Sheet Rules
+   ========================================================================== */
+
+.faq-page-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f8fafc;
+  font-family: 'Poppins', sans-serif;
+  color: #0f172a;
+  box-sizing: border-box;
+}
+
+/* 1. Header Navigation Context */
+.faq-nav-header {
+  width: 100%;
+  height: 64px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.faq-nav-container {
+  max-width: 1000px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.faq-brand {
+  font-weight: 700;
+  font-size: 16px;
+  color: #2902F1; /* --brand-blue compliance */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.faq-brand-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #F02222; /* --brand-red compliance */
+  border-radius: 50%;
+}
+
+.faq-back-btn {
+  background: none;
+  border: none;
+  color: #4a4a4a;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.faq-back-btn:hover {
+  color: #F02222;
+}
+
+/* 2. Search Hero Accent Block */
+.faq-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+  color: #ffffff;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.faq-hero-container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.faq-badge-pill {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: #F02222;
+  background: rgba(240, 34, 34, 0.1);
+  border: 1px solid rgba(240, 34, 34, 0.2);
+  padding: 4px 14px;
+  border-radius: 50px;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.faq-hero h1 {
+  font-size: clamp(24px, 4.5vw, 38px);
+  font-weight: 800;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.5px;
+}
+
+.faq-hero p {
+  font-size: clamp(13.5px, 1.8vw, 15.5px);
+  color: #94a3b8;
+  line-height: 1.6;
+  margin: 0 0 32px 0;
+}
+
+/* Central Input Shell Layout Container */
+.faq-search-box-wrapper {
+  width: 100%;
+  max-width: 560px;
+  height: 52px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+.faq-search-icon {
+  color: #94a3b8;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.faq-search-box-wrapper input {
+  flex: 1;
+  height: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: inherit;
+  font-size: 14.5px;
+  color: #0f172a;
+  padding: 0 14px;
+}
+
+/* 3. Filter Navigation Tabs Bar */
+.faq-main-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px 80px 20px;
+}
+
+.faq-filter-tabs-rail {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.faq-tab-btn {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-tab-btn:hover {
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+.faq-tab-btn.active {
+  background-color: #2902F1;
+  border-color: #2902F1;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(41, 2, 241, 0.2);
+}
+
+/* 4. Premium Accordion Stack Cards Architecture */
+.faq-accordion-deck {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.faq-accordion-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.015);
+}
+
+.faq-accordion-card:hover {
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+}
+
+/* Expanded Card Border Tint Override Rule */
+.faq-accordion-card.expanded-state {
+  border-color: #cbd5e1;
+  box-shadow: 0 10px 20px -5px rgba(15, 23, 42, 0.04);
+}
+
+.faq-accordion-trigger {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+}
+
+.faq-question-text {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1e293b;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.faq-accordion-card:hover .faq-question-text {
+  color: #2902F1;
+}
+
+.faq-chevron-frame {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  background-color: #f1f5f9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chevron-svg {
+  font-size: 11px;
+  color: #64748b;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chevron-svg.rotate-up {
+  transform: rotate(180deg);
+  color: #2902F1;
+}
+
+/* Smooth expansion height styling rules */
+.faq-accordion-collapsible-panel {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.25s ease;
+}
+
+.faq-accordion-collapsible-panel.panel-visible {
+  max-height: 300px; /* Buffer zone for text wrap limits */
+  opacity: 1;
+}
+
+.faq-answer-inner-padding {
+  padding: 0 24px 22px 24px;
+  border-top: 1px solid #f8fafc;
+}
+
+.faq-answer-inner-padding p {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.65;
+  margin: 12px 0 0 0;
+}
+
+/* 5. Empty Search Layout Screen */
+.faq-empty-state {
+  text-align: center;
+  padding: 48px 20px;
+  color: #64748b;
+}
+
+.empty-state-icon {
+  font-size: 40px;
+  color: #cbd5e1;
+  margin-bottom: 14px;
+}
+
+.faq-empty-state h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #334155;
+  margin: 0 0 6px 0;
+}
+
+.faq-empty-state p {
+  font-size: 13.5px;
+  margin: 0;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+/* 6. Dynamic Contact CTA Box Element */
+.faq-cta-footer-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 32px;
+  text-align: center;
+  margin-top: 48px;
+}
+
+.faq-cta-footer-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: #0f172a;
+}
+
+.faq-cta-footer-card p {
+  font-size: 14px;
+  color: #64748b;
+  max-width: 480px;
+  margin: 0 auto 20px auto;
+  line-height: 1.5;
+}
+
+.faq-cta-footer-card button {
+  background-color: #F02222; /* Emergency Accent Red color target */
+  color: #ffffff;
+  border: none;
+  padding: 12px 28px;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(240, 34, 34, 0.15);
+  transition: all 0.2s ease;
+}
+
+.faq-cta-footer-card button:hover {
+  background-color: #c91616;
+  transform: translateY(-1px);
+}
+
+/* 7. Viewport Responsive Breaks Overrides */
+@media (max-width: 600px) {
+  .faq-tab-btn {
+    width: 47%; /* Clean double column configuration blocks on narrow viewports */
+    text-align: center;
+    padding: 8px 10px;
+  }
+  
+  .faq-accordion-trigger {
+    padding: 16px 18px;
+  }
+
+  .faq-answer-inner-padding {
+    padding: 0 18px 18px 18px;
+  }
+}

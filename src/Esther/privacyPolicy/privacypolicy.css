@@ -1,0 +1,284 @@
+/* ==========================================================================
+   SLODAT Privacy Policy Design Tokens & Architecture
+   ========================================================================== */
+
+.policy-page-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fafbfc;
+  font-family: 'Poppins', sans-serif;
+  color: #0f172a;
+  box-sizing: border-box;
+}
+
+/* 1. Header Navigation Bar */
+.policy-nav-header {
+  width: 100%;
+  height: 64px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.policy-nav-container {
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.policy-brand {
+  font-weight: 700;
+  font-size: 16px;
+  color: #2902F1; /* Matches --brand-blue */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.brand-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #F02222; /* Matches --brand-red */
+  border-radius: 50%;
+}
+
+.policy-back-btn {
+  background: none;
+  border: none;
+  color: #4a4a4a;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.policy-back-btn:hover {
+  color: #F02222;
+}
+
+/* 2. Hero Section */
+.policy-hero {
+  background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+  color: #ffffff;
+  padding: 60px 24px;
+  text-align: center;
+}
+
+.policy-hero-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.policy-version-tag {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  color: #38bdf8;
+  background-color: rgba(56, 189, 248, 0.1);
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.policy-hero h1 {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.5px;
+}
+
+.policy-hero p {
+  font-size: clamp(14px, 1.5vw, 16px);
+  color: #94a3b8;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* 3. Main Split Structure Grid */
+.policy-content-layout {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 24px;
+}
+
+.policy-layout-container {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* Sticky Index Sidebar */
+.policy-sidebar-index {
+  position: sticky;
+  top: 104px; /* Accounts for header navbar + gap spacing padding */
+}
+
+.sticky-index-box {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.sticky-index-box h3 {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #64748b;
+  margin: 0 0 14px 0;
+  letter-spacing: 0.5px;
+}
+
+.sticky-index-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sticky-index-box li {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1.4;
+}
+
+.sticky-index-box li:hover {
+  color: #2902F1;
+  transform: translateX(3px);
+}
+
+/* Right Side Core Legal Document text adjustments */
+.policy-document-body {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 40px;
+}
+
+.policy-document-body section {
+  scroll-margin-top: 90px; /* Gives padding margin alignment when user clicks sidebar sections */
+}
+
+.policy-document-body h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 16px 0;
+}
+
+.policy-document-body h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 24px 0 10px 0;
+}
+
+.policy-document-body p {
+  font-size: 14.5px;
+  color: #475569;
+  line-height: 1.65;
+  margin: 0 0 16px 0;
+}
+
+.policy-document-body ul {
+  margin: 0 0 20px 0;
+  padding-left: 20px;
+}
+
+.policy-document-body li {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.policy-divider {
+  border: none;
+  border-top: 1px solid #f1f5f9;
+  margin: 32px 0;
+}
+
+blockquote {
+  background-color: #f8fafc;
+  border-left: 4px solid #F02222;
+  margin: 20px 0;
+  padding: 16px 20px;
+  border-radius: 0 8px 8px 0;
+}
+
+blockquote strong {
+  color: #0f172a;
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+/* Compliance Block Element */
+.policy-contact-box {
+  background-color: #fdf2f2; /* Light crimson emergency indicator variant */
+  border: 1px solid rgba(240, 34, 34, 0.1);
+  padding: 24px;
+  border-radius: 8px;
+}
+
+.compliance-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.compliance-meta p {
+  margin: 0;
+  font-size: 13.5px;
+  color: #475569;
+}
+
+/* 4. Adaptive Responsive Breakpoints Grid Control */
+@media (max-width: 992px) {
+  .policy-layout-container {
+    grid-template-columns: 1fr; /* Collapse split column panels */
+    gap: 32px;
+  }
+
+  .policy-sidebar-index {
+    display: none; /* Safely conceal list index layout to save vertical mobile canvas space */
+  }
+
+  .policy-document-body {
+    padding: 24px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .policy-hero {
+    padding: 40px 16px;
+  }
+
+  .policy-content-layout {
+    margin: 20px auto;
+    padding: 0 12px;
+  }
+
+  .policy-document-body h2 {
+    font-size: 19px;
+  }
+}

@@ -51,7 +51,7 @@ const ForgotPassword = () => {
         
         <div className="donorloginlogohold">
           <Link to="/">
-            <img src="/images/logo.png" alt="Logo" className="donorloginlogo" />
+            <img src="/images/Slodat.jpeg" alt="Logo" className="donorloginlogo" />
           </Link>
           <HiOutlineArrowCircleLeft size={38} onClick={() => nav(-1)} style={{ cursor: "pointer" }} />
         </div>

@@ -17,17 +17,17 @@ const hospitalTermsData = [
   {
     id: 3,
     title: "Subscription Fee",
-    terms: "Obligated to clear the required subscription fee structure to maintain uninterrupted access to ALIFE premium coordination features.",
+    terms: "Obligated to clear the required subscription fee structure to maintain uninterrupted access to SLODAT premium coordination features.",
   },
   {
     id: 4,
     title: "Liability & Screening",
-    terms: "The facility bears full responsibility for blood screening, testing, and retesting compliance. ALIFE acts solely as a connecting platform and is not liable for donor no-shows or data misuse.",
+    terms: "The facility bears full responsibility for blood screening, testing, and retesting compliance. SLODAT acts solely as a connecting platform and is not liable for donor no-shows or data misuse.",
   },
   {
     id: 5,
     title: "Termination",
-    terms: "ALIFE retains the right to immediately suspend or terminate facility access for policy violations, including fraud or illegal commercialization.",
+    terms: "SLODAT retains the right to immediately suspend or terminate facility access for policy violations, including fraud or illegal commercialization.",
   }
 ];
 
@@ -41,7 +41,7 @@ const Hospitalterms = () => {
         {/* Unified Header Matrix Block */}
         <div className='donortermsname'>
           {/* Handled path safety with absolute leading slash */}
-          <img src="/images/alifenobg.png" alt="ALIFE Logo" className='donortermlogo'/>
+          <img src="/images/SLODATnobg.png" alt="SLODAT Logo" className='donortermlogo'/>
           <h1>HOSPITAL / BLOOD BANK TERMS & AGREEMENT</h1>
         </div>
 

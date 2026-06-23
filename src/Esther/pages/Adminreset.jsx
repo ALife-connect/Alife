@@ -1,80 +1,123 @@
-import React, { useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
-import axios from 'axios'
-import FadeLoader from 'react-spinners/CircleLoader';
-import '../../Esther/styles/reset.css'
-import { toast } from 'sonner'
-import { HiOutlineArrowCircleLeft } from 'react-icons/hi';
+import React, { useState } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import CircleLoader from 'react-spinners/CircleLoader';
+import '../../Esther/styles/reset.css';
+import { toast } from 'sonner';
+import { FaLock, FaKey, FaArrowLeft } from 'react-icons/fa';
 
-const VITE_BASEURL = import.meta.env.VITE_BASEURL
+const VITE_BASEURL = import.meta.env.VITE_BASEURL;
 
 const Adminreset = () => {
-  const [newPassword, setNewPassword] = useState("")
-  const [ConfirmNewPassword, setConfirmNewPassword] = useState("")
-  const [loading, setLoading] = useState(false)
+  const [newPassword, setNewPassword] = useState("");
+  const [ConfirmNewPassword, setConfirmNewPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
+  const { token } = useParams();
+  const nav = useNavigate();
 
-  const {token} = useParams()
-
-  const handleResetPassword = async() =>{
-    setLoading(true)
-    if(newPassword !== ConfirmNewPassword){
-      toast.error("New Password do not match!")
-      return
-    } if(!newPassword || !ConfirmNewPassword){
-      toast.error("Input a new password!")
-      return
+  const handleResetPassword = async () => {
+    if (!newPassword || !ConfirmNewPassword) {
+      toast.error("Please fill out all password fields");
+      return;
     }
-    try{
+    if (newPassword !== ConfirmNewPassword) {
+      toast.error("Passwords do not match!");
+      return;
+    }
+
+    setLoading(true);
+    try {
       const ress = await axios.post(`${VITE_BASEURL}/admin/resetPassword/${token}`, {
-      newPassword
+        newPassword
       });      
-      setLoading(false)
-      toast.success(ress?.data?.message)
-      return
-    }catch(err){
-      toast.error(err?.response?.data?.message)
-      setLoading(false)
+      setLoading(false);
+      toast.success(ress?.data?.message || "Password successfully updated");
+      nav("/adminlogin");
+    } catch (err) {
+      toast.error(err?.response?.data?.message || "Reset token has expired or is invalid");
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div className='resetwrapper'>
-      <div className='resetmobilewrap'>
-        <h2>RESET PASSWORD</h2>
+      {/* Side Decorative Branding Column */}
+      <div className='admin-side-hero'>
+        <img src="/images/Subtract.png" alt="Decorative background grid" className='resetimage' />
+        <div className='hero-overlay-text'>
+          <h2>Security Protocol</h2>
+          <p>Update your administrator master key credentials to restore access to the infrastructure panel.</p>
+        </div>
       </div>
+
+      {/* Mobile responsive context header banner */}
+      <div className='resetmobilewrap'>
+        <h1>RESET PASSWORD</h1>
+        <p>Authorize Security Override</p>
+      </div>
+
+      {/* Right Core Form Interaction Section */}
       <div className='resetinfowrap'>
         <div className='resetlogohold'>
-        <HiOutlineArrowCircleLeft size={50} onClick={()=> nav(-1)} />
+          <button className='back-navigation-btn' onClick={() => nav(-1)} title="Go Back">
+            <FaArrowLeft />
+          </button>
           <Link to="/">
-            <img src="/images/logo.png" alt="Logo" className='resetlogo'/>
+            <img src="/images/Slodat.jpeg" alt="Platform Brand Logo" className='resetlogo'/>
           </Link>
-          
         </div>
+
         <div className='resetinfo1'>
-          <h2>RESET PASSWORD</h2>
-          <div className='resetinputwrapper'>
-            <p>PASSWORD</p>
-            <input type="password" className='resetinput'
-            placeholder='Password'
-            value={newPassword}
-            onChange={(e)=> setNewPassword(e.target.value)}
-            />
+          <div className='form-header-block'>
+            <h1>Create New Password</h1>
+            <p className="form-subtitle">Ensure your new password contains a secure mixture of character sets</p>
           </div>
-          <div className='resetinputwrapper'>
-            <p>CONFIRM PASSWORD</p>
-            <input type="password" className='resetinput'
-             placeholder='Password'
-             value={ConfirmNewPassword}
-             onChange={(e)=> setConfirmNewPassword(e.target.value)}
-            />
+
+          {/* Form Fields Stack */}
+          <div className='admin-form-container'>
+            
+            <div className='resetinputwrapper'>
+              <label>NEW PASSWORD</label>
+              <div className='input-icon-field-group'>
+                <FaLock className='input-field-icon' />
+                <input 
+                  type="password" 
+                  className='resetinput'
+                  placeholder='••••••••'
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div className='resetinputwrapper'>
+              <label>CONFIRM NEW PASSWORD</label>
+              <div className='input-icon-field-group'>
+                <FaKey className='input-field-icon' />
+                <input 
+                  type="password" 
+                  className='resetinput'
+                  placeholder='••••••••'
+                  value={ConfirmNewPassword}
+                  onChange={(e) => setConfirmNewPassword(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <button 
+              className='resetbtn' 
+              onClick={handleResetPassword}
+              disabled={loading}
+            >
+              {loading ? <CircleLoader color='white' size={20}/> : "UPDATE PASSWORD"}
+            </button>
+            
           </div>
-          <button className='resetbtn' onClick={handleResetPassword}>{loading ? <FadeLoader color='white' size={25}/> : "RESET"}</button>
         </div>
       </div>
-      <img src="/images/Subtract.png" alt="" className='resetimage'/>
     </div>
-  )
-}
+  );
+};
 
-export default Adminreset
+export default Adminreset;

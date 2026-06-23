@@ -17,7 +17,7 @@ const donorterms = [
   {
     id: 3,
     title: "Risks & Liability",
-    terms: "I understand minor temporary side effects may occur (e.g., bruising) and will not hold ALIFE liable for unforeseen reactions.",
+    terms: "I understand minor temporary side effects may occur (e.g., bruising) and will not hold SLODAT liable for unforeseen reactions.",
   },
   {
     id: 4,
@@ -45,7 +45,7 @@ const Donorterms = () => {
         
         {/* Unified Header Matrix Block */}
         <div className='donortermsname'>
-          <img src="/images/alifenobg.png" alt="ALIFE Logo" className='donortermlogo'/>
+          <img src="/images/SLODATnobg.png" alt="SLODAT Logo" className='donortermlogo'/>
           <h1>BLOOD DONOR TERMS AND AGREEMENT</h1>
         </div>
 

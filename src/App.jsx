@@ -50,6 +50,12 @@ import HospitalRequestDetails from "./Davidson/pages/HospitalRequestDetails.jsx"
 import { toast } from "sonner";
 import ResetOtp from "./Esther/auth/ResetOtp.jsx";
 import HealthTipsPage from "./Davidson/pages/HealthTipsPage.jsx";
+import PrivacyPolicy from "./Esther/privacyPolicy/PrivacyPolicy.jsx";
+import FAQs from "./Adio/pages/FAQs.jsx";
+import ContactUs from "./Adio/ContactUs.jsx";
+import TermsOfService from "./Adio/pages/TermsOfService.jsx";
+import BlogPage from "./Adio/pages/BlogPage.jsx";
+import BlogPostDetails from "./Adio/pages/BlogPostDetails.jsx";
 
 const App = () => {
   useEffect(() => {
@@ -79,6 +85,13 @@ const App = () => {
             { path: "/", element: <LandingPage /> },
             { path: "/about", element: <AboutUs /> },
             { path: "/howitworks", element: <Howitworks /> },
+            { path: "/faqs", element: <FAQs /> },
+            { path: "/contact", element: <ContactUs /> },
+            { path: "/privacy", element: <PrivacyPolicy /> },
+            { path: "/terms", element: <TermsOfService /> },
+            { path: "/blog", element: <BlogPage /> },
+            { path: "/blog/:id", element: <BlogPostDetails /> },
+
           ],
         },
         {
@@ -134,7 +147,7 @@ const App = () => {
         { path: "/kyc", element: <KYC /> },
         { path: "/hospiterms", element: <Hospitalterms /> },
         { path: "/donorterms", element: <Donorterms /> },
-        { path: "/adminsignin", element: <Adminsignin /> },
+        { path: "/adminsignup", element: <Adminsignin /> },
         { path: "/adminlogin", element: <Adminlogin /> },
         { path: "/adminreset/:token", element: <Adminreset /> },
         { path: "/adminforgotpassword", element: <AdminForgotPassword /> },

@@ -16,6 +16,7 @@ export default function VerifyMail() {
     setLoadStatus(true);
     try {
       const res = await axios.get(`${VITE_BASEURL}/verify-donor/${token}`);
+      console.log(res)
       setVerificationStatus('success');
     } catch (err) {
       console.error(err);
@@ -41,7 +42,7 @@ export default function VerifyMail() {
   return (
     <div className="verify-container">
       <div className="verify-card">
-        <img src="/images/logo.png" alt="Logo" className="Verifinglogo" />
+        <img src="/images/Slodat.jpeg" alt="Logo" className="Verifinglogo" />
 
         {loadStatus ? (
           <>
