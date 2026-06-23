@@ -11,7 +11,7 @@ export default function PaymentStatus() {
     <div className="payment-wrapper">
       <div className={`payment-card ${isSuccess ? 'success' : 'failed'}`}>
         <div className="PaymentStatuslogoWrap">
-          <img src="/images/logo.png" alt="Logo" className="" />
+          <img src="/images/Slodat.jpeg" alt="Logo" className="" />
         </div>
         <img
           src={isSuccess ? '/images/Transaction Successful.png' : '/images/Transaction Failed.png'}

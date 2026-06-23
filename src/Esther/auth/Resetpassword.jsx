@@ -51,7 +51,7 @@ const Resetpassword = () => {
         <div className='resetlogohold'>
         <HiOutlineArrowCircleLeft size={50} onClick={()=> nav(-1)} />
           <Link to="/">
-            <img src="/images/logo.png" alt="Logo" className='resetlogo'/>
+            <img src="/images/Slodat.jpeg" alt="Logo" className='resetlogo'/>
           </Link>
           
         </div>

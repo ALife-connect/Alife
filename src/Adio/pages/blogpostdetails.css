@@ -1,0 +1,226 @@
+/* ==========================================================================
+   SLODAT Markdown Blog Details Sub-System Styles
+   ========================================================================== */
+
+.post-details-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  color: #0f172a;
+  box-sizing: border-box;
+}
+
+/* Header Context Strip Container */
+.details-sticky-nav {
+  width: 100%;
+  height: 60px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.details-nav-container {
+  max-width: 740px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.details-back-action, .details-share-action {
+  background: none;
+  border: none;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s ease;
+}
+
+.details-back-action:hover { color: #2902F1; }
+.details-share-action:hover { color: #F02222; }
+
+/* Structural Content Column Grid */
+.details-main-layout {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 48px 20px 120px 20px;
+}
+
+/* Metadata Block Architecture Elements */
+.details-article-header {
+  margin-bottom: 32px;
+}
+
+.details-category-tag {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #2902F1;
+  background: rgba(41, 2, 241, 0.08);
+  padding: 4px 12px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.details-article-header h1 {
+  font-size: clamp(24px, 4.5vw, 36px);
+  font-weight: 800;
+  line-height: 1.25;
+  color: #0f172a;
+  margin: 0 0 20px 0;
+  letter-spacing: -0.75px;
+}
+
+.details-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 16px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* Premium Image Element Wrapper */
+.details-cover-frame {
+  width: 100%;
+  height: clamp(240px, 40vw, 400px);
+  background-color: #f1f5f9;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.details-cover-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   Embedded Markdown Typography Architecture Configurations
+   ========================================================================== */
+
+.markdown-body {
+  font-size: 15.5px;
+  line-height: 1.8;
+  color: #334155;
+}
+
+.markdown-body p {
+  margin: 0 0 24px 0;
+}
+
+.markdown-body strong {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.markdown-body h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 40px 0 16px 0;
+  letter-spacing: -0.4px;
+}
+
+.markdown-body h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 32px 0 12px 0;
+}
+
+/* Lists and Structural Matrices */
+.markdown-body ul, .markdown-body ol {
+  margin: 0 0 24px 0;
+  padding-left: 24px;
+}
+
+.markdown-body li {
+  margin-bottom: 8px;
+}
+
+/* Custom Platform Blockquote Rules */
+.markdown-body blockquote {
+  background-color: #f8fafc;
+  border-left: 4px solid #2902F1;
+  margin: 32px 0;
+  padding: 16px 24px;
+  border-radius: 0 8px 8px 0;
+}
+
+.markdown-body blockquote p {
+  margin: 0;
+  font-style: italic;
+  color: #1e293b;
+}
+
+/* Technical Code Block Segments Styling rules */
+.markdown-body pre {
+  background-color: #0f172a;
+  color: #f8fafc;
+  padding: 18px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 13.5px;
+  line-height: 1.5;
+  margin: 28px 0;
+}
+
+.markdown-body code {
+  font-family: inherit;
+  background-color: #f1f5f9;
+  color: #ef4444;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.markdown-body pre code {
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+  font-size: inherit;
+}
+
+/* Core Error Fallback State Layout */
+.details-error-fallback {
+  text-align: center;
+  padding: 100px 20px;
+  color: #64748b;
+}
+
+.details-error-fallback h3 {
+  color: #0f172a;
+  font-size: 18px;
+  margin: 0 0 8px 0;
+}
+
+.details-error-fallback button {
+  background-color: #2902F1;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 16px;
+}

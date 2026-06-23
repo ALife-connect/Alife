@@ -5,7 +5,7 @@ const NotFound = () => {
     return (
         <div className="not-found-wrapper">
           <div className="not-found-content">
-            <img src="/images/logo.png" alt="Logo" className="logo" />
+            <img src="/images/Slodat.jpeg" alt="Logo" className="logo" />
     
             
     

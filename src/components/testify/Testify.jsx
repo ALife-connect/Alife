@@ -13,7 +13,7 @@ const Testify = () => {
                     <p className="source">FROM DONOR</p>
                     <div className='testifywriteup'>
                         <p className="testimonial">
-                            “I never knew how it was easy to donate blood until i found <br /> ALIFE. Now i donate <br /> regularly and feel great  knowing <br /> I’m saving lives.”
+                            “I never knew how it was easy to donate blood until i found <br /> SLODAT. Now i donate <br /> regularly and feel great  knowing <br /> I’m saving lives.”
                         </p>
                     </div>
                 </div>
@@ -22,7 +22,7 @@ const Testify = () => {
                     <h3>MANAGER</h3>
                     <p className='source'>FROM HOSPITAL</p>
                     <div className='testifywriteup'>
-                        <p className='testimonial'>“ALIFE has helped us maintain a steady supply of blood,<br /> ensuring that patients in critical <br />conditions get help on time.”</p>
+                        <p className='testimonial'>“SLODAT has helped us maintain a steady supply of blood,<br /> ensuring that patients in critical <br />conditions get help on time.”</p>
                     </div>
                 </div>
                 <div className='testifyboxinner'>
@@ -30,7 +30,7 @@ const Testify = () => {
                     <h3>MARK M.D</h3>
                     <p className='source'>FROM BLOOD BANK</p>
                     <div className='testifywriteup'>
-                        <p className='testimonial'>“Since joining ALIFE, we've <br />seen a 30% increase in <br /> donations. The platform makes <br /> it easy to connect with donors.”</p>
+                        <p className='testimonial'>“Since joining SLODAT, we've <br />seen a 30% increase in <br /> donations. The platform makes <br /> it easy to connect with donors.”</p>
                     </div>
                 </div>
                 <div className='testifyboxinner'>

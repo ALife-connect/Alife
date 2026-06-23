@@ -1,0 +1,260 @@
+/* ==========================================================================
+   SLODAT Terms of Service Module Base Styling Configuration
+   ========================================================================== */
+
+.terms-page-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f8fafc;
+  font-family: 'Poppins', sans-serif;
+  color: #0f172a;
+  box-sizing: border-box;
+}
+
+/* Header Navbar Styling */
+.terms-nav-header {
+  width: 100%;
+  height: 64px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.terms-nav-container {
+  max-width: 1140px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.terms-brand {
+  font-weight: 700;
+  font-size: 16px;
+  color: #2902F1; /* --brand-blue asset match */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.terms-brand-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #F02222; /* --brand-red asset match */
+  border-radius: 50%;
+}
+
+.terms-back-btn {
+  background: none;
+  border: none;
+  color: #4a4a4a;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.terms-back-btn:hover {
+  color: #F02222;
+}
+
+/* Hero Context Area */
+.terms-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+  color: #ffffff;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.terms-hero-container {
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.terms-badge-pill {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: #f59e0b; /* Attention gold amber */
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  padding: 4px 14px;
+  border-radius: 50px;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.terms-hero h1 {
+  font-size: clamp(24px, 4.5vw, 36px);
+  font-weight: 800;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.5px;
+}
+
+.terms-hero p {
+  font-size: clamp(14px, 1.8vw, 15.5px);
+  color: #94a3b8;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Document Grid Infrastructure Layout */
+.terms-main-layout {
+  max-width: 1140px;
+  margin: 40px auto;
+  padding: 0 20px 80px 20px;
+}
+
+.terms-grid-container {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Sticky Index Column Nav Element */
+.terms-index-column {
+  position: sticky;
+  top: 104px; /* Accounting for navigation offset height cleanly */
+}
+
+.terms-index-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.terms-index-card h4 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #94a3b8;
+  margin: 0 0 16px 0;
+  font-weight: 700;
+}
+
+.terms-index-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.terms-index-card li {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1.3;
+}
+
+.terms-index-card li:hover {
+  color: #2902F1;
+  padding-left: 4px;
+}
+
+/* Legal Copy Reading Document Panel Card */
+.terms-text-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 40px;
+}
+
+.terms-section {
+  margin-bottom: 40px;
+}
+
+.terms-section:last-child {
+  margin-bottom: 0;
+}
+
+.terms-section h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 10px;
+}
+
+.section-inline-icon {
+  font-size: 14px;
+  color: #2902F1;
+}
+
+.terms-section p {
+  font-size: 14.5px;
+  color: #475569;
+  line-height: 1.7;
+  margin: 0 0 16px 0;
+}
+
+.terms-section ul {
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+
+.terms-section li {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.65;
+  margin-bottom: 8px;
+}
+
+/* Platform Disclaimer Box Format Rules */
+.terms-section blockquote {
+  background-color: #fffaf0;
+  border-left: 4px solid #f59e0b;
+  margin: 24px 0;
+  padding: 16px 20px;
+  border-radius: 0 8px 8px 0;
+}
+
+.terms-section blockquote strong {
+  display: block;
+  font-size: 13px;
+  color: #b45309;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.terms-section blockquote p {
+  font-size: 14px;
+  color: #78350f;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Responsive Display Adaptations Breaks
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .terms-grid-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .terms-index-column {
+    display: none; /* Hide document side navigation tracks on tablet/mobile screens */
+  }
+
+  .terms-text-card {
+    padding: 28px 20px;
+  }
+}
