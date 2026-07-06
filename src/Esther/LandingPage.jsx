@@ -45,7 +45,7 @@ const LandingPage = () => {
             </button>
             <button 
               className="btn btn-secondary" 
-              onClick={() => nav('/request-help')}
+              onClick={() => nav('/contact')}
             >
               Request Support
             </button>

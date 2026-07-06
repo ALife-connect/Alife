@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { toast } from "sonner";
 
 import HomeRoutes from "./routes/HomeRoutes";
 import LandingPage from "./Esther/LandingPage";
@@ -47,7 +48,6 @@ import UsersPage from "./Esther/pages/UsersPage.jsx";
 import AdminForgotPassword from "./Esther/pages/AdminForgotPassword.jsx";
 import HospitalRequestsPage from "./Davidson/pages/HospitalRequestsPage.jsx";
 import HospitalRequestDetails from "./Davidson/pages/HospitalRequestDetails.jsx";
-import { toast } from "sonner";
 import ResetOtp from "./Esther/auth/ResetOtp.jsx";
 import HealthTipsPage from "./Davidson/pages/HealthTipsPage.jsx";
 import PrivacyPolicy from "./Esther/privacyPolicy/PrivacyPolicy.jsx";
@@ -57,7 +57,13 @@ import TermsOfService from "./Adio/pages/TermsOfService.jsx";
 import BlogPage from "./Adio/pages/BlogPage.jsx";
 import BlogPostDetails from "./Adio/pages/BlogPostDetails.jsx";
 
+// Feature Components
+import AnnouncementTicker from "./components/announcementTicker/AnnouncementTicker.jsx";
+import WaitlistModal from "./components/WaitlistModal/WaitlistModal.jsx";
+
 const App = () => {
+  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
+
   useEffect(() => {
     const handleOffline = () => toast.error("You are offline");
 
@@ -75,7 +81,17 @@ const App = () => {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Scrolltop />,
+      // We wrap Scrolltop inside a fragment with our Ticker and Modal to apply them layout-wide
+      element: (
+        <>
+          <AnnouncementTicker onToggleModal={() => setIsWaitlistOpen(true)} />
+          <Scrolltop />
+          <WaitlistModal
+            isOpen={isWaitlistOpen}
+            onClose={() => setIsWaitlistOpen(false)}
+          />
+        </>
+      ),
       errorElement: <NotFound />,
       children: [
         {
@@ -91,7 +107,6 @@ const App = () => {
             { path: "/terms", element: <TermsOfService /> },
             { path: "/blog", element: <BlogPage /> },
             { path: "/blog/:id", element: <BlogPostDetails /> },
-
           ],
         },
         {

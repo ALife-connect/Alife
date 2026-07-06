@@ -23,13 +23,13 @@ const Footer = () => {
           </p>
 
           <div className="social-icons">
-            <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook">
+            <a href="https://www.facebook.com/share/1JDkLHBjBm/?mibextid=wwXIfr" target="_blank" rel="noreferrer" aria-label="Facebook">
               <span><FaFacebook /></span>
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noreferrer" aria-label="Twitter">
+            <a href="https://x.com/slodatconnect?s=11" target="_blank" rel="noreferrer" aria-label="Twitter">
               <span><FaXTwitter /></span>
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">
+            <a href="https://www.instagram.com/slodat.connect/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noreferrer" aria-label="Instagram">
               <span><FaInstagram /></span>
             </a>
             <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">
