@@ -81,15 +81,14 @@ const App = () => {
   const router = createBrowserRouter([
     {
       path: "/",
-      // We wrap Scrolltop inside a fragment with our Ticker and Modal to apply them layout-wide
       element: (
         <>
-          <AnnouncementTicker onToggleModal={() => setIsWaitlistOpen(true)} />
+          {/* <AnnouncementTicker onToggleModal={() => setIsWaitlistOpen(true)} /> */}
           <Scrolltop />
-          <WaitlistModal
+          {/* <WaitlistModal
             isOpen={isWaitlistOpen}
             onClose={() => setIsWaitlistOpen(false)}
-          />
+          /> */}
         </>
       ),
       errorElement: <NotFound />,

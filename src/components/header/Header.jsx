@@ -27,7 +27,6 @@ const Header = () => {
   const [notifications, setNotifications] = useState([]);
   const [isFixed, setIsFixed] = useState(false);
 
-  console.log(notifications)
 
   const isSignedIn = useSelector((state) => state?.isLoggedIn);
   const userInfo = useSelector((state) => state?.loggedInUser);
@@ -91,7 +90,6 @@ const Header = () => {
       setNotifications(res?.data?.notifications || []);
     } catch (err) {
       console.error("Notification Error:", err);
-      console.log(err)
     }
   };
 

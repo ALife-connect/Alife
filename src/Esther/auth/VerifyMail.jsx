@@ -16,10 +16,8 @@ export default function VerifyMail() {
     setLoadStatus(true);
     try {
       const res = await axios.get(`${VITE_BASEURL}/verify-donor/${token}`);
-      console.log(res)
       setVerificationStatus('success');
     } catch (err) {
-      console.error(err);
       setVerificationStatus('error');
     } finally {
       setLoadStatus(false);

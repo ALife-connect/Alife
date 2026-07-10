@@ -31,7 +31,6 @@ const ResetOtp = () => {
     e.preventDefault();
     try {
       const response = await axios.post(`${VITE_BASEURL}/resetPassword`, formData);
-      console.log(response?.data?.status);
       if (response?.data?.status) {
         toast.success(response?.data?.message);
         setTimeout(() => {
@@ -39,7 +38,6 @@ const ResetOtp = () => {
         }, 4000);
       }
     } catch (error) {
-      console.log(error?.response?.data?.status);
       if (!error?.response?.data?.status) {
         return toast.error(error?.response?.data?.message);
       }

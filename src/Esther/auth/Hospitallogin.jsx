@@ -38,7 +38,6 @@ const Hospitallogin = () => {
           nav("/login");
         }
       } catch (err) {
-        console.error("Token check failed:", err);
       }
     };
 

@@ -67,7 +67,6 @@ const Donorssignup = () => {
     } catch (err) {
       if(err.status === 400){
         toast.error(err.response.data.message || err.response.data.errors[0]);
-        console.log(err.response.data.message)
       }
     } finally {
       setIsLoading(false);

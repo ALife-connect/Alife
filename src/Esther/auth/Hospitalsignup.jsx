@@ -69,7 +69,6 @@ const Hospitalsignup = () => {
       }, 1000);
 
     } catch (err) {
-      console.error(err);
       toast.error(err?.response?.data?.message || "Registration failed");
     } finally {
       setIsLoading(false);

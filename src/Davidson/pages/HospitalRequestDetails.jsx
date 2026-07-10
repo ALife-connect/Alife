@@ -66,7 +66,6 @@ const HospitalRequestDetails = () => {
         setIsExpired(true);
       }
     } catch (err) {
-      console.error("Error fetching hospital details:", err);
       if (err?.response?.status === 404) {
         setNotFound(true);
       }

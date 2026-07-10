@@ -37,8 +37,6 @@ const WaitlistModal = ({ isOpen, onClose }) => {
       setEmail('');
       onClose();
     } catch (err) {
-      // 💡 EXPOSE THE SMOKING GUN: Prints SheetDB's exact backend rejection reason
-      console.error("SheetDB Error Details:", err.response?.data || err.message);
       toast.error('Could not connect. Please try again in a few moments.');
     } finally {
       setLoading(false);

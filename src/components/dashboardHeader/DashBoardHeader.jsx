@@ -18,7 +18,6 @@ const DashBoardHeader = () => {
   const loggedInUser = useSelector((state) => state?.loggedInUser);
   const token = useSelector((state) => state?.token);
 
-  console.log(loggedInUser)
 
   const nav = useNavigate();
   const location = useLocation(); // Hook initialization to track active route changes
@@ -69,7 +68,6 @@ const DashBoardHeader = () => {
       setHospitals(hospitalData);
       setFilteredHospitals(hospitalData);
     } catch (error) {
-      console.error('Error fetching hospitals:', error);
     }
   };
 

@@ -55,7 +55,6 @@ const KYC = () => {
       toast.success('KYC documentation submitted successfully!');
       nav('/dashboard');
     } catch (err) {
-      console.error(err);
       toast.error('Failed to submit KYC documentation. Please check your network and try again.');
     } finally {
       setLoadState(false);

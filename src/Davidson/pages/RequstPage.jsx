@@ -114,7 +114,6 @@ const RequestPage = () => {
     } catch (err) {
       const errorMsg = err?.response?.data?.message || "Network request structural timeout error.";
       toast.error(errorMsg, { id: toastId });
-      console.error("Transmission breakdown details:", err);
     } finally {
       setIsSubmitting(false);
     }
