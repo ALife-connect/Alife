@@ -27,7 +27,6 @@ const RequestHistory = () => {
       });
       setRequestData(res?.data?.requests || []);
     } catch (err) {
-      console.error("❌ Error fetching request logs:", err);
       toast.error("Failed to load request history logs.");
     } finally {
       setLoadState(false);
@@ -46,7 +45,6 @@ const RequestHistory = () => {
       toast.success("Request deleted successfully!");
       setRequestData((prev) => prev.filter((request) => request._id !== id));
     } catch (err) {
-      console.error("❌ Error processing request deletion execution:", err);
       // Fixed Bug: Changed from toast.success to toast.error
       toast.error("Failed to delete processing request. Please try again.");
     }

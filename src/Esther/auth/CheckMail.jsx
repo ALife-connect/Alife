@@ -13,7 +13,6 @@ export default function CheckMail() {
 
   const email = location.state?.email || localStorage.getItem("email");
   const userType = location.state?.userType || localStorage.getItem("pendingUserType");
-  console.log(email)
 
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const inputsRef = useRef([]);
@@ -45,7 +44,6 @@ export default function CheckMail() {
         toast.success("Verification code sent to your email inbox.");
       }
     } catch (err) {
-      console.error("OTP Delivery Error:", err.response?.data || err);
       toast.error(err.response?.data?.message || "Failed to deliver OTP code. Please try again.");
     } finally {
       setIsSending(false);
@@ -135,7 +133,6 @@ export default function CheckMail() {
       }
 
     } catch (err) {
-      console.error("Verification Error:", err.response?.data);
       toast.error(err.response?.data?.message || "Invalid validation code, please try again.");
     } finally {
       setIsVerifying(false);

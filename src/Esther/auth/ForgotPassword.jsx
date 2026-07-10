@@ -31,7 +31,6 @@ const ForgotPassword = () => {
       }, 2000);
       
     } catch (err) {
-      console.error(err);
       toast.error(err?.response?.data?.message || "Something went wrong. Please try again.");
     } finally {
       setLoadState(false);

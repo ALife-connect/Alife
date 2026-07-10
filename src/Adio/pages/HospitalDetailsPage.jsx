@@ -26,7 +26,6 @@ const HospitalDetailsPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isScheduleLoading, setIsScheduleLoading] = useState(false);
   const [anHospital, setAnHospital] = useState(null);
-  console.log(anHospital)
 
   const [scheduleData, setScheduleData] = useState({
     date: "",
@@ -67,10 +66,8 @@ const HospitalDetailsPage = () => {
       const res = await axios.get(`${Base_Url}/hospital/${hospitalId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-        console.log("THE HOSPITAL DATA:",res)
       setAnHospital(res?.data?.hospital);
     } catch (err) {
-      console.log(err);
       toast.error("Failed to load medical facility credentials.");
     } finally {
       setIsLoading(false);
@@ -104,10 +101,6 @@ const HospitalDetailsPage = () => {
 
   if (isLoading) return <LoadComponents />;
 
-
-  console.log("Base URL:", Base_Url);
-console.log("Hospital ID:", hospitalId);
-console.log("Final URL:", `${Base_Url}/hospital/${hospitalId}`);
 
   return (
     <div className="RequestDetailsMasterContainer">

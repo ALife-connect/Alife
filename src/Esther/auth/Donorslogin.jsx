@@ -40,7 +40,6 @@ const Donorslogin = () => {
             email: userLoginData.email,
           });
         } catch (err) {
-          console.error("Error sending re-verification email:", err);
         }
         return;
       }
@@ -54,7 +53,6 @@ const Donorslogin = () => {
       }, 1000);
 
     } catch (err) {
-      console.error("Login error:", err?.response?.data?.message || err);
       toast.error(
         err?.response?.data?.message || "Something went wrong during authentication."
       );

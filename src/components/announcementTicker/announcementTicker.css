@@ -1,0 +1,70 @@
+.ticker-wrapper {
+  width: 100%;
+  background-color: #2902F1; /* Matches your brand signature color */
+  color: #ffffff;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: 'Poppins', sans-serif;
+  z-index: 9999; /* Ensures it stays above all navigation bars */
+  box-sizing: border-box;
+}
+
+/* Subtly slow down the text or highlight the bar on hover */
+.ticker-wrapper:hover .ticker-track {
+  animation-play-state: paused;
+  background-color: #1e02b3;
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: infinite-scroll 25s linear infinite;
+  transition: background-color 0.2s ease;
+}
+
+.ticker-content {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  padding-right: 50px; /* Gap distance between repeating messages */
+  font-size: 12.5px;
+  letter-spacing: 0.3px;
+}
+
+.ticker-content strong {
+  color: #f1c40f; /* High-visibility yellow accent for the alert badge */
+  margin-right: 4px;
+}
+
+.ticker-icon {
+  margin-right: 8px;
+  font-size: 15px;
+  color: #f1c40f;
+  flex-shrink: 0;
+}
+
+/* Smooth, infinite horizontal movement hardware-accelerated via translate3d */
+@keyframes infinite-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-25%, 0, 0); /* Shifts exactly one content block over for a seamless loop */
+  }
+}
+
+/* Responsive adjust for ultra-small viewports */
+@media only screen and (max-width: 480px) {
+  .ticker-content {
+    font-size: 11.5px;
+    padding-right: 30px;
+  }
+  .ticker-track {
+    animation-duration: 18s; /* Speeds it up slightly on tiny screens so the message passes fast */
+  }
+}

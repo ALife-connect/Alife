@@ -5,14 +5,13 @@ import { HiOutlineArrowCircleLeft } from 'react-icons/hi';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { toast } from 'sonner';
-import FadeLoader from 'react-spinners/CircleLoader'
+import CircleLoader from 'react-spinners/CircleLoader';
 import { IoArrowBackCircleOutline } from 'react-icons/io5';
-
-
+import { FiUploadCloud, FiCheckCircle } from 'react-icons/fi';
 
 const KYC = () => {
   const nav = useNavigate();
-  const [loadState, setLoadState] = useState(false)
+  const [loadState, setLoadState] = useState(false);
   const [facilityImg, setFacilityImg] = useState(null);
   const [certificate, setCertificate] = useState(null);
   const [utilityBill, setUtilityBill] = useState(null);
@@ -23,12 +22,19 @@ const KYC = () => {
 
   const handleFileChange = (e, setFile) => {
     const file = e.target.files[0];
-    if (file) setFile(file);
+    if (file) {
+      if (file.size > 5 * 1024 * 1024) {
+        toast.error("File size exceeds 5MB limit.");
+        return;
+      }
+      setFile(file);
+      toast.success("Document attached successfully.");
+    }
   };
 
   const handleSubmit = async () => {
     if (!facilityImg || !certificate || !utilityBill || !licenseNumber) {
-      message.error('Please fill all fields');
+      toast.error('Please populate all document fields and license information.');
       return;
     }
 
@@ -37,80 +43,107 @@ const KYC = () => {
     formData.append('accreditedCertificate', certificate);
     formData.append('utilityBill', utilityBill);
     formData.append('licenseNumber', licenseNumber);
-    setLoadState(true)
+    setLoadState(true);
+
     try {
-      const res = await axios.post(`${VITE_BASEURL}/kyc/kyc`, formData, {
+      await axios.post(`${VITE_BASEURL}/kyc/kyc`, formData, {
         headers: {
           Authorization: `Bearer ${userToken}`,
           'Content-Type': 'multipart/form-data',
-        },
+          },
       });
-      toast.success('KYC submitted successfully!');
+      toast.success('KYC documentation submitted successfully!');
       nav('/dashboard');
-      setLoadState(false)
     } catch (err) {
-      console.error(err);
-      toast.error('Failed to submit KYC. Try again.');
-      setLoadState(false)
+      toast.error('Failed to submit KYC documentation. Please check your network and try again.');
+    } finally {
+      setLoadState(false);
     }
   };
 
   const renderUploadBox = (label, file, setFile, inputId) => (
-    <div className="upload-section">
-      <label className="upload-label">{label}</label>
-      <div className="upload-box" onClick={() => document.getElementById(inputId).click()}>
+    <div className="kyc-upload-section">
+      <label className="kyc-upload-label">{label}</label>
+      <div 
+        className={`kyc-upload-box ${file ? 'has-file' : ''}`} 
+        onClick={() => document.getElementById(inputId).click()}
+      >
         <input
           type="file"
           id={inputId}
-          className="hidden-input"
+          className="kyc-hidden-input"
           onChange={(e) => handleFileChange(e, setFile)}
+          accept=".jpg,.jpeg,.png,.pdf"
         />
-        <div className="upload-content">
-          <p>{file ? file.name : `Upload ${label}`}</p>
-          <span>Click or drag to upload</span>
+        <div className="kyc-upload-content">
+          {file ? (
+            <>
+              <FiCheckCircle className="upload-icon success-icon" />
+              <p className="file-name">{file.name}</p>
+              <span>Click to replace document</span>
+            </>
+          ) : (
+            <>
+              <FiUploadCloud className="upload-icon" />
+              <p>Upload {label}</p>
+              <span>Click to browse storage</span>
+            </>
+          )}
         </div>
       </div>
     </div>
   );
 
   return (
-    <div className="kycwrapper">
+    <div className="kyc-root-wrapper">
+      {/* Mobile Top Header */}
       <div className="kycmobilewrap">
-      <div className='smallarrow' ><IoArrowBackCircleOutline onClick={()=>nav(-1)}/></div>
-
-        <h1>KYC</h1>
+        <IoArrowBackCircleOutline className="mobile-back-icon" onClick={() => nav(-1)} />
+        <h1>Verification</h1>
       </div>
-      <div className="kycinfowrap">
+
+      <div className="kyc-main-card">
+        {/* Navigation & Branding Strip */}
         <div className="kyclogohold">
-          <HiOutlineArrowCircleLeft size={50} onClick={() => nav(-1)} />
+          <HiOutlineArrowCircleLeft className="desktop-back-icon" onClick={() => nav(-1)} />
           <Link to="/">
-            <img src="/images/Slodat.jpeg" alt="Logo" className="kyclogo" />
+            <img src="/images/Slodat.jpeg" alt="Branding Logo" className="kyclogo" />
           </Link>
         </div>
 
-        <div className="kycinfo1">
-          <h1>KYC</h1>
+        {/* Dynamic Form Module */}
+        <div className="kyc-form-container">
+          <h1>Identity Verification</h1>
+          <p className="kyc-subtitle">Please submit valid structural and operational credentials to activate administrative privileges.</p>
 
-          {renderUploadBox('Facility Image', facilityImg, setFacilityImg, 'file1')}
-          {renderUploadBox('Accredited Certificate', certificate, setCertificate, 'file2')}
-          {renderUploadBox('Utility Bill', utilityBill, setUtilityBill, 'file3')}
+          <div className="kyc-scrollable-fields">
+            {renderUploadBox('Facility Image', facilityImg, setFacilityImg, 'file1')}
+            {renderUploadBox('Accredited Certificate', certificate, setCertificate, 'file2')}
+            {renderUploadBox('Utility Bill', utilityBill, setUtilityBill, 'file3')}
 
-          <div className="kycinputwrapper">
-            <p>LICENSE NUMBER</p>
-            <input
-              type="text"
-              className="kycinput"
-              value={licenseNumber}
-              onChange={(e) => setLicenseNumber(e.target.value)}
-            />
+            <div className="kyc-input-group">
+              <label htmlFor="licenseInput">LICENSE NUMBER</label>
+              <input
+                id="licenseInput"
+                type="text"
+                className="kyc-text-input"
+                placeholder="Enter formal identification numbers"
+                value={licenseNumber}
+                onChange={(e) => setLicenseNumber(e.target.value)}
+              />
+            </div>
           </div>
 
-          <button className="kycbtn" onClick={handleSubmit}>
-            {loadState? <FadeLoader color="white" size={25}/> : "SUBMIT"}
+          <button className="kyc-submit-btn" onClick={handleSubmit} disabled={loadState}>
+            {loadState ? <CircleLoader color="white" size={20} /> : "SUBMIT VERIFICATION"}
           </button>
         </div>
       </div>
-      <img src="images/Subtract.png" alt="" className="kycsignimage" />
+
+      {/* Decorative Vector Side-Panel */}
+      <div className="kyc-vector-panel">
+        <img src="images/Subtract.png" alt="Decorative Graphic" className="kycsignimage" />
+      </div>
     </div>
   );
 };

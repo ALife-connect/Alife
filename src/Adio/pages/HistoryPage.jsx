@@ -42,7 +42,6 @@ const HistoryPage = () => {
       );
       setDonations(sortedDonations);
     } catch (err) {
-      console.error("❌ Error fetching donations:", err);
       toast.error("Failed to fetch donation history.");
     } finally {
       setLoadingState(false);
@@ -62,7 +61,6 @@ const HistoryPage = () => {
 
       setAppointmentHistory(res?.data?.appointments || []);
     } catch (err) {
-      console.error("❌ Error fetching appointments:", err);
       toast.error("Failed to fetch appointment history.");
     } finally {
       setLoadingState(false);
@@ -88,7 +86,6 @@ const HistoryPage = () => {
       getDonationsByStatus(status);
       getAppointments(); // Refresh the schedules view seamlessly
     } catch (error) {
-      console.error("❌ Cancel appointment error:", error);
       toast.error("Failed to cancel appointment.");
     }
   };

@@ -25,7 +25,6 @@ const HospitalRequestsPage = () => {
       // Safety guard check to handle undefined structures gracefully
       setHospitalRequests(ress?.data?.bloodRequests || []);
     } catch (err) {
-      console.error("Fetch hospital requests error:", err);
       toast.error(err.response?.data?.message || "Failed to load blood emergency requests.");
     } finally {
       setLoadState(false);

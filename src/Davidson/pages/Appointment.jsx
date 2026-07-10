@@ -33,7 +33,6 @@ const Appointment = () => {
 
       setAppointmentData(res?.data?.data || []);
     } catch (err) {
-      console.error("❌ Error fetching appointments:", err);
       const status = err.response?.status;
       if (status === 401) message.error("Unauthorized. Please log in again.");
       else if (status === 403) message.error("Access denied.");
@@ -105,7 +104,6 @@ const Appointment = () => {
       handleClose();
       fetchAppointment();
     } catch (err) {
-      console.error("❌ Error accepting appointment:", err);
       message.error("Failed to accept appointment");
     } finally {
       setAccepting(false);
@@ -133,7 +131,6 @@ const Appointment = () => {
       handleClose();
       fetchAppointment();
     } catch (err) {
-      console.error("❌ Error cancelling appointment:", err);
       message.error("Failed to cancel appointment");
     } finally {
       setDeclining(false);

@@ -22,7 +22,6 @@ const ResendMailVerification = () => {
       const reverifyRes = await axios.post(`${VITE_BASEURL}/resend-otp`, { email });
       setStatus('success');
     } catch (err) {
-      console.error("Error sending re-verification email:", err);
       setStatus('error');
     } finally {
       setLoading(false);

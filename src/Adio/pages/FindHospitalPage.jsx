@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 
 const VITE_BASEURL_REN = import.meta.env.VITE_BASEURL;
-console.log(VITE_BASEURL_REN)
 
 const tips = [
   "One blood donation can save up to 3 lives",
@@ -25,7 +24,6 @@ const FindHospitalPage = () => {
   const [error, setError] = useState("");
 
   const alltheHospitals = axios.get(`${VITE_BASEURL_REN}/hospitals`);
-  console.log("All the hospitals:", alltheHospitals);
 
   const token = useSelector((state) => state?.token);
 
@@ -33,8 +31,6 @@ const FindHospitalPage = () => {
     setIsLoading(true);
     setError(""); 
     try {
-      console.log("🔑 Auth token:", token);
-      console.log("🌍 Fetching hospitals from:", `${VITE_BASEURL_REN}/hospitals`);
 
       const res = await axios.get(`${VITE_BASEURL_REN}/hospitals`, {
         headers: {
@@ -42,16 +38,13 @@ const FindHospitalPage = () => {
         },
       });
 
-      console.log("🏥 Hospital API Response:", res?.data);
 
       if (res?.data?.data?.length > 0) {
         setListOfHospitals(res.data.data);
       } else {
         setListOfHospitals([]);
-        console.warn("⚠️ No hospitals found in the response.");
       }
     } catch (err) {
-      console.error("❌ Error fetching hospitals:", err);
       setError("Failed to load hospitals. Please try again later.");
     } finally {
       setIsLoading(false);
